@@ -34,7 +34,7 @@
     "turbolinks": "^5.2.0",
     "weui": "^2.1.4",
     "weui.js": "^1.1.4",
-    "yarn": "^1.17.3"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "expose-loader": "https://github.com/qinmingyuan/expose-loader.git",
