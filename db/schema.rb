@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_080009) do
+ActiveRecord::Schema.define(version: 2020_11_20_074818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3242,8 +3242,8 @@ ActiveRecord::Schema.define(version: 2020_11_14_080009) do
     t.boolean "edited", comment: "是否被客服改过价"
     t.bigint "cart_id", scale: 8
     t.bigint "order_id", scale: 8
-    t.bigint "user_id", scale: 8
     t.string "status", default: "init"
+    t.string "promote_name"
     t.index ["cart_id"], name: "index_trade_promotes_on_cart_id"
     t.index ["order_id"], name: "index_trade_promotes_on_order_id"
     t.index ["promote_cart_id"], name: "index_trade_promotes_on_promote_cart_id"
@@ -3251,7 +3251,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_080009) do
     t.index ["promote_good_id"], name: "index_trade_promotes_on_promote_good_id"
     t.index ["promote_id"], name: "index_trade_promotes_on_promote_id"
     t.index ["trade_item_id"], name: "index_trade_promotes_on_trade_item_id"
-    t.index ["user_id"], name: "index_trade_promotes_on_user_id"
   end
 
   create_table "tutorials", id: { scale: 8 }, force: :cascade do |t|
@@ -3469,6 +3468,7 @@ ActiveRecord::Schema.define(version: 2020_11_14_080009) do
     t.boolean "primary"
     t.string "oauth2_state"
     t.string "user_name"
+    t.boolean "oauth_enable", default: true
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 
