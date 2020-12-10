@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '6.1.0.rc1'
+gem 'rails', '6.1.0'
 gem 'puma'
 gem 'sidekiq'
 
@@ -48,7 +48,6 @@ gem 'default_where', github: 'qinmingyuan/default_where'
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_log', github: 'work-design/rails_log'
 gem 'rails_org', github: 'work-design/rails_org'
-gem 'rails_vip', github: 'work-design/rails_vip'
 gem 'rails_auth', github: 'work-design/rails_auth'
 gem 'rails_data', github: 'work-design/rails_data'
 gem 'rails_quip', github: 'work-design/rails_quip'

@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 979419809f67974ee7bebce7764eca540a6c73db
+  revision: ce966758f09f01916c01b22bb7c7ed221d2a8fd8
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: 31b7a6f31e38d0d45b0e2ab162f28db1afc5ffac
+  revision: ce597a5d167062c4a74eb93067afbee0dd946ec9
   specs:
     webpacker (5.1.1)
       activesupport (>= 5.2)
@@ -68,14 +68,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 270e0a845b93d59603495c38ecbd5943b49e9f7f
+  revision: 71a417eb74dcc9393068e4d79da36ef5b0f765f6
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 7b78e5d811d9eb3d0dd107d4917c00b47e6cfe32
+  revision: b342748b615335a6a61bed9a0fd7148b057fdb4c
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: 16faae962ea65c498694d22b27bc91077c72f32a
+  revision: b0ef84b97ae4f0f5112e1ccae357a47b37b6d066
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -93,7 +93,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: dc165259f3fa93a1c34b32ebbd50de8caeb135f8
+  revision: 614a4e9051d438dc2f5da3024664b77c1428f9de
   specs:
     rails_com (1.2.9)
       acme-client
@@ -126,7 +126,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: ecada6c4a5177e09b9c0d339d4605e35d577a9c1
+  revision: adee29990669613302496bec4ba54fce259641ef
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -156,14 +156,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_log.git
-  revision: 1e9b79b674c79604880d51eed1106dfa3a94fd75
+  revision: 2acbcfa73a96284c83a767b346b0744998b8c06f
   specs:
     rails_log (2.1.6)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: f34b19ef51367ccf6977cabf541d8bc952f4b391
+  revision: c987a66471903271b0f22153e9ba7a1c9bca4cc5
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -171,7 +171,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: a9ce4df01d504e73954dc2e21aaac08b2c6e09f7
+  revision: a6df4756c17b2797abd5eaf982e3b47947211987
   specs:
     rails_org (0.1)
       rails_auth
@@ -204,23 +204,15 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 4f8b921b33849a4fd3c0178e1dc84662923cb1a0
+  revision: 4537805cad8f81c9ee98ed7dbe26234f6905458b
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_vip.git
-  revision: ea4785c4c9cc35d7ece2308694e4b0457edfd466
-  specs:
-    rails_vip (0.1.0)
-      rails_com (~> 1.2)
-      rails_trade
-
-GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: bf2e72f375871e862d88b9e5463d5587f3584fc9
+  revision: 064d1ac4849f17433ef938dbe20390d764846c1a
   specs:
     rails_wechat (0.1.0)
       rails_auth
@@ -232,60 +224,60 @@ GEM
   specs:
     acme-client (2.0.7)
       faraday (>= 0.17, < 2.0.0)
-    actioncable (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actioncable (6.1.0)
+      actionpack (= 6.1.0)
+      activesupport (= 6.1.0)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      activejob (= 6.1.0.rc1)
-      activerecord (= 6.1.0.rc1)
-      activestorage (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actionmailbox (6.1.0)
+      actionpack (= 6.1.0)
+      activejob (= 6.1.0)
+      activerecord (= 6.1.0)
+      activestorage (= 6.1.0)
+      activesupport (= 6.1.0)
       mail (>= 2.7.1)
-    actionmailer (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      actionview (= 6.1.0.rc1)
-      activejob (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actionmailer (6.1.0)
+      actionpack (= 6.1.0)
+      actionview (= 6.1.0)
+      activejob (= 6.1.0)
+      activesupport (= 6.1.0)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (6.1.0.rc1)
-      actionview (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actionpack (6.1.0)
+      actionview (= 6.1.0)
+      activesupport (= 6.1.0)
       rack (~> 2.0, >= 2.0.9)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      activerecord (= 6.1.0.rc1)
-      activestorage (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actiontext (6.1.0)
+      actionpack (= 6.1.0)
+      activerecord (= 6.1.0)
+      activestorage (= 6.1.0)
+      activesupport (= 6.1.0)
       nokogiri (>= 1.8.5)
-    actionview (6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    actionview (6.1.0)
+      activesupport (= 6.1.0)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    activejob (6.1.0)
+      activesupport (= 6.1.0)
       globalid (>= 0.3.6)
-    activemodel (6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
-    activerecord (6.1.0.rc1)
-      activemodel (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
-    activestorage (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      activejob (= 6.1.0.rc1)
-      activerecord (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    activemodel (6.1.0)
+      activesupport (= 6.1.0)
+    activerecord (6.1.0)
+      activemodel (= 6.1.0)
+      activesupport (= 6.1.0)
+    activestorage (6.1.0)
+      actionpack (= 6.1.0)
+      activejob (= 6.1.0)
+      activerecord (= 6.1.0)
+      activesupport (= 6.1.0)
       marcel (~> 0.3.1)
       mimemagic (~> 0.3.2)
-    activesupport (6.1.0.rc1)
+    activesupport (6.1.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -304,7 +296,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.33.0)
+    capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -338,12 +330,12 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
-    http-2-next (0.2.6)
+    http-2-next (0.3.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.9.0)
+    httpx (0.10.0)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.5)
@@ -368,10 +360,10 @@ GEM
     kaminari-core (1.2.1)
     kramdown (2.3.0)
       rexml
-    listen (3.3.1)
+    listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.7.0)
+    loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -444,36 +436,36 @@ GEM
       binding_of_caller (~> 0.7)
       pry (~> 0.13)
     public_suffix (4.0.6)
-    puma (5.0.4)
+    puma (5.1.0)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (6.1.0.rc1)
-      actioncable (= 6.1.0.rc1)
-      actionmailbox (= 6.1.0.rc1)
-      actionmailer (= 6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      actiontext (= 6.1.0.rc1)
-      actionview (= 6.1.0.rc1)
-      activejob (= 6.1.0.rc1)
-      activemodel (= 6.1.0.rc1)
-      activerecord (= 6.1.0.rc1)
-      activestorage (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    rails (6.1.0)
+      actioncable (= 6.1.0)
+      actionmailbox (= 6.1.0)
+      actionmailer (= 6.1.0)
+      actionpack (= 6.1.0)
+      actiontext (= 6.1.0)
+      actionview (= 6.1.0)
+      activejob (= 6.1.0)
+      activemodel (= 6.1.0)
+      activerecord (= 6.1.0)
+      activestorage (= 6.1.0)
+      activesupport (= 6.1.0)
       bundler (>= 1.15.0)
-      railties (= 6.1.0.rc1)
+      railties (= 6.1.0)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
-    railties (6.1.0.rc1)
-      actionpack (= 6.1.0.rc1)
-      activesupport (= 6.1.0.rc1)
+    railties (6.1.0)
+      actionpack (= 6.1.0)
+      activesupport (= 6.1.0)
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
@@ -481,7 +473,7 @@ GEM
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.2.2)
+    redis (4.2.5)
     regexp_parser (1.8.2)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -513,7 +505,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (2.3.0)
+    semantic_range (2.3.1)
     sidekiq (6.1.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -558,7 +550,7 @@ GEM
     xml-simple (1.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
 
@@ -591,7 +583,7 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   puma
-  rails (= 6.1.0.rc1)
+  rails (= 6.1.0)
   rails_agency!
   rails_attend!
   rails_audit!
@@ -611,7 +603,6 @@ DEPENDENCIES
   rails_quip!
   rails_role!
   rails_trade!
-  rails_vip!
   rails_wechat!
   redis
   rqrcode
