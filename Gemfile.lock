@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: ce966758f09f01916c01b22bb7c7ed221d2a8fd8
+  revision: ac31a38225b03689bf533ca3973b538a65abde36
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -43,9 +43,9 @@ GIT
 
 GIT
   remote: https://github.com/rails/webpacker.git
-  revision: ce597a5d167062c4a74eb93067afbee0dd946ec9
+  revision: 3fd8593f9b7765f390661591a7ef7328b04b4b52
   specs:
-    webpacker (5.1.1)
+    webpacker (6.0.0.beta.2)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -68,14 +68,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 71a417eb74dcc9393068e4d79da36ef5b0f765f6
+  revision: 65691d4351d434901a020be7a0008d5d9729a215
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: b342748b615335a6a61bed9a0fd7148b057fdb4c
+  revision: 876768471a18c080d4117c16777bd2d7fdf5d798
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: b0ef84b97ae4f0f5112e1ccae357a47b37b6d066
+  revision: 53d3c59ea3f193d0c986b91f7e860c42672c0d8d
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -93,7 +93,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 614a4e9051d438dc2f5da3024664b77c1428f9de
+  revision: 68bca9b7437cb81a133d34d063374dd52cdf3623
   specs:
     rails_com (1.2.9)
       acme-client
@@ -107,15 +107,15 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_data.git
-  revision: ed7c0f37a610e6905823c468aa39e56d2e729ad1
+  revision: 1ad344134c75a4f52e74e968edf2a973c068878a
   specs:
     rails_data (1.0.2)
-      prawn (~> 2.2)
-      prawn-table (~> 0.2)
+      prawn
+      prawn-table
       rails_com (~> 1.2)
-      roo (~> 2.7)
-      roo-xls (~> 1.2)
-      write_xlsx (~> 0.83.0)
+      roo
+      roo-xls
+      write_xlsx
 
 GIT
   remote: https://github.com/work-design/rails_detail.git
@@ -126,7 +126,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: adee29990669613302496bec4ba54fce259641ef
+  revision: 6f351833388d0c3d49ab7cd5037d99de7a215926
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -156,7 +156,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_log.git
-  revision: 2acbcfa73a96284c83a767b346b0744998b8c06f
+  revision: 059822c312870e6f62b7c3427cb5c1491d061c04
   specs:
     rails_log (2.1.6)
       rails_com (~> 1.2)
@@ -171,7 +171,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: a6df4756c17b2797abd5eaf982e3b47947211987
+  revision: f9c0ef1fd63ac70ccda56874bdc73b0a9eaf4f34
   specs:
     rails_org (0.1)
       rails_auth
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 264d40b0671d31d7525b78dcfda593f9b1626606
+  revision: 66e9d658d30bed67d00df1eaf392aff3c4cfb08e
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -197,14 +197,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 851f9a1595b8ea164e816ec1f706fac74494b5f6
+  revision: f6836e41ee6820bda66b669c0156a36c8b0914eb
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 4537805cad8f81c9ee98ed7dbe26234f6905458b
+  revision: 45c95adbca2ae6fa599a2cfa44fd6221e695b10c
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: 064d1ac4849f17433ef938dbe20390d764846c1a
+  revision: da0a62afaa916398c9fcf30019cd6611a9dfbcd5
   specs:
     rails_wechat (0.1.0)
       rails_auth
@@ -283,7 +283,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    acts_as_list (1.0.2)
+    acts_as_list (1.0.3)
       activerecord (>= 4.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
@@ -305,7 +305,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
-    chunky_png (1.3.14)
+    chunky_png (1.3.15)
     closure_tree (7.2.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
@@ -323,10 +323,10 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.1.0)
+    faraday (1.2.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    ffi (1.13.1)
+    ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
@@ -335,7 +335,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.10.0)
+    httpx (0.10.2)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.5)
@@ -420,11 +420,11 @@ GEM
     paypal-sdk-rest (1.7.4)
       multi_json (~> 1.0)
       xml-simple
-    pdf-core (0.8.1)
+    pdf-core (0.6.1)
     pg (1.2.3)
-    prawn (2.3.0)
-      pdf-core (~> 0.8.1)
-      ttfunk (~> 1.6)
+    prawn (2.1.0)
+      pdf-core (~> 0.6.1)
+      ttfunk (~> 1.4.0)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
     pry (0.13.1)
@@ -436,7 +436,7 @@ GEM
       binding_of_caller (~> 0.7)
       pry (~> 0.13)
     public_suffix (4.0.6)
-    puma (5.1.0)
+    puma (5.1.1)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -469,7 +469,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (~> 1.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -488,10 +488,8 @@ GEM
       nokogiri
       roo (>= 2.0.0, < 3)
       spreadsheet (> 0.9.0)
-    rqrcode (1.1.2)
+    rqrcode (0.10.1)
       chunky_png (~> 1.0)
-      rqrcode_core (~> 0.1)
-    rqrcode_core (0.1.2)
     ruby-ole (1.2.12.2)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
@@ -525,11 +523,11 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     timers (4.3.2)
-    ttfunk (1.6.2.1)
+    ttfunk (1.4.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.3)
+    tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
@@ -544,10 +542,10 @@ GEM
     websocket-extensions (0.1.5)
     with_advisory_lock (4.6.0)
       activerecord (>= 4.2)
-    write_xlsx (0.83.0)
+    write_xlsx (0.87.0)
       rubyzip (>= 1.0.0)
       zip-zip
-    xml-simple (1.1.5)
+    xml-simple (1.1.7)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -618,4 +616,4 @@ DEPENDENCIES
   wx_pay!
 
 BUNDLED WITH
-   2.1.4
+   2.2.3
