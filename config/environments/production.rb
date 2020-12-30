@@ -5,6 +5,7 @@ Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
 
   config.hosts += [
+    'work.design',
     'one.work'
   ]
 
