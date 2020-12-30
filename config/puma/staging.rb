@@ -1,6 +1,6 @@
 dir = ENV['PWD']
 
-port 3001
+port 3002
 threads 5, 64
 environment 'staging'
 directory dir
