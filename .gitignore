@@ -9,6 +9,7 @@ tmp/*
 public/assets
 public/packs
 public/packs-dev
+public/fonts
 storage
 node_modules
 acme
