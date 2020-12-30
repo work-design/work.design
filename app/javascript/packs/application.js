@@ -1,10 +1,8 @@
 require.context('../images', true)
 
-import 'css'
+import 'app'  // css
 
 import './channels'
 
-import 'rails_com'
+import 'rails_ui'
 import 'default_form'
-
-import 'moment'

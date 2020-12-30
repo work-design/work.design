@@ -1,10 +1,8 @@
 // css
-import 'style_com/phone'
+import 'phone'
 
 import './channels'
 
-import 'moment'
-import 'rails_com'
-import 'stimulus_com'
+import 'rails_ui'
 import 'default_form'
 import 'weui.js'

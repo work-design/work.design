@@ -8,13 +8,13 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/alipay2.git
-  revision: cb4827ab516d064458c40ebaef4aa796bedbb157
+  revision: 4f466ff8f5df7a1332be6a9c02b61d1791c28e0f
   specs:
     alipay2 (2.0)
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 33098aaeee43889b3492049be3400217f008437a
+  revision: 1e72c95dd3d13dbfa70661d63bdf644169c8d03f
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -68,14 +68,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 5baa60920f38d52fc57c5404c835e567b4376b2f
+  revision: 2ad16f189551c6f1a5a7817e1480d029b8809ff0
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: dace0d827512023a9da0f5f684eebde249234c7e
+  revision: 1acdb8ad8ca07e4762de49a8260cc20ede840775
   specs:
     rails_auth (1.0.6)
       bcrypt (~> 3.1)
@@ -93,7 +93,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 2caea265701b5f6df521701f6008670b0c462902
+  revision: 595ad445145ebf28b0d03f98468e31d562b1e619
   specs:
     rails_com (1.2.9)
       acme-client
@@ -126,7 +126,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: ea01993abc03c569270e70a7da6db08d9613039b
+  revision: c430802d88215da9e86a899b9c8bc3f02e4b2ec5
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -171,7 +171,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: fc4e3af240321adc81f7e6859dcb845e5df0a83f
+  revision: f5ea905efa794eb636628b442a20a6f73b048556
   specs:
     rails_org (0.1)
       rails_auth
@@ -197,14 +197,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 53a0f82b0f6291e49818154b2dbead3b8dafde13
+  revision: 484e8d4f39ca2fa0a5ffcb7fd4445a34cb3d65ec
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: c182933385c28adbf792dfb8e8700c8c016e8ce9
+  revision: 2d9d3c3047bc419d2c016d75ed62320b38aa3bba
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: e650bb1fb9ad1a6200e68e21a558639e1a6f58f6
+  revision: cb653c56f6e6c9ac45384f9ed2e4cd181f72d40f
   specs:
     rails_wechat (0.1.0)
       rails_auth
