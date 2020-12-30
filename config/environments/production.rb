@@ -11,16 +11,14 @@ Rails.application.configure do
 
   config.cache_classes = true
   config.eager_load = true
-  config.consider_all_requests_local = false
 
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.action_controller.asset_host = 'static.one.work'
 
   config.public_file_server.enabled = true
 
   config.active_storage.service = :upyun
-
-  config.webpacker.check_yarn_integrity = false if config.respond_to?(:webpacker)
 
   config.log_level = :debug
   config.log_tags = [ :request_id ]
@@ -36,5 +34,9 @@ Rails.application.configure do
     'https://one.work'
   ]
 end
+Rails.application.routes.default_url_options = {
+  host: 'one.work',
+  protocol: 'https'
+}
 
 ENV['EDITOR'] = 'vi'
