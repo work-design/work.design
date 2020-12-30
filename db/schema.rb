@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_074818) do
+ActiveRecord::Schema.define(version: 2020_12_30_093927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "dns_valid"
     t.index ["acme_order_id"], name: "index_acme_identifiers_on_acme_order_id"
   end
 
@@ -562,6 +563,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
+    t.string "xx"
     t.index ["advance_id"], name: "index_card_advances_on_advance_id"
     t.index ["card_id"], name: "index_card_advances_on_card_id"
     t.index ["trade_item_id"], name: "index_card_advances_on_trade_item_id"
@@ -591,6 +594,17 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.index ["source_type", "source_id"], name: "index_card_logs_on_source_type_and_source_id"
   end
 
+  create_table "card_promotes", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "card_template_id", scale: 8
+    t.bigint "promote_id", scale: 8
+    t.decimal "income_min", limit: 2, precision: 10, default: "0.0"
+    t.decimal "income_max", limit: 2, precision: 10, default: "99999999.98999999"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_template_id"], name: "index_card_promotes_on_card_template_id"
+    t.index ["promote_id"], name: "index_card_promotes_on_promote_id"
+  end
+
   create_table "card_returns", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "card_id", scale: 8
     t.string "consumable_type"
@@ -611,6 +625,9 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.integer "valid_years", scale: 4, default: 0
+    t.integer "valid_months", scale: 4, default: 0
+    t.string "currency"
     t.index ["organ_id"], name: "index_card_templates_on_organ_id"
   end
 
@@ -618,7 +635,6 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.bigint "organ_id", scale: 8
     t.bigint "card_template_id", scale: 8
     t.bigint "trade_item_id", scale: 8
-    t.string "client_type"
     t.bigint "client_id", scale: 8
     t.string "card_uuid"
     t.decimal "amount", limit: 2, precision: 10
@@ -629,15 +645,16 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.datetime "expire_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "buyer_type"
-    t.bigint "buyer_id", scale: 8
     t.bigint "agency_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.string "currency"
     t.index ["agency_id"], name: "index_cards_on_agency_id"
-    t.index ["buyer_type", "buyer_id"], name: "index_cards_on_buyer_type_and_buyer_id"
     t.index ["card_template_id"], name: "index_cards_on_card_template_id"
-    t.index ["client_type", "client_id"], name: "index_cards_on_client_type_and_client_id"
+    t.index ["member_id"], name: "index_cards_on_member_id"
     t.index ["organ_id"], name: "index_cards_on_organ_id"
     t.index ["trade_item_id"], name: "index_cards_on_trade_item_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "cart_promotes", id: { scale: 8 }, force: :cascade do |t|
@@ -680,6 +697,18 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.index ["organ_id"], name: "index_carts_on_organ_id"
     t.index ["payment_strategy_id"], name: "index_carts_on_payment_strategy_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "cash_givens", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "cash_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.string "title"
+    t.decimal "amount", default: "0.0"
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cash_id"], name: "index_cash_givens_on_cash_id"
+    t.index ["organ_id"], name: "index_cash_givens_on_organ_id"
   end
 
   create_table "cash_logs", id: { scale: 8 }, force: :cascade do |t|
@@ -1018,29 +1047,14 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.bigint "expense_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "payment_method_id", scale: 8
-    t.bigint "cash_id", scale: 8
-    t.bigint "operator_id", scale: 8
-    t.string "payable_type"
-    t.bigint "payable_id", scale: 8
     t.decimal "amount", limit: 2, precision: 10
     t.boolean "advance"
     t.string "state", default: "pending"
     t.string "note"
-    t.string "type"
-    t.string "payout_uuid"
-    t.decimal "requested_amount", limit: 2, precision: 10
-    t.decimal "actual_amount", limit: 2, precision: 10
-    t.datetime "paid_at"
-    t.string "account_bank"
-    t.string "account_name"
-    t.string "account_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["cash_id"], name: "index_expense_members_on_cash_id"
     t.index ["expense_id"], name: "index_expense_members_on_expense_id"
     t.index ["member_id"], name: "index_expense_members_on_member_id"
-    t.index ["operator_id"], name: "index_expense_members_on_operator_id"
-    t.index ["payable_type", "payable_id"], name: "index_expense_members_on_payable_type_and_payable_id"
     t.index ["payment_method_id"], name: "index_expense_members_on_payment_method_id"
   end
 
@@ -1262,6 +1276,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.jsonb "budget_detail", default: {}
     t.decimal "expense_amount", default: "0.0"
     t.jsonb "expense_detail", default: {}
+    t.bigint "buyer_id", scale: 8
+    t.index ["buyer_id"], name: "index_funds_on_buyer_id"
   end
 
   create_table "good_partners", id: { scale: 8 }, force: :cascade do |t|
@@ -1832,6 +1848,21 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "organ_domains", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "subdomain"
+    t.string "domain", default: "lvh.me"
+    t.string "port", default: "3000"
+    t.string "host"
+    t.string "identifier"
+    t.string "appid"
+    t.boolean "default"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["identifier"], name: "index_organ_domains_on_identifier"
+    t.index ["organ_id"], name: "index_organ_domains_on_organ_id"
+  end
+
   create_table "organ_handles", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -1878,7 +1909,6 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.integer "cached_role_ids", scale: 4, array: true
     t.boolean "official", comment: "是否官方"
     t.boolean "joinable", comment: "是否可搜索并加入"
-    t.string "domain"
     t.index ["area_id"], name: "index_organs_on_area_id"
     t.index ["parent_id"], name: "index_organs_on_parent_id"
   end
@@ -2021,10 +2051,9 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.bigint "payment_method_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "buyer_type"
-    t.bigint "buyer_id", scale: 8
     t.string "state"
-    t.index ["buyer_type", "buyer_id"], name: "index_payment_references_on_buyer_type_and_buyer_id"
+    t.bigint "cart_id", scale: 8
+    t.index ["cart_id"], name: "index_payment_references_on_cart_id"
     t.index ["payment_method_id"], name: "index_payment_references_on_payment_method_id"
   end
 
@@ -2064,10 +2093,9 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.datetime "updated_at", null: false
     t.string "state"
     t.bigint "organ_id", scale: 8
-    t.bigint "creator_id", scale: 8
     t.boolean "verified", default: true
     t.integer "lock_version", scale: 4
-    t.index ["creator_id"], name: "index_payments_on_creator_id"
+    t.decimal "refunded_amount", default: "0.0"
     t.index ["organ_id"], name: "index_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
   end
@@ -2605,6 +2633,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.datetime "effect_at"
+    t.datetime "expire_at"
     t.index ["good_type", "good_id"], name: "index_promote_goods_on_good_type_and_good_id"
     t.index ["promote_id"], name: "index_promote_goods_on_promote_id"
   end
@@ -2625,8 +2655,6 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.string "metering"
     t.boolean "editable"
     t.bigint "organ_id", scale: 8
-    t.datetime "effect_at"
-    t.datetime "expire_at"
     t.index ["deal_type", "deal_id"], name: "index_promotes_on_deal_type_and_deal_id"
     t.index ["organ_id"], name: "index_promotes_on_organ_id"
   end
@@ -3469,6 +3497,8 @@ ActiveRecord::Schema.define(version: 2020_11_20_074818) do
     t.string "oauth2_state"
     t.string "user_name"
     t.boolean "oauth_enable", default: true
+    t.string "apiclient_cert"
+    t.string "apiclient_key"
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 

@@ -2,7 +2,7 @@ class Member < ApplicationRecord
   include RailsOrg::Member
   include RailsBench::Member
   include RailsRole::User
-  include RailsTrade::Buyer
+  include RailsTrade::Member
   include RailsFinance::Member
   include RailsAttend::Member
   include RailsNotice::Member

@@ -47,3 +47,4 @@ module OneWork
 end
 
 ENV['EDITOR'] = 'code --wait'
+SETTING = Rails.application.credentials
