@@ -37,6 +37,7 @@ module Deploy
 
   def init_shared_paths(root = Pathname.pwd.join('../shared'))
     dirs = []
+    dirs += MOVED_DIRS.map { |dir| root.join(dir) }
     dirs += SHARED_DIRS.map { |dir| root.join(dir) }
     dirs += INIT_DIRS.map { |dir| root.join(dir) }
     FileUtils.mkdir_p dirs
