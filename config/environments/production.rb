@@ -16,7 +16,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_controller.asset_host = 'assets.one.work'
 
-  config.public_file_server.enabled = false
+  config.public_file_server.enabled = true
 
   config.active_storage.service = :upyun
 
