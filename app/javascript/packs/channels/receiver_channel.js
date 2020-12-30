@@ -1,4 +1,4 @@
-import consumer from 'rails_com/cable'
+import consumer from 'rails_ui/cable'
 
 consumer.subscriptions.create('ReceiverChannel', {
   collection() {

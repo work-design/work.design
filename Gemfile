@@ -74,7 +74,6 @@ gem 'amazing_print'
 
 group :development, :test do
   gem 'byebug'
-  gem 'pry-stack_explorer'
   gem 'factory_bot_rails'
   gem 'capybara'
   gem 'selenium-webdriver'
