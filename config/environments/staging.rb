@@ -10,8 +10,6 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
 
-  config.webpacker.check_yarn_integrity = false if config.respond_to?(:webpacker)
-
   config.active_storage.service = :upyun
   config.active_storage.logger = nil
 
