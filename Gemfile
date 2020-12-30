@@ -11,7 +11,6 @@ gem 'redis'
 gem 'dalli'
 
 # Assets
-gem 'turbolinks'
 gem 'webpacker', github: 'rails/webpacker', require: File.exist?('config/webpacker.yml')
 
 # Views
@@ -25,6 +24,7 @@ gem 'acts_as_list'
 gem 'rucaptcha'
 gem 'image_processing'
 gem 'rqrcode'
+gem 'rexml'
 
 # Third party
 gem 'octokit'
@@ -39,12 +39,14 @@ gem 'paypal-sdk-rest'
 
 # Files
 gem 'upyun_rails', github: 'qinmingyuan/upyun_rails'
+gem 'turbo-rails', github: 'qinmingyuan/turbo-rails'
 
 # Rails Helpers
 gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'default_where', github: 'qinmingyuan/default_where'
 
 # Engines
+gem 'rails_ui', github: 'work-design/rails_ui'
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_log', github: 'work-design/rails_log'
 gem 'rails_org', github: 'work-design/rails_org'
