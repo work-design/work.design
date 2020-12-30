@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
 
   config.action_controller.perform_caching = true
-  config.action_controller.asset_host = 'assets.one.work'
+  config.action_controller.asset_host = 'static.one.work'
 
   config.public_file_server.enabled = true
 
