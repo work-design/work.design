@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
 
   #before_action :support_organ
   protect_from_forgery with: :exception, unless: -> { json_format? }
-  content_security_policy true
+  #content_security_policy true
 
 end

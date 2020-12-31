@@ -5,7 +5,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.style_src :self, :https, :http, :unsafe_inline
   policy.script_src :self, :https, :http, :unsafe_inline
   if Rails.env.development?
-    policy.connect_src :self, :ws, 'localhost:3100', 'lvh.me:3000'
+    policy.connect_src :self, :ws, 'localhost:3035', 'lvh.me:3035'
   end
   policy.report_uri '/csp_violation_report'
 end
