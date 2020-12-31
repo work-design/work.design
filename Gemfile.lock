@@ -388,7 +388,7 @@ GEM
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     minitest (5.14.2)
     monetize (1.9.4)
       money (~> 6.12)
@@ -405,8 +405,9 @@ GEM
     multipart-post (2.1.1)
     netrc (0.11.0)
     nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.0.rc4)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -446,6 +447,7 @@ GEM
     public_suffix (4.0.6)
     puma (5.1.1)
       nio4r (~> 2.0)
+    racc (1.5.2)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -579,6 +581,7 @@ DEPENDENCIES
   kaminari
   kramdown
   listen
+  nokogiri (>= 1.11.0.rc4)
   octokit
   omniauth-github
   omniauth-wechat-oauth2!

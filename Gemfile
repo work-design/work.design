@@ -25,6 +25,7 @@ gem 'rucaptcha'
 gem 'image_processing'
 gem 'rqrcode'
 gem 'rexml'
+gem 'nokogiri', '>= 1.11.0.rc4'
 
 # Third party
 gem 'octokit'
