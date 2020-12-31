@@ -1,8 +1,4 @@
 Rails.application.configure do
-  config.hosts += [
-    'work.design',
-    'one.work'
-  ]
 
   config.cache_classes = true
   config.eager_load = true
