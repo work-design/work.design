@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   namespace :board do
-    root '/auth/board/users#show'
+    root 'home#index'
   end
   namespace :my do
     root 'home#index'
