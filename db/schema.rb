@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_093927) do
+ActiveRecord::Schema.define(version: 2021_01_01_032006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1666,7 +1666,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_093927) do
     t.integer "pomodoro", scale: 4
     t.bigint "organ_root_id", scale: 8
     t.boolean "owned"
-    t.json "department_ancestors"
+    t.jsonb "department_ancestors"
     t.string "experience"
     t.string "attendance_number"
     t.integer "cached_role_ids", scale: 4, array: true
@@ -1903,9 +1903,9 @@ ActiveRecord::Schema.define(version: 2020_12_30_093927) do
     t.string "address"
     t.integer "members_count", scale: 4
     t.string "name_short"
-    t.json "area_ancestors"
+    t.jsonb "area_ancestors"
     t.integer "limit_wechat_menu", scale: 4, default: 1
-    t.json "parent_ancestors"
+    t.jsonb "parent_ancestors"
     t.integer "cached_role_ids", scale: 4, array: true
     t.boolean "official", comment: "是否官方"
     t.boolean "joinable", comment: "是否可搜索并加入"
