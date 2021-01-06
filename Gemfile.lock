@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_attend.git
-  revision: ca72eb3f62cc0e4f0b0ca9374f6fad48530eaa2f
+  revision: 61ae0ecb36b3ee9d4681e6c0ac49b905276938e5
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: a0a827efd45d8ef494fdf39cc1ddb68b8c0db20a
+  revision: 8785292415bea5330c55fb186037091c110591f6
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -140,7 +140,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: c474d1d5491704f63ea2561b78f76f9fa8aed65e
+  revision: e131d7ff19dc7f88a84386d7d83756c76bcbd8a9
   specs:
     rails_finance (0.1.0)
       rails_audit
