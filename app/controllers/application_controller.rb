@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include RailsCom::Application
   include RailsRole::Application
   include RailsOrg::Application
+  include RailsOrg::Me
   include RailsTrade::Application
   include ActiveStorage::SetCurrent
 

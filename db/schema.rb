@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_032006) do
+ActiveRecord::Schema.define(version: 2021_01_06_084813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -477,20 +477,16 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
   create_table "authorized_tokens", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "user_id", scale: 8
     t.bigint "oauth_user_id", scale: 8
-    t.bigint "account_id", scale: 8
     t.string "token"
     t.datetime "expire_at"
     t.string "session_key"
     t.integer "access_counter", scale: 4, default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "member_id", scale: 8
     t.boolean "mock_member"
     t.boolean "mock_user"
-    t.index ["account_id"], name: "index_authorized_tokens_on_account_id"
-    t.index ["member_id"], name: "index_authorized_tokens_on_member_id"
+    t.string "identity"
     t.index ["oauth_user_id"], name: "index_authorized_tokens_on_oauth_user_id"
-    t.index ["user_id", "oauth_user_id", "account_id", "token"], name: "index_authorized_tokens_on_unique_token", unique: true
     t.index ["user_id"], name: "index_authorized_tokens_on_user_id"
   end
 
@@ -564,7 +560,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "note"
-    t.string "xx"
+    t.string "kind"
     t.index ["advance_id"], name: "index_card_advances_on_advance_id"
     t.index ["card_id"], name: "index_card_advances_on_card_id"
     t.index ["trade_item_id"], name: "index_card_advances_on_trade_item_id"
@@ -1333,9 +1329,10 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
     t.integer "position", scale: 4, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "identifier"
     t.string "namespace_identifier", default: "application"
     t.string "business_identifier"
+    t.string "controller_path"
+    t.string "controller_name"
   end
 
   create_table "indicators", id: { scale: 8 }, force: :cascade do |t|
@@ -1909,6 +1906,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
     t.integer "cached_role_ids", scale: 4, array: true
     t.boolean "official", comment: "是否官方"
     t.boolean "joinable", comment: "是否可搜索并加入"
+    t.string "domain"
     t.index ["area_id"], name: "index_organs_on_area_id"
     t.index ["parent_id"], name: "index_organs_on_parent_id"
   end
@@ -2857,12 +2855,13 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
     t.integer "role_id", scale: 4
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "controller_identifier"
     t.string "params_name"
     t.string "params_identifier"
     t.string "business_identifier"
     t.string "namespace_identifier"
     t.string "action_name"
+    t.string "controller_path"
+    t.string "controller_name"
   end
 
   create_table "role_types", id: { scale: 8 }, force: :cascade do |t|
@@ -2885,7 +2884,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
   end
 
   create_table "rule_operations", id: { scale: 8 }, force: :cascade do |t|
-    t.string "action_identifier"
+    t.string "action_name"
     t.string "operation", default: "read"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -2895,12 +2894,14 @@ ActiveRecord::Schema.define(version: 2021_01_01_032006) do
     t.integer "position", scale: 4, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "identifier"
     t.string "namespace_identifier", default: "application"
     t.string "business_identifier"
-    t.string "controller_identifier"
     t.string "action_name"
     t.string "operation", default: "read"
+    t.string "controller_path"
+    t.string "controller_name"
+    t.string "path"
+    t.string "verb"
   end
 
   create_table "schedules", id: { scale: 8 }, force: :cascade do |t|
