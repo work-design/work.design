@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  include RailsProfile::Profile
+  include Profile::Model::Profile
   include RailsAgency::Client
 
   store_accessor :extra, :wechat, :major, :degree, :highest_education, :work_experience

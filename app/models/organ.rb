@@ -1,7 +1,7 @@
 class Organ < ApplicationRecord
-  include RailsCom::Taxon
-  include RailsOrg::Organ
-  include RailsWechat::Organ
+  include Com::Ext::Taxon
+  include Org::Model::Organ
+  include Wechat::Model::Organ
+  include Role::Model::User
   include RailsBench::Organ
-  include RailsRole::User
 end

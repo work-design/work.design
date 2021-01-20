@@ -1,4 +1,3 @@
 class PromoteGood < ApplicationRecord
-  include RailsTrade::PromoteGood
-
+  include Trade::Model::PromoteGood
 end

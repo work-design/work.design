@@ -1,11 +1,11 @@
 class Member < ApplicationRecord
-  include RailsOrg::Member
+  include Org::Model::Member
   include RailsBench::Member
-  include RailsRole::User
-  include RailsTrade::Member
+  include Roled::Model::User
+  include Trade::Model::Member
   include RailsFinance::Member
   include RailsAttend::Member
-  include RailsNotice::Member
-  include RailsNoticeExt::Setting
+  include Notice::Model::Member
+  include Notice::Ext::Setting
 
 end

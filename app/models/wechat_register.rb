@@ -1,3 +1,3 @@
 class WechatRegister < ApplicationRecord
-  include RailsWechat::WechatRegister
+  include Wechat::Model::WechatRegister
 end

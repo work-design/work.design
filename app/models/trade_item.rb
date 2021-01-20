@@ -1,3 +1,3 @@
 class TradeItem < ApplicationRecord
-  include RailsTrade::TradeItem
+  include Trade::Model::TradeItem
 end

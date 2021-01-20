@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
-  include RailsAuth::Application
-  include RailsWechat::Application
+  include Auth::Controller::Application
+  include Wechat::Controller::Application
   include RailsCom::Application
-  include RailsRole::Application
-  include RailsOrg::Application
-  include RailsOrg::Me
-  include RailsTrade::Application
+  include Roled::Controller::Application
+  include Org::Controller::Application
+  include Org::Controller::Me
+  include Trade::Controller::Application
   include ActiveStorage::SetCurrent
 
   #before_action :support_organ

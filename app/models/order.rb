@@ -1,9 +1,9 @@
 class Order < ApplicationRecord
-  include RailsTrade::Order
-  include RailsTrade::Amount
-  include RailsTrade::PaymentType::Paypal
-  include RailsTrade::PaymentType::Alipay
-  include RailsTrade::PaymentType::Wxpay
+  include Trade::Model::Order
+  include Trade::Model::Amount
+  include Trade::PaymentType::Paypal
+  include Trade::PaymentType::Alipay
+  include Trade::PaymentType::Wxpay
 
   def payment_memo_id
     nil
