@@ -1,6 +1,6 @@
 module Auth
   class MobileToken < VerifyToken
-    include Auth::Model::VerifyToken::MobileToken
+    include Model::VerifyToken::MobileToken
 
     def send_out(dev = true)
       return true if Rails.env.development? && dev
