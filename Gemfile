@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '6.1.0'
+gem 'rails', '6.1.1'
 gem 'puma'
 gem 'sidekiq'
 
@@ -40,7 +40,6 @@ gem 'paypal-sdk-rest'
 
 # Files
 gem 'upyun_rails', github: 'qinmingyuan/upyun_rails'
-gem 'turbo-rails', github: 'qinmingyuan/turbo-rails'
 
 # Rails Helpers
 gem 'default_form', github: 'qinmingyuan/default_form'
@@ -68,6 +67,8 @@ gem 'rails_wechat', github: 'work-design/rails_wechat'
 gem 'rails_finance', github: 'work-design/rails_finance'
 gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_interact', github: 'work-design/rails_interact'
+
+gem 'turbo-rails', github: 'hotwired/turbo-rails', branch: 'main'
 
 # Debug
 gem 'pry-rails'

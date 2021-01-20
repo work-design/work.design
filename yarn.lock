@@ -1171,10 +1171,10 @@
   dependencies:
     "@fullcalendar/daygrid" "~4.4.0"
 
-"@hotwired/turbo@^7.0.0-beta.1":
-  version "7.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.0-beta.1.tgz#0111db8a80a7bb308c4cfdd2720112d06bf25c33"
-  integrity sha512-V7hhELbDkYUGaHw/Yw4tu9pDUT1WE4t3A7tRs7Zh0Uwtk2vaJnmykNZ2uq20BnLjofufA1+MLJZ6AXJ3B/Il5A==
+"@hotwired/turbo@^7.0.0-beta.3":
+  version "7.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.0-beta.3.tgz#c3b5dea05fb246aa2bcf53b073675e97ddbc76d8"
+  integrity sha512-lOyxOaZJBLxD8sGowjghkmCxuN4FcqYDciRI88DuzyXok35vK6nYewGSfZ4SOpb7McOJ5qVChEsUaBfmY+N8NA==
 
 "@npmcli/move-file@^1.0.1":
   version "1.0.1"
@@ -1183,15 +1183,15 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@rails/actioncable@^6.0.1":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.3.tgz#722b4b639936129307ddbab3a390f6bcacf3e7bc"
-  integrity sha512-I01hgqxxnOgOtJTGlq0ZsGJYiTEEiSGVEGQn3vimZSqEP1HqzyFNbzGTq14Xdyeow2yGJjygjoFF1pmtE+SQaw==
+"@rails/actioncable@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.1.tgz#e980b2ea1c62cae17bcddad37deb6ba88d498b63"
+  integrity sha512-A8toxvSuzK/wX9uMwyV6T1EYzlqzIJNrO8XiNCSNsmKresdX2cbAjxFdMu9haaPJPjl3aC2FKRJeVCUWVtLPAQ==
 
-"@rails/activestorage@^6.0.1":
-  version "6.0.3"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.0.3.tgz#401d2a28ecb7167cdb5e830ffddaa17c308c31aa"
-  integrity sha512-YdNwyfryHlcKj7Ruix89wZ2aiN3KTYULdW1Y/hNlHJlrY2/PXjT2YBTzZiVd+dcjrwHBsXV2rExdy+Z/lsrlEg==
+"@rails/activestorage@^6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.1.1.tgz#c7e9c849ab9487c9914bd0bb447467cb4520bc56"
+  integrity sha512-eSVffvzY0MrC4bGP6RrqvlHM06HZ1kc/4XM3XkoL8pAObDANREfd9Dstm7mYpsgPLyhtJ96QxYLV27IoFiVTbQ==
   dependencies:
     spark-md5 "^3.0.0"
 
@@ -6304,10 +6304,10 @@ weui.js@^1.2.1:
     element-closest "^2.0.1"
     object-assign "^4.1.0"
 
-weui@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/weui/-/weui-2.3.0.tgz#b6a0280c54a1072eaccb05eb69c2dabfa000cf64"
-  integrity sha512-0/oGhN866Pe5OKzzzsghazOyn742sobytJSSKv8oF8XVuwEMFPdCKVNr0Z8Taaue1DxTwX0OVxAxcbLX3qYgRQ==
+weui@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/weui/-/weui-2.4.1.tgz#9f28c08087ba241562bc1db879db9951efc19763"
+  integrity sha512-iZsJovpPCqRqyX/Mud0ZgtT3ssUFP3zzELylXHfMlbYNrtn2Eumw168k+cq3uYtvaQLKLn3IMaDnOu4zFuNq3g==
 
 which-module@^2.0.0:
   version "2.0.0"

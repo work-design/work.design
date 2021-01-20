@@ -12,9 +12,9 @@
     "@fullcalendar/resource-daygrid": "^4.1.0",
     "@fullcalendar/resource-timegrid": "^4.1.0",
     "@fullcalendar/timegrid": "^4.1.0",
-    "@hotwired/turbo": "^7.0.0-beta.1",
-    "@rails/actioncable": "^6.0.1",
-    "@rails/activestorage": "^6.0.1",
+    "@hotwired/turbo": "^7.0.0-beta.3",
+    "@rails/actioncable": "^6.1.1",
+    "@rails/activestorage": "^6.1.1",
     "@rails/webpacker": "^6.0.0-beta.2",
     "bulma": "^0.9.1",
     "choices.js": "^9.0.1",
@@ -31,7 +31,7 @@
     "sortablejs": "^1.10.2",
     "stickybits": "^3.7.7",
     "stimulus": "^2.0.0",
-    "weui": "^2.3.0",
+    "weui": "^2.4.1",
     "weui.js": "^1.2.1"
   },
   "devDependencies": {
