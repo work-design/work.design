@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-  include RailsAuth::Account
-  include RailsOrg::Account
+  include Auth::Model::Account
+  include Org::Model::Account
 
 end

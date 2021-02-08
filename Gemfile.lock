@@ -22,14 +22,14 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 1e72c95dd3d13dbfa70661d63bdf644169c8d03f
+  revision: 8368c576e145bfb5d6175e8fc7b64a6557883d09
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: e2085480367e97f9786b851134ee87fa06d78125
+  revision: b7266e6fd7ae090bb21f04fc1681d9a239f3e043
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -61,11 +61,10 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_agency.git
-  revision: c270f5a1d9c5544fbf4c38c99bd4602d7e5864ec
+  revision: a51008abd4959369c6cdd3a778f4ce68108a5e02
   specs:
     rails_agency (0.1.0)
       rails_com (~> 1.2)
-      rails_profile
 
 GIT
   remote: https://github.com/work-design/rails_attend.git
@@ -76,14 +75,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: 0358bc6533831f9f27952e5cec3020bb591a0f69
+  revision: 22baa7b64e7a8407bc7f542682e964a61c810ac3
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: 513d1d0a701c9e9f7c26714a601fa864a0c07b90
+  revision: 31d94209305f5903b0910c41f765738a3300348a
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -92,7 +91,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: 8785292415bea5330c55fb186037091c110591f6
+  revision: 611a2cee536cf3a242ce306502203fe6945bde79
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -101,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 9a5f5eddfd9caac627ce5e0ad0ac6d1ecd41a020
+  revision: e8e80f74d38aaef03df488fb79cd861b6b1b5faa
   specs:
     rails_com (1.2.9)
       acme-client
@@ -127,7 +126,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_detail.git
-  revision: e8726cbef4d4d6fd925ae1dff388e2f4c7cb5be0
+  revision: 2241ff25cdfac18bd8d6b15eb04915b438f42450
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
@@ -141,7 +140,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: e131d7ff19dc7f88a84386d7d83756c76bcbd8a9
+  revision: 42ef8d74ccff33d9577d75caa3685ac10027475d
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -171,7 +170,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 1ed242912c53e4d89ebe6552abbdc15f82c05c1e
+  revision: bfcfd1d8df449c2f14e609afd6c371c9a1a2161c
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -179,7 +178,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: 90c08c0ee32b2672f8f0fb5445b445230f871593
+  revision: ea7178ebd943f0226d4346aa6971e92962cf054b
   specs:
     rails_org (0.1)
       rails_auth
@@ -189,7 +188,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 69d51b189a8944bf338bd06d92d96fd3abbafcda
+  revision: 4d1be3032a05bbf2583f5a7f8879fa2a7b60fd25
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -212,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: a8850f82bec65290552f4d1fbadfbb8ea651fee2
+  revision: c77c44ac1726c70be6e5e02693bc3cd5240b415b
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -220,14 +219,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 18ea452337f2bcf3a9124318342ee40d9763f11b
+  revision: 48e0491628efd9c42f2aa0a39f635e9fb603361d
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: f69319c2ac95c13e7fd751e1bb5075c3ccf80e0e
+  revision: 093d39efd68623da70002d9fd32f5dffbd997c24
   specs:
     rails_wechat (0.1.0)
       rails_auth

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include RailsBench::User
+  include Bench::Model::User
   include Roled::Model::User
   include Auth::Model::User
   include Trade::Model::User
