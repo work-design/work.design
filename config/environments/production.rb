@@ -12,6 +12,16 @@ Rails.application.configure do
 
   config.active_storage.service = :upyun
 
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.exmail.qq.com',
+    port: 465,
+    authentication: :login,
+    user_name: Rails.application.credentials.dig(:mailer, :user_name),
+    password: Rails.application.credentials.dig(:mailer, :password),
+    ssl: true,
+    return_response: true
+  }
+
   config.log_level = :debug
   config.log_tags = [ :request_id ]
   config.log_formatter = ::Logger::Formatter.new
