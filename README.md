@@ -19,7 +19,11 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 当然，没有万金油。以上各种现代管理方式，并非适合所有性质的岗位，如服务行业就不大适用于弹性工作制。
 
 ## 准备
-* `cp config/credentials/development.yml.enc.example config/credentials/development.yml.enc`
+* 安装依赖
+  * `bundle install`
+  * `yarn install`
+* 检查配置文件
+  * `cp config/credentials/development.yml.enc.example config/credentials/development.yml.enc`
 * 数据库准备
   * `cp config/database.yml.example config/database.yml`, 修改配置；
   * `bin/rails db:create`
