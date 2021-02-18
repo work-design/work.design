@@ -1,61 +1,85 @@
-<section class="hero is-medium" style="background-image: url(<%= asset_pack_path('media/images/background.png') %>);">
-  <div class="hero-body container has-text-centered">
-    <h1 class="title is-spaced has-text-white">One Work</h1>
-    <h2 class="subtitle has-text-white">
-      Any<span class="has-text-warning">One</span>, Anywhere, Anytime, Any <span class="has-text-warning">Work</span>
-    </h2>
-    <h2 class="subtitle has-text-white">你的工作方式，一个就好</h2>
-    <h2 class="subtitle has-text-white">拥抱未来的中小企业综合服务平台</h2>
+<section class="hero" style="background-image: url(<%= asset_pack_path('media/images/banner.png') %>); background-size: cover; background-repeat: no-repeat">
+  <div class="hero-body">
+    <div class="container tile is-parent">
+      <div class="tile is-8 is-vertical has-text-centered" style="align-items: center">
+        <h1 class="title is-spaced has-text-white">Work Design 工作设计</h1>
+        <h2 class="subtitle">
+          <a href="/why" class="has-text-white">为效率而生的的快速软件开发方案</a>
+        </h2>
+        <h2 class="subtitle has-text-white">破解数据孤岛难题</h2>
+        <a href="/why" class="subtitle">
+          <button class="button is-medium is-warning is-light">数字化方案对比</button>
+        </a>
+      </div>
+      <div class="tile is-4"></div>
+    </div>
   </div>
 </section>
-<section class="hero">
-  <div class="container tile is-parent">
-    <div class="tile is-vertical is-8" style="justify-content: center; align-items: center; padding-right: 2rem;">
-      <h3 class="title">灵活办公</h3>
-      <div class="content">
-        <p>One Work 致力于连接任何地区、任何时区的办公成员。</p>
-        <p>我们提供全国各地的办公空间供您选择，不必预租多余的办公空间，不再局限于人才的地域，让员工就近选择办公地点，减少企业的通勤成本（增加员工的有效工时），有效节约企业及社会成本。</p>
-        <p>远程、多地协作办公已是不可逆转的趋势，One Work 将无缝衔接企业微信、飞书、Quip等办公工具，协助您全方位协作办公。</p>
+<section class="hero is-medium">
+  <div class="hero-body container">
+    <h2 class="subtitle has-text-centered has-text-weight-bold">数字化不止于软件开发</h2>
+    <div class="content has-text-centered">
+      <p>通过数字化实现降低运营成本，增加获客渠道和提升转化率，通过数据指导商业决策等，这一切环环相扣，需要整体精心设计。</p>
+      <p>Work Design（工作设计）是前沿的管理学概念，通过对工作内容、工作方法、员工职能、软硬件的分析，进而调整优化，达到最佳协作效率，释放生产力。</p>
+      <p>由经济学家、财务专家、人力资源专家、高级软件工程师组成的专家队伍，为你带来量身定制的方案，而软件系统正是这套体系的载体。</p>
+      <p><a href="/why">了解更多</a></p>
+    </div>
+    <div class="level container is-hidden-mobile" style="margin-top: 20px;">
+      <div class="level-item has-text-centered">
+        <%= image_pack_tag '工作内容.png' %>
+      </div>
+      <div class="level-item has-text-centered">
+        <%= image_pack_tag '方法.png' %>
+      </div>
+      <div class="level-item has-text-centered">
+        <%= image_pack_tag '人员.png' %>
+      </div>
+      <div class="level-item has-text-centered">
+        <%= image_pack_tag '软硬件.png' %>
       </div>
     </div>
-    <div class="tile is-4">
-      <%= image_pack_tag 'smart.png', class: 'image' %>
-    </div>
   </div>
 </section>
-<section class="hero">
+<section class="hero is-medium is-light">
   <div class="container tile is-parent">
-    <div class="tile is-4">
-      <%= image_pack_tag 'required.png', class: 'image' %>
-    </div>
-    <div class="tile is-vertical is-8" style="justify-content: center; align-items: center; padding-left: 2rem;">
-      <h3 class="title">按需雇佣</h3>
+    <div class="tile is-vertical is-7" style="padding: 3rem;">
+      <h2 class="subtitle has-text-weight-bold">大幅降低门槛和成本，实现数字化普惠</h2>
       <div class="content">
-        <p>One Work 入驻了大量团队，也是个超级人才库，我们相信团队的组合更能凸显人才的价值。One Work 的入驻团队和项目管理将形成强大的生态（逐步形成中）。</p>
-        <p>如果您的项目正缺人手，不必从 0 开始陷入繁重的招聘漩涡中，只需发布项目和团队需求，One.Work 会协助您找到最佳的团队组合。</p>
-        <p>如果您是优秀的人才，在 One Work 组建团队吧，您可以在不同的团队中扮演不同的角色，最大化释放生产力，并获得更多的回报，让 One Work 成为您创业的起点。</p>
-        <p>按需雇佣已是不可逆转的趋势，您无需雇佣一个技术专家的全部时间并承担高额成本，One Work 将协助您尽可能减少低效的人力支出。</p>
+        <p>软件能力不应成为奢侈品，来自大公司的软件工程化体系对于小微企业几乎没有实用价值。Work Design 历时数年，针对小微企业的需求，打造了一系列通用业务组件，极大的提升了软件研发效率，降低了研发门槛与成本。</p>
+        <p>小微企业面临数字化成本高，效果差的困境，Work Design 正以一种创新的商业模式破解这个难题。</p>
+        <p><a href="/mode" target="_blank">了解更多</a></p>
+        <p>不仅如此，我们也免费开放了全部源代码，免除你的后顾之忧。</p>
+        <p class="buttons">
+          <a href="https://github.com/work-design" target="_blank" class="button is-medium is-info">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>Github</span>
+          </a>
+          <a href="https://gitee.com/work-design" target="_blank" class="button is-medium is-warning">
+            <span class="icon"><i class="fab fa-git-alt"></i></span>
+            <span>码云</span>
+          </a>
+        </p>
       </div>
     </div>
+    <div class="tile is-5 is-hidden-mobile">
+      <%= image_pack_tag 'digit.png', class: 'image' %>
+    </div>
   </div>
 </section>
-<section class="hero">
-  <div class="container tile is-parent">
-    <div class="tile is-vertical is-8" style="justify-content:center; align-items: center; padding-right: 2rem;">
-      <h3 class="title is-bold">好用的办公管理系统，免费提供并且开源</h3>
-      <div class="content">
-        <p>One Work 内置了整套办公功能，包括：项目管理、人力资源管理、出勤、财务报销、客户关系管理、活动会议管理、电商、微信公众号等，这些功能将免费开放，并且开源。</p>
-        <p>如果 One Work 提供的功能不能很好地满足您的需求，我们鼓励您在尊重我们开源协议的前提下二次开发并私有部署，当然您也可以以很低的价格获得开源代码的<a href="https://work.design/price" target="_blank">商业授权</a>。</p>
-        <p>只有全链条的办公系统才能避免数据孤岛的出现，免费使用或是自己开发，尽请注册体验。</p>
+<section class="hero is-medium is-link">
+  <div class="container tile is-parent" style="width: 100%;">
+    <div class="tile is-6" style="justify-content: flex-end; align-items: center; padding-right: 3rem;">
+      <div class="content has-text-centered">
+        <a href="https://one.work" target="_blank">
+          <button class="button is-large is-warning is-light">One Work</button>
+        </a>
       </div>
     </div>
-    <div class="tile is-4">
-      <%= image_pack_tag 'open.png', class: 'image' %>
+    <div class="tile is-vertical is-6" style="align-items: center;">
+      <div class="content">
+        <p>我们自身亦是数字化普惠的受益者，基于 Work Design 开发的 One Work 是为小微企业打造的综合服务平台。</p>
+        <p>如果您有兴趣关注我们的话，将会发现 One Work 正在以极快的速度进行演进。而One Work 的开发，仅仅是 Work Design 的一名核心开发成员的兼职时间。</p>
+      </div>
     </div>
-  </div>
-</section>
-<section class="hero is-link">
-  <div class="hero-body container has-text-centered">
-    <h3 class="title is-4">One Work 极尽所能帮助中小企业降低成本并专注于自己的核心业务</h3>
   </div>
 </section>
