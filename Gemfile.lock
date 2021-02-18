@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_attend.git
-  revision: 61ae0ecb36b3ee9d4681e6c0ac49b905276938e5
+  revision: 67d49df18d21d1c7ae64e119238af0469ea4fe23
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
