@@ -39,7 +39,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
 end
 Rails.application.routes.default_url_options = {
-  host: 'one.work',
+  host: 'work.design',
   protocol: 'https'
 }
 
