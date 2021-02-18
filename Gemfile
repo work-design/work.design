@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '6.1.1'
+gem 'rails', '6.1.3'
 gem 'puma'
 gem 'sidekiq'
 
@@ -25,7 +25,7 @@ gem 'rucaptcha'
 gem 'image_processing'
 gem 'rqrcode'
 gem 'rexml'
-gem 'nokogiri', '>= 1.11.0.rc4'
+gem 'nokogiri'
 
 # Third party
 gem 'octokit'
@@ -33,7 +33,7 @@ gem 'omniauth-github'
 gem 'omniauth-wechat-oauth2', github: 'qinmingyuan/omniauth-wechat-oauth2'
 
 # Payment method
-gem 'wx_pay', github: 'jasl/wx_pay'
+gem 'wx_pay', github: 'qinmingyuan/wx_pay'
 gem 'alipay2', github: 'qinmingyuan/alipay2'
 gem 'paypal-sdk-core'
 gem 'paypal-sdk-rest'

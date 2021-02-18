@@ -1,3 +1,3 @@
 class Agency < ApplicationRecord
-  include RailsAgency::Agency
+  include Agential::Model::Agency
 end

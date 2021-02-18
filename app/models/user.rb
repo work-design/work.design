@@ -7,8 +7,8 @@ class User < ApplicationRecord
   include Notice::Ext::Setting
   include Wechat::Model::User
   include Org::Model::User
-  include Profiled::Model::User
-  include RailsAgency::User
+  include Profiled::Ext::User
+  include Agential::Model::User
 
   has_one :wechat_user
 
