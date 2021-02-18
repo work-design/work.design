@@ -1,4 +1,4 @@
 class Place < ApplicationRecord
-  include RailsEvent::Place
-  include RailsDetail::ItemModel
+  include Event::Model::Place
+  include Detail::Model::ItemModel
 end

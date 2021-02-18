@@ -1,5 +1,5 @@
 class PlaceTaxon < ApplicationRecord
-  include RailsCom::Taxon
-  include RailsEvent::PlaceTaxon
-  include RailsDetail::TaxonModel
+  include Com::Ext::Taxon
+  include Event::Model::PlaceTaxon
+  include Detail::Model::TaxonModel
 end

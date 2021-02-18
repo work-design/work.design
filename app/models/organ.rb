@@ -3,5 +3,5 @@ class Organ < ApplicationRecord
   include Org::Model::Organ
   include Wechat::Model::Organ
   include Roled::Model::User
-  include RailsBench::Organ
+  include Bench::Model::Organ
 end
