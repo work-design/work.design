@@ -1,4 +1,4 @@
 class Place < ApplicationRecord
-  include Event::Model::Place
+  include Eventual::Model::Place
   include Detail::Model::ItemModel
 end
