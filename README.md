@@ -27,7 +27,7 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 * 数据库准备
   * `cp config/database.yml.example config/database.yml`, 修改配置；
   * `bin/rails db:create`
-  * `bin/rails db:schema:load`
+  * `bin/rails db:schema:load`，因为 migrations 是自动生成的，不太完备，用这个命令准备数据库；
   
 ## 开发
 * `bin/webpack-dev-server` 启动 webpack，在启动之前确认下 config/webpacker.yml 是否已生成，如未生成，可以任一种形式启动下应用，如：`bin/rails c`
