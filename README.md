@@ -18,9 +18,16 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 ## 说明
 当然，没有万金油。以上各种现代管理方式，并非适合所有性质的岗位，如服务行业就不大适用于弹性工作制。
 
-## 安装及使用
-* [开始开发](docs/install.md)
-* [部署](docs/deploy.md)
+## 准备
+* `cp config/credentials/development.yml.enc.example config/credentials/development.yml.enc`
+* 数据库准备
+  * `cp config/database.yml.example config/database.yml`, 修改配置；
+  * `bin/rails db:create`
+  * `bin/rails db:schema:load`
+  
+## 开发
+* `bin/webpack-dev-server` 启动 webpack，在启动之前确认下 config/webpacker.yml 是否已生成，如未生成，可以任一种形式启动下应用，如：`bin/rails c`
+* `bin/rails s`
 
 ## 依赖及配置
 
