@@ -72,6 +72,7 @@ gem 'turbo-rails', github: 'hotwired/turbo-rails', branch: 'main'
 
 # Debug
 gem 'pry-rails'
+gem 'pry-stack_explorer'
 gem 'amazing_print'
 
 group :development, :test do
