@@ -4,7 +4,7 @@ Rails.application.configure do
   config.eager_load = true
 
   config.consider_all_requests_local = false
-  config.force_ssl = true
+  config.force_ssl = false
   config.action_controller.perform_caching = true
   config.action_controller.asset_host = 'static.one.work'
 
