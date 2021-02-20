@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_084813) do
+ActiveRecord::Schema.define(version: 2021_02_20_142155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_084813) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "dns_valid"
+    t.string "token"
     t.index ["acme_order_id"], name: "index_acme_identifiers_on_acme_order_id"
   end
 
@@ -106,6 +107,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_084813) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "orderid"
     t.string "url"
+    t.string "status"
     t.index ["acme_account_id"], name: "index_acme_orders_on_acme_account_id"
   end
 
@@ -2748,8 +2750,10 @@ ActiveRecord::Schema.define(version: 2021_01_06_084813) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "response"
+    t.bigint "organ_id", scale: 8
     t.index ["operator_id"], name: "index_refunds_on_operator_id"
     t.index ["order_id"], name: "index_refunds_on_order_id"
+    t.index ["organ_id"], name: "index_refunds_on_organ_id"
     t.index ["payment_id"], name: "index_refunds_on_payment_id"
   end
 
@@ -2902,6 +2906,7 @@ ActiveRecord::Schema.define(version: 2021_01_06_084813) do
     t.string "controller_name"
     t.string "path"
     t.string "verb"
+    t.string "required_parts", array: true
   end
 
   create_table "schedules", id: { scale: 8 }, force: :cascade do |t|
@@ -3500,6 +3505,8 @@ ActiveRecord::Schema.define(version: 2021_01_06_084813) do
     t.boolean "oauth_enable", default: true
     t.string "apiclient_cert"
     t.string "apiclient_key"
+    t.string "key_v3", comment: "支付通知解密"
+    t.string "serial_no"
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 
