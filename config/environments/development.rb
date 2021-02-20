@@ -56,7 +56,7 @@ Rails.application.configure do
   ]
   config.hosts += [
     '.lvh.me',
-    'one.vip.qydev.com'
+    'test.one.work'
   ]
 
   # Raises error for missing translations
