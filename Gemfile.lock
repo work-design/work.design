@@ -114,7 +114,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_data.git
-  revision: ddcbd25596dca12b797f6d2082691a45b95f88ea
+  revision: 04ce95aede7c00d06eafd35836c20c0b8e055fde
   specs:
     rails_data (1.0.2)
       prawn
