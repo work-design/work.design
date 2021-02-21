@@ -114,7 +114,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_data.git
-  revision: f61a497bbb95418a7d5ae442139842be3bf0684f
+  revision: ddcbd25596dca12b797f6d2082691a45b95f88ea
   specs:
     rails_data (1.0.2)
       prawn
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: 10e5ec3a7930f87734073b532056232bc83c0525
+  revision: 3fab3da3c170c84676db35a10bb7507141d5474e
   specs:
     rails_wechat (0.1.0)
       rails_auth
