@@ -11,7 +11,6 @@ Rails.application.configure do
   config.public_file_server.enabled = true
 
   config.active_storage.service = :upyun
-  config.active_storage.resolve_model_to_route = :rails_storage_proxy
 
   config.action_mailer.smtp_settings = {
     address: 'smtp.exmail.qq.com',
