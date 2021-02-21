@@ -208,7 +208,7 @@ class RailsComMigration21 < ActiveRecord::Migration[6.1]
 
 
 
-    
+
 
 
 
