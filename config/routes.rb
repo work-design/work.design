@@ -23,9 +23,6 @@ Rails.application.routes.draw do
   namespace :my do
     root 'home#index'
   end
-  namespace :me do
-    root 'home#index'
-  end
 
   scope :my, module: 'waiting/my', as: :my do
     resource :roles
