@@ -1,8 +1,5 @@
 <div class="navbar-brand">
 <% if current_organ %>
-  <%= link_to index_url(subdomain: RailsCom.config.subdomain), class: 'navbar-item' do %>
-    <%= image_pack_tag 'logo.png', class: 'image' %>
-  <% end %>
   <div class="navbar-item">
     <%= image_tag current_organ.logo, class: 'image' if current_organ.logo.attached? %>
     <span><%= current_organ.name %></span>
