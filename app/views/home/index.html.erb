@@ -1,4 +1,4 @@
-<section class="hero" style="background-image: url(<%= asset_pack_path('media/images/banner.png') %>); background-size: cover; background-repeat: no-repeat">
+<section class="hero" style="background-image: url(<%= asset_pack_path('media/images/banner.png') %>); background-size: cover; background-repeat: no-repeat; height: 398px">
   <div class="hero-body">
     <div class="container tile is-parent">
       <div class="tile is-8 is-vertical has-text-centered" style="align-items: center">
@@ -15,25 +15,33 @@
       <a href="/why">渐进式数字化解决方案</a>
     </h2>
     <p>
-      <span>20大通用功能，</span>
-      <%= link_to '登陆', { controller: '/auth/sign', action: 'sign' } %>
-      <span>即可使用，按效果付费</span>
+      <span>SaaS 轻松用：20大通用功能，</span><%= link_to '登陆', { controller: '/auth/sign', action: 'sign' } %><span>即可使用</span>
     </p>
-    <p>定制化开发</p>
-    <p>研发团队托管，</p>
+    <p>定制化开发，满足你任意需求</p>
+    <p>研发团队托管，共享研发能力与生态</p>
   </div>
 </section>
 <section class="hero is-medium">
   <div class="hero-body container">
-    <h2 class="title has-text-centered">为效能而生的软件方案</h2>
-    <p>破解数据孤岛难题</p>
-    <p>代码开源，免除你的后顾之忧</p>
+    <h2 class="title has-text-centered">为效能而生的软件开发体系</h2>
+    <p>数据天然互通：破解数据孤岛难题</p>
+    <p>代码开源：免除你的后顾之忧</p>
     <a href="https://github.com/work-design/home" target="_blank" class="">了解更多>></a>
+    <p class="buttons">
+      <a href="https://github.com/work-design" target="_blank" class="button is-medium is-info">
+        <span class="icon"><i class="fab fa-github"></i></span>
+        <span>Github</span>
+      </a>
+      <a href="https://gitee.com/work-design" target="_blank" class="button is-medium is-warning">
+        <span class="icon"><i class="fab fa-git-alt"></i></span>
+        <span>码云</span>
+      </a>
+    </p>
   </div>
 </section>
 <section class="hero is-medium">
   <div class="hero-body container">
-    <h2 class="subtitle has-text-centered has-text-weight-bold">数字化不止于软件开发</h2>
+    <h2 class="subtitle has-text-centered has-text-weight-bold">数字化生态服务</h2>
     <div class="content has-text-centered">
       <p>通过数字化实现降低运营成本，增加获客渠道和提升转化率，通过数据指导商业决策等，这一切环环相扣，需要整体精心设计。</p>
       <p>Work Design（工作设计）是前沿的管理学概念，通过对工作内容、工作方法、员工职能、软硬件的分析，进而调整优化，达到最佳协作效率，释放生产力。</p>
@@ -65,16 +73,7 @@
         <p>小微企业面临数字化成本高，效果差的困境，Work Design 正以一种创新的商业模式破解这个难题。</p>
         <p><a href="/mode" target="_blank">了解更多</a></p>
         <p>不仅如此，我们也免费开放了全部源代码，免除你的后顾之忧。</p>
-        <p class="buttons">
-          <a href="https://github.com/work-design" target="_blank" class="button is-medium is-info">
-            <span class="icon"><i class="fab fa-github"></i></span>
-            <span>Github</span>
-          </a>
-          <a href="https://gitee.com/work-design" target="_blank" class="button is-medium is-warning">
-            <span class="icon"><i class="fab fa-git-alt"></i></span>
-            <span>码云</span>
-          </a>
-        </p>
+        
       </div>
     </div>
     <div class="tile is-5 is-hidden-mobile">
