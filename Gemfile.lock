@@ -204,7 +204,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 2f6508268fcb365e82fdeb70eb0a5176414c6421
+  revision: 47493558ce7eeb0122c2478929f1c10efb261d19
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
