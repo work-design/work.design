@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: aa29d60b934ff67fb2fb9c79f656ad8b03484f7c
+  revision: 62e1df79fda5414a06051058352260be75d5b608
   specs:
     rails_com (1.2.9)
       acme-client
@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: 94484623e7cc467dd1f7a718a555a10f13c85ee7
+  revision: 032347e1baa00e86c8be9805a63ac4d512a08f3a
   specs:
     rails_org (0.1)
       rails_auth
@@ -204,7 +204,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 47493558ce7eeb0122c2478929f1c10efb261d19
+  revision: 86ac81c88760e69816f41b2f53e0f56f69d333a2
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_wechat.git
-  revision: bd586c0e17181a51d86ac417e01bc8d75e572243
+  revision: 3f95f5fe6b715572c44fad3660bf8cb9c928c1e2
   specs:
     rails_wechat (0.1.0)
       rails_auth

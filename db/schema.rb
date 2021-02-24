@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_142155) do
+ActiveRecord::Schema.define(version: 2021_02_23_094925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2866,6 +2866,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_142155) do
     t.string "action_name"
     t.string "controller_path"
     t.string "controller_name"
+    t.string "required_parts", array: true
   end
 
   create_table "role_types", id: { scale: 8 }, force: :cascade do |t|
