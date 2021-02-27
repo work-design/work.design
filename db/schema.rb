@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_094925) do
+ActiveRecord::Schema.define(version: 2021_02_25_140912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2867,6 +2867,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_094925) do
     t.string "controller_path"
     t.string "controller_name"
     t.string "required_parts", array: true
+    t.bigint "rule_id", scale: 8
+    t.index ["rule_id"], name: "index_role_rules_on_rule_id"
   end
 
   create_table "role_types", id: { scale: 8 }, force: :cascade do |t|
@@ -2908,6 +2910,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_094925) do
     t.string "path"
     t.string "verb"
     t.string "required_parts", array: true
+    t.boolean "landmark"
   end
 
   create_table "schedules", id: { scale: 8 }, force: :cascade do |t|

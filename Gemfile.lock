@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 62e1df79fda5414a06051058352260be75d5b608
+  revision: dad3b5a7dc5dce1d816cca52b972d43fa151ff8e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -204,7 +204,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 86ac81c88760e69816f41b2f53e0f56f69d333a2
+  revision: 29752b984ce4dc294d3e53c8ad05bc5e6df39900
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
