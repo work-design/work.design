@@ -114,7 +114,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_data.git
-  revision: 516045f779cf5d9fefe82c8597827b0031c3cee1
+  revision: 39e3c57208afc6e988527b7bf5824ed19c4264c3
   specs:
     rails_data (1.0.2)
       prawn
@@ -140,7 +140,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: ff94a137c00332cf6a5b05062b6601b7c34358e7
+  revision: ec587c5082e104fbd14f09e79bb49ba87cfaa88c
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 2ec509b321e16dce76fa5b28f64c731fb7402adc
+  revision: 1306d454d3e0d4e09b41d54e5a1dcc0ab66fe60e
   specs:
     rails_ui (0.1.0)
       rails
