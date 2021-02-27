@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: d101c6b4851534a6c211eb1475a63479027119a5
+  revision: 7caf6a59ff6c22eb592d9e5678e4ad300c114ef0
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: e41a651ddd4e2a8a2680853058445cf8a576dc54
+  revision: 2ec509b321e16dce76fa5b28f64c731fb7402adc
   specs:
     rails_ui (0.1.0)
       rails
