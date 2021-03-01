@@ -75,7 +75,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: d4cc950337e48de6947abe29498dc7cf01599291
+  revision: fca1e807fdbb80dab5e35a06e9860cf5024c08f8
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: dad3b5a7dc5dce1d816cca52b972d43fa151ff8e
+  revision: fc600e4dba00ed04f93dee24a79f26e64a0d045d
   specs:
     rails_com (1.2.9)
       acme-client
@@ -140,7 +140,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: ec587c5082e104fbd14f09e79bb49ba87cfaa88c
+  revision: 6e30e512123f8a9d5f2e2e239cd3ab648522f2f5
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: ee715d1d19cf78f78204d3418422d4a63a81100b
+  revision: 1f64a495b440c5dad256d9ede39a2d626d6f5859
   specs:
     rails_org (0.1)
       rails_auth
@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 66448f003f4d16a52830099082e6e1bc6bf10cb3
+  revision: 45c8b42a7abf936d7db48564aea3c398cb8f4ea3
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 1306d454d3e0d4e09b41d54e5a1dcc0ab66fe60e
+  revision: 8f98c593d34b5a1b122d9439afc688ecce030813
   specs:
     rails_ui (0.1.0)
       rails
