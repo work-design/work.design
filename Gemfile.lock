@@ -204,7 +204,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: 74fe427c32170d9e8ab59694910c672a3a6c87a0
+  revision: b1e27c45be927379f0bf63fd74a046bb7383030e
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 8f98c593d34b5a1b122d9439afc688ecce030813
+  revision: d663c78b77d3efdeca4a2cef99f61bf8fa567ea6
   specs:
     rails_ui (0.1.0)
       rails
