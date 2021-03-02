@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: fc600e4dba00ed04f93dee24a79f26e64a0d045d
+  revision: c553ac2bad4fe38adea8401ac34dcf40d9593efb
   specs:
     rails_com (1.2.9)
       acme-client
@@ -133,7 +133,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: d5b2ea3e562c505fb90024d046d4de888f1862b7
+  revision: 3f8ab1b98c774318e7556deed71fd242b74c734a
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: de31075a0df6ac06187a84b43ad58a5aa812e7da
+  revision: 2fbfbb878ce1c9a2acd55a6781b8f0d95a71139e
   specs:
     rails_ui (0.1.0)
       rails
