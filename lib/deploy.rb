@@ -3,6 +3,7 @@
 require 'open3'
 require 'optparse'
 require 'pathname'
+require 'logger'
 
 module Deploy
   MOVED_DIRS = [
@@ -17,6 +18,7 @@ module Deploy
   ].freeze
   SHARED_FILES = [
     'config/database.yml',
+    'config/apiclient_key.pem',
     'config/credentials/staging.key',
     'config/credentials/production.key'
   ].freeze
@@ -28,23 +30,25 @@ module Deploy
   extend self
 
   def restart
-
+    exec_cmd('bundle exec pumactl restart')
   end
 
   def github_hmac(data)
     OpenSSL::HMAC.hexdigest('sha1', RailsCom.config.github_hmac_key, data)
   end
 
-  def init_shared_paths(root = Pathname.pwd.join('../shared'))
+  def init(root = Pathname.pwd)
     dirs = []
-    dirs += MOVED_DIRS.map { |dir| root.join(dir) }
-    dirs += SHARED_DIRS.map { |dir| root.join(dir) }
-    dirs += INIT_DIRS.map { |dir| root.join(dir) }
+    shared = root.join('../shared')
+    dirs += MOVED_DIRS.map { |dir| shared.join(dir) }
+    dirs += SHARED_DIRS.map { |dir| shared.join(dir) }
+    dirs += INIT_DIRS.map { |dir| shared.join(dir) }
     FileUtils.mkdir_p dirs
 
     SHARED_FILES.map do |path|
-      `touch #{root.join(path)}`
+      `touch #{shared.join(path)}`
     end
+    ln_shared_paths(root)
   end
 
   def ln_shared_paths(root = Pathname.pwd)
@@ -80,19 +84,30 @@ module Deploy
 
   def exec_cmd(cmd)
     Open3.popen2e(cmd) do |_, output, thread|
-      puts "=====> #{cmd} (PID: #{thread.pid})"
+      logger.debug "=====> #{cmd} (PID: #{thread.pid})"
       output.each_line do |line|
-        puts line
+        logger.debug line
       end
+    end
+  end
+
+  def logger
+    if defined? Rails
+      Rails.logger
+    else
+      Logger.new $stdout
     end
   end
 
 end
 
-options = { env: 'staging' }
+options = { env: 'production' }
 OptionParser.new do |opts|
   opts.on('-e ENV') do |v|
     options[:env] = v
+  end
+  opts.on('-C') do |v|
+    puts "--------->#{v}"
   end
 end.parse!
 
