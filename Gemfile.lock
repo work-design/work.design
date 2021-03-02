@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e4162f595651bcd2e8ad733ad79ea78999137b2f
+  revision: e17f243a3ae84256135a8bfa126900eba2b1e133
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/wx_pay.git
-  revision: 8d564b53495158c9acf88fd6f4ff7ec7485852c6
+  revision: dd2e5344d266f8f3f1f82d3b011d01cfaf82eeca
   specs:
     wx_pay (0.21.0)
       activesupport (>= 3.2)
@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: c0c193d9c7da86b143ac3722923b7fecf452b574
+  revision: 1afb5dcbbb061a7bf6f6935dd665f57b84b92e70
   specs:
     rails_com (1.2.9)
       acme-client
@@ -133,7 +133,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: 3f8ab1b98c774318e7556deed71fd242b74c734a
+  revision: 11ff49e10bd1111fb80e2521e66301d3de6056b0
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: 1f64a495b440c5dad256d9ede39a2d626d6f5859
+  revision: 940f1df34f2c1fd7e221dfadeb22e373a17bdbd8
   specs:
     rails_org (0.1)
       rails_auth
@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 5636a83ea80123d29a30aa21fd40557fd6b6cf6f
+  revision: c9fa4688dddd174f3ba22bdb36ce38885285e52d
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -399,7 +399,7 @@ GEM
       money (~> 6.12)
     money (6.13.8)
       i18n (>= 0.6.4, <= 2)
-    money-rails (1.13.4)
+    money-rails (1.14.0)
       activesupport (>= 3.0)
       monetize (~> 1.9.0)
       money (~> 6.13.2)

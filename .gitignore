@@ -25,5 +25,6 @@ config/database.yml
 config/webpacker.yml
 config/certs
 config/alipay_rsa2.pem
+config/apiclient_key.pem
 
 vendor/bundle
