@@ -133,7 +133,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: 11ff49e10bd1111fb80e2521e66301d3de6056b0
+  revision: 805b2a342124d64bc977c979daa840ae7c7326e2
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 1d28aaf6b1a2be9b2483ce3abbef83a029c3f48b
+  revision: b32a95b6e28da86220818c91e1e2084dfb73e5b0
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
