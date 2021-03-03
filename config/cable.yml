@@ -2,15 +2,17 @@
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: one_work_production
+  channel_prefix: work_design_production
 
 staging:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: one_work_staging
+  channel_prefix: work_design_staging
 
 development:
-  adapter: async
+  adapter: redis
+  url: redis://localhost:6379/1
+  channel_prefix: work_design_development
 
 test:
   adapter: async
