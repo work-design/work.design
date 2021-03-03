@@ -10,7 +10,7 @@ zh:
         type:
           GithubUser: Github User
           FacebookUser: Facebook User
-      order:
+      trade/order:
         payment_type:
           alipay: Alipay
       poster:
@@ -18,19 +18,7 @@ zh:
           WebPoster: Web端
           MobilePoster: 手机端
           AppPoster: App端
-      promote_good:
+      trade/promote_good:
         good_type:
-          Facilitate: 服务
-          Advance: 充值
-      requirement:
-        state:
-          init: 待领取
-          unverified: 未证实
-          picked: 已委派
-          done: 已完成
-      escort:
-        state:
-          init: 待领取
-          unverified: 未证实
-          picked: 已委派
-          done: 已完成
+          Trade::Facilitate: 服务
+          Trade::Advance: 充值
