@@ -20,5 +20,5 @@ zh:
           AppPoster: App端
       trade/promote_good:
         good_type:
-          Trade::Facilitate: 服务
+          Bench::Facilitate: 服务
           Trade::Advance: 充值
