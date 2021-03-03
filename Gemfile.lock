@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/upyun_rails.git
-  revision: 4a6a7e77a6f7b2a5100a5eede83170e5de79312f
+  revision: 515260238c6b235189754c6d145f8d8b67ce9d8e
   specs:
     upyun_rails (0.1.0)
       activestorage
