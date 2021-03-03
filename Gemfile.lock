@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: dc7677afad3a36df7756a82a0636efb44a4b787d
+  revision: 58ee1cfdff20906ab4a4fcff7b5eac17b6a726ea
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
