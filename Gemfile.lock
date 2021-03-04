@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_where.git
-  revision: 2e2abf3947bce9c5c1fb9359a5eaf0c9d255e650
+  revision: 0a0812c516cc853314b9abaf9b6fdcc1471cb23f
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: 5eedcccfa06f5414a6a6011f705bf4b987acf6e9
+  revision: 187fe4071d6dffffc5cf029c6b3ed4cfe6ec710b
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
