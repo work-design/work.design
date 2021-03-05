@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: e17f243a3ae84256135a8bfa126900eba2b1e133
+  revision: 75de8d5d009a86c942e7186e0e76b4fa874b408a
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_attend.git
-  revision: a8eb08f0e132c1fb2a90c8c20560ff6483e5298f
+  revision: 4bbb82f2d3bd17393f522f2af6d77d97d43f5c06
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: 70d8767fbdf9ad00c89036d0db7b2a72d5c12372
+  revision: 0f19da78ec77191b84481f9350c8e6f15dbd7d91
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: d52ecfa24af4587335c85fb5226c9704353d0b5e
+  revision: 6d4eb36d1365565f8be384c9a8ce3b6f93a8284f
   specs:
     rails_com (1.2.9)
       acme-client
@@ -140,7 +140,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: 6e30e512123f8a9d5f2e2e239cd3ab648522f2f5
+  revision: 822deea853e1fc95968016123dbd47e9d0d289a3
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_org.git
-  revision: 74c757833efcef6495a46bb1c6adfd4890a8dd9f
+  revision: 07209f331b36842b687e1e4df47d743bace13e02
   specs:
     rails_org (0.1)
       rails_auth
@@ -188,7 +188,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: a85948c866dbe87688986a8c37800f1d2165be5e
+  revision: 1f21276eea098579246a98913ef84b5a677b5af0
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: fd0e64b279f948c13281d52f1b4d5106d567269f
+  revision: ef8d99386918396c5cf57102835656fc2bb8fe8f
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -219,7 +219,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 2c2f78b5a8cc763b0058fb8e806686e07564cae0
+  revision: 1aa1e5b8902adac57aa3ceaae99b601452a4e2a6
   specs:
     rails_ui (0.1.0)
       rails
