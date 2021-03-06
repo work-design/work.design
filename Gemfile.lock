@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/hotwired/turbo-rails.git
-  revision: fec33d9bc767aec612b283620d2a74e78c1f90ae
-  branch: main
-  specs:
-    turbo-rails (0.5.9)
-      rails (>= 6.0.0)
-
-GIT
   remote: https://github.com/qinmingyuan/alipay2.git
   revision: 6e0f880d225caf07927819076c4ebdef58d2be0f
   specs:
@@ -48,16 +40,6 @@ GIT
     wx_pay (0.21.0)
       activesupport (>= 3.2)
       rest-client (>= 2.0.0)
-
-GIT
-  remote: https://github.com/rails/webpacker.git
-  revision: b7069f4618de51415a4449908346a3c0853880dc
-  specs:
-    webpacker (6.0.0.beta.5)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
 
 GIT
   remote: https://github.com/work-design/rails_agency.git
@@ -346,12 +328,12 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
-    http-2-next (0.3.0)
+    http-2-next (0.4.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.11.3)
+    httpx (0.12.0)
       http-2-next (>= 0.1.2)
       timers
     i18n (1.8.9)
@@ -389,7 +371,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0212)
+    mime-types-data (3.2021.0225)
     mimemagic (0.3.5)
     mini_magick (4.11.0)
     mini_mime (1.0.2)
@@ -526,12 +508,12 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (2.3.1)
+    semantic_range (3.0.0)
     sidekiq (6.1.3)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    spreadsheet (1.2.7)
+    spreadsheet (1.2.8)
       ruby-ole
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -547,6 +529,8 @@ GEM
     thor (1.1.0)
     timers (4.3.3)
     ttfunk (1.7.0)
+    turbo-rails (0.5.9)
+      rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -557,6 +541,11 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webpacker (6.0.0.beta.6)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -632,10 +621,10 @@ DEPENDENCIES
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbo-rails!
+  turbo-rails
   upyun_rails!
   web-console
-  webpacker!
+  webpacker (= 6.0.0.beta.6)
   wx_pay!
 
 BUNDLED WITH

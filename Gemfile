@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://#{ENV['GITHUB'].nil? ? 'github' : ENV['GITHUB']}.com/#{repo}.git" }
 
 gem 'rails', '6.1.3'
 gem 'puma'
@@ -11,7 +11,7 @@ gem 'redis'
 gem 'dalli'
 
 # Assets
-gem 'webpacker', github: 'rails/webpacker', require: File.exist?('config/webpacker.yml')
+gem 'webpacker', '6.0.0.beta.6', require: File.exist?('config/webpacker.yml')
 
 # Views
 gem 'jbuilder'
@@ -68,7 +68,7 @@ gem 'rails_finance', github: 'work-design/rails_finance'
 gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_interact', github: 'work-design/rails_interact'
 
-gem 'turbo-rails', github: 'hotwired/turbo-rails', branch: 'main'
+gem 'turbo-rails'
 
 # Debug
 gem 'pry-rails'
