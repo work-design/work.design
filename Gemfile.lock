@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_agency.git
-  revision: e098c83c327dc0091c2e3b5277f5939fbd485759
+  revision: 73402ac3d995ae402a2381030dd4d6da12037f08
   specs:
     rails_agency (0.1.0)
       rails_com (~> 1.2)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 4564f257bcae74b39442b456ebf75acc838d05be
+  revision: dbd0cd44abe4f4980b50c5e4288aba12e5132666
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
-  revision: cb1441fa1a2272e90b8e91fbab0e96435357b90c
+  revision: 437e97586f07c029a4030f6d4110436eb6058c3b
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
@@ -170,7 +170,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: be65e7adb82dac5316eae9fd3b5981a9827cc7df
+  revision: 0384187d95e3a46a8b7c1da8d5439fe3ddbc625b
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -201,7 +201,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: ab3ed6e843082a60b9bb9b1d9ee33823274097e7
+  revision: e587933b3ef92d2b2f39770261f9104286f8e03a
   specs:
     rails_ui (0.1.0)
       rails
