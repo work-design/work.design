@@ -3,6 +3,10 @@ zh:
     edit: 编辑
     destroy: 删除
     search: 搜索
+  my:
+    home:
+      index:
+        title: 我的
   admin:
     home:
       index:
