@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_135018) do
+ActiveRecord::Schema.define(version: 2021_03_07_121113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1332,7 +1332,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_135018) do
     t.integer "position", scale: 4, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "namespace_identifier", default: "application"
+    t.string "namespace_identifier"
     t.string "business_identifier"
     t.string "controller_path"
     t.string "controller_name"
@@ -1705,7 +1705,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_135018) do
 
   create_table "name_spaces", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
-    t.string "identifier", default: "application"
+    t.string "identifier"
     t.boolean "verify_organ"
     t.boolean "verify_member"
     t.boolean "verify_user"
@@ -2902,7 +2902,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_135018) do
     t.integer "position", scale: 4, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "namespace_identifier", default: "application"
+    t.string "namespace_identifier"
     t.string "business_identifier"
     t.string "action_name"
     t.string "operation", default: "read"
