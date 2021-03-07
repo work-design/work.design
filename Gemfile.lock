@@ -1,32 +1,32 @@
 GIT
-  remote: https://github.com/qinmingyuan/alipay2.git
+  remote: https://gitee.com/qinmingyuan/alipay2.git
   revision: 6e0f880d225caf07927819076c4ebdef58d2be0f
   specs:
     alipay2 (2.0)
 
 GIT
-  remote: https://github.com/qinmingyuan/default_form.git
+  remote: https://gitee.com/qinmingyuan/default_form.git
   revision: d2fc522e0c9f14f7b97fbea5ac5a8c8a3e6c059e
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/qinmingyuan/default_where.git
+  remote: https://gitee.com/qinmingyuan/default_where.git
   revision: 0a0812c516cc853314b9abaf9b6fdcc1471cb23f
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
 
 GIT
-  remote: https://github.com/qinmingyuan/omniauth-wechat-oauth2.git
+  remote: https://gitee.com/qinmingyuan/omniauth-wechat-oauth2.git
   revision: 3391e65ce1e58a589ae2cdf6d280399c1ff68a9a
   specs:
     omniauth-wechat-oauth2 (0.1.0)
       omniauth-oauth2 (~> 1.5)
 
 GIT
-  remote: https://github.com/qinmingyuan/upyun_rails.git
+  remote: https://gitee.com/qinmingyuan/upyun_rails.git
   revision: 515260238c6b235189754c6d145f8d8b67ce9d8e
   specs:
     upyun_rails (0.1.0)
@@ -34,7 +34,7 @@ GIT
       rest-client
 
 GIT
-  remote: https://github.com/qinmingyuan/wx_pay.git
+  remote: https://gitee.com/qinmingyuan/wx_pay.git
   revision: dd2e5344d266f8f3f1f82d3b011d01cfaf82eeca
   specs:
     wx_pay (0.21.0)
@@ -42,28 +42,28 @@ GIT
       rest-client (>= 2.0.0)
 
 GIT
-  remote: https://github.com/work-design/rails_agency.git
+  remote: https://gitee.com/work-design/rails_agency.git
   revision: a51008abd4959369c6cdd3a778f4ce68108a5e02
   specs:
     rails_agency (0.1.0)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_attend.git
+  remote: https://gitee.com/work-design/rails_attend.git
   revision: d9e056ad6b4f951a177d34a2a0228c070147ceb5
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_audit.git
+  remote: https://gitee.com/work-design/rails_audit.git
   revision: 4564f257bcae74b39442b456ebf75acc838d05be
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_auth.git
+  remote: https://gitee.com/work-design/rails_auth.git
   revision: 5d7701c340b8628f84efd583defbb74a600fdcbd
   specs:
     rails_auth (1.1.0)
@@ -72,7 +72,7 @@ GIT
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_bench.git
+  remote: https://gitee.com/work-design/rails_bench.git
   revision: 58e4b2f1be2e8357c8b680d8bb7919f0f8fbdadf
   specs:
     rails_bench (0.1.0)
@@ -81,7 +81,7 @@ GIT
       rails_org
 
 GIT
-  remote: https://github.com/work-design/rails_com.git
+  remote: https://gitee.com/work-design/rails_com.git
   revision: 98dced474f590ef6b2ca4c237f967e424a7ea1cc
   specs:
     rails_com (1.2.9)
@@ -95,7 +95,7 @@ GIT
       rails (~> 6.0)
 
 GIT
-  remote: https://github.com/work-design/rails_data.git
+  remote: https://gitee.com/work-design/rails_data.git
   revision: 454b913953195cd7d8d7b115d9a5cabc07ca3e83
   specs:
     rails_data (1.0.2)
@@ -107,21 +107,21 @@ GIT
       write_xlsx
 
 GIT
-  remote: https://github.com/work-design/rails_detail.git
+  remote: https://gitee.com/work-design/rails_detail.git
   revision: cb1441fa1a2272e90b8e91fbab0e96435357b90c
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_event.git
+  remote: https://gitee.com/work-design/rails_event.git
   revision: 10796888151b90df4668b2352d0902de706ca4ee
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_finance.git
+  remote: https://gitee.com/work-design/rails_finance.git
   revision: 187c123a3172b72af006d32aa140149bf70d3138
   specs:
     rails_finance (0.1.0)
@@ -129,14 +129,14 @@ GIT
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_growth.git
+  remote: https://gitee.com/work-design/rails_growth.git
   revision: 849b5b1b62e262c46b100ba65c10218a30617a4b
   specs:
     rails_growth (0.1.0)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_interact.git
+  remote: https://gitee.com/work-design/rails_interact.git
   revision: b746734e7944792980a0c22585963ad366fdefb7
   specs:
     rails_interact (0.1.0)
@@ -144,14 +144,14 @@ GIT
       rails_notice (>= 0.1)
 
 GIT
-  remote: https://github.com/work-design/rails_log.git
+  remote: https://gitee.com/work-design/rails_log.git
   revision: c5c855338abb7ab1c8277387f932e3318b812d01
   specs:
     rails_log (2.1.6)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_notice.git
+  remote: https://gitee.com/work-design/rails_notice.git
   revision: ab10be6ba328ff23b4f82c8a43f3152c3fbe1d2f
   specs:
     rails_notice (1.0.2)
@@ -159,7 +159,7 @@ GIT
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_org.git
+  remote: https://gitee.com/work-design/rails_org.git
   revision: 0ada8b17350df4d2942b6f5df021663d88bd4075
   specs:
     rails_org (0.1)
@@ -169,14 +169,14 @@ GIT
       rails_profile
 
 GIT
-  remote: https://github.com/work-design/rails_profile.git
+  remote: https://gitee.com/work-design/rails_profile.git
   revision: be65e7adb82dac5316eae9fd3b5981a9827cc7df
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_quip.git
+  remote: https://gitee.com/work-design/rails_quip.git
   revision: 4f5864d9d0bfe7624d6a72568d16dfa955059a72
   specs:
     rails_quip (0.1.0)
@@ -185,14 +185,14 @@ GIT
       rails_detail
 
 GIT
-  remote: https://github.com/work-design/rails_role.git
+  remote: https://gitee.com/work-design/rails_role.git
   revision: f210ef48395fa85475ea0e12fa2b3a5cd4513d27
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_trade.git
+  remote: https://gitee.com/work-design/rails_trade.git
   revision: f5d778c01c7ee1a3ff5e6075e65e2b0e716687c8
   specs:
     rails_trade (0.0.2)
@@ -200,14 +200,14 @@ GIT
       rails_com (~> 1.2)
 
 GIT
-  remote: https://github.com/work-design/rails_ui.git
+  remote: https://gitee.com/work-design/rails_ui.git
   revision: ab3ed6e843082a60b9bb9b1d9ee33823274097e7
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
-  remote: https://github.com/work-design/rails_wechat.git
+  remote: https://gitee.com/work-design/rails_wechat.git
   revision: 9cbbd91205e2ba477cf09373e1cb91b0737bd39a
   specs:
     rails_wechat (0.1.0)
