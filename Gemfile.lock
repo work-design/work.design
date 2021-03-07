@@ -152,7 +152,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 19cc87570e7a6d9108cb4dd128308f75b93c9459
+  revision: 77d9a5bdd97ed7542f942d0c8788e27edca50736
   specs:
     rails_notice (1.0.2)
       rails_auth

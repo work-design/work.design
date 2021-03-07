@@ -2,6 +2,7 @@
   <div class="menu-list">
     <%= link_to t('me.home.index.title'), { controller: '/me/home' }, class: active_helper(controllers: 'me/home', active: 'is-active') %>
   </div>
+  <%= render 'me/notice_nav' %>
   <%= render 'me/org_nav' %>
   <%= render 'me/bench_nav' %>
   <%= render 'me/attend_nav' %>
