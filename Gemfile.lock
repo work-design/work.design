@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://github.com/qinmingyuan/default_form.git
-  revision: 75de8d5d009a86c942e7186e0e76b4fa874b408a
+  revision: d2fc522e0c9f14f7b97fbea5ac5a8c8a3e6c059e
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -50,21 +50,21 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_attend.git
-  revision: 4bbb82f2d3bd17393f522f2af6d77d97d43f5c06
+  revision: d9e056ad6b4f951a177d34a2a0228c070147ceb5
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_audit.git
-  revision: fca1e807fdbb80dab5e35a06e9860cf5024c08f8
+  revision: 4564f257bcae74b39442b456ebf75acc838d05be
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_auth.git
-  revision: a03ded18c299d27ab44a1e1bd0bdaebd2ae260bc
+  revision: 5d7701c340b8628f84efd583defbb74a600fdcbd
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_bench.git
-  revision: 0f19da78ec77191b84481f9350c8e6f15dbd7d91
+  revision: 58e4b2f1be2e8357c8b680d8bb7919f0f8fbdadf
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_com.git
-  revision: 72cbbcf79fdafa7429ad29124b21805b992e706e
+  revision: 98dced474f590ef6b2ca4c237f967e424a7ea1cc
   specs:
     rails_com (1.2.9)
       acme-client
@@ -96,7 +96,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_data.git
-  revision: 39e3c57208afc6e988527b7bf5824ed19c4264c3
+  revision: 454b913953195cd7d8d7b115d9a5cabc07ca3e83
   specs:
     rails_data (1.0.2)
       prawn
@@ -108,21 +108,21 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_detail.git
-  revision: 2241ff25cdfac18bd8d6b15eb04915b438f42450
+  revision: cb1441fa1a2272e90b8e91fbab0e96435357b90c
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_event.git
-  revision: 805b2a342124d64bc977c979daa840ae7c7326e2
+  revision: 10796888151b90df4668b2352d0902de706ca4ee
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_finance.git
-  revision: 822deea853e1fc95968016123dbd47e9d0d289a3
+  revision: 187c123a3172b72af006d32aa140149bf70d3138
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -130,7 +130,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_growth.git
-  revision: e45fff996a8c1d208abbdc0cb4064b86a63efb63
+  revision: 849b5b1b62e262c46b100ba65c10218a30617a4b
   specs:
     rails_growth (0.1.0)
       rails_com (~> 1.2)
@@ -145,14 +145,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_log.git
-  revision: af67d94cc87e89594862e9d71a15c74becbdfbe7
+  revision: c5c855338abb7ab1c8277387f932e3318b812d01
   specs:
     rails_log (2.1.6)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_notice.git
-  revision: 77d9a5bdd97ed7542f942d0c8788e27edca50736
+  revision: ab10be6ba328ff23b4f82c8a43f3152c3fbe1d2f
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -170,7 +170,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_profile.git
-  revision: 1f21276eea098579246a98913ef84b5a677b5af0
+  revision: be65e7adb82dac5316eae9fd3b5981a9827cc7df
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -186,14 +186,14 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_role.git
-  revision: dda9dd406f41e7e231decf7ca36393b37bf9c588
+  revision: f210ef48395fa85475ea0e12fa2b3a5cd4513d27
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://github.com/work-design/rails_trade.git
-  revision: 32efab765e287b5e42d7164484a133817b56ea1f
+  revision: f5d778c01c7ee1a3ff5e6075e65e2b0e716687c8
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -201,7 +201,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_ui.git
-  revision: 9ff7e7240b0af663e57d49329983096d3956c956
+  revision: ab3ed6e843082a60b9bb9b1d9ee33823274097e7
   specs:
     rails_ui (0.1.0)
       rails
