@@ -137,7 +137,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_interact.git
-  revision: 26b454f73e34aad2c628cf37fc7d69e1456a0d30
+  revision: b746734e7944792980a0c22585963ad366fdefb7
   specs:
     rails_interact (0.1.0)
       rails_com (~> 1.2)
@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://github.com/work-design/rails_quip.git
-  revision: ecfddb63d806846c0863b5e8f1e2c701eb7e7c2f
+  revision: 4f5864d9d0bfe7624d6a72568d16dfa955059a72
   specs:
     rails_quip (0.1.0)
       httpx
