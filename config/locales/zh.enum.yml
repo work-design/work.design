@@ -22,3 +22,9 @@ zh:
         good_type:
           Bench::Facilitate: 服务
           Trade::Advance: 充值
+          Factory::Production: 商品
+      trade/trade_item:
+        good_type:
+          Bench::Facilitate: 标准化服务
+          Trade::Advance: 充值
+          Factory::Production: 商品
