@@ -3,6 +3,9 @@ zh:
     edit: 编辑
     destroy: 删除
     search: 搜索
+  home:
+    index:
+      title: 首页
   my:
     home:
       index:

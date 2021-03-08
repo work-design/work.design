@@ -1,20 +1,3 @@
 <div class="weui-tabbar weui-tabbar_fixed">
-  <%= link_to({ controller: '/home' }, class: 'weui-tabbar__item') do %>
-    <i class="fas fa-home weui-tabbar__icon"></i>
-    <div class="weui-tabbar__label">首页</div>
-  <% end %>
-  <%= link_to({ controller: '/bench/facilitates' }, class: 'weui-tabbar__item') do %>
-    <i class="fas fa-store-alt weui-tabbar__icon"></i>
-    <div class="weui-tabbar__label">产品</div>
-  <% end %>
-  <%= link_to({ controller: 'trade/my/carts', action: 'show' }, class: 'weui-tabbar__item') do %>
-    <i class="fas fa-shopping-cart weui-tabbar__icon">
-      <span class="weui-badge"><%= current_cart_count %></span>
-    </i>
-    <div class="weui-tabbar__label">购物车</div>
-  <% end %>
-  <%= link_to({ controller: '/my/home' }, class: 'weui-tabbar__item') do %>
-    <i class="fas fa-user-alt weui-tabbar__icon"></i>
-    <div class="weui-tabbar__label">个人中心</div>
-  <% end %>
+  <%= render 'tab_bar_item' %>
 </div>
