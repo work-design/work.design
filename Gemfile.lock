@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: f6f2c05118a5ed6f302f034ef3d28a915ead9a3c
+  revision: 6dfeccb2f9edd64097e10738336b74e6b612e077
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
-  revision: 437e97586f07c029a4030f6d4110436eb6058c3b
+  revision: e677d3e273650e89a1afa36141bfbe79498a2a58
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
@@ -167,7 +167,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 7e717266717911278820bc1558003fca6592b1b1
+  revision: f90b4ba4e00bb68eec6b87e7bfb62ee5fda039dd
   specs:
     rails_org (0.1)
       rails_auth
