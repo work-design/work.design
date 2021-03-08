@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   controller :home do
     get :index
     get :why
+    get :soft
   end
 
   controller :oauth do
