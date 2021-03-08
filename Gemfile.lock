@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/wx_pay.git
-  revision: dd2e5344d266f8f3f1f82d3b011d01cfaf82eeca
+  revision: 82ee160cc55cdb18a39822904dcbb08b039a14d8
   specs:
     wx_pay (0.21.0)
       activesupport (>= 3.2)
@@ -193,7 +193,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 3fa7e3fda1c17f3cb0f050769b19c8833e05e7af
+  revision: b4eb1a9670213a0e19f05e9ec152335f13405531
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -201,7 +201,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: e587933b3ef92d2b2f39770261f9104286f8e03a
+  revision: f629cd574e791b2d3b36f88f605ec9126edeec52
   specs:
     rails_ui (0.1.0)
       rails
