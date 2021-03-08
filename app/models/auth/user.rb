@@ -8,6 +8,10 @@ module Auth
     include Org::Model::User
     include Wechat::Model::User
     include Profiled::Ext::User
+    include Bench::Model::User
+    include Agential::Model::User
+
+    has_one :wechat_user
 
   end
 end

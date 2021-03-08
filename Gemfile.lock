@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 6dfeccb2f9edd64097e10738336b74e6b612e077
+  revision: c78c250a76341adb6fc881d383edadd69b7c4709
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -129,7 +129,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 187c123a3172b72af006d32aa140149bf70d3138
+  revision: 2e6155875a330dd346d8d8963cb7eeb47e5be35e
   specs:
     rails_finance (0.1.0)
       rails_audit
