@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_121113) do
+ActiveRecord::Schema.define(version: 2021_03_08_022656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1164,8 +1164,26 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.json "extra", default: {}
     t.decimal "unified_quantity", default: "1.0"
     t.bigint "organ_id", scale: 8
+    t.decimal "import_price", default: "0.0"
+    t.decimal "profit_price", default: "0.0"
     t.index ["facilitate_taxon_id"], name: "index_facilitates_on_facilitate_taxon_id"
     t.index ["organ_id"], name: "index_facilitates_on_organ_id"
+  end
+
+  create_table "factory_providers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "factory_taxon_id", scale: 8
+    t.bigint "provider_id", scale: 8
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["factory_taxon_id"], name: "index_factory_providers_on_factory_taxon_id"
+    t.index ["provider_id"], name: "index_factory_providers_on_provider_id"
+  end
+
+  create_table "factory_taxons", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.integer "position", scale: 4
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "financial_months", id: { scale: 8 }, force: :cascade do |t|
@@ -1974,7 +1992,29 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.integer "received_count", scale: 4, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id", scale: 8
+    t.bigint "production_id", scale: 8
     t.index ["part_id"], name: "index_part_plans_on_part_id"
+    t.index ["product_id"], name: "index_part_plans_on_product_id"
+    t.index ["production_id"], name: "index_part_plans_on_production_id"
+  end
+
+  create_table "part_providers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "part_id", scale: 8
+    t.bigint "product_id", scale: 8
+    t.bigint "production_id", scale: 8
+    t.bigint "provider_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.decimal "export_price"
+    t.boolean "verified"
+    t.boolean "selected"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organ_id"], name: "index_part_providers_on_organ_id"
+    t.index ["part_id"], name: "index_part_providers_on_part_id"
+    t.index ["product_id"], name: "index_part_providers_on_product_id"
+    t.index ["production_id"], name: "index_part_providers_on_production_id"
+    t.index ["provider_id"], name: "index_part_providers_on_provider_id"
   end
 
   create_table "part_taxon_hierarchies", id: false, force: :cascade do |t|
@@ -1994,10 +2034,11 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
-    t.integer "max_select", scale: 4
-    t.integer "min_select", scale: 4
     t.jsonb "parent_ancestors"
     t.boolean "take_stock", comment: "可盘点"
+    t.bigint "factory_taxon_id", scale: 8
+    t.integer "parts_count", scale: 4, default: 0
+    t.index ["factory_taxon_id"], name: "index_part_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_part_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_part_taxons_on_parent_id"
   end
@@ -2018,6 +2059,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.jsonb "part_taxon_ancestors"
+    t.integer "part_providers_count", scale: 4, default: 0
     t.index ["organ_id"], name: "index_parts_on_organ_id"
     t.index ["part_taxon_id"], name: "index_parts_on_part_taxon_id"
     t.index ["sku"], name: "index_parts_on_sku"
@@ -2333,12 +2375,26 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.index ["product_id"], name: "index_product_items_on_product_id"
   end
 
+  create_table "product_part_taxons", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "product_id", scale: 8
+    t.bigint "part_taxon_id", scale: 8
+    t.string "name"
+    t.integer "min_select", scale: 4, default: 1
+    t.integer "max_select", scale: 4, default: 1, comment: "最大同时选择，1则为单选"
+    t.json "part_taxon_ancestors"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["part_taxon_id"], name: "index_product_part_taxons_on_part_taxon_id"
+    t.index ["product_id"], name: "index_product_part_taxons_on_product_id"
+  end
+
   create_table "product_parts", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "product_id", scale: 8
     t.bigint "part_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "part_taxon_id", scale: 8
+    t.boolean "default"
     t.index ["part_id"], name: "index_product_parts_on_part_id"
     t.index ["part_taxon_id"], name: "index_product_parts_on_part_taxon_id"
     t.index ["product_id"], name: "index_product_parts_on_product_id"
@@ -2358,6 +2414,18 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.index ["product_id"], name: "index_product_plans_on_product_id"
   end
 
+  create_table "product_produces", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "product_id", scale: 8
+    t.bigint "produce_id", scale: 8
+    t.integer "position", scale: 4
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["produce_id"], name: "index_product_produces_on_produce_id"
+    t.index ["product_id"], name: "index_product_produces_on_product_id"
+  end
+
   create_table "product_taxon_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
@@ -2374,11 +2442,72 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.bigint "parent_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "profit_margin", limit: 2, precision: 4
     t.bigint "organ_id", scale: 8
     t.json "parent_ancestors"
+    t.bigint "factory_taxon_id", scale: 8
+    t.integer "products_count", scale: 4, default: 0
+    t.index ["factory_taxon_id"], name: "index_product_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_product_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_product_taxons_on_parent_id"
+  end
+
+  create_table "production_carts", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "cart_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "product_id", scale: 8
+    t.bigint "production_id", scale: 8
+    t.string "state", default: "init"
+    t.datetime "customized_at"
+    t.decimal "original_price", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cart_id"], name: "index_production_carts_on_cart_id"
+    t.index ["product_id"], name: "index_production_carts_on_product_id"
+    t.index ["production_id"], name: "index_production_carts_on_production_id"
+    t.index ["user_id"], name: "index_production_carts_on_user_id"
+  end
+
+  create_table "production_items", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "production_id", scale: 8
+    t.bigint "product_plan_id", scale: 8
+    t.string "state", default: "producing"
+    t.string "qr_code"
+    t.datetime "produced_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_plan_id"], name: "index_production_items_on_product_plan_id"
+    t.index ["production_id"], name: "index_production_items_on_production_id"
+  end
+
+  create_table "production_parts", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "production_id", scale: 8
+    t.bigint "part_id", scale: 8
+    t.decimal "price", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["part_id"], name: "index_production_parts_on_part_id"
+    t.index ["production_id"], name: "index_production_parts_on_production_id"
+  end
+
+  create_table "productions", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "product_id", scale: 8
+    t.string "name"
+    t.string "qr_code"
+    t.decimal "price", limit: 2, precision: 10, default: "0.0"
+    t.decimal "cost_price", default: "0.0"
+    t.decimal "profit_price", default: "0.0"
+    t.string "str_part_ids"
+    t.boolean "default"
+    t.string "state", default: "init"
+    t.string "sku"
+    t.decimal "advance_price", default: "0.0"
+    t.json "extra", default: {}
+    t.string "unit"
+    t.decimal "quantity", default: "0.0"
+    t.decimal "unified_quantity", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_productions_on_product_id"
   end
 
   create_table "products", id: { scale: 8 }, force: :cascade do |t|
@@ -2398,6 +2527,10 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.bigint "organ_id", scale: 8
     t.decimal "cost_price", limit: 2, precision: 10
     t.json "product_taxon_ancestors"
+    t.string "str_part_ids"
+    t.decimal "profit_margin", limit: 2, precision: 4
+    t.decimal "min_price"
+    t.decimal "max_price"
     t.index ["organ_id"], name: "index_products_on_organ_id"
     t.index ["product_taxon_id"], name: "index_products_on_product_taxon_id"
     t.index ["sku"], name: "index_products_on_sku"
@@ -2866,8 +2999,6 @@ ActiveRecord::Schema.define(version: 2021_03_07_121113) do
     t.string "namespace_identifier"
     t.string "action_name"
     t.string "controller_path"
-    t.string "controller_name"
-    t.string "required_parts", array: true
     t.bigint "rule_id", scale: 8
     t.index ["rule_id"], name: "index_role_rules_on_rule_id"
   end
