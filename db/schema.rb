@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_022656) do
+ActiveRecord::Schema.define(version: 2021_03_09_051845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2139,6 +2139,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_022656) do
     t.boolean "verified", default: true
     t.integer "lock_version", scale: 4
     t.decimal "refunded_amount", default: "0.0"
+    t.bigint "card_id", scale: 8
+    t.index ["card_id"], name: "index_payments_on_card_id"
     t.index ["organ_id"], name: "index_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_payments_on_payment_method_id"
   end
