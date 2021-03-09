@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_051845) do
+ActiveRecord::Schema.define(version: 2021_03_09_160508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -365,6 +365,14 @@ ActiveRecord::Schema.define(version: 2021_03_09_051845) do
     t.string "timezone"
     t.string "locale"
     t.index ["parent_id"], name: "index_areas_on_parent_id"
+  end
+
+  create_table "assessments", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.decimal "amount", default: "0.0"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organ_id"], name: "index_assessments_on_organ_id"
   end
 
   create_table "attendance_logs", id: { scale: 8 }, force: :cascade do |t|
@@ -3103,6 +3111,18 @@ ActiveRecord::Schema.define(version: 2021_03_09_051845) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "date"
+  end
+
+  create_table "stocks", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "assessment_id", scale: 8
+    t.decimal "ratio", limit: 2, precision: 4
+    t.decimal "amount", default: "0.0", comment: "发行量"
+    t.decimal "expense_amount", default: "0.0"
+    t.json "expense_detail", default: {}
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assessment_id"], name: "index_stocks_on_assessment_id"
   end
 
   create_table "super_job_titles", id: { scale: 8 }, force: :cascade do |t|
