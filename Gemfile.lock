@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_where.git
-  revision: 0a0812c516cc853314b9abaf9b6fdcc1471cb23f
+  revision: 0a20b2d58f2572fe6cafdaa2cc7be6a9411930c0
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
