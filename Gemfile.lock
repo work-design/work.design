@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: c78c250a76341adb6fc881d383edadd69b7c4709
+  revision: 7dca49b4af5dfcdb3e2eff0a612b20c2ea05ed50
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -200,7 +200,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 1e36a69348e6853b27888e84d83f0fae6da3a74c
+  revision: 50b46bca4f75678942acc11eb2e097e37355762b
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
