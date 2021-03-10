@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 27156fdc8f3c9b06723e0b057ca76e054f9b06e4
+  revision: b52dcc58059fdad929e6fd28ceca1e894dc2d807
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -129,7 +129,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: c7d7b6fdfd4e897b06a0f9972142827f3a001517
+  revision: bfd5cfd1ea12837801324f20743fb3ae1770094f
   specs:
     rails_finance (0.1.0)
       rails_audit
