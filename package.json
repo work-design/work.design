@@ -2,7 +2,7 @@
   "nameme": "one-work",
   "private": true,
   "dependencies": {
-    "@antv/g2plot": "^1.0.1",
+    "@antv/g2plot": "^2.3.13",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fullcalendar/core": "^4.1.0",
     "@fullcalendar/daygrid": "^4.1.0",

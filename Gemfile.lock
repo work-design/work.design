@@ -64,10 +64,11 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: b52dcc58059fdad929e6fd28ceca1e894dc2d807
+  revision: 4b8c77114a8bdfbb782d7a3e9603bfe29e668c62
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
+      groupdate
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
@@ -334,6 +335,8 @@ GEM
     ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.2.2)
+      activesupport (>= 5)
     hashie (4.1.0)
     http-2-next (0.4.0)
     http-accept (1.7.0)
