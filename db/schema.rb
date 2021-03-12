@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_09_160508) do
+ActiveRecord::Schema.define(version: 2021_03_11_034118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -372,6 +372,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.decimal "amount", default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "trustee_amount"
     t.index ["organ_id"], name: "index_assessments_on_organ_id"
   end
 
@@ -1302,7 +1303,9 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.decimal "expense_amount", default: "0.0"
     t.jsonb "expense_detail", default: {}
     t.bigint "buyer_id", scale: 8
+    t.bigint "organ_id", scale: 8
     t.index ["buyer_id"], name: "index_funds_on_buyer_id"
+    t.index ["organ_id"], name: "index_funds_on_organ_id"
   end
 
   create_table "good_partners", id: { scale: 8 }, force: :cascade do |t|
@@ -1373,12 +1376,12 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.decimal "reference_max"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.string "target_source"
     t.index ["facilitate_taxon_id"], name: "index_indicators_on_facilitate_taxon_id"
     t.index ["organ_id"], name: "index_indicators_on_organ_id"
-    t.index ["project_taxon_id"], name: "index_indicators_on_project_taxon_id"
+    t.index ["taxon_id"], name: "index_indicators_on_taxon_id"
   end
 
   create_table "infos", id: { scale: 8 }, force: :cascade do |t|
@@ -2639,7 +2642,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
   end
 
   create_table "project_preferences", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "facilitate_id", scale: 8
     t.bigint "provider_id", scale: 8
@@ -2647,8 +2650,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["facilitate_id"], name: "index_project_preferences_on_facilitate_id"
     t.index ["facilitate_taxon_id"], name: "index_project_preferences_on_facilitate_taxon_id"
-    t.index ["project_taxon_id"], name: "index_project_preferences_on_project_taxon_id"
     t.index ["provider_id"], name: "index_project_preferences_on_provider_id"
+    t.index ["taxon_id"], name: "index_project_preferences_on_taxon_id"
   end
 
   create_table "project_stages", id: { scale: 8 }, force: :cascade do |t|
@@ -2666,25 +2669,25 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
   end
 
   create_table "project_taxon_facilitates", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "facilitate_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["facilitate_id"], name: "index_project_taxon_facilitates_on_facilitate_id"
     t.index ["facilitate_taxon_id"], name: "index_project_taxon_facilitates_on_facilitate_taxon_id"
-    t.index ["project_taxon_id"], name: "index_project_taxon_facilitates_on_project_taxon_id"
+    t.index ["taxon_id"], name: "index_project_taxon_facilitates_on_taxon_id"
   end
 
   create_table "project_taxon_indicators", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "indicator_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["facilitate_taxon_id"], name: "index_project_taxon_indicators_on_facilitate_taxon_id"
     t.index ["indicator_id"], name: "index_project_taxon_indicators_on_indicator_id"
-    t.index ["project_taxon_id"], name: "index_project_taxon_indicators_on_project_taxon_id"
+    t.index ["taxon_id"], name: "index_project_taxon_indicators_on_taxon_id"
   end
 
   create_table "project_taxons", id: { scale: 8 }, force: :cascade do |t|
@@ -2717,7 +2720,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.string "state"
     t.jsonb "extra"
     t.decimal "fund_expense"
@@ -2725,7 +2728,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.decimal "expense_amount"
     t.decimal "budget_amount"
     t.index ["organ_id"], name: "index_projects_on_organ_id"
-    t.index ["project_taxon_id"], name: "index_projects_on_project_taxon_id"
+    t.index ["taxon_id"], name: "index_projects_on_taxon_id"
   end
 
   create_table "promote_carts", id: { scale: 8 }, force: :cascade do |t|
@@ -3116,13 +3119,18 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
   create_table "stocks", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "assessment_id", scale: 8
     t.decimal "ratio", limit: 2, precision: 4
-    t.decimal "amount", default: "0.0", comment: "发行量"
-    t.decimal "expense_amount", default: "0.0"
+    t.integer "amount", scale: 4, default: 0, comment: "发行量"
+    t.integer "expense_amount", scale: 4, default: 0
     t.json "expense_detail", default: {}
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "assess_amount"
+    t.bigint "member_id", scale: 8
+    t.bigint "organ_id", scale: 8
     t.index ["assessment_id"], name: "index_stocks_on_assessment_id"
+    t.index ["member_id"], name: "index_stocks_on_member_id"
+    t.index ["organ_id"], name: "index_stocks_on_organ_id"
   end
 
   create_table "super_job_titles", id: { scale: 8 }, force: :cascade do |t|
@@ -3219,7 +3227,7 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.integer "position", scale: 4, default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_taxon_id", scale: 8
+    t.bigint "taxon_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.bigint "job_title_id", scale: 8
     t.bigint "member_id", scale: 8
@@ -3248,8 +3256,6 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.datetime "updated_at", null: false
     t.string "state", default: "0"
     t.string "focus", default: "0"
-    t.string "repeat_type"
-    t.integer "repeat_days", scale: 4, array: true
     t.integer "position", scale: 4, default: 1
     t.integer "estimated_time", scale: 4
     t.integer "actual_time", scale: 4
@@ -3266,6 +3272,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_160508) do
     t.string "note"
     t.bigint "department_id", scale: 8
     t.string "serial_number", comment: "Task Template test repeat"
+    t.decimal "cost_fund"
+    t.integer "cost_stock", scale: 4
     t.index ["department_id"], name: "index_tasks_on_department_id"
     t.index ["job_title_id"], name: "index_tasks_on_job_title_id"
     t.index ["member_id"], name: "index_tasks_on_member_id"
