@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_044012) do
+ActiveRecord::Schema.define(version: 2021_03_12_060220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -541,10 +541,13 @@ ActiveRecord::Schema.define(version: 2021_03_12_044012) do
     t.string "note", scale: 4096
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "task_id", scale: 8
+    t.string "type"
     t.index ["financial_taxon_id"], name: "index_budgets_on_financial_taxon_id"
     t.index ["financial_type", "financial_id"], name: "index_budgets_on_budgeting"
     t.index ["member_id"], name: "index_budgets_on_member_id"
     t.index ["organ_id"], name: "index_budgets_on_organ_id"
+    t.index ["task_id"], name: "index_budgets_on_task_id"
   end
 
   create_table "busynesses", id: { scale: 8 }, force: :cascade do |t|
