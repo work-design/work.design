@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_034118) do
+ActiveRecord::Schema.define(version: 2021_03_12_044012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1230,32 +1230,6 @@ ActiveRecord::Schema.define(version: 2021_03_11_034118) do
     t.index ["parent_id"], name: "index_financial_taxons_on_parent_id"
   end
 
-  create_table "fund_budgets", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "fund_id", scale: 8
-    t.string "financial_type"
-    t.bigint "financial_id", scale: 8
-    t.decimal "amount", default: "0.0"
-    t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["financial_type", "financial_id"], name: "index_fund_budgets_on_financial"
-    t.index ["fund_id"], name: "index_fund_budgets_on_fund_id"
-  end
-
-  create_table "fund_expenses", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "fund_id", scale: 8
-    t.string "financial_type"
-    t.bigint "financial_id", scale: 8
-    t.decimal "amount", default: "0.0"
-    t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "fund_budget_id", scale: 8
-    t.index ["financial_type", "financial_id"], name: "index_fund_expenses_on_financial"
-    t.index ["fund_budget_id"], name: "index_fund_expenses_on_fund_budget_id"
-    t.index ["fund_id"], name: "index_fund_expenses_on_fund_id"
-  end
-
   create_table "fund_incomes", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "fund_id", scale: 8
     t.bigint "user_id", scale: 8
@@ -1270,19 +1244,6 @@ ActiveRecord::Schema.define(version: 2021_03_11_034118) do
     t.index ["financial_type", "financial_id"], name: "index_fund_incomes_on_financial"
     t.index ["fund_id"], name: "index_fund_incomes_on_fund_id"
     t.index ["user_id"], name: "index_fund_incomes_on_user_id"
-  end
-
-  create_table "fund_uses", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "fund_id", scale: 8
-    t.string "financial_type"
-    t.bigint "financial_id", scale: 8
-    t.decimal "budget_amount"
-    t.decimal "amount", default: "0.0"
-    t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["financial_type", "financial_id"], name: "index_fund_uses_on_financial"
-    t.index ["fund_id"], name: "index_fund_uses_on_fund_id"
   end
 
   create_table "funds", id: { scale: 8 }, force: :cascade do |t|
