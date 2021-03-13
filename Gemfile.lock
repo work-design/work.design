@@ -83,7 +83,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: be5ae0971c9c48825c03df47ded7553ebe4c13ad
+  revision: 26aa0860a5bc98287a3b10602bb1184008a626c8
   specs:
     rails_com (1.2.9)
       acme-client
@@ -130,7 +130,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 591fef3c785250bac52fcbe55f1bfb4d41567c29
+  revision: 8d164dde55c20068b230488a20c330a2fd4e7492
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: ac61f3ea5c8cc897e00168a6979bf88093b7c48d
+  revision: b90056c0022c42e0460892d3569b537d1c6d6d37
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
