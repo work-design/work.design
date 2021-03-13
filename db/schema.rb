@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_12_060220) do
+ActiveRecord::Schema.define(version: 2021_03_13_111216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -396,14 +396,14 @@ ActiveRecord::Schema.define(version: 2021_03_12_060220) do
 
   create_table "attendance_settings", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "member_id", scale: 8
-    t.bigint "financial_month_id", scale: 8
     t.string "state", default: "init"
     t.string "on_time", default: "08:30"
     t.string "off_time"
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["financial_month_id"], name: "index_attendance_settings_on_financial_month_id"
+    t.date "effect_on"
+    t.date "expire_on"
     t.index ["member_id"], name: "index_attendance_settings_on_member_id"
   end
 
