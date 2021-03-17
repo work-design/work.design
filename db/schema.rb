@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_111216) do
+ActiveRecord::Schema.define(version: 2021_03_17_131357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3730,7 +3730,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_111216) do
 
   create_table "wechat_receiveds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "wechat_platform_id", scale: 8
-    t.bigint "wechat_request_id", scale: 8
     t.string "appid"
     t.string "open_id"
     t.string "msg_id"
@@ -3743,7 +3742,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_111216) do
     t.index ["appid"], name: "index_wechat_receiveds_on_appid"
     t.index ["open_id"], name: "index_wechat_receiveds_on_open_id"
     t.index ["wechat_platform_id"], name: "index_wechat_receiveds_on_wechat_platform_id"
-    t.index ["wechat_request_id"], name: "index_wechat_receiveds_on_wechat_request_id"
   end
 
   create_table "wechat_registers", id: { scale: 8 }, force: :cascade do |t|
@@ -3801,6 +3799,8 @@ ActiveRecord::Schema.define(version: 2021_03_13_111216) do
     t.string "open_id"
     t.json "reply_body"
     t.string "reply_encrypt"
+    t.bigint "wechat_received_id", scale: 8
+    t.index ["wechat_received_id"], name: "index_wechat_requests_on_wechat_received_id"
     t.index ["wechat_reply_id"], name: "index_wechat_requests_on_wechat_reply_id"
   end
 
@@ -3861,7 +3861,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_111216) do
   end
 
   create_table "wechat_tags", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_app_id", scale: 8
     t.string "name"
     t.string "tag_id"
     t.integer "count", scale: 4
@@ -3871,9 +3870,9 @@ ActiveRecord::Schema.define(version: 2021_03_13_111216) do
     t.bigint "user_tag_id", scale: 8
     t.string "tagging_type"
     t.bigint "tagging_id", scale: 8
+    t.string "appid"
     t.index ["tagging_type", "tagging_id"], name: "index_wechat_tags_on_tagging_type_and_tagging_id"
     t.index ["user_tag_id"], name: "index_wechat_tags_on_user_tag_id"
-    t.index ["wechat_app_id"], name: "index_wechat_tags_on_wechat_app_id"
   end
 
   create_table "wechat_templates", id: { scale: 8 }, force: :cascade do |t|
