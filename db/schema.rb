@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_17_131357) do
+ActiveRecord::Schema.define(version: 2021_03_19_123802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3022,6 +3022,31 @@ ActiveRecord::Schema.define(version: 2021_03_17_131357) do
     t.boolean "landmark"
   end
 
+  create_table "scene_menus", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "scene_id", scale: 8
+    t.bigint "wechat_menu_id", scale: 8
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["scene_id"], name: "index_scene_menus_on_scene_id"
+    t.index ["wechat_menu_id"], name: "index_scene_menus_on_wechat_menu_id"
+  end
+
+  create_table "scenes", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "wechat_response_id", scale: 8
+    t.string "match_value"
+    t.integer "expire_seconds", scale: 4
+    t.datetime "expire_at"
+    t.string "qrcode_ticket"
+    t.string "qrcode_url"
+    t.string "appid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appid"], name: "index_scenes_on_appid"
+    t.index ["organ_id"], name: "index_scenes_on_organ_id"
+    t.index ["wechat_response_id"], name: "index_scenes_on_wechat_response_id"
+  end
+
   create_table "schedules", id: { scale: 8 }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -3629,7 +3654,7 @@ ActiveRecord::Schema.define(version: 2021_03_17_131357) do
     t.datetime "jsapi_ticket_expires_at"
     t.string "mch_id"
     t.string "key"
-    t.boolean "primary"
+    t.boolean "shared"
     t.string "oauth2_state"
     t.string "user_name"
     t.boolean "oauth_enable", default: true
@@ -3817,15 +3842,13 @@ ActiveRecord::Schema.define(version: 2021_03_17_131357) do
     t.string "match_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "expire_seconds", scale: 4
-    t.string "qrcode_ticket"
-    t.string "qrcode_url"
     t.datetime "expire_at"
     t.string "effective_type"
     t.bigint "effective_id", scale: 8
     t.boolean "contain", default: true
     t.string "request_types", array: true
     t.string "appid"
+    t.boolean "enabled", default: true
     t.index ["effective_type", "effective_id"], name: "index_wechat_responses_on_effective_type_and_effective_id"
   end
 
