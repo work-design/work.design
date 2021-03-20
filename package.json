@@ -5,7 +5,7 @@
     "@antv/g2plot": "^2.3.13",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@fullcalendar/core": "^5.5.1",
-    "@fullcalendar/daygrid": "^5.5.1",
+    "@fullcalendar/daygrid": "^5.5.0",
     "@fullcalendar/moment": "^4.1.0",
     "@fullcalendar/moment-timezone": "^4.1.0",
     "@fullcalendar/resource-common": "^4.1.0",
