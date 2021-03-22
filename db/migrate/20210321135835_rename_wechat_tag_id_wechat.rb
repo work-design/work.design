@@ -4,7 +4,7 @@ class RenameWechatTagIdWechat < ActiveRecord::Migration[6.1]
     rename_column :wechat_auths, :wechat_request_id, :request_id
     rename_column :wechat_extractions, :wechat_request_id, :request_id
     rename_column :wechat_request_replies, :wechat_request_id, :request_id
-    rename_column :wechat_request_replies, :reply_id, :reply_id
+    rename_column :wechat_request_replies, :wechat_reply_id, :reply_id
     rename_column :wechat_requests, :wechat_reply_id, :reply_id
     rename_column :wechat_requests, :wechat_received_id, :received_id
     rename_column :wechat_scene_menus, :wechat_menu_id, :menu_id
