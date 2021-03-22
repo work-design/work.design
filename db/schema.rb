@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_134749) do
+ActiveRecord::Schema.define(version: 2021_03_21_135835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1706,17 +1706,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "news_reply_items", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "news_reply_id", scale: 8
-    t.string "title"
-    t.string "description"
-    t.string "pic_url"
-    t.string "url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["news_reply_id"], name: "index_news_reply_items_on_news_reply_id"
-  end
-
   create_table "notification_sendings", id: { scale: 8 }, force: :cascade do |t|
     t.string "way"
     t.string "sent_to"
@@ -3022,32 +3011,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.boolean "landmark"
   end
 
-  create_table "scene_menus", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "scene_id", scale: 8
-    t.bigint "wechat_menu_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["scene_id"], name: "index_scene_menus_on_scene_id"
-    t.index ["wechat_menu_id"], name: "index_scene_menus_on_wechat_menu_id"
-  end
-
-  create_table "scenes", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "organ_id", scale: 8
-    t.bigint "wechat_response_id", scale: 8
-    t.string "match_value"
-    t.integer "expire_seconds", scale: 4
-    t.datetime "expire_at"
-    t.string "qrcode_ticket"
-    t.string "qrcode_url"
-    t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "menu_id"
-    t.index ["appid"], name: "index_scenes_on_appid"
-    t.index ["organ_id"], name: "index_scenes_on_organ_id"
-    t.index ["wechat_response_id"], name: "index_scenes_on_wechat_response_id"
-  end
-
   create_table "schedules", id: { scale: 8 }, force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -3329,32 +3292,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.index ["organ_id"], name: "index_teams_on_organ_id"
-  end
-
-  create_table "template_configs", id: { scale: 8 }, force: :cascade do |t|
-    t.string "type"
-    t.string "title"
-    t.string "tid"
-    t.string "description"
-    t.string "notifiable_type"
-    t.string "code", default: "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "content"
-  end
-
-  create_table "template_key_words", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "template_config_id", scale: 8
-    t.integer "position", scale: 4
-    t.integer "kid", scale: 4
-    t.string "name"
-    t.string "example"
-    t.string "rule"
-    t.string "mapping"
-    t.string "color"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["template_config_id"], name: "index_template_key_words_on_template_config_id"
   end
 
   create_table "time_items", id: { type: :serial, scale: 4 }, force: :cascade do |t|
@@ -3672,10 +3609,10 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.datetime "auth_code_expires_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "wechat_request_id", scale: 8
+    t.bigint "request_id", scale: 8
     t.boolean "testcase"
+    t.index ["request_id"], name: "index_wechat_auths_on_request_id"
     t.index ["wechat_platform_id"], name: "index_wechat_auths_on_wechat_platform_id"
-    t.index ["wechat_request_id"], name: "index_wechat_auths_on_wechat_request_id"
   end
 
   create_table "wechat_extractions", id: { scale: 8 }, force: :cascade do |t|
@@ -3684,10 +3621,10 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.string "matched"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "wechat_request_id", scale: 8
+    t.bigint "request_id", scale: 8
     t.integer "serial_number", scale: 4
+    t.index ["request_id"], name: "index_wechat_extractions_on_request_id"
     t.index ["wechat_extractor_id"], name: "index_wechat_extractions_on_wechat_extractor_id"
-    t.index ["wechat_request_id"], name: "index_wechat_extractions_on_wechat_request_id"
   end
 
   create_table "wechat_extractors", id: { scale: 8 }, force: :cascade do |t|
@@ -3703,8 +3640,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.time "finish_at"
     t.string "valid_response"
     t.string "invalid_response"
-    t.bigint "wechat_response_id", scale: 8
-    t.index ["wechat_response_id"], name: "index_wechat_extractors_on_wechat_response_id"
+    t.bigint "response_id", scale: 8
+    t.index ["response_id"], name: "index_wechat_extractors_on_response_id"
   end
 
   create_table "wechat_menus", id: { scale: 8 }, force: :cascade do |t|
@@ -3722,12 +3659,23 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.index ["parent_id"], name: "index_wechat_menus_on_parent_id"
   end
 
+  create_table "wechat_news_reply_items", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "news_reply_id", scale: 8
+    t.string "title"
+    t.string "description"
+    t.string "pic_url"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["news_reply_id"], name: "index_wechat_news_reply_items_on_news_reply_id"
+  end
+
   create_table "wechat_notices", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_template_id", scale: 8
+    t.bigint "template_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "notification_id", scale: 8
-    t.bigint "wechat_subscribed_id", scale: 8
+    t.bigint "subscribed_id", scale: 8
     t.string "link", default: "index"
     t.string "msg_id"
     t.string "status"
@@ -3735,8 +3683,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.string "appid"
     t.string "open_id"
     t.index ["notification_id"], name: "index_wechat_notices_on_notification_id"
-    t.index ["wechat_subscribed_id"], name: "index_wechat_notices_on_wechat_subscribed_id"
-    t.index ["wechat_template_id"], name: "index_wechat_notices_on_wechat_template_id"
+    t.index ["subscribed_id"], name: "index_wechat_notices_on_subscribed_id"
+    t.index ["template_id"], name: "index_wechat_notices_on_template_id"
   end
 
   create_table "wechat_platforms", id: { scale: 8 }, force: :cascade do |t|
@@ -3802,13 +3750,13 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
   end
 
   create_table "wechat_request_replies", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_request_id", scale: 8
-    t.bigint "wechat_reply_id", scale: 8
+    t.bigint "request_id", scale: 8
+    t.bigint "reply_id", scale: 8
     t.jsonb "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["wechat_reply_id"], name: "index_wechat_request_replies_on_wechat_reply_id"
-    t.index ["wechat_request_id"], name: "index_wechat_request_replies_on_wechat_request_id"
+    t.index ["reply_id"], name: "index_wechat_request_replies_on_reply_id"
+    t.index ["request_id"], name: "index_wechat_request_replies_on_request_id"
   end
 
   create_table "wechat_requests", id: { scale: 8 }, force: :cascade do |t|
@@ -3820,23 +3768,23 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.string "event"
     t.string "event_key"
     t.jsonb "raw_body"
-    t.bigint "wechat_reply_id", scale: 8
+    t.bigint "reply_id", scale: 8
     t.string "appid"
     t.string "open_id"
     t.json "reply_body"
     t.string "reply_encrypt"
-    t.bigint "wechat_received_id", scale: 8
-    t.index ["wechat_received_id"], name: "index_wechat_requests_on_wechat_received_id"
-    t.index ["wechat_reply_id"], name: "index_wechat_requests_on_wechat_reply_id"
+    t.bigint "received_id", scale: 8
+    t.index ["received_id"], name: "index_wechat_requests_on_received_id"
+    t.index ["reply_id"], name: "index_wechat_requests_on_reply_id"
   end
 
   create_table "wechat_response_requests", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_response_id", scale: 8
+    t.bigint "response_id", scale: 8
     t.string "request_type", comment: "用户发送消息类型"
     t.string "appid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["wechat_response_id"], name: "index_wechat_response_requests_on_wechat_response_id"
+    t.index ["response_id"], name: "index_wechat_response_requests_on_response_id"
   end
 
   create_table "wechat_responses", id: { scale: 8 }, force: :cascade do |t|
@@ -3851,6 +3799,32 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.string "appid"
     t.boolean "enabled", default: true
     t.index ["effective_type", "effective_id"], name: "index_wechat_responses_on_effective_type_and_effective_id"
+  end
+
+  create_table "wechat_scene_menus", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "scene_id", scale: 8
+    t.bigint "menu_id", scale: 8
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["menu_id"], name: "index_wechat_scene_menus_on_menu_id"
+    t.index ["scene_id"], name: "index_wechat_scene_menus_on_scene_id"
+  end
+
+  create_table "wechat_scenes", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "wechat_response_id", scale: 8
+    t.string "match_value"
+    t.integer "expire_seconds", scale: 4
+    t.datetime "expire_at"
+    t.string "qrcode_ticket"
+    t.string "qrcode_url"
+    t.string "appid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "menu_id"
+    t.index ["appid"], name: "index_wechat_scenes_on_appid"
+    t.index ["organ_id"], name: "index_wechat_scenes_on_organ_id"
+    t.index ["wechat_response_id"], name: "index_wechat_scenes_on_wechat_response_id"
   end
 
   create_table "wechat_services", id: { scale: 8 }, force: :cascade do |t|
@@ -3868,12 +3842,12 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
 
   create_table "wechat_subscribeds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "wechat_user_id", scale: 8
-    t.bigint "wechat_template_id", scale: 8
+    t.bigint "template_id", scale: 8
     t.datetime "sending_at"
     t.string "status", default: "accept"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["wechat_template_id"], name: "index_wechat_subscribeds_on_wechat_template_id"
+    t.index ["template_id"], name: "index_wechat_subscribeds_on_template_id"
     t.index ["wechat_user_id"], name: "index_wechat_subscribeds_on_wechat_user_id"
   end
 
@@ -3899,8 +3873,34 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.index ["user_tag_id"], name: "index_wechat_tags_on_user_tag_id"
   end
 
+  create_table "wechat_template_configs", id: { scale: 8 }, force: :cascade do |t|
+    t.string "type"
+    t.string "title"
+    t.string "tid"
+    t.string "description"
+    t.string "notifiable_type"
+    t.string "code", default: "default"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "content"
+  end
+
+  create_table "wechat_template_key_words", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "template_config_id", scale: 8
+    t.integer "position", scale: 4
+    t.integer "kid", scale: 4
+    t.string "name"
+    t.string "example"
+    t.string "rule"
+    t.string "mapping"
+    t.string "color"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["template_config_id"], name: "index_wechat_template_key_words_on_template_config_id"
+  end
+
   create_table "wechat_templates", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_app_id", scale: 8
+    t.bigint "app_id", scale: 8
     t.string "template_id"
     t.string "title"
     t.string "content"
@@ -3909,8 +3909,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "template_config_id", scale: 8
+    t.index ["app_id"], name: "index_wechat_templates_on_app_id"
     t.index ["template_config_id"], name: "index_wechat_templates_on_template_config_id"
-    t.index ["wechat_app_id"], name: "index_wechat_templates_on_wechat_app_id"
   end
 
   create_table "wechat_tickets", id: { scale: 8 }, force: :cascade do |t|
@@ -3926,12 +3926,12 @@ ActiveRecord::Schema.define(version: 2021_03_19_134749) do
 
   create_table "wechat_user_tags", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "wechat_user_id", scale: 8
-    t.bigint "wechat_tag_id", scale: 8
+    t.bigint "tag_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_tagged_id", scale: 8
+    t.index ["tag_id"], name: "index_wechat_user_tags_on_tag_id"
     t.index ["user_tagged_id"], name: "index_wechat_user_tags_on_user_tagged_id"
-    t.index ["wechat_tag_id"], name: "index_wechat_user_tags_on_wechat_tag_id"
     t.index ["wechat_user_id"], name: "index_wechat_user_tags_on_wechat_user_id"
   end
 
