@@ -6,7 +6,7 @@ module Auth
     include Notice::Ext::Setting
     include Trade::Model::User
     include Org::Model::User
-    include Wechat::Model::User
+    include Wechat::Ext::User
     include Profiled::Ext::User
     include Bench::Model::User
     include Agential::Model::User
