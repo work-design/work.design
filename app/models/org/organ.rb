@@ -1,8 +1,8 @@
 module Org
   class Organ < ApplicationRecord
-    include Com::Ext::Taxon
     include Model::Organ
-    include Wechat::Model::Organ
+    include Com::Ext::Taxon
+    include Wechat::Ext::Organ
     include Roled::Model::User
     include Bench::Model::Organ
   end
