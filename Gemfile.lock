@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_form.git
-  revision: d2fc522e0c9f14f7b97fbea5ac5a8c8a3e6c059e
+  revision: 6242a0c2987b798080038b1d90e5dbde729a5b9c
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
@@ -209,14 +209,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 0a525daba4a1bdf8f09936c11de337d25850c435
+  revision: 51753e12b1262446efeecdab2c5aa83169b27235
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 4c8f259aeccaa9054e39758157a6bacc7b67e98b
+  revision: 1f9b4c0ddf6a67e82d9bebdd36c369a280372909
   specs:
     rails_wechat (0.1.0)
       rails_auth
