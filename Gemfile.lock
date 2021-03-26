@@ -130,7 +130,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 8d164dde55c20068b230488a20c330a2fd4e7492
+  revision: 1c90a1d043ed469bbdf6f166b2f60392859bcd30
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: f7acb26275af2ce9fbc1b0766968848cf69b6740
+  revision: 82421b73eb5ab61adedc06a94656b1e6b50cb38d
   specs:
     rails_org (0.1)
       rails_auth
@@ -209,14 +209,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 6d608c42eacaae3cee242b974f1059c0a37fbf00
+  revision: d0d348d37c9a35c7019485cf5d5408fdd7fdc72e
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 4fa09cab4873227f22fb2ef522cc93374fb8c20a
+  revision: cec25e044a14c28ae88190252aa98aa986e8a9b9
   specs:
     rails_wechat (0.1.0)
       rails_auth

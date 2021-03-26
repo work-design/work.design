@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_121450) do
+ActiveRecord::Schema.define(version: 2021_03_26_011335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3812,7 +3812,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_121450) do
 
   create_table "wechat_scenes", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
-    t.bigint "response_id", scale: 8
     t.string "match_value"
     t.integer "expire_seconds", scale: 4
     t.datetime "expire_at"
@@ -3824,7 +3823,6 @@ ActiveRecord::Schema.define(version: 2021_03_22_121450) do
     t.string "menu_id"
     t.index ["appid"], name: "index_wechat_scenes_on_appid"
     t.index ["organ_id"], name: "index_wechat_scenes_on_organ_id"
-    t.index ["response_id"], name: "index_wechat_scenes_on_response_id"
   end
 
   create_table "wechat_services", id: { scale: 8 }, force: :cascade do |t|
