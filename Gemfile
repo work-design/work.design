@@ -9,6 +9,7 @@ gem 'sidekiq'
 gem 'pg'
 gem 'redis'
 gem 'dalli'
+gem 'active_record_distinct_on'
 
 # Assets
 gem 'webpacker', '6.0.0.beta.6', require: File.exist?('config/webpacker.yml')

@@ -24,6 +24,13 @@
           </div>
           <div class="weui-cell__ft"></div>
         <% end %>
+        <%= link_to({ controller: 'wechat/my/users', action: 'invite_qrcode' }, class: 'weui-cell weui-cell_access') do %>
+          <div class="weui-cell__bd">
+            <i class="fas fa-qrcode fa-fw"></i>
+            <span>邀请二维码</span>
+          </div>
+          <div class="weui-cell__ft"></div>
+        <% end %>
       </div>
     </div>
   </div>
