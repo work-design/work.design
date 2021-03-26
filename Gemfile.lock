@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: 2b2bf0a61e9722f0de006c9236b85ceb74f0a207
+  revision: bf9f3a7fc57308c17d88fb3a3fba5f5f20a4c8d0
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
@@ -123,7 +123,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 939b51b0f50586b5190d5c6a0470d1c5565844e7
+  revision: 3424024d1f6bf88dba36f58cb4d50e00593ece9f
   specs:
     rails_factory (1.0.0)
       rails_com (~> 1.2)
