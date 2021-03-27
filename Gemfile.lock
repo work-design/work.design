@@ -592,6 +592,7 @@ DEPENDENCIES
   kaminari
   kramdown
   listen
+  mini_magick
   nokogiri
   octokit
   omniauth-github
