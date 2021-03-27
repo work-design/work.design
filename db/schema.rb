@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_075756) do
+ActiveRecord::Schema.define(version: 2021_03_27_022917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3928,6 +3928,9 @@ ActiveRecord::Schema.define(version: 2021_03_26_075756) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_tagged_id", scale: 8
+    t.string "source_type"
+    t.bigint "source_id", scale: 8
+    t.index ["source_type", "source_id"], name: "index_wechat_user_tags_on_source"
     t.index ["tag_id"], name: "index_wechat_user_tags_on_tag_id"
     t.index ["user_tagged_id"], name: "index_wechat_user_tags_on_user_tagged_id"
     t.index ["wechat_user_id"], name: "index_wechat_user_tags_on_wechat_user_id"
