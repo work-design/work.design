@@ -70,8 +70,7 @@ Rails.application.configure do
 end
 ActiveRecord::Base.verbose_query_logs = true
 Rails.application.routes.default_url_options = {
-  host: 'lvh.me',
-  port: 3000
+  host: 'test.one.work'
 }
 #ActionCable.server.config.logger = Logger.new(nil)
 ENV['EDITOR'] = 'code --wait'
