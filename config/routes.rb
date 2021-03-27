@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   require 'sidekiq/web'
-  constraints ->(req) { AuthorizedToken.find_by(token: req.env['rack.session']['auth_token'])&.user&.admin? if req.env['rack.session'].present? } do
+  constraints ->(req) { Auth::AuthorizedToken.find_by(token: req.env['rack.session']['auth_token'])&.user&.admin? if req.env['rack.session'].present? } do
     mount Sidekiq::Web => '/sidekiq'
   end
   mount ActionCable.server => '/cable'
