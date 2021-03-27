@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 8958eb9763315eaf2008c123ecd84d4646f072fd
+  revision: 050ef66e9551fc7dfa88b743fed8df7e4a156137
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: cb2e38c92b0324c2d46d0cd71ab5359dcde840b3
+  revision: 2f869059bc79dce6faa951224eb53ba8e48af7f3
   specs:
     rails_wechat (0.1.0)
       rails_auth
