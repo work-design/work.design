@@ -43,7 +43,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_agency.git
-  revision: c1193176a0d5f67798f8ea88522426688ff2fc96
+  revision: e330710768066e94b87b1592b022aa1f70dae834
   specs:
     rails_agency (0.1.0)
       rails_com (~> 1.2)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 0f47634e404f55bdac17979cdc71679e76ea6e23
+  revision: c8535a527eb4a1dc55cd384a5c6689cde15c68bd
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 454b913953195cd7d8d7b115d9a5cabc07ca3e83
+  revision: be8db5af35e32f6d040a4fbd20dfedc6c16ffabd
   specs:
     rails_data (1.0.2)
       prawn
@@ -109,7 +109,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
-  revision: d928b53feed8f6bd3c8a6047dc267533fe042bdd
+  revision: e895d41b44a7de01e2a97073618d090afa3c9752
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 2f869059bc79dce6faa951224eb53ba8e48af7f3
+  revision: 834902f68b6e194e2953f10222199a007d4b2872
   specs:
     rails_wechat (0.1.0)
       rails_auth
