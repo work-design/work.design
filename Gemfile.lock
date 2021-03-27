@@ -209,14 +209,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 89c7b656dc4c425ac5f854468db45754d7a68e48
+  revision: 6ae1af7a7c0119b12b66ecd9d0f170a80d0ce941
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 7a8daa73e8e02ab9182c598f313b4cbf4cb5fda5
+  revision: cb2e38c92b0324c2d46d0cd71ab5359dcde840b3
   specs:
     rails_wechat (0.1.0)
       rails_auth
