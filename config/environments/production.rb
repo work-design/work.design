@@ -10,6 +10,8 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
 
+  config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')
+
   config.active_storage.service = :upyun
   config.active_storage.variant_processor = :vips
 
