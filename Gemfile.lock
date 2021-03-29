@@ -178,7 +178,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 07d83a3fb3e5bb9c3c199294a09e6968281aab43
+  revision: 8d6fdcf256d91eb04bdc7b23f5eb7b1c513d84c9
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -198,6 +198,14 @@ GIT
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
+
+GIT
+  remote: https://gitee.com/work-design/rails_ship.git
+  revision: 86b7b781f864c648fe9cd226648a07f205418c1d
+  specs:
+    rails_ship (0.1.0)
+      rails_com (~> 1.2)
+      rails_trade
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
@@ -623,6 +631,7 @@ DEPENDENCIES
   rails_profile!
   rails_quip!
   rails_role!
+  rails_ship!
   rails_trade!
   rails_ui!
   rails_wechat!
