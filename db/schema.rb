@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_030826) do
+ActiveRecord::Schema.define(version: 2021_03_29_152550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3036,6 +3036,33 @@ ActiveRecord::Schema.define(version: 2021_03_27_030826) do
     t.index ["serve_id"], name: "index_serve_goods_on_serve_id"
   end
 
+  create_table "ship_lines", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "start_location_id", scale: 8
+    t.bigint "finish_location_id", scale: 8
+    t.string "start_name"
+    t.string "finish_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "locations_count", scale: 4, default: 0
+    t.index ["finish_location_id"], name: "index_ship_lines_on_finish_location_id"
+    t.index ["start_location_id"], name: "index_ship_lines_on_start_location_id"
+  end
+
+  create_table "ship_locations", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "area_id", scale: 8
+    t.bigint "line_id", scale: 8
+    t.string "poiname"
+    t.string "poiaddress"
+    t.string "cityname"
+    t.decimal "lat", limit: 8, precision: 10
+    t.decimal "lng", limit: 8, precision: 11
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "position", scale: 4
+    t.index ["area_id"], name: "index_ship_locations_on_area_id"
+    t.index ["line_id"], name: "index_ship_locations_on_line_id"
+  end
+
   create_table "shipments", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "package_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
@@ -3663,7 +3690,6 @@ ActiveRecord::Schema.define(version: 2021_03_27_030826) do
     t.bigint "news_reply_id", scale: 8
     t.string "title"
     t.string "description"
-    t.string "pic_url"
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
