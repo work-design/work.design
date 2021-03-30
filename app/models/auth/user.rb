@@ -10,6 +10,7 @@ module Auth
     include Profiled::Ext::User
     include Bench::Model::User
     include Agential::Model::User
+    include Ship::Ext::User
 
     has_one :wechat_user
 

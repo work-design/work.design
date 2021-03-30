@@ -33,6 +33,10 @@ gem 'nokogiri'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'omniauth-wechat-oauth2', github: 'qinmingyuan/omniauth-wechat-oauth2'
+git 'https://github.com/TencentCloud/tencentcloud-sdk-ruby.git' do
+  gem 'tencentcloud-sdk-common'
+  gem 'tencentcloud-sdk-ocr'
+end
 
 # Payment method
 gem 'wx_pay', github: 'qinmingyuan/wx_pay'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_152550) do
+ActiveRecord::Schema.define(version: 2021_03_30_155849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1909,32 +1909,6 @@ ActiveRecord::Schema.define(version: 2021_03_29_152550) do
     t.index ["member_id"], name: "index_overtimes_on_member_id"
   end
 
-  create_table "packageds", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "package_id", scale: 8
-    t.bigint "trade_item_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "trade_item_status"
-    t.index ["package_id"], name: "index_packageds_on_package_id"
-    t.index ["trade_item_id"], name: "index_packageds_on_trade_item_id"
-  end
-
-  create_table "packages", id: { scale: 8 }, force: :cascade do |t|
-    t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.date "expected_on"
-    t.string "pick_mode"
-    t.bigint "address_id", scale: 8
-    t.bigint "wait_item_id", scale: 8
-    t.bigint "user_id", scale: 8
-    t.bigint "produce_plan_id", scale: 8
-    t.index ["address_id"], name: "index_packages_on_address_id"
-    t.index ["produce_plan_id"], name: "index_packages_on_produce_plan_id"
-    t.index ["user_id"], name: "index_packages_on_user_id"
-    t.index ["wait_item_id"], name: "index_packages_on_wait_item_id"
-  end
-
   create_table "part_items", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "part_id", scale: 8
     t.bigint "product_item_id", scale: 8
@@ -3036,16 +3010,30 @@ ActiveRecord::Schema.define(version: 2021_03_29_152550) do
     t.index ["serve_id"], name: "index_serve_goods_on_serve_id"
   end
 
+  create_table "ship_cars", id: { scale: 8 }, force: :cascade do |t|
+    t.string "location"
+    t.string "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", scale: 8
+    t.index ["user_id"], name: "index_ship_cars_on_user_id"
+  end
+
+  create_table "ship_drivers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "user_id", scale: 8
+    t.string "name"
+    t.string "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_ship_drivers_on_user_id"
+  end
+
   create_table "ship_lines", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "start_location_id", scale: 8
-    t.bigint "finish_location_id", scale: 8
     t.string "start_name"
     t.string "finish_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "locations_count", scale: 4, default: 0
-    t.index ["finish_location_id"], name: "index_ship_lines_on_finish_location_id"
-    t.index ["start_location_id"], name: "index_ship_lines_on_start_location_id"
   end
 
   create_table "ship_locations", id: { scale: 8 }, force: :cascade do |t|
@@ -3063,7 +3051,33 @@ ActiveRecord::Schema.define(version: 2021_03_29_152550) do
     t.index ["line_id"], name: "index_ship_locations_on_line_id"
   end
 
-  create_table "shipments", id: { scale: 8 }, force: :cascade do |t|
+  create_table "ship_packageds", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "package_id", scale: 8
+    t.bigint "trade_item_id", scale: 8
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "trade_item_status"
+    t.index ["package_id"], name: "index_ship_packageds_on_package_id"
+    t.index ["trade_item_id"], name: "index_ship_packageds_on_trade_item_id"
+  end
+
+  create_table "ship_packages", id: { scale: 8 }, force: :cascade do |t|
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "expected_on"
+    t.string "pick_mode"
+    t.bigint "address_id", scale: 8
+    t.bigint "wait_item_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "produce_plan_id", scale: 8
+    t.index ["address_id"], name: "index_ship_packages_on_address_id"
+    t.index ["produce_plan_id"], name: "index_ship_packages_on_produce_plan_id"
+    t.index ["user_id"], name: "index_ship_packages_on_user_id"
+    t.index ["wait_item_id"], name: "index_ship_packages_on_wait_item_id"
+  end
+
+  create_table "ship_shipments", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "package_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -3071,9 +3085,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_152550) do
     t.bigint "shipping_id", scale: 8
     t.bigint "address_id", scale: 8
     t.string "state"
-    t.index ["address_id"], name: "index_shipments_on_address_id"
-    t.index ["package_id"], name: "index_shipments_on_package_id"
-    t.index ["shipping_type", "shipping_id"], name: "index_shipments_on_shipping_type_and_shipping_id"
+    t.index ["address_id"], name: "index_ship_shipments_on_address_id"
+    t.index ["package_id"], name: "index_ship_shipments_on_package_id"
+    t.index ["shipping_type", "shipping_id"], name: "index_ship_shipments_on_shipping_type_and_shipping_id"
   end
 
   create_table "stars", id: { scale: 8 }, force: :cascade do |t|

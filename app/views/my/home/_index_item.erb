@@ -29,7 +29,21 @@
 <%= link_to({ controller: 'ship/my/lines' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fas fa-paper-plane fa-fw"></i>
-    <span>我的线路</span>
+    <span><%= t('ship.my.lines.index.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
+<%= link_to({ controller: 'ship/my/cars' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fas fa-car fa-fw"></i>
+    <span><%= t('ship.my.cars.index.title') %></span>
+  </div>
+  <div class="weui-cell__ft"></div>
+<% end %>
+<%= link_to({ controller: 'ship/my/drivers', action: 'show' }, class: 'weui-cell weui-cell_access') do %>
+  <div class="weui-cell__bd">
+    <i class="fas fa-id-card fa-fw"></i>
+    <span><%= t('ship.my.drivers.show.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>

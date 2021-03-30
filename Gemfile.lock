@@ -83,7 +83,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: e236e5f69ad00d171003f9c82fc6d392b26f7e35
+  revision: 71f4925dbe0445a8e48d39a8587249f54fed02ab
   specs:
     rails_com (1.2.9)
       acme-client
@@ -201,7 +201,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: bf18d686d59e8a333e04383d4455264af792716e
+  revision: 7f5304122667131bc2f778bd50bd772036593fd6
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -217,7 +217,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: f0227ad82deb602398f6bde8459254f1423a0d0b
+  revision: f2f12972dad4d6157e82fa60b9883c4c964353fe
   specs:
     rails_ui (0.1.0)
       rails
@@ -230,6 +230,12 @@ GIT
       rails_auth
       rails_com (~> 1.2)
       rqrcode
+
+GIT
+  remote: https://github.com/TencentCloud/tencentcloud-sdk-ruby.git
+  revision: 95117209064fc3f8ad2522e4a92c41604a02e368
+  specs:
+    tencentcloud-sdk-common (1.0.40)
 
 GEM
   remote: https://rubygems.org/
@@ -643,6 +649,7 @@ DEPENDENCIES
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
+  tencentcloud-sdk-common!
   turbo-rails
   upyun_rails!
   web-console
