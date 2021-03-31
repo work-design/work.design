@@ -13,4 +13,9 @@ module TencentHelper
     JSON.parse(body)
   end
 
+  def license_ocr(url)
+    body = client.send_request('DriverLicenseOCR', ImageUrl: url)
+    JSON.parse(body)
+  end
+
 end
