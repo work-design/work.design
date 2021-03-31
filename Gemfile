@@ -33,7 +33,7 @@ gem 'nokogiri'
 gem 'octokit'
 gem 'omniauth-github'
 gem 'omniauth-wechat-oauth2', github: 'qinmingyuan/omniauth-wechat-oauth2'
-git 'https://github.com/TencentCloud/tencentcloud-sdk-ruby.git' do
+git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   gem 'tencentcloud-sdk-common'
   gem 'tencentcloud-sdk-ocr'
 end

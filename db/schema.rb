@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_155849) do
+ActiveRecord::Schema.define(version: 2021_03_31_015004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3683,6 +3683,19 @@ ActiveRecord::Schema.define(version: 2021_03_30_155849) do
     t.string "invalid_response"
     t.bigint "response_id", scale: 8
     t.index ["response_id"], name: "index_wechat_extractors_on_response_id"
+  end
+
+  create_table "wechat_medias", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "user_id", scale: 8
+    t.string "source_type"
+    t.bigint "source_id", scale: 8
+    t.string "attachment_name"
+    t.string "media_id"
+    t.string "appid"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["source_type", "source_id"], name: "index_wechat_medias_on_source"
+    t.index ["user_id"], name: "index_wechat_medias_on_user_id"
   end
 
   create_table "wechat_menus", id: { scale: 8 }, force: :cascade do |t|

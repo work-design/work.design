@@ -42,6 +42,14 @@ GIT
       rest-client (>= 2.0.0)
 
 GIT
+  remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
+  revision: 95117209064fc3f8ad2522e4a92c41604a02e368
+  specs:
+    tencentcloud-sdk-common (1.0.40)
+    tencentcloud-sdk-ocr (1.0.40)
+      tencentcloud-sdk-common (~> 1.0)
+
+GIT
   remote: https://gitee.com/work-design/rails_agency.git
   revision: e330710768066e94b87b1592b022aa1f70dae834
   specs:
@@ -201,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 7f5304122667131bc2f778bd50bd772036593fd6
+  revision: f334cd737226f2189d626dbf7bd17f4faa5bcc54
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -217,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: f2f12972dad4d6157e82fa60b9883c4c964353fe
+  revision: 37d3ce60697704959c2dce74d087a46a25458080
   specs:
     rails_ui (0.1.0)
       rails
@@ -230,12 +238,6 @@ GIT
       rails_auth
       rails_com (~> 1.2)
       rqrcode
-
-GIT
-  remote: https://github.com/TencentCloud/tencentcloud-sdk-ruby.git
-  revision: 95117209064fc3f8ad2522e4a92c41604a02e368
-  specs:
-    tencentcloud-sdk-common (1.0.40)
 
 GEM
   remote: https://rubygems.org/
@@ -650,6 +652,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   tencentcloud-sdk-common!
+  tencentcloud-sdk-ocr!
   turbo-rails
   upyun_rails!
   web-console
