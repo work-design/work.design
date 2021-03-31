@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: f334cd737226f2189d626dbf7bd17f4faa5bcc54
+  revision: 69228f88a98e7f313382a998ca508a9b7fa8e9b1
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 6b2e26c70c43a7df668bf0fb6a30526b95ed4ad3
+  revision: 080c27ff255e6cdb075bdad6480ea6928dbf8adb
   specs:
     rails_wechat (0.1.0)
       rails_auth
