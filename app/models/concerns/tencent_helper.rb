@@ -1,9 +1,16 @@
 module TencentHelper
+  extend self
 
-  def xx
-    cre = Credential.new('SecretId', 'SecretKey')
-    cli = Client.new(cre, 'ap-guangzhou')
+  def client
+    return @client if defined? @client
+    tencent = Rails.application.credentials.tencent
+    cre = TencentCloud::Common::Credential.new(tencent[:id], tencent[:key])
+    @client = TencentCloud::Ocr::V20181119::Client.new(cre, 'ap-guangzhou')
   end
-  include TencentCloud::Common
+
+  def registration_ocr(url)
+    body = client.send_request('VehicleLicenseOCR', ImageUrl: url)
+    JSON.parse(body)
+  end
 
 end
