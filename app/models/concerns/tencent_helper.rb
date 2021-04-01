@@ -10,12 +10,14 @@ module TencentHelper
 
   def registration_ocr(url)
     body = client.send_request('VehicleLicenseOCR', ImageUrl: url)
-    JSON.parse(body)
+    r = JSON.parse(body)
+    r['Response']
   end
 
   def license_ocr(url)
     body = client.send_request('DriverLicenseOCR', ImageUrl: url)
-    JSON.parse(body)
+    r = JSON.parse(body)
+    r['Response']
   end
 
 end
