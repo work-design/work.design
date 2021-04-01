@@ -361,10 +361,10 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.13.0)
+    httpx (0.13.1)
       http-2-next (>= 0.1.2)
       timers
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
@@ -386,7 +386,7 @@ GEM
     kaminari-core (1.2.1)
     kramdown (2.3.1)
       rexml
-    listen (3.5.0)
+    listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
