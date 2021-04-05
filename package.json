@@ -31,7 +31,7 @@
     "sortablejs": "^1.10.2",
     "stickybits": "^3.7.7",
     "stimulus": "^2.0.0",
-    "weui": "^2.4.1",
+    "weui": "^2.4.4",
     "weui.js": "^1.2.1"
   },
   "devDependencies": {
