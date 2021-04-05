@@ -6154,10 +6154,10 @@ weui.js@^1.2.1:
     element-closest "^2.0.1"
     object-assign "^4.1.0"
 
-weui@^2.4.1:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/weui/-/weui-2.4.3.tgz#a26d73f55b74b0077d9fce04130ada741b1bd085"
-  integrity sha512-Z3hSHxPn7/HnVkLqcua4vTWHT3axzzD5q1E7Ssq599U4lT5bjymsxVqfA83nFjMADsgg5v66Mgqqar56bJE2Lg==
+weui@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/weui/-/weui-2.4.4.tgz#b8204ea420844eccc52fc0de8e50617091ce702a"
+  integrity sha512-rqxKAFaDBKkF6H1GzumDR/CLcGBxCzOZ1KUIXqOieZ316wbaxojgs/j1w9RrsjkCdH6zL1kLnr/elsDKB9pMdg==
 
 which-boxed-primitive@^1.0.1:
   version "1.0.2"
