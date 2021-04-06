@@ -36,9 +36,9 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 ## 依赖及配置
 
 ### Redis
-* Action Cable: 'redis://localhost:6379/1'
-* Action Job / Sidekiq: 默认：'redis://127.0.0.1:6379/0'
-* Cache: 'redis://localhost:6379/2'
+* Action Cable: `redis://localhost:6379/1`
+* Action Job / Sidekiq: `redis://127.0.0.1:6379/0`(默认)
+* Cache: `redis://localhost:6379/2`
 
 ## 项目发展
 
