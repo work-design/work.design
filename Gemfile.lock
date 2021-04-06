@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: c06b0934da44edb804ec8eebaaf2bd1123094bce
+  revision: ba80560e1077dc21f890823bb6c204ba190a4971
   specs:
     rails_com (1.2.9)
       acme-client
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 62ddb108903f51d89894fa5117f1f170e95c8b43
+  revision: 2a895a006faefa1ca90912032d26749ecf5b5547
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -225,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 6de6f386c1faebf63a3621a40265d86323b58ecb
+  revision: 95a87728c987055e2d527ffd774e34368b8480b0
   specs:
     rails_ui (0.1.0)
       rails
@@ -660,4 +660,4 @@ DEPENDENCIES
   wx_pay!
 
 BUNDLED WITH
-   2.2.3
+   2.2.15
