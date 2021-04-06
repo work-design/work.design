@@ -8,7 +8,6 @@ gem 'sidekiq'
 # Store
 gem 'pg'
 gem 'redis'
-gem 'dalli'
 gem 'active_record_distinct_on'
 
 # Assets

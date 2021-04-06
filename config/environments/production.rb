@@ -8,6 +8,8 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_controller.asset_host = 'static.one.work'
 
+  config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/2' }
+
   config.public_file_server.enabled = true
 
   config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')

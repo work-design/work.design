@@ -335,7 +335,6 @@ GEM
     concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
     crass (1.0.6)
-    dalli (2.7.11)
     debug_inspector (1.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -599,7 +598,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara
-  dalli
   default_form!
   default_where!
   factory_bot_rails
