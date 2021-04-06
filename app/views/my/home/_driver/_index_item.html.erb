@@ -19,13 +19,13 @@
   </div>
   <div class="weui-cell__ft"></div>
 <% end %>
-<%= link_to({ controller: 'wechat/my/users', action: 'invite_qrcode' }, class: 'weui-cell weui-cell_access') do %>
+<%= link_to({ controller: 'ship/driver/favorites' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
-    <i class="fas fa-qrcode fa-fw"></i>
-    <span>我的乘客</span>
+    <i class="fas fa-users fa-fw"></i>
+    <span><%= t('ship.driver.favorites.index.title') %></span>
   </div>
   <div class="weui-cell__ft"></div>
-<% end %>
+<% end if current_user.driver %>
 <%= link_to({ controller: 'ship/my/lines' }, class: 'weui-cell weui-cell_access') do %>
   <div class="weui-cell__bd">
     <i class="fas fa-paper-plane fa-fw"></i>
