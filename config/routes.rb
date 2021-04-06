@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   end
   namespace :my do
     root 'home#index'
+    controller :home do
+      get :driver
+    end
   end
 
   scope :my, module: 'waiting/my', as: :my do
