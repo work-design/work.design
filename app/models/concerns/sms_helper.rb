@@ -1,8 +1,9 @@
 module SmsHelper
   APPID = Rails.application.credentials.dig(:sms, :appid)
   SIGNATURE = Rails.application.credentials.dig(:sms, :signature)
+  extend self
 
-  def self.send(mobile, vars = {})
+  def send(mobile, vars = {})
     url = 'https://api.mysubmail.com/message/xsend'
     body = {
       appid: APPID,
@@ -16,7 +17,7 @@ module SmsHelper
     HTTPX.post(url, json: body)
   end
 
-  def self.quota
+  def quota
     host = 'https://api.mysubmail.com/'
     url = "#{host}balance/sms"
     options = {
