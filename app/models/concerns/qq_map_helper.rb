@@ -1,5 +1,5 @@
 module QqMapHelper
-  KEY = Rails.application.credentials.dig(:qq_map, :key)
+  KEY = Rails.application.credentials.dig(:qq_map, :ws)
   extend self
 
   def geocoder(lat:, lng:)
@@ -9,7 +9,13 @@ module QqMapHelper
       location: [lat, lng].join(',')
     }
 
-    HTTPX.get(url, params: body)
+    r = HTTPX.get(url, params: body)
+    result = JSON.parse(r.to_s)
+    if result['status'] == 0
+      result['result']
+    else
+      result
+    end
   end
 
 end
