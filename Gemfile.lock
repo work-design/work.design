@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: c8246c780fb75c9d77a4c8b0cbdabaad27d8fe18
+  revision: 537b7022e25341807b767d095b0eb2be57125217
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
