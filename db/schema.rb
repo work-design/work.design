@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_133832) do
+ActiveRecord::Schema.define(version: 2021_04_07_091025) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3838,6 +3838,8 @@ ActiveRecord::Schema.define(version: 2021_04_06_133832) do
     t.json "reply_body"
     t.string "reply_encrypt"
     t.bigint "receive_id", scale: 8
+    t.boolean "init_wechat_user"
+    t.boolean "init_user_tag"
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
     t.index ["reply_id"], name: "index_wechat_requests_on_reply_id"
   end
@@ -3987,18 +3989,13 @@ ActiveRecord::Schema.define(version: 2021_04_06_133832) do
   end
 
   create_table "wechat_user_tags", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "wechat_user_id", scale: 8
-    t.bigint "tag_id", scale: 8
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_tagged_id", scale: 8
-    t.string "source_type"
-    t.bigint "source_id", scale: 8
-    t.string "source_kind"
-    t.index ["source_type", "source_id"], name: "index_wechat_user_tags_on_source"
-    t.index ["tag_id"], name: "index_wechat_user_tags_on_tag_id"
+    t.string "appid"
+    t.string "tag_name"
+    t.string "open_id"
     t.index ["user_tagged_id"], name: "index_wechat_user_tags_on_user_tagged_id"
-    t.index ["wechat_user_id"], name: "index_wechat_user_tags_on_wechat_user_id"
   end
 
   create_table "who_roles", id: { scale: 8 }, force: :cascade do |t|
