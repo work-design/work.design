@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_030043) do
+ActiveRecord::Schema.define(version: 2021_04_08_030932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3834,11 +3834,11 @@ ActiveRecord::Schema.define(version: 2021_04_08_030043) do
     t.jsonb "raw_body"
     t.string "appid"
     t.string "open_id"
-    t.json "reply_body"
-    t.string "reply_encrypt"
     t.bigint "receive_id", scale: 8
     t.boolean "init_wechat_user"
     t.boolean "init_user_tag"
+    t.jsonb "reply_body"
+    t.jsonb "reply_encrypt"
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
   end
 
