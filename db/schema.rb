@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_030932) do
+ActiveRecord::Schema.define(version: 2021_04_08_091354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3045,6 +3045,8 @@ ActiveRecord::Schema.define(version: 2021_04_08_030932) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "locations_count", scale: 4, default: 0
+    t.bigint "user_id", scale: 8
+    t.index ["user_id"], name: "index_ship_lines_on_user_id"
   end
 
   create_table "ship_locations", id: { scale: 8 }, force: :cascade do |t|
