@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 84fff14a6134c8c3b0336c9805c2b8f196b6e7e0
+  revision: fb33455b0902f4905bb198aee32ab07e6d897713
   specs:
     rails_wechat (0.1.0)
       rails_auth
