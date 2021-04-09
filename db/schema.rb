@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_014323) do
+ActiveRecord::Schema.define(version: 2021_04_09_074713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3696,6 +3696,16 @@ ActiveRecord::Schema.define(version: 2021_04_09_014323) do
     t.string "invalid_response"
     t.bigint "response_id", scale: 8
     t.index ["response_id"], name: "index_wechat_extractors_on_response_id"
+  end
+
+  create_table "wechat_hooks", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "response_id", scale: 8
+    t.string "hooked_type"
+    t.bigint "hooked_id", scale: 8
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hooked_type", "hooked_id"], name: "index_wechat_hooks_on_hooked"
+    t.index ["response_id"], name: "index_wechat_hooks_on_response_id"
   end
 
   create_table "wechat_medias", id: { scale: 8 }, force: :cascade do |t|
