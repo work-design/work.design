@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_074713) do
+ActiveRecord::Schema.define(version: 2021_04_09_171442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3548,7 +3548,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_074713) do
   end
 
   create_table "verify_tokens", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "user_id", scale: 8
     t.string "type", scale: 100
     t.string "token"
     t.datetime "expire_at"
@@ -3556,9 +3555,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_074713) do
     t.integer "access_counter", scale: 4, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "account_id", scale: 8
-    t.index ["account_id"], name: "index_verify_tokens_on_account_id"
-    t.index ["user_id"], name: "index_verify_tokens_on_user_id"
   end
 
   create_table "volunteers", id: { scale: 8 }, force: :cascade do |t|
