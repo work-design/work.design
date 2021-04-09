@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_091354) do
+ActiveRecord::Schema.define(version: 2021_04_09_014323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3844,27 +3844,17 @@ ActiveRecord::Schema.define(version: 2021_04_08_091354) do
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
   end
 
-  create_table "wechat_response_requests", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "response_id", scale: 8
-    t.string "request_type", comment: "用户发送消息类型"
-    t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["response_id"], name: "index_wechat_response_requests_on_response_id"
-  end
-
   create_table "wechat_responses", id: { scale: 8 }, force: :cascade do |t|
     t.string "match_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "expire_at"
-    t.string "effective_type"
-    t.bigint "effective_id", scale: 8
     t.boolean "contain", default: true
     t.string "request_types", array: true
     t.string "appid"
     t.boolean "enabled", default: true
-    t.index ["effective_type", "effective_id"], name: "index_wechat_responses_on_effective_type_and_effective_id"
+    t.bigint "reply_id", scale: 8
+    t.index ["reply_id"], name: "index_wechat_responses_on_reply_id"
   end
 
   create_table "wechat_scene_menus", id: { scale: 8 }, force: :cascade do |t|
