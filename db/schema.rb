@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_171442) do
+ActiveRecord::Schema.define(version: 2021_04_10_042256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_171442) do
     t.string "type"
     t.string "identity"
     t.boolean "confirmed", default: false
-    t.boolean "primary", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "source"
@@ -486,8 +485,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_171442) do
   end
 
   create_table "authorized_tokens", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "user_id", scale: 8
-    t.bigint "oauth_user_id", scale: 8
     t.string "token"
     t.datetime "expire_at"
     t.string "session_key"
@@ -497,8 +494,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_171442) do
     t.boolean "mock_member"
     t.boolean "mock_user"
     t.string "identity"
-    t.index ["oauth_user_id"], name: "index_authorized_tokens_on_oauth_user_id"
-    t.index ["user_id"], name: "index_authorized_tokens_on_user_id"
   end
 
   create_table "blob_defaults", id: { scale: 8 }, force: :cascade do |t|
