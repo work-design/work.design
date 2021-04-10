@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_042256) do
+ActiveRecord::Schema.define(version: 2021_04_10_130534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1771,7 +1771,6 @@ ActiveRecord::Schema.define(version: 2021_04_10_042256) do
   end
 
   create_table "oauth_users", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "user_id", scale: 8
     t.string "provider"
     t.string "uid"
     t.string "name"
@@ -1782,13 +1781,14 @@ ActiveRecord::Schema.define(version: 2021_04_10_042256) do
     t.string "access_token"
     t.string "refresh_token"
     t.string "unionid"
-    t.string "app_id"
+    t.string "appid"
     t.bigint "account_id", scale: 8
     t.datetime "expires_at"
     t.string "state"
     t.json "extra", default: {}
+    t.bigint "request_id", scale: 8
     t.index ["account_id"], name: "index_oauth_users_on_account_id"
-    t.index ["user_id"], name: "index_oauth_users_on_user_id"
+    t.index ["request_id"], name: "index_oauth_users_on_request_id"
   end
 
   create_table "orders", id: { scale: 8 }, force: :cascade do |t|
@@ -3955,7 +3955,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_042256) do
   end
 
   create_table "wechat_templates", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "app_id", scale: 8
+    t.bigint "appid", scale: 8
     t.string "template_id"
     t.string "title"
     t.string "content"
@@ -3964,7 +3964,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_042256) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "template_config_id", scale: 8
-    t.index ["app_id"], name: "index_wechat_templates_on_app_id"
+    t.index ["appid"], name: "index_wechat_templates_on_appid"
     t.index ["template_config_id"], name: "index_wechat_templates_on_template_config_id"
   end
 
