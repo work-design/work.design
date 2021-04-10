@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: cc58f61735f63c3e1ed21e654741424c50f05de9
+  revision: 6f11348e2d42a7e1208b3b033d4727887b6f5875
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 511b4a665ee55af6b738a714a147f8cf1e123ecd
+  revision: 4c35ce9649a34284ad076fddbea2ad8305575960
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
