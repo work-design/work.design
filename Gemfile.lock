@@ -161,7 +161,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_log.git
-  revision: 36409453b10fe9a6353a22606f4f9453c6c396c7
+  revision: 127044d1593105a0c1c854061225b81fd1f19a5b
   specs:
     rails_log (2.1.6)
       rails_com (~> 1.2)
@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: b7141d30666485acd9efa91c82ce530ee09ee26e
+  revision: 61d7a4cd6db6e6f618d6647677282db013b85604
   specs:
     rails_wechat (0.1.0)
       rails_auth
