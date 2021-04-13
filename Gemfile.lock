@@ -186,7 +186,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 2b6c3d3da2d03b8b3e4ab173e8dcbdfff0280c4e
+  revision: 692322cbe2deb4053a3ede76bc3616b489dc983a
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 1f758832e2c8305dad11c445195ec1a738512e4a
+  revision: 544a9c27e8d6b7960b168ea176e9b79e77e454f6
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
