@@ -9,6 +9,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -8181,6 +8195,40 @@ ALTER SEQUENCE public.ship_favorites_id_seq OWNED BY public.ship_favorites.id;
 
 
 --
+-- Name: ship_line_similars; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ship_line_similars (
+    id bigint NOT NULL,
+    line_id bigint,
+    similar_id bigint,
+    "position" integer,
+    score numeric,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: ship_line_similars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ship_line_similars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ship_line_similars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ship_line_similars_id_seq OWNED BY public.ship_line_similars.id;
+
+
+--
 -- Name: ship_lines; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -12315,6 +12363,13 @@ ALTER TABLE ONLY public.ship_favorites ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: ship_line_similars id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ship_line_similars ALTER COLUMN id SET DEFAULT nextval('public.ship_line_similars_id_seq'::regclass);
+
+
+--
 -- Name: ship_lines id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -14531,6 +14586,14 @@ ALTER TABLE ONLY public.ship_drivers
 
 ALTER TABLE ONLY public.ship_favorites
     ADD CONSTRAINT ship_favorites_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ship_line_similars ship_line_similars_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ship_line_similars
+    ADD CONSTRAINT ship_line_similars_pkey PRIMARY KEY (id);
 
 
 --
@@ -18089,6 +18152,20 @@ CREATE INDEX index_ship_favorites_on_user_id ON public.ship_favorites USING btre
 
 
 --
+-- Name: index_ship_line_similars_on_line_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ship_line_similars_on_line_id ON public.ship_line_similars USING btree (line_id);
+
+
+--
+-- Name: index_ship_line_similars_on_similar_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_ship_line_similars_on_similar_id ON public.ship_line_similars USING btree (similar_id);
+
+
+--
 -- Name: index_ship_lines_on_pathway; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -19507,6 +19584,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210410165110'),
 ('20210412123315'),
 ('20210412130620'),
-('20210412162526');
+('20210412162526'),
+('20210413114211');
 
 
