@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_165110) do
+ActiveRecord::Schema.define(version: 2021_04_12_162526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -3043,6 +3043,9 @@ ActiveRecord::Schema.define(version: 2021_04_10_165110) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "locations_count", scale: 4, default: 0
     t.bigint "user_id", scale: 8
+    t.path "path"
+    t.polygon "pathway"
+    t.index ["pathway"], name: "index_ship_lines_on_pathway", using: :gist
     t.index ["user_id"], name: "index_ship_lines_on_user_id"
   end
 
@@ -3057,6 +3060,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_165110) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "position", scale: 4
+    t.point "coordinate"
     t.index ["area_id"], name: "index_ship_locations_on_area_id"
     t.index ["line_id"], name: "index_ship_locations_on_line_id"
   end
