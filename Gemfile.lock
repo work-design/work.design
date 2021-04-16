@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 70991f372659f3fec684109c5cd625f19eec0388
+  revision: 03c3ff25fcc9c8accd9305de09fdef841328db6c
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -105,7 +105,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: be8db5af35e32f6d040a4fbd20dfedc6c16ffabd
+  revision: 9acbeac95185c388387cc622840f449a1a11e82c
   specs:
     rails_data (1.0.2)
       prawn
@@ -186,7 +186,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 692322cbe2deb4053a3ede76bc3616b489dc983a
+  revision: f4cdc97748571719462504c61d6ac03c410f0565
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 945688a9cb13549991aece29c6ab3b6b3fafd52e
+  revision: 06f55460b4a98575002e5e7497b96f6836a45bd1
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
