@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 85ad024436616bec771066d5c4c9456fa37b7666
+  revision: aef2a937bc614395281e1ac3f0e908b42a94341a
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 4b7b34222bd7378f26b34641f594f72d6c2dd4fc
+  revision: cfdb4e1be01d2f2f1b175ad2f282e4dc5c1d2ce6
   specs:
     rails_com (1.2.9)
       acme-client
@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 0e1f934c5f402037e2960581934d37b6e363a3cb
+  revision: bec13c3e7a14e8855ce35fd8e8bc233c8aee2652
   specs:
     rails_org (0.1)
       rails_auth
@@ -186,7 +186,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 170c1ac0073dfdfec1d50222fc1d70cce84ec752
+  revision: 5503d388f4d88afcc3bed3a0baf945a4fe39c789
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 06f55460b4a98575002e5e7497b96f6836a45bd1
+  revision: 8e9db7cf0ea99b2026931371b76e309a0968b361
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -225,14 +225,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: f32369d7690c9f848297d5ab97765ec980b33d4c
+  revision: bb16a36a8a4bd7a4ea732610d7c0573a1be51b6b
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 5b04d9a970102fc1f46373cbcebcc9c3e2af39fd
+  revision: 4de606e550ad560808c861c26421a6b681e29d23
   specs:
     rails_wechat (0.1.0)
       rails_auth
