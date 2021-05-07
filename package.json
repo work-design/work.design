@@ -12,7 +12,7 @@
     "@fullcalendar/resource-daygrid": "^4.1.0",
     "@fullcalendar/resource-timegrid": "^4.1.0",
     "@fullcalendar/timegrid": "^4.1.0",
-    "@hotwired/turbo": "https://github.com/qinmingyuan/turbo.git#dist",
+    "@hotwired/turbo": "https://gitee.com/qinmingyuan/turbo.git#dist",
     "@hotwired/turbo-rails": "^7.0.0-beta.5",
     "@rails/actioncable": "^6.1.3",
     "@rails/activestorage": "^6.1.3",
