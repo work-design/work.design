@@ -209,113 +209,6 @@ ALTER SEQUENCE public.accounts_id_seq OWNED BY public.accounts.id;
 
 
 --
--- Name: acme_accounts; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.acme_accounts (
-    id bigint NOT NULL,
-    email character varying,
-    kid character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: acme_accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.acme_accounts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: acme_accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.acme_accounts_id_seq OWNED BY public.acme_accounts.id;
-
-
---
--- Name: acme_identifiers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.acme_identifiers (
-    id bigint NOT NULL,
-    acme_order_id bigint,
-    identifier character varying,
-    file_name character varying,
-    file_content character varying,
-    record_name character varying,
-    record_content character varying,
-    domain character varying,
-    wildcard boolean,
-    url character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    dns_valid boolean,
-    token character varying
-);
-
-
---
--- Name: acme_identifiers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.acme_identifiers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: acme_identifiers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.acme_identifiers_id_seq OWNED BY public.acme_identifiers.id;
-
-
---
--- Name: acme_orders; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.acme_orders (
-    id bigint NOT NULL,
-    acme_account_id bigint,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    orderid character varying,
-    url character varying,
-    status character varying
-);
-
-
---
--- Name: acme_orders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.acme_orders_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: acme_orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.acme_orders_id_seq OWNED BY public.acme_orders.id;
-
-
---
 -- Name: action_mailbox_inbound_emails; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1369,60 +1262,6 @@ ALTER SEQUENCE public.authorized_tokens_id_seq OWNED BY public.authorized_tokens
 
 
 --
--- Name: blob_defaults; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.blob_defaults (
-    id bigint NOT NULL,
-    record_class character varying,
-    name character varying,
-    private boolean,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: COLUMN blob_defaults.record_class; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.blob_defaults.record_class IS 'AR 类名，如 User';
-
-
---
--- Name: COLUMN blob_defaults.name; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.blob_defaults.name IS '名称, attach 名称，如：avatar';
-
-
---
--- Name: COLUMN blob_defaults.private; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.blob_defaults.private IS '是否私有';
-
-
---
--- Name: blob_defaults_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.blob_defaults_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: blob_defaults_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.blob_defaults_id_seq OWNED BY public.blob_defaults.id;
-
-
---
 -- Name: bookings; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1534,38 +1373,6 @@ CREATE SEQUENCE public.busynesses_id_seq
 --
 
 ALTER SEQUENCE public.busynesses_id_seq OWNED BY public.busynesses.id;
-
-
---
--- Name: cache_lists; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.cache_lists (
-    id bigint NOT NULL,
-    path character varying,
-    key character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: cache_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.cache_lists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: cache_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.cache_lists_id_seq OWNED BY public.cache_lists.id;
 
 
 --
@@ -2139,6 +1946,316 @@ ALTER SEQUENCE public.checks_id_seq OWNED BY public.checks.id;
 
 
 --
+-- Name: com_acme_accounts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_acme_accounts (
+    id bigint NOT NULL,
+    email character varying,
+    kid character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: com_acme_accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_acme_accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_acme_accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_acme_accounts_id_seq OWNED BY public.com_acme_accounts.id;
+
+
+--
+-- Name: com_acme_identifiers; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_acme_identifiers (
+    id bigint NOT NULL,
+    acme_order_id bigint,
+    identifier character varying,
+    file_name character varying,
+    file_content character varying,
+    record_name character varying,
+    record_content character varying,
+    domain character varying,
+    wildcard boolean,
+    url character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    dns_valid boolean,
+    token character varying
+);
+
+
+--
+-- Name: com_acme_identifiers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_acme_identifiers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_acme_identifiers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_acme_identifiers_id_seq OWNED BY public.com_acme_identifiers.id;
+
+
+--
+-- Name: com_acme_orders; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_acme_orders (
+    id bigint NOT NULL,
+    acme_account_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    orderid character varying,
+    url character varying,
+    status character varying
+);
+
+
+--
+-- Name: com_acme_orders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_acme_orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_acme_orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_acme_orders_id_seq OWNED BY public.com_acme_orders.id;
+
+
+--
+-- Name: com_blob_defaults; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_blob_defaults (
+    id bigint NOT NULL,
+    record_class character varying,
+    name character varying,
+    private boolean,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN com_blob_defaults.record_class; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.com_blob_defaults.record_class IS 'AR 类名，如 User';
+
+
+--
+-- Name: COLUMN com_blob_defaults.name; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.com_blob_defaults.name IS '名称, attach 名称，如：avatar';
+
+
+--
+-- Name: COLUMN com_blob_defaults.private; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.com_blob_defaults.private IS '是否私有';
+
+
+--
+-- Name: com_blob_defaults_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_blob_defaults_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_blob_defaults_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_blob_defaults_id_seq OWNED BY public.com_blob_defaults.id;
+
+
+--
+-- Name: com_cache_lists; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_cache_lists (
+    id bigint NOT NULL,
+    path character varying,
+    key character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: com_cache_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_cache_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_cache_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_cache_lists_id_seq OWNED BY public.com_cache_lists.id;
+
+
+--
+-- Name: com_csps; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_csps (
+    id bigint NOT NULL,
+    document_uri character varying,
+    referrer character varying,
+    violated_directive character varying,
+    effective_directive character varying,
+    original_policy character varying(1024),
+    disposition character varying,
+    blocked_uri character varying,
+    line_number character varying,
+    column_number character varying,
+    source_file character varying,
+    status_code character varying,
+    script_sample character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: com_csps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_csps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_csps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_csps_id_seq OWNED BY public.com_csps.id;
+
+
+--
+-- Name: com_errs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_errs (
+    id integer NOT NULL,
+    path character varying,
+    controller_name character varying,
+    action_name character varying,
+    exception character varying(10240),
+    exception_object character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    exception_backtrace character varying[],
+    ip character varying,
+    headers jsonb,
+    params jsonb,
+    cookie jsonb,
+    session jsonb
+);
+
+
+--
+-- Name: com_errs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_errs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_errs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_errs_id_seq OWNED BY public.com_errs.id;
+
+
+--
+-- Name: com_infos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.com_infos (
+    id bigint NOT NULL,
+    code character varying,
+    value character varying,
+    version character varying,
+    platform character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: com_infos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.com_infos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: com_infos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.com_infos_id_seq OWNED BY public.com_infos.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2556,6 +2673,222 @@ CREATE SEQUENCE public.details_id_seq
 --
 
 ALTER SEQUENCE public.details_id_seq OWNED BY public.details.id;
+
+
+--
+-- Name: email_logs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_logs (
+    id bigint NOT NULL,
+    message_object_id character varying,
+    mailer character varying,
+    action_name character varying,
+    params character varying,
+    subject character varying,
+    mail_to character varying,
+    cc_to character varying,
+    sent_status character varying,
+    sent_string character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    template_id bigint,
+    mail_from character varying
+);
+
+
+--
+-- Name: email_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_logs_id_seq OWNED BY public.email_logs.id;
+
+
+--
+-- Name: email_reasons; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_reasons (
+    id bigint NOT NULL,
+    body character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: email_reasons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_reasons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_reasons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_reasons_id_seq OWNED BY public.email_reasons.id;
+
+
+--
+-- Name: email_smtp_accounts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_smtp_accounts (
+    id bigint NOT NULL,
+    smtp_id bigint,
+    user_name character varying,
+    password character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    "position" integer
+);
+
+
+--
+-- Name: email_smtp_accounts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_smtp_accounts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_smtp_accounts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_smtp_accounts_id_seq OWNED BY public.email_smtp_accounts.id;
+
+
+--
+-- Name: email_smtps; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_smtps (
+    id bigint NOT NULL,
+    name character varying,
+    address character varying,
+    port character varying,
+    enable_starttls_auto boolean,
+    ssl boolean,
+    authentication character varying,
+    openssl_verify_mode character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: email_smtps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_smtps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_smtps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_smtps_id_seq OWNED BY public.email_smtps.id;
+
+
+--
+-- Name: email_subscriptions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_subscriptions (
+    id bigint NOT NULL,
+    smtp_id bigint,
+    smtp_account_id bigint,
+    address character varying,
+    state character varying,
+    subscribe_at timestamp without time zone,
+    unsubscribe_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    reason_id bigint
+);
+
+
+--
+-- Name: email_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_subscriptions_id_seq OWNED BY public.email_subscriptions.id;
+
+
+--
+-- Name: email_templates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.email_templates (
+    id bigint NOT NULL,
+    honorific character varying,
+    body character varying,
+    order_prefix character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    "position" integer,
+    contact character varying,
+    subject character varying
+);
+
+
+--
+-- Name: email_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.email_templates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: email_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.email_templates_id_seq OWNED BY public.email_templates.id;
 
 
 --
@@ -3665,40 +3998,6 @@ ALTER SEQUENCE public.indicators_id_seq OWNED BY public.indicators.id;
 
 
 --
--- Name: infos; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.infos (
-    id bigint NOT NULL,
-    code character varying,
-    value character varying,
-    version character varying,
-    platform character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: infos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.infos_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: infos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.infos_id_seq OWNED BY public.infos.id;
-
-
---
 -- Name: items; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -4018,128 +4317,6 @@ CREATE SEQUENCE public.lists_id_seq
 --
 
 ALTER SEQUENCE public.lists_id_seq OWNED BY public.lists.id;
-
-
---
--- Name: log_csps; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.log_csps (
-    id bigint NOT NULL,
-    document_uri character varying,
-    referrer character varying,
-    violated_directive character varying,
-    effective_directive character varying,
-    original_policy character varying(1024),
-    disposition character varying,
-    blocked_uri character varying,
-    line_number character varying,
-    column_number character varying,
-    source_file character varying,
-    status_code character varying,
-    script_sample character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: log_csps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.log_csps_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: log_csps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.log_csps_id_seq OWNED BY public.log_csps.id;
-
-
---
--- Name: log_mailers; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.log_mailers (
-    id bigint NOT NULL,
-    message_object_id character varying,
-    mailer character varying,
-    action_name character varying,
-    params character varying,
-    subject character varying,
-    mail_to character varying,
-    cc_to character varying,
-    sent_status character varying,
-    sent_string character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: log_mailers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.log_mailers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: log_mailers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.log_mailers_id_seq OWNED BY public.log_mailers.id;
-
-
---
--- Name: log_records; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.log_records (
-    id integer NOT NULL,
-    path character varying,
-    controller_name character varying,
-    action_name character varying,
-    exception character varying(10240),
-    exception_object character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    exception_backtrace character varying[],
-    ip character varying,
-    headers jsonb,
-    params jsonb,
-    cookie jsonb,
-    session jsonb
-);
-
-
---
--- Name: log_records_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.log_records_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: log_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.log_records_id_seq OWNED BY public.log_records.id;
 
 
 --
@@ -10893,27 +11070,6 @@ ALTER TABLE ONLY public.accounts ALTER COLUMN id SET DEFAULT nextval('public.acc
 
 
 --
--- Name: acme_accounts id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_accounts ALTER COLUMN id SET DEFAULT nextval('public.acme_accounts_id_seq'::regclass);
-
-
---
--- Name: acme_identifiers id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_identifiers ALTER COLUMN id SET DEFAULT nextval('public.acme_identifiers_id_seq'::regclass);
-
-
---
--- Name: acme_orders id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_orders ALTER COLUMN id SET DEFAULT nextval('public.acme_orders_id_seq'::regclass);
-
-
---
 -- Name: action_mailbox_inbound_emails id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11103,13 +11259,6 @@ ALTER TABLE ONLY public.authorized_tokens ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- Name: blob_defaults id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.blob_defaults ALTER COLUMN id SET DEFAULT nextval('public.blob_defaults_id_seq'::regclass);
-
-
---
 -- Name: bookings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11128,13 +11277,6 @@ ALTER TABLE ONLY public.budgets ALTER COLUMN id SET DEFAULT nextval('public.budg
 --
 
 ALTER TABLE ONLY public.busynesses ALTER COLUMN id SET DEFAULT nextval('public.busynesses_id_seq'::regclass);
-
-
---
--- Name: cache_lists id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cache_lists ALTER COLUMN id SET DEFAULT nextval('public.cache_lists_id_seq'::regclass);
 
 
 --
@@ -11243,6 +11385,62 @@ ALTER TABLE ONLY public.checks ALTER COLUMN id SET DEFAULT nextval('public.check
 
 
 --
+-- Name: com_acme_accounts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_accounts ALTER COLUMN id SET DEFAULT nextval('public.com_acme_accounts_id_seq'::regclass);
+
+
+--
+-- Name: com_acme_identifiers id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_identifiers ALTER COLUMN id SET DEFAULT nextval('public.com_acme_identifiers_id_seq'::regclass);
+
+
+--
+-- Name: com_acme_orders id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_orders ALTER COLUMN id SET DEFAULT nextval('public.com_acme_orders_id_seq'::regclass);
+
+
+--
+-- Name: com_blob_defaults id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_blob_defaults ALTER COLUMN id SET DEFAULT nextval('public.com_blob_defaults_id_seq'::regclass);
+
+
+--
+-- Name: com_cache_lists id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_cache_lists ALTER COLUMN id SET DEFAULT nextval('public.com_cache_lists_id_seq'::regclass);
+
+
+--
+-- Name: com_csps id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_csps ALTER COLUMN id SET DEFAULT nextval('public.com_csps_id_seq'::regclass);
+
+
+--
+-- Name: com_errs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_errs ALTER COLUMN id SET DEFAULT nextval('public.com_errs_id_seq'::regclass);
+
+
+--
+-- Name: com_infos id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_infos ALTER COLUMN id SET DEFAULT nextval('public.com_infos_id_seq'::regclass);
+
+
+--
 -- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11317,6 +11515,48 @@ ALTER TABLE ONLY public.departments ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 ALTER TABLE ONLY public.details ALTER COLUMN id SET DEFAULT nextval('public.details_id_seq'::regclass);
+
+
+--
+-- Name: email_logs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_logs ALTER COLUMN id SET DEFAULT nextval('public.email_logs_id_seq'::regclass);
+
+
+--
+-- Name: email_reasons id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_reasons ALTER COLUMN id SET DEFAULT nextval('public.email_reasons_id_seq'::regclass);
+
+
+--
+-- Name: email_smtp_accounts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_smtp_accounts ALTER COLUMN id SET DEFAULT nextval('public.email_smtp_accounts_id_seq'::regclass);
+
+
+--
+-- Name: email_smtps id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_smtps ALTER COLUMN id SET DEFAULT nextval('public.email_smtps_id_seq'::regclass);
+
+
+--
+-- Name: email_subscriptions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_subscriptions ALTER COLUMN id SET DEFAULT nextval('public.email_subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: email_templates id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_templates ALTER COLUMN id SET DEFAULT nextval('public.email_templates_id_seq'::regclass);
 
 
 --
@@ -11530,13 +11770,6 @@ ALTER TABLE ONLY public.indicators ALTER COLUMN id SET DEFAULT nextval('public.i
 
 
 --
--- Name: infos id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.infos ALTER COLUMN id SET DEFAULT nextval('public.infos_id_seq'::regclass);
-
-
---
 -- Name: items id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11597,27 +11830,6 @@ ALTER TABLE ONLY public.links ALTER COLUMN id SET DEFAULT nextval('public.links_
 --
 
 ALTER TABLE ONLY public.lists ALTER COLUMN id SET DEFAULT nextval('public.lists_id_seq'::regclass);
-
-
---
--- Name: log_csps id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_csps ALTER COLUMN id SET DEFAULT nextval('public.log_csps_id_seq'::regclass);
-
-
---
--- Name: log_mailers id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_mailers ALTER COLUMN id SET DEFAULT nextval('public.log_mailers_id_seq'::regclass);
-
-
---
--- Name: log_records id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_records ALTER COLUMN id SET DEFAULT nextval('public.log_records_id_seq'::regclass);
 
 
 --
@@ -12893,30 +13105,6 @@ ALTER TABLE ONLY public.accounts
 
 
 --
--- Name: acme_accounts acme_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_accounts
-    ADD CONSTRAINT acme_accounts_pkey PRIMARY KEY (id);
-
-
---
--- Name: acme_identifiers acme_identifiers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_identifiers
-    ADD CONSTRAINT acme_identifiers_pkey PRIMARY KEY (id);
-
-
---
--- Name: acme_orders acme_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.acme_orders
-    ADD CONSTRAINT acme_orders_pkey PRIMARY KEY (id);
-
-
---
 -- Name: action_mailbox_inbound_emails action_mailbox_inbound_emails_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13141,14 +13329,6 @@ ALTER TABLE ONLY public.authorized_tokens
 
 
 --
--- Name: blob_defaults blob_defaults_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.blob_defaults
-    ADD CONSTRAINT blob_defaults_pkey PRIMARY KEY (id);
-
-
---
 -- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13170,14 +13350,6 @@ ALTER TABLE ONLY public.budgets
 
 ALTER TABLE ONLY public.busynesses
     ADD CONSTRAINT busynesses_pkey PRIMARY KEY (id);
-
-
---
--- Name: cache_lists cache_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.cache_lists
-    ADD CONSTRAINT cache_lists_pkey PRIMARY KEY (id);
 
 
 --
@@ -13301,6 +13473,70 @@ ALTER TABLE ONLY public.checks
 
 
 --
+-- Name: com_acme_accounts com_acme_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_accounts
+    ADD CONSTRAINT com_acme_accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_acme_identifiers com_acme_identifiers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_identifiers
+    ADD CONSTRAINT com_acme_identifiers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_acme_orders com_acme_orders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_acme_orders
+    ADD CONSTRAINT com_acme_orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_blob_defaults com_blob_defaults_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_blob_defaults
+    ADD CONSTRAINT com_blob_defaults_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_cache_lists com_cache_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_cache_lists
+    ADD CONSTRAINT com_cache_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_csps com_csps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_csps
+    ADD CONSTRAINT com_csps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_errs com_errs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_errs
+    ADD CONSTRAINT com_errs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: com_infos com_infos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.com_infos
+    ADD CONSTRAINT com_infos_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13386,6 +13622,54 @@ ALTER TABLE ONLY public.departments
 
 ALTER TABLE ONLY public.details
     ADD CONSTRAINT details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_logs email_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_logs
+    ADD CONSTRAINT email_logs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_reasons email_reasons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_reasons
+    ADD CONSTRAINT email_reasons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_smtp_accounts email_smtp_accounts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_smtp_accounts
+    ADD CONSTRAINT email_smtp_accounts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_smtps email_smtps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_smtps
+    ADD CONSTRAINT email_smtps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_subscriptions email_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_subscriptions
+    ADD CONSTRAINT email_subscriptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: email_templates email_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.email_templates
+    ADD CONSTRAINT email_templates_pkey PRIMARY KEY (id);
 
 
 --
@@ -13629,14 +13913,6 @@ ALTER TABLE ONLY public.indicators
 
 
 --
--- Name: infos infos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.infos
-    ADD CONSTRAINT infos_pkey PRIMARY KEY (id);
-
-
---
 -- Name: items items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13706,30 +13982,6 @@ ALTER TABLE ONLY public.links
 
 ALTER TABLE ONLY public.lists
     ADD CONSTRAINT lists_pkey PRIMARY KEY (id);
-
-
---
--- Name: log_csps log_csps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_csps
-    ADD CONSTRAINT log_csps_pkey PRIMARY KEY (id);
-
-
---
--- Name: log_mailers log_mailers_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_mailers
-    ADD CONSTRAINT log_mailers_pkey PRIMARY KEY (id);
-
-
---
--- Name: log_records log_records_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.log_records
-    ADD CONSTRAINT log_records_pkey PRIMARY KEY (id);
 
 
 --
@@ -15268,20 +15520,6 @@ CREATE INDEX index_accounts_on_user_id ON public.accounts USING btree (user_id);
 
 
 --
--- Name: index_acme_identifiers_on_acme_order_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_acme_identifiers_on_acme_order_id ON public.acme_identifiers USING btree (acme_order_id);
-
-
---
--- Name: index_acme_orders_on_acme_account_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_acme_orders_on_acme_account_id ON public.acme_orders USING btree (acme_account_id);
-
-
---
 -- Name: index_action_mailbox_inbound_emails_uniqueness; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15933,6 +16171,20 @@ CREATE INDEX index_checks_on_operator_type_and_operator_id ON public.checks USIN
 
 
 --
+-- Name: index_com_acme_identifiers_on_acme_order_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_com_acme_identifiers_on_acme_order_id ON public.com_acme_identifiers USING btree (acme_order_id);
+
+
+--
+-- Name: index_com_acme_orders_on_acme_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_com_acme_orders_on_acme_account_id ON public.com_acme_orders USING btree (acme_account_id);
+
+
+--
 -- Name: index_comments_on_commentable_type_and_commentable_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16098,6 +16350,41 @@ CREATE INDEX index_departments_on_parent_id ON public.departments USING btree (p
 --
 
 CREATE INDEX index_departments_on_superior_id ON public.departments USING btree (superior_id);
+
+
+--
+-- Name: index_email_logs_on_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_email_logs_on_template_id ON public.email_logs USING btree (template_id);
+
+
+--
+-- Name: index_email_smtp_accounts_on_smtp_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_email_smtp_accounts_on_smtp_id ON public.email_smtp_accounts USING btree (smtp_id);
+
+
+--
+-- Name: index_email_subscriptions_on_reason_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_email_subscriptions_on_reason_id ON public.email_subscriptions USING btree (reason_id);
+
+
+--
+-- Name: index_email_subscriptions_on_smtp_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_email_subscriptions_on_smtp_account_id ON public.email_subscriptions USING btree (smtp_account_id);
+
+
+--
+-- Name: index_email_subscriptions_on_smtp_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_email_subscriptions_on_smtp_id ON public.email_subscriptions USING btree (smtp_id);
 
 
 --
@@ -19585,6 +19872,15 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210412123315'),
 ('20210412130620'),
 ('20210412162526'),
-('20210413114211');
+('20210413114211'),
+('20210424054731'),
+('20210430041623'),
+('20210501062552'),
+('20210501135506'),
+('20210501151357'),
+('20210502011851'),
+('20210502091146'),
+('20210507072511'),
+('20210507074459');
 
 
