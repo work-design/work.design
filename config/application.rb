@@ -5,7 +5,7 @@ Bundler.require(*Rails.groups)
 
 module OneWork
   class Application < Rails::Application
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     config.autoload_paths += Dir[
       "#{config.root}/app/models/oauth_user",
