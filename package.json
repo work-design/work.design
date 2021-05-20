@@ -24,7 +24,7 @@
     "fullcalendar": "^3.9.0",
     "moment": "^2.22.1",
     "moment-timezone": "^0.5.25",
-    "postcss": "^8.1.8",
+    "postcss": "^8.2.10",
     "postcss-import": "^13.0.0",
     "postcss-loader": "^4.1.0",
     "rails_ui": "^0.1.3",
