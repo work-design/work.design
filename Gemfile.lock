@@ -65,14 +65,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: c8535a527eb4a1dc55cd384a5c6689cde15c68bd
+  revision: ec64ba96ad7bada8945c04a12552290984c4bbfb
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: a97c60e826971c583d1d23cba0588aa5971bd38a
+  revision: f18c4b4d15f7b6552eecd918fa446b10890d6f5f
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -105,7 +105,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 9acbeac95185c388387cc622840f449a1a11e82c
+  revision: 750f7ef73cbffc0ede075977c1805b85f6b52b4e
   specs:
     rails_data (1.0.2)
       prawn
@@ -117,14 +117,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
-  revision: e895d41b44a7de01e2a97073618d090afa3c9752
+  revision: c918f74f8837f10253985218bfee1a1596a5b923
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: b12840411135f7a453c90a4e41c8ea7f9494d351
+  revision: b2291f73989d8f50bd83f148815b5691c4edef8d
   specs:
     rails_email (2.1.6)
       rails_com (~> 1.2)
@@ -145,7 +145,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 1c90a1d043ed469bbdf6f166b2f60392859bcd30
+  revision: a394c6b0d3f478f8d68d6bb74ab403d9b3d30362
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: 6f11348e2d42a7e1208b3b033d4727887b6f5875
+  revision: e5beb874205835a7da4a2218e0bbbb6936170d36
   specs:
     rails_notice (1.0.2)
       rails_auth
@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 13ba2cd944c24247127b4475b37f85a0130e846e
+  revision: cad25ef4a24c577832a3a3892772ed7a07d8b069
   specs:
     rails_org (0.1)
       rails_auth
@@ -186,7 +186,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: da0aef706fb7e98c26e9d4d40a23787e8f749f18
+  revision: 51f3affa8e408e3d59c3fb7ed5018c5fda918d44
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 8e9db7cf0ea99b2026931371b76e309a0968b361
+  revision: 6d65e28b9aa6c872f8d3fdce8a8c39b33ac17458
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -217,7 +217,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 91ddcfe69c11b42aef08b768b4074609f7a7e3a2
+  revision: 33d0b44f9ed07cd2a9005932ce1a9c600751f078
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
