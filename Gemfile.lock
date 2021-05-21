@@ -51,14 +51,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_agency.git
-  revision: 2a4fc2ddcf89fd239e636f8c0fe6dc335a4104cd
+  revision: 28fed2aaa14caafd7c5175ef9a37ac6de63e709b
   specs:
     rails_agency (0.1.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: bf9f3a7fc57308c17d88fb3a3fba5f5f20a4c8d0
+  revision: c7be9c3c59e5f184c4b7764e4d23a8db00d608db
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
@@ -160,7 +160,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_interact.git
-  revision: b746734e7944792980a0c22585963ad366fdefb7
+  revision: c0c5bcdd52f2571711bf7f5e394dd2656b22574b
   specs:
     rails_interact (0.1.0)
       rails_com (~> 1.2)
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 2515efeb3ba380d8fb03d584448c2614a4c7d265
+  revision: e30808a86fde2db677f71eddfe4207f0c95415ff
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
