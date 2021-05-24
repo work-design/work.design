@@ -193,7 +193,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_quip.git
-  revision: 4f5864d9d0bfe7624d6a72568d16dfa955059a72
+  revision: 844d481a0ae3ce55123be071158ac7d6a49684cc
   specs:
     rails_quip (0.1.0)
       httpx
