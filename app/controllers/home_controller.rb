@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   before_action :check_variant
 
   def index
-    @post = Post.find_by(code: 'home/index')
+    @post = Detail::Post.find_by(code: 'home/index')
   end
 
   private
