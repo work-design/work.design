@@ -9,6 +9,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -256,7 +270,7 @@ CREATE TABLE public.agential_agencies (
     updated_at timestamp(6) without time zone NOT NULL,
     client_id bigint,
     agent_id bigint,
-    commission_ratio numeric(4,0),
+    commission_ratio numeric(4,2),
     note character varying
 );
 
@@ -344,7 +358,7 @@ CREATE TABLE public.aim_entities (
     serial_number character varying,
     last_access_at timestamp without time zone,
     ip character varying,
-    reward_amount numeric(10,0),
+    reward_amount numeric(10,2),
     aim_logs_count integer DEFAULT 0,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -452,7 +466,7 @@ CREATE TABLE public.aims (
     name character varying,
     unit character varying,
     repeat_type character varying,
-    rate numeric(10,0) DEFAULT 1.0,
+    rate numeric(10,2) DEFAULT 1.0,
     task_point integer DEFAULT 0,
     reward_point integer DEFAULT 0,
     reward_amount integer DEFAULT 0,
@@ -523,8 +537,8 @@ ALTER SEQUENCE public.annunciates_id_seq OWNED BY public.annunciates.id;
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -539,7 +553,7 @@ CREATE TABLE public.attend_absence_stats (
     annual_add double precision,
     left_annual_days double precision,
     vacation_days double precision,
-    details character varying,
+    details character varying(1024),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     member_id bigint
@@ -579,8 +593,8 @@ CREATE TABLE public.attend_absences (
     kind character varying,
     start_at timestamp without time zone,
     finish_at timestamp without time zone,
-    note character varying,
-    comment character varying,
+    note character varying(2048),
+    comment character varying(2048),
     redeeming boolean,
     redeeming_days character varying[],
     processed boolean,
@@ -695,9 +709,9 @@ CREATE TABLE public.attend_attendance_stats (
     id bigint NOT NULL,
     member_id bigint,
     financial_month_id bigint,
-    costed_absence character varying,
-    redeeming_absence character varying,
-    free_absence character varying,
+    costed_absence character varying(1024),
+    redeeming_absence character varying(1024),
+    free_absence character varying(1024),
     allowance_days integer,
     late_days integer,
     absence_redeeming_hours double precision,
@@ -865,8 +879,8 @@ CREATE TABLE public.attend_overtimes (
     member_id bigint,
     start_at timestamp without time zone,
     finish_at timestamp without time zone,
-    note character varying,
-    comment character varying,
+    note character varying(1024),
+    comment character varying(1024),
     hours double precision,
     state character varying DEFAULT 'init'::character varying,
     created_at timestamp(6) without time zone NOT NULL,
@@ -948,7 +962,7 @@ CREATE TABLE public.auditor_audits (
     audited_changes json DEFAULT '{}'::json,
     related_changes json DEFAULT '{}'::json,
     extra json DEFAULT '{}'::json,
-    note character varying,
+    note character varying(1024),
     remote_ip character varying,
     controller_path character varying,
     action_name character varying,
@@ -1266,7 +1280,6 @@ CREATE TABLE public.auth_users (
 --
 
 CREATE SEQUENCE public.auth_users_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1287,7 +1300,7 @@ ALTER SEQUENCE public.auth_users_id_seq OWNED BY public.auth_users.id;
 
 CREATE TABLE public.auth_verify_tokens (
     id bigint NOT NULL,
-    type character varying,
+    type character varying(100),
     token character varying,
     expire_at timestamp without time zone,
     identity character varying,
@@ -1365,7 +1378,7 @@ CREATE TABLE public.card_expenses (
     card_id bigint,
     consumable_type character varying,
     consumable_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -1400,7 +1413,7 @@ CREATE TABLE public.card_returns (
     consumable_type character varying,
     consumable_id bigint,
     card_expense_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -1434,7 +1447,7 @@ CREATE TABLE public.cart_promotes (
     cart_id bigint,
     cart_item_id bigint,
     promote_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     state character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -1469,9 +1482,9 @@ ALTER SEQUENCE public.cart_promotes_id_seq OWNED BY public.cart_promotes.id;
 CREATE TABLE public.charges (
     id bigint NOT NULL,
     unit character varying,
-    min numeric(10,0),
-    max numeric(10,0),
-    price numeric(10,0),
+    min numeric(10,2),
+    max numeric(10,2),
+    price numeric(10,2),
     type character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -1770,7 +1783,7 @@ CREATE TABLE public.com_csps (
     referrer character varying,
     violated_directive character varying,
     effective_directive character varying,
-    original_policy character varying,
+    original_policy character varying(1024),
     disposition character varying,
     blocked_uri character varying,
     line_number character varying,
@@ -1811,7 +1824,7 @@ CREATE TABLE public.com_errs (
     path character varying,
     controller_name character varying,
     action_name character varying,
-    exception character varying,
+    exception character varying(10240),
     exception_object character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -1829,7 +1842,6 @@ CREATE TABLE public.com_errs (
 --
 
 CREATE SEQUENCE public.com_errs_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1992,8 +2004,8 @@ CREATE TABLE public.custom_parts (
     part_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    original_price numeric(10,0),
-    price numeric(10,0)
+    original_price numeric(10,2),
+    price numeric(10,2)
 );
 
 
@@ -2027,7 +2039,7 @@ CREATE TABLE public.customs (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     product_id bigint,
-    price numeric(10,0),
+    price numeric(10,2),
     organ_id bigint,
     name character varying,
     sku character varying,
@@ -2067,7 +2079,7 @@ ALTER SEQUENCE public.customs_id_seq OWNED BY public.customs.id;
 CREATE TABLE public.datum_data_lists (
     id integer NOT NULL,
     title character varying,
-    comment character varying,
+    comment character varying(4096),
     type character varying,
     data_table character varying,
     export_excel character varying,
@@ -2217,7 +2229,7 @@ CREATE TABLE public.detail_contents (
     title character varying,
     body text,
     "position" integer DEFAULT 0,
-    list character varying,
+    list character varying(50),
     detail_id bigint,
     author_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -2290,7 +2302,7 @@ CREATE TABLE public.detail_items (
     name character varying,
     type character varying,
     key character varying,
-    description character varying,
+    description character varying(1024),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     list_id bigint
@@ -2921,7 +2933,7 @@ CREATE TABLE public.event_participants (
     participant_id bigint,
     state character varying,
     score integer,
-    comment character varying,
+    comment character varying(4096),
     quit_note character varying,
     assigned_status character varying,
     job_id character varying,
@@ -2991,13 +3003,13 @@ CREATE TABLE public.events (
     id bigint NOT NULL,
     event_taxon_id bigint,
     name character varying,
-    description character varying,
+    description character varying(4096),
     "position" integer,
     event_items_count integer DEFAULT 0,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     organ_id bigint,
-    price numeric(10,0),
+    price numeric(10,2),
     event_participants_count integer DEFAULT 0,
     members_count integer DEFAULT 0
 );
@@ -3175,7 +3187,7 @@ CREATE TABLE public.facilitates (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     facilitate_taxon_id bigint,
-    price numeric(10,0),
+    price numeric(10,2),
     sku character varying,
     qr_prefix character varying,
     quantity numeric,
@@ -3456,9 +3468,9 @@ CREATE TABLE public.factory_parts (
     type character varying,
     order_items_count integer DEFAULT 0,
     published boolean DEFAULT true,
-    price numeric(10,0),
-    import_price numeric(10,0),
-    profit_price numeric(10,0),
+    price numeric(10,2),
+    import_price numeric(10,2),
+    profit_price numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint,
@@ -3914,13 +3926,13 @@ CREATE TABLE public.factory_products (
     type character varying,
     order_items_count integer DEFAULT 0,
     published boolean DEFAULT true,
-    price numeric(10,0),
-    profit_price numeric(10,0),
+    price numeric(10,2),
+    profit_price numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    reference_price numeric(10,0),
+    reference_price numeric(10,2),
     organ_id bigint,
-    cost_price numeric(10,0),
+    cost_price numeric(10,2),
     product_taxon_ancestors json,
     str_part_ids character varying,
     profit_margin numeric(4,2),
@@ -4030,11 +4042,11 @@ CREATE TABLE public.finance_expense_items (
     id bigint NOT NULL,
     expense_id bigint,
     financial_taxon_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     note character varying,
     state character varying,
     quantity integer DEFAULT 1,
-    price numeric(10,0),
+    price numeric(10,2),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     budget_id bigint,
@@ -4070,7 +4082,7 @@ CREATE TABLE public.finance_expense_members (
     expense_id bigint,
     member_id bigint,
     payment_method_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     advance boolean,
     state character varying DEFAULT 'pending'::character varying,
     note character varying,
@@ -4111,8 +4123,8 @@ CREATE TABLE public.finance_expenses (
     type character varying,
     state character varying DEFAULT 'init'::character varying,
     subject character varying,
-    amount numeric(10,0),
-    note character varying,
+    amount numeric(10,2),
+    note character varying(4096),
     invoices_count integer,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -4321,7 +4333,7 @@ CREATE TABLE public.finance_stocks (
     ratio numeric(4,2),
     amount integer DEFAULT 0.0,
     expense_amount integer DEFAULT 0.0,
-    expense_detail jsonb DEFAULT '{}'::jsonb,
+    expense_detail json DEFAULT '{}'::json,
     note character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -4428,7 +4440,7 @@ CREATE TABLE public.good_providers (
     provider_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    export_price numeric(10,0),
+    export_price numeric(10,2),
     verified boolean DEFAULT false,
     selected boolean,
     good_type character varying,
@@ -4723,7 +4735,6 @@ CREATE TABLE public.links (
 --
 
 CREATE SEQUENCE public.links_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4757,7 +4768,6 @@ CREATE TABLE public.logs (
 --
 
 CREATE SEQUENCE public.logs_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -5033,7 +5043,7 @@ ALTER SEQUENCE public.mileposts_id_seq OWNED BY public.mileposts.id;
 CREATE TABLE public.money_givens (
     id bigint NOT NULL,
     type character varying,
-    amount numeric(10,0) DEFAULT 0.0,
+    amount numeric(10,2) DEFAULT 0.0,
     note character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -5182,9 +5192,9 @@ CREATE TABLE public.notice_notifications (
     notifiable_type character varying,
     notifiable_id integer,
     code character varying,
-    state character varying DEFAULT '0'::character varying,
+    state character varying DEFAULT 0,
     title character varying,
-    body character varying,
+    body character varying(5000),
     link character varying,
     sending_at timestamp without time zone,
     read_at timestamp without time zone,
@@ -5512,7 +5522,7 @@ CREATE TABLE public.org_job_transfers (
     from_job_title_id bigint,
     state character varying DEFAULT 'init'::character varying,
     transfer_on date,
-    reason_note character varying,
+    reason_note character varying(4096),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -5840,9 +5850,9 @@ CREATE TABLE public.org_resigns (
     member_id bigint,
     state character varying DEFAULT 'init'::character varying,
     leave_on date,
-    reason_note character varying,
-    handover_note character varying,
-    comment character varying,
+    reason_note character varying(4096),
+    handover_note character varying(4096),
+    comment character varying(4096),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -5956,8 +5966,8 @@ CREATE TABLE public.org_tutorials (
     finish_on date,
     performance character varying,
     allowance integer,
-    note character varying,
-    comment character varying,
+    note character varying(4096),
+    comment character varying(4096),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -6063,7 +6073,6 @@ CREATE TABLE public.pictures (
 --
 
 CREATE SEQUENCE public.pictures_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -6121,7 +6130,7 @@ CREATE TABLE public.place_taxons (
     parent_id bigint,
     name character varying,
     "position" integer,
-    profit_margin numeric(4,0),
+    profit_margin numeric(4,2),
     parent_ancestors jsonb,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -6370,10 +6379,10 @@ CREATE TABLE public.praise_incomes (
     earner_id bigint,
     source_type character varying,
     source_id bigint,
-    amount numeric(10,0) DEFAULT 0.0,
-    profit_amount numeric(10,0) DEFAULT 0.0,
-    royalty_amount numeric(10,0) DEFAULT 0.0,
-    reward_amount numeric(10,0) DEFAULT 0.0,
+    amount numeric(10,2) DEFAULT 0.0,
+    profit_amount numeric(10,2) DEFAULT 0.0,
+    royalty_amount numeric(10,2) DEFAULT 0.0,
+    reward_amount numeric(10,2) DEFAULT 0.0,
     state character varying DEFAULT 'init'::character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -6437,7 +6446,7 @@ CREATE TABLE public.praise_users (
     reward_id bigint,
     entity_type character varying,
     entity_id bigint,
-    amount numeric(10,0) DEFAULT 0.0,
+    amount numeric(10,2) DEFAULT 0.0,
     "position" integer,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -6506,7 +6515,7 @@ CREATE TABLE public.profiled_address_users (
     address_id bigint,
     user_id bigint,
     inviter_id bigint,
-    commission_ratio numeric(4,0) DEFAULT 0.0,
+    commission_ratio numeric(4,2) DEFAULT 0.0,
     kind character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -6707,7 +6716,7 @@ ALTER SEQUENCE public.project_facilitates_id_seq OWNED BY public.project_facilit
 CREATE TABLE public.project_funds (
     id bigint NOT NULL,
     project_id bigint,
-    price numeric(10,0),
+    price numeric(10,2),
     visible boolean DEFAULT true,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -6806,7 +6815,6 @@ CREATE TABLE public.project_members (
 --
 
 CREATE SEQUENCE public.project_members_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7093,7 +7101,6 @@ CREATE TABLE public.projects (
 --
 
 CREATE SEQUENCE public.projects_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7299,7 +7306,7 @@ CREATE TABLE public.rally_users (
     rally_id bigint,
     user_id bigint,
     inviter_id bigint,
-    commission_ratio numeric(4,0) DEFAULT 0.0,
+    commission_ratio numeric(4,2) DEFAULT 0.0,
     kind character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -7448,7 +7455,7 @@ CREATE TABLE public.reward_expenses (
     reward_id bigint,
     user_id bigint,
     aim_id bigint,
-    amount numeric(10,0) DEFAULT 0.0,
+    amount numeric(10,2) DEFAULT 0.0,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -7481,7 +7488,7 @@ CREATE TABLE public.reward_incomes (
     id bigint NOT NULL,
     reward_id bigint,
     user_id bigint,
-    reward_amount numeric(10,0) DEFAULT 0.0,
+    reward_amount numeric(10,2) DEFAULT 0.0,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -7514,11 +7521,11 @@ CREATE TABLE public.rewards (
     id bigint NOT NULL,
     entity_type character varying,
     entity_id bigint,
-    min_piece numeric(10,0) DEFAULT 1.0,
-    max_piece numeric(10,0) DEFAULT 10.0,
-    amount numeric(10,0),
-    income_amount numeric(10,0),
-    expense_amount numeric(10,0),
+    min_piece numeric(10,2) DEFAULT 1.0,
+    max_piece numeric(10,2) DEFAULT 10.0,
+    amount numeric(10,2),
+    income_amount numeric(10,2),
+    expense_amount numeric(10,2),
     start_at timestamp without time zone,
     finish_at timestamp without time zone,
     enabled boolean DEFAULT true,
@@ -7601,7 +7608,6 @@ CREATE TABLE public.roled_governs (
 --
 
 CREATE SEQUENCE public.roled_governs_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7675,7 +7681,6 @@ CREATE TABLE public.roled_role_rules (
 --
 
 CREATE SEQUENCE public.roled_role_rules_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7744,7 +7749,6 @@ CREATE TABLE public.roled_roles (
 --
 
 CREATE SEQUENCE public.roled_roles_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7818,7 +7822,6 @@ CREATE TABLE public.roled_rules (
 --
 
 CREATE SEQUENCE public.roled_rules_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8494,7 +8497,6 @@ CREATE TABLE public.task_timers (
 --
 
 CREATE SEQUENCE public.task_timers_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8519,8 +8521,8 @@ CREATE TABLE public.tasks (
     parent_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    state character varying DEFAULT '0'::character varying,
-    focus character varying DEFAULT '0'::character varying,
+    state character varying DEFAULT 0,
+    focus character varying DEFAULT 0,
     "position" integer DEFAULT 1,
     estimated_time integer,
     actual_time integer,
@@ -8554,7 +8556,6 @@ COMMENT ON COLUMN public.tasks.serial_number IS 'Task Template test repeat';
 --
 
 CREATE SEQUENCE public.tasks_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8640,7 +8641,6 @@ CREATE TABLE public.team_members (
 --
 
 CREATE SEQUENCE public.team_members_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8664,7 +8664,7 @@ CREATE TABLE public.teams (
     name character varying,
     teaming_type character varying,
     teaming_id integer,
-    description character varying,
+    description character varying(1024),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint
@@ -8676,7 +8676,6 @@ CREATE TABLE public.teams (
 --
 
 CREATE SEQUENCE public.teams_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8770,9 +8769,9 @@ ALTER SEQUENCE public.time_lists_id_seq OWNED BY public.time_lists.id;
 
 CREATE TABLE public.trade_advances (
     id bigint NOT NULL,
-    price numeric(10,0),
+    price numeric(10,2),
     apple_product_id character varying,
-    amount numeric(10,0),
+    amount numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     card_template_id bigint,
@@ -8814,8 +8813,8 @@ CREATE TABLE public.trade_card_advances (
     card_id bigint,
     advance_id bigint,
     trade_item_id bigint,
-    price numeric(10,0),
-    amount numeric(10,0),
+    price numeric(10,2),
+    amount numeric(10,2),
     state character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -8852,7 +8851,7 @@ CREATE TABLE public.trade_card_logs (
     card_id bigint,
     source_type character varying,
     source_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     title character varying,
     tag_str character varying,
     created_at timestamp without time zone NOT NULL,
@@ -8961,9 +8960,9 @@ CREATE TABLE public.trade_cards (
     trade_item_id bigint,
     client_id bigint,
     card_uuid character varying,
-    amount numeric(10,0),
-    expense_amount numeric(10,0),
-    income_amount numeric(10,0),
+    amount numeric(10,2),
+    expense_amount numeric(10,2),
+    income_amount numeric(10,2),
     lock_version integer,
     effect_at timestamp without time zone,
     expire_at timestamp without time zone,
@@ -9001,7 +9000,7 @@ ALTER SEQUENCE public.trade_cards_id_seq OWNED BY public.trade_cards.id;
 
 CREATE TABLE public.trade_carts (
     id bigint NOT NULL,
-    amount numeric(10,0),
+    amount numeric(10,2),
     user_id bigint,
     payment_strategy_id bigint,
     deposit_ratio integer,
@@ -9099,7 +9098,7 @@ CREATE TABLE public.trade_cash_logs (
     user_id bigint,
     source_type character varying,
     source_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     title character varying,
     tag_str character varying,
     created_at timestamp without time zone NOT NULL,
@@ -9133,9 +9132,9 @@ ALTER SEQUENCE public.trade_cash_logs_id_seq OWNED BY public.trade_cash_logs.id;
 CREATE TABLE public.trade_cashes (
     id bigint NOT NULL,
     user_id bigint,
-    amount numeric(10,0) DEFAULT 0.0,
-    income_amount numeric(10,0) DEFAULT 0.0,
-    expense_amount numeric(10,0) DEFAULT 0.0,
+    amount numeric(10,2) DEFAULT 0.0,
+    income_amount numeric(10,2) DEFAULT 0.0,
+    expense_amount numeric(10,2) DEFAULT 0.0,
     lock_version integer,
     account_bank character varying,
     account_name character varying,
@@ -9171,24 +9170,24 @@ ALTER SEQUENCE public.trade_cashes_id_seq OWNED BY public.trade_cashes.id;
 CREATE TABLE public.trade_orders (
     id bigint NOT NULL,
     uuid character varying NOT NULL,
-    state character varying DEFAULT '0'::character varying,
-    amount numeric(10,0),
-    received_amount numeric(10,0),
-    item_amount numeric(10,0),
+    state character varying DEFAULT 0,
+    amount numeric(10,2),
+    received_amount numeric(10,2),
+    item_amount numeric(10,2),
     currency character varying,
     payment_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     payment_strategy_id bigint,
     myself boolean,
-    overall_reduced_amount numeric(10,0),
-    overall_additional_amount numeric(10,0),
+    overall_reduced_amount numeric(10,2),
+    overall_additional_amount numeric(10,2),
     payment_status character varying,
     user_id bigint,
     cart_id bigint,
     organ_id bigint,
     lock_version integer,
-    note character varying,
+    note character varying(4096),
     expire_at timestamp without time zone,
     extra json DEFAULT '{}'::json,
     trade_items_count integer DEFAULT 0,
@@ -9270,7 +9269,7 @@ CREATE TABLE public.trade_payment_orders (
     id bigint NOT NULL,
     payment_id bigint,
     order_id bigint,
-    check_amount numeric(10,0),
+    check_amount numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     state character varying
@@ -9368,22 +9367,22 @@ ALTER SEQUENCE public.trade_payment_strategies_id_seq OWNED BY public.trade_paym
 
 CREATE TABLE public.trade_payments (
     id bigint NOT NULL,
-    type character varying,
-    total_amount numeric(10,0),
-    fee_amount numeric(10,0),
-    income_amount numeric(10,0),
-    checked_amount numeric(10,0),
-    adjust_amount numeric(10,0) DEFAULT 0.0,
-    payment_uuid character varying,
-    notify_type character varying,
+    type character varying(255),
+    total_amount numeric(10,2),
+    fee_amount numeric(10,2),
+    income_amount numeric(10,2),
+    checked_amount numeric(10,2),
+    adjust_amount numeric(10,2) DEFAULT 0,
+    payment_uuid character varying(255),
+    notify_type character varying(255),
     notified_at timestamp without time zone,
-    pay_status character varying,
-    seller_identifier character varying,
-    buyer_name character varying,
-    buyer_identifier character varying,
+    pay_status character varying(255),
+    seller_identifier character varying(255),
+    buyer_name character varying(255),
+    buyer_identifier character varying(255),
     buyer_bank character varying,
     user_id integer,
-    currency character varying,
+    currency character varying(255),
     comment character varying,
     payment_method_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -9428,8 +9427,8 @@ CREATE TABLE public.trade_payouts (
     operator_id bigint,
     cash_id bigint,
     payout_uuid character varying,
-    requested_amount numeric(10,0),
-    actual_amount numeric(10,0),
+    requested_amount numeric(10,2),
+    actual_amount numeric(10,2),
     state character varying,
     paid_at timestamp without time zone,
     advance boolean DEFAULT false,
@@ -9505,18 +9504,18 @@ ALTER SEQUENCE public.trade_promote_carts_id_seq OWNED BY public.trade_promote_c
 CREATE TABLE public.trade_promote_charges (
     id bigint NOT NULL,
     promote_id bigint,
-    min numeric(10,0) DEFAULT 0.0,
-    max numeric(10,0) DEFAULT 99999999.99,
-    parameter numeric(10,0),
+    min numeric(10,2) DEFAULT 0,
+    max numeric(10,2) DEFAULT 99999999.99,
+    parameter numeric(10,2),
     type character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     contain_max boolean,
     contain_min boolean,
-    base_price numeric(10,0),
+    base_price numeric(10,2),
     unit character varying,
-    filter_min numeric(10,0),
-    filter_max numeric(10,0)
+    filter_min numeric(10,2),
+    filter_max numeric(10,2)
 );
 
 
@@ -9618,12 +9617,12 @@ CREATE TABLE public.trade_refunds (
     payment_id bigint,
     operator_id bigint,
     type character varying,
-    total_amount numeric(10,0),
+    total_amount numeric(10,2),
     buyer_identifier character varying,
-    comment character varying,
-    state character varying DEFAULT '0'::character varying,
+    comment character varying(512),
+    state character varying DEFAULT 0,
     refunded_at timestamp without time zone,
-    reason character varying,
+    reason character varying(512),
     currency character varying,
     refund_uuid character varying,
     created_at timestamp without time zone NOT NULL,
@@ -9660,18 +9659,18 @@ CREATE TABLE public.trade_trade_items (
     id bigint NOT NULL,
     good_type character varying,
     good_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     number integer,
-    reduced_amount numeric(10,0),
-    additional_amount numeric(10,0),
-    single_price numeric(10,0),
+    reduced_amount numeric(10,2),
+    additional_amount numeric(10,2),
+    single_price numeric(10,2),
     myself boolean,
     starred boolean,
-    original_amount numeric(10,0),
-    retail_price numeric(10,0),
-    wholesale_price numeric(10,0),
+    original_amount numeric(10,2),
+    retail_price numeric(10,2),
+    wholesale_price numeric(10,2),
     status character varying,
     good_name character varying,
     weight numeric DEFAULT 0.0,
@@ -9728,15 +9727,15 @@ CREATE TABLE public.trade_trade_promotes (
     id bigint NOT NULL,
     promote_id bigint,
     promote_charge_id bigint,
-    amount numeric(10,0),
+    amount numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     trade_item_id bigint,
     promote_good_id bigint,
     sequence integer,
-    based_amount numeric(10,0),
-    original_amount numeric(10,0),
-    computed_amount numeric(10,0),
+    based_amount numeric(10,2),
+    original_amount numeric(10,2),
+    computed_amount numeric(10,2),
     note character varying,
     promote_cart_id bigint,
     edited boolean,
@@ -11021,7 +11020,6 @@ CREATE TABLE public.whos (
 --
 
 CREATE SEQUENCE public.whos_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -15760,13 +15758,6 @@ CREATE INDEX index_auditor_verifications_on_member_id ON public.auditor_verifica
 
 
 --
--- Name: index_auditor_verifications_on_verified_type_and_verified_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_auditor_verifications_on_verified_type_and_verified_id ON public.auditor_verifications USING btree (verified_type, verified_id);
-
-
---
 -- Name: index_auditor_verifications_on_verifier_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15785,13 +15776,6 @@ CREATE INDEX index_auditor_verifiers_on_job_title_id ON public.auditor_verifiers
 --
 
 CREATE INDEX index_auditor_verifiers_on_member_id ON public.auditor_verifiers USING btree (member_id);
-
-
---
--- Name: index_auditor_verifiers_on_verifiable_type_and_verifiable_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_auditor_verifiers_on_verifiable_type_and_verifiable_id ON public.auditor_verifiers USING btree (verifiable_type, verifiable_id);
 
 
 --
@@ -15844,13 +15828,6 @@ CREATE INDEX index_auth_user_tags_on_organ_id ON public.auth_user_tags USING btr
 
 
 --
--- Name: index_auth_user_tags_on_user_tagging_type_and_user_tagging_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_auth_user_tags_on_user_tagging_type_and_user_tagging_id ON public.auth_user_tags USING btree (user_tagging_type, user_tagging_id);
-
-
---
 -- Name: index_auth_users_on_inviter_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15897,6 +15874,13 @@ CREATE INDEX index_bookings_on_seat_id ON public.bookings USING btree (seat_id);
 --
 
 CREATE INDEX index_bookings_on_time_item_id ON public.bookings USING btree (time_item_id);
+
+
+--
+-- Name: index_budgets_on_budgeting; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_budgets_on_budgeting ON public.finance_budgets USING btree (financial_type, financial_id);
 
 
 --
@@ -16341,6 +16325,13 @@ CREATE INDEX index_events_on_organ_id ON public.events USING btree (organ_id);
 
 
 --
+-- Name: index_expenses_on_financial; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_expenses_on_financial ON public.finance_expenses USING btree (financial_type, financial_id);
+
+
+--
 -- Name: index_facilitate_indicators_on_facilitate_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16726,13 +16717,6 @@ CREATE INDEX index_finance_budgets_on_financial_taxon_id ON public.finance_budge
 
 
 --
--- Name: index_finance_budgets_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_finance_budgets_on_financial_type_and_financial_id ON public.finance_budgets USING btree (financial_type, financial_id);
-
-
---
 -- Name: index_finance_budgets_on_member_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16817,13 +16801,6 @@ CREATE INDEX index_finance_expenses_on_financial_taxon_id ON public.finance_expe
 
 
 --
--- Name: index_finance_expenses_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_finance_expenses_on_financial_type_and_financial_id ON public.finance_expenses USING btree (financial_type, financial_id);
-
-
---
 -- Name: index_finance_expenses_on_fund_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16863,13 +16840,6 @@ CREATE INDEX index_finance_financial_taxons_on_organ_id ON public.finance_financ
 --
 
 CREATE INDEX index_finance_financial_taxons_on_parent_id ON public.finance_financial_taxons USING btree (parent_id);
-
-
---
--- Name: index_finance_fund_incomes_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_finance_fund_incomes_on_financial_type_and_financial_id ON public.finance_fund_incomes USING btree (financial_type, financial_id);
 
 
 --
@@ -16919,6 +16889,13 @@ CREATE INDEX index_finance_stocks_on_member_id ON public.finance_stocks USING bt
 --
 
 CREATE INDEX index_finance_stocks_on_organ_id ON public.finance_stocks USING btree (organ_id);
+
+
+--
+-- Name: index_fund_incomes_on_financial; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_fund_incomes_on_financial ON public.finance_fund_incomes USING btree (financial_type, financial_id);
 
 
 --
@@ -19022,6 +18999,27 @@ CREATE INDEX index_user_providers_on_user_id ON public.user_providers USING btre
 
 
 --
+-- Name: index_user_tags_on_user_tagging; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_tags_on_user_tagging ON public.auth_user_tags USING btree (user_tagging_type, user_tagging_id);
+
+
+--
+-- Name: index_verifications_on_verified; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_verifications_on_verified ON public.auditor_verifications USING btree (verified_type, verified_id);
+
+
+--
+-- Name: index_verifiers_on_verifiable; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_verifiers_on_verifiable ON public.auditor_verifiers USING btree (verifiable_type, verifiable_id);
+
+
+--
 -- Name: index_wait_items_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -19462,6 +19460,334 @@ CREATE INDEX taxon_desc_idx ON public.taxon_hierarchies USING btree (descendant_
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20160224154100'),
+('20160224154626'),
+('20160224155804'),
+('20160224160530'),
+('20160224161000'),
+('20160228160247'),
+('20160229014723'),
+('20160901065523'),
+('20160919093503'),
+('20161005064001'),
+('20161005065037'),
+('20161005070538'),
+('20161005071936'),
+('20161029153921'),
+('20161030034305'),
+('20161030092654'),
+('20161031070735'),
+('20161103102216'),
+('20161103104205'),
+('20161104025258'),
+('20161104062659'),
+('20161104064603'),
+('20161104082941'),
+('20161104091029'),
+('20161108025453'),
+('20161108054558'),
+('20161108153159'),
+('20161109100054'),
+('20161111161429'),
+('20161126072307'),
+('20161218071956'),
+('20161219132145'),
+('20161219134529'),
+('20170321123234'),
+('20170428035214'),
+('20170510081735'),
+('20170510084912'),
+('20170512081745'),
+('20170519101752'),
+('20170531115128'),
+('20170615140930'),
+('20170707074433'),
+('20170815112100'),
+('20170922121002'),
+('20171017104458'),
+('20171017104459'),
+('20171017104460'),
+('20171017104723'),
+('20171017105828'),
+('20171019124701'),
+('20171019133122'),
+('20171019135425'),
+('20171021161307'),
+('20171022041353'),
+('20171022115007'),
+('20171022115910'),
+('20171024100815'),
+('20171024121919'),
+('20171024134516'),
+('20171027123032'),
+('20171027123815'),
+('20171027131623'),
+('20171030121434'),
+('20171030134828'),
+('20171030141232'),
+('20171031115321'),
+('20171101103805'),
+('20171101112746'),
+('20171101114008'),
+('20171101121627'),
+('20171102123651'),
+('20171102132459'),
+('20171102141655'),
+('20171103115836'),
+('20171103140519'),
+('20171103141751'),
+('20171107105950'),
+('20171107114108'),
+('20171107120033'),
+('20171107131933'),
+('20171109134100'),
+('20171109152148'),
+('20171110131207'),
+('20171114111906'),
+('20171114115228'),
+('20171115114755'),
+('20171115120040'),
+('20171115144054'),
+('20171115144429'),
+('20171116115023'),
+('20171122113000'),
+('20171127130016'),
+('20171128105745'),
+('20171128110426'),
+('20171129105235'),
+('20171211233401'),
+('20180104112415'),
+('20180105115717'),
+('20180106082040'),
+('20180118113142'),
+('20180202091035'),
+('20180219115055'),
+('20180219120418'),
+('20180309151417'),
+('20180309155025'),
+('20180309155839'),
+('20180501082148'),
+('20180517070155'),
+('20180519084217'),
+('20180702141840'),
+('20180722081122'),
+('20180722084014'),
+('20180722084904'),
+('20180722142435'),
+('20180816163830'),
+('20181013164836'),
+('20181013165052'),
+('20181013173312'),
+('20181014131918'),
+('20181015141314'),
+('20181015145147'),
+('20181016143231'),
+('20181017155048'),
+('20181017155729'),
+('20181020011819'),
+('20181027033152'),
+('20181027152111'),
+('20181030151847'),
+('20181030155003'),
+('20181104122835'),
+('20181105142958'),
+('20181107154700'),
+('20181123161706'),
+('20181211152327'),
+('20181215054113'),
+('20190101092607'),
+('20190105152729'),
+('20190105160641'),
+('20190107153256'),
+('20190107154837'),
+('20190107163231'),
+('20190108150932'),
+('20190108163345'),
+('20190108171107'),
+('20190108171737'),
+('20190125160017'),
+('20190307063031'),
+('20190430044748'),
+('20190501085930'),
+('20190502095439'),
+('20190502131723'),
+('20190503014020'),
+('20190503093137'),
+('20190503101634'),
+('20190504023556'),
+('20190504030714'),
+('20190504070844'),
+('20190504074427'),
+('20190504141936'),
+('20190505074733'),
+('20190505115112'),
+('20190506010633'),
+('20190506010654'),
+('20190506012643'),
+('20190506013017'),
+('20190506103221'),
+('20190506111246'),
+('20190506133859'),
+('20190506135229'),
+('20190506144020'),
+('20190506154720'),
+('20190508115507'),
+('20190508150537'),
+('20190508154646'),
+('20190514112009'),
+('20190514114705'),
+('20190609014356'),
+('20190609024222'),
+('20190613152020'),
+('20190624121644'),
+('20190625045051'),
+('20190629043844'),
+('20190629073934'),
+('20190629075319'),
+('20190709142604'),
+('20190713061412'),
+('20190713130950'),
+('20190716115108'),
+('20190716153724'),
+('20190716154347'),
+('20190717155858'),
+('20190720110245'),
+('20190720130308'),
+('20190722142526'),
+('20190724153018'),
+('20190725165116'),
+('20190726141539'),
+('20190727140023'),
+('20190730115517'),
+('20190731070025'),
+('20190731134239'),
+('20190731153344'),
+('20190731154831'),
+('20190801021345'),
+('20190801021714'),
+('20190801062152'),
+('20190801085956'),
+('20190803145500'),
+('20190807123911'),
+('20190812141745'),
+('20190812153458'),
+('20190813084942'),
+('20190816034219'),
+('20190816152937'),
+('20190821024936'),
+('20190821034841'),
+('20190831060520'),
+('20190903131610'),
+('20190903133240'),
+('20190904031022'),
+('20190906132907'),
+('20190906150758'),
+('20190906153214'),
+('20190907015107'),
+('20190908091413'),
+('20190912140611'),
+('20190926102326'),
+('20191022134058'),
+('20191105131050'),
+('20191114110605'),
+('20191121124023'),
+('20191121133529'),
+('20191121133949'),
+('20191123154043'),
+('20191218142344'),
+('20191231125902'),
+('20200122121829'),
+('20200122171813'),
+('20200122172409'),
+('20200123062023'),
+('20200123112649'),
+('20200126085340'),
+('20200126095438'),
+('20200126101148'),
+('20200126122103'),
+('20200126131633'),
+('20200127082341'),
+('20200128045900'),
+('20200128064809'),
+('20200128103401'),
+('20200128120804'),
+('20200129121819'),
+('20200130033257'),
+('20200201045719'),
+('20200201134536'),
+('20200202054627'),
+('20200203162210'),
+('20200203162442'),
+('20200204153800'),
+('20200205200412'),
+('20200209035059'),
+('20200209050258'),
+('20200209172922'),
+('20200214173926'),
+('20200215045001'),
+('20200216165911'),
+('20200216170638'),
+('20200217021109'),
+('20200218162131'),
+('20200220140939'),
+('20200220163012'),
+('20200221162642'),
+('20200221164134'),
+('20200221170828'),
+('20200222131434'),
+('20200222160920'),
+('20200222175559'),
+('20200223145106'),
+('20200223164844'),
+('20200223172649'),
+('20200223173320'),
+('20200223181308'),
+('20200225091019'),
+('20200226043900'),
+('20200226051042'),
+('20200227135130'),
+('20200229154435'),
+('20200307171022'),
+('20200307173606'),
+('20200307174209'),
+('20200307180111'),
+('20200307182133'),
+('20200307192935'),
+('20200307194452'),
+('20200308165958'),
+('20200317173122'),
+('20200323083041'),
+('20200323091528'),
+('20200323101558'),
+('20200323112137'),
+('20200326081919'),
+('20200401152216'),
+('20200412140950'),
+('20200412151809'),
+('20200417123945'),
+('20200421162026'),
+('20200421170158'),
+('20200424150905'),
+('20200429164232'),
+('20200429165153'),
+('20200506155749'),
+('20200512132316'),
+('20200512142841'),
+('20200513125251'),
+('20200513160745'),
+('20200514082726'),
+('20200515104938'),
+('20200527044735'),
+('20200610054146'),
+('20200612150826'),
+('20200615111021'),
+('20200617025254'),
+('20200619162526'),
+('20200619164402'),
+('20200620084728'),
+('20200622154628'),
+('20200628105344'),
+('20200701075716'),
 ('20200708094302'),
 ('20200720065905'),
 ('20200728100250'),
