@@ -1,4 +1,4 @@
-class RailsComRenameModule < ActiveRecord::Migration[6.1]
+class RailsComRenameModule1 < ActiveRecord::Migration[6.1]
 
   def change
     rename_table :accounts, :auth_accounts
