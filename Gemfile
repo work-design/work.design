@@ -36,6 +36,7 @@ git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   gem 'tencentcloud-sdk-common'
   gem 'tencentcloud-sdk-ocr'
 end
+gem 'aliyunsdkcore'
 
 # Payment method
 gem 'wx_pay', github: 'qinmingyuan/wx_pay'
