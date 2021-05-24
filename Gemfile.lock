@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: ce7601d18415bab62b2da2ea21a72733215fbceb
+  revision: 08a7fc67d42144fa6bd40aa82af608b4ac3041ad
   specs:
     rails_com (1.2.9)
       acme-client
