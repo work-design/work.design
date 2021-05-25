@@ -10921,7 +10921,7 @@ ALTER SEQUENCE public.wechat_template_key_words_id_seq OWNED BY public.wechat_te
 
 CREATE TABLE public.wechat_templates (
     id bigint NOT NULL,
-    appid bigint,
+    appid character varying,
     template_id character varying,
     title character varying,
     content character varying,
@@ -19976,6 +19976,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210524153620'),
 ('20210524153931'),
 ('20210524155014'),
-('20210524155842');
+('20210524155842'),
+('20210525153149');
 
 
