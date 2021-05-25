@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: f18c4b4d15f7b6552eecd918fa446b10890d6f5f
+  revision: caed3b9a51f66623ac83db047c58d1465bf78701
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 9cf100b67bdb82234030e64e723cc299f3052120
+  revision: 513daca86b99ec37d13603f7f281c5fcb4d8a006
   specs:
     rails_com (1.2.9)
       acme-client
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 4b6779dcff817d044d302ba6a332ae9762cb80e7
+  revision: 9b04686ae84b40d0e2df03e0d274f7c1d96608e3
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -217,7 +217,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 285e1ddb1969bc5828e3a394655377d212ad947b
+  revision: 4d8f15d4b6dd9d55ec2bc704c31a9d08f1c0835f
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 27e4b24d70f5059e94ed64b7c1a773c0b6eb703c
+  revision: 9216ddc0bbf6f65356b6951c0179c379437042ae
   specs:
     rails_wechat (0.1.0)
       rails_auth
