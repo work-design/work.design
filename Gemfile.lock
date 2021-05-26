@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: caed3b9a51f66623ac83db047c58d1465bf78701
+  revision: c95161cb5a2a44b3605a44dea8aa2fd842d62b64
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b7d62d16221d2104046bb25c32de350cc5a8b086
+  revision: 3f4d0e800869352516d878d5edf237bb3adf6251
   specs:
     rails_com (1.2.9)
       acme-client
@@ -138,7 +138,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: a32a8201e62fbcef70c5da44664b12d27a3430ed
+  revision: 3c13cfb48c351dadbd7bee1f9e490459d7efbc97
   specs:
     rails_factory (1.0.0)
       rails_com (~> 1.2)
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 20700c134b565cbc9e14ea8b2061ffd9aed30109
+  revision: b0b5c35b0f8c2af99df4e8b3adcc1c0733805ef3
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -217,7 +217,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 4d8f15d4b6dd9d55ec2bc704c31a9d08f1c0835f
+  revision: 938c0bac6e5c2f9a99326d46f12d1244b7202923
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.12)
@@ -225,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: ef8cb356d3df34c3e638b135c8041803b0529704
+  revision: e65f93ac57d6e5bcc753e26b90e51ab9fdf28f1a
   specs:
     rails_ui (0.1.0)
       rails
