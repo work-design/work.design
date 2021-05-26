@@ -11,10 +11,11 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
   * [Stimulus](https://stimulus.hotwire.dev)
   * [Webpacker](https://github.com/rails/webpacker)
 * 前端：未采用 jQuery 或其他框架；
-  * [Bulma](https://github.com/jgthms/bulma): 纯 CSS 库，js 采用 stimulus；
+  * [Bulma](https://github.com/jgthms/bulma): 纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsUI](https://github.com/work-design/rails_ui) 项目中实现；
   * [Weui](https://github.com/Tencent/weui)
-* Postgresql
-
+* 数据库
+  * [Postgresql](https://www.postgresql.org)：关系型数据库
+  * [Redis](https://redis.io)：内存数据库，用于缓存，队列任务等；
 ## 说明
 当然，没有万金油。以上各种现代管理方式，并非适合所有性质的岗位，如服务行业就不大适用于弹性工作制。
 
