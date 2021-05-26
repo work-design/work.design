@@ -1,9 +1,7 @@
 # Work Design
-
-[Work Design](https://github.com/work-design/handbook)
+本项目是 [Work Design](https://work.design) 的开源版本，一方面是 Work Design 生态的应用，同时也是 组件化开发的示例项目。
 
 ## 技术栈
-
 Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
 
 * [Ruby On Rails](https://github.com/rails/rails): 最新版本
@@ -63,8 +61,6 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 * 参见[work.design](https://work.design)
 
 
-
-
-
-
-
+## 其他
+* [Work Design 技术体系](https://github.com/work-design/home)
+* [Work Design 团队治理](https://github.com/work-design/handbook)
