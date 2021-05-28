@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: c95161cb5a2a44b3605a44dea8aa2fd842d62b64
+  revision: 9c61b778fc1459b9815794350d8ae246336bc0a8
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 3f4d0e800869352516d878d5edf237bb3adf6251
+  revision: 823f2c5fead57ab49b123d475629a21c80ad18d2
   specs:
     rails_com (1.2.9)
       acme-client
@@ -105,7 +105,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 750f7ef73cbffc0ede075977c1805b85f6b52b4e
+  revision: ca3ee6ff7605a4ddd08576ac70d43d406d9f35f8
   specs:
     rails_data (1.0.2)
       prawn
@@ -131,14 +131,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: 10796888151b90df4668b2352d0902de706ca4ee
+  revision: 44a8b21330bc01a956cba7119d5bc8106457f4cf
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 3c13cfb48c351dadbd7bee1f9e490459d7efbc97
+  revision: f179bcb4c1074fea69ab68c014d9d72a56047aba
   specs:
     rails_factory (1.0.0)
       rails_com (~> 1.2)
@@ -153,7 +153,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_growth.git
-  revision: 6da84b6e50f87497e23ed2c4f8fa28a2176f4130
+  revision: 6e4f7a6ab9f437267c088c08f69b460bf1458abe
   specs:
     rails_growth (0.1.0)
       rails_com (~> 1.2)
@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 849d606726d8ea5c5efab859dea99a4aad2e9d43
+  revision: 38c8fbe5d92719643caac24d001f62e2d8994bc8
   specs:
     rails_org (0.1)
       rails_auth
@@ -186,7 +186,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 51f3affa8e408e3d59c3fb7ed5018c5fda918d44
+  revision: 0be57b677efa9dcfe2624d3443ab4a1f75953766
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: b0b5c35b0f8c2af99df4e8b3adcc1c0733805ef3
+  revision: ebb3603f0f40ccd44395d84e30eaf5d4c0dd8660
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -225,14 +225,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: e65f93ac57d6e5bcc753e26b90e51ab9fdf28f1a
+  revision: c34c64b9d9a1c888f922636bd7685139e1ee0b7c
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: ea364b3889e8c89adc414a66eff9d7592da7d13f
+  revision: 22e213fdfc6b1278aaf43b132b28780d4479ed13
   specs:
     rails_wechat (0.1.0)
       rails_auth
@@ -545,7 +545,7 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    spreadsheet (1.2.8)
+    spreadsheet (1.2.9)
       ruby-ole
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
