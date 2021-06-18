@@ -6,14 +6,14 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_form.git
-  revision: a2a743a744574795db74331b52bf46942dd3bb2d
+  revision: d0fbf0383bf8f9ec7941f79ad2dabd95a478e53b
   specs:
     default_form (1.5.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_where.git
-  revision: 0a20b2d58f2572fe6cafdaa2cc7be6a9411930c0
+  revision: 73338e8c9bf69cb2cb25ea0a62fee1fe0a0905ba
   specs:
     default_where (2.2.3)
       activerecord (>= 4.0, <= 7.0)
@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 2ede832fca421d5cc1b617bb48c1011ed1e7ed5f
+  revision: 21de8eaae125cb8d6a82dd578d5d417103481c13
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 4295669335cf8a598dd7c376920b2f24a257e04f
+  revision: 530a995d7a28fd750002a518269a23e420531408
   specs:
     rails_com (1.2.9)
       acme-client
@@ -105,7 +105,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 4d94c8c04a9dcf522798854dad605b9374dd7907
+  revision: cee432962d9da0f9d9905729067c42502b58ce77
   specs:
     rails_data (1.0.2)
       prawn
@@ -131,21 +131,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: 44a8b21330bc01a956cba7119d5bc8106457f4cf
+  revision: 2e38c29bf4d890a27c6fc7b62945cdf71f2643b9
   specs:
     rails_event (0.1.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 3d49d22b3d64fbeb7c6a63dcc297ea344cee96d6
+  revision: 1341d077f2a63c314243285cedde08cc4f7911f2
   specs:
     rails_factory (1.0.0)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: a394c6b0d3f478f8d68d6bb74ab403d9b3d30362
+  revision: ef7047dce081d446fca6c19cf81ffc4539d5cf0c
   specs:
     rails_finance (0.1.0)
       rails_audit
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: dfa0ec92cd3866cd06c3d670c2e375f379e25391
+  revision: 72f7b4d05bbc425d88cf09dfad9af82b00f679fd
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -226,14 +226,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 63fd50ec066475f2b275a005b87fb0b8604c7919
+  revision: 6b67c065c7bb0b4ff5159bc22e14b1a54690a37e
   specs:
     rails_ui (0.1.0)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 8eaedce02e0cea8825eaab3f554f3a5982875dea
+  revision: 3ed87637d42be0c40ccdeaccbb00ae5542cdbcd0
   specs:
     rails_wechat (0.1.0)
       rails_auth
