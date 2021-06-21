@@ -7,7 +7,7 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 * [Ruby On Rails](https://github.com/rails/rails): 最新版本
   * [Turbo](https://turbo.hotwire.dev)
   * [Stimulus](https://stimulus.hotwire.dev)
-  * [Webpacker](https://github.com/rails/webpacker)
+  * [Viter](https://github.com/qinmingyuan/viter)
 * 前端：未采用 jQuery 或其他框架；
   * [Bulma](https://github.com/jgthms/bulma): 纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsUI](https://github.com/work-design/rails_ui) 项目中实现；
   * [Weui](https://github.com/Tencent/weui)
