@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: bedfdb7b1a55657d47a87c7aded2e56b973829a6
+  revision: 5da126335a6c95e27f9b94941f721425e02f5f81
   specs:
     rails_org (0.1)
       rails_auth
@@ -209,7 +209,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: bfd7f7ea264638b689158cb50f3dabfd4578db54
+  revision: 7cd023d055b6b7e48ff0e1a42d2fdb07311d5fc4
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
