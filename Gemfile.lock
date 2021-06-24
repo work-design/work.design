@@ -34,6 +34,13 @@ GIT
       rest-client
 
 GIT
+  remote: https://gitee.com/qinmingyuan/viter.git
+  revision: f72fcd69f62223a40a2ffece787d1916124b8390
+  specs:
+    viter (0.1.0)
+      rails
+
+GIT
   remote: https://gitee.com/qinmingyuan/wx_pay.git
   revision: 82ee160cc55cdb18a39822904dcbb08b039a14d8
   specs:
@@ -43,10 +50,10 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: aeb8701fbc5d18ccedb01d75c9352ada2a1c822b
+  revision: 78bd3e55ee8b6081c959e2f28421ed02125a667a
   specs:
-    tencentcloud-sdk-common (1.0.65)
-    tencentcloud-sdk-ocr (1.0.65)
+    tencentcloud-sdk-common (1.0.99)
+    tencentcloud-sdk-ocr (1.0.99)
       tencentcloud-sdk-common (~> 1.0)
 
 GIT
@@ -72,7 +79,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: a24cd7732195ac44f293b15883319a71bb9c599b
+  revision: aca7401a8f784639859a56c9c49b356a4cbeda27
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -91,7 +98,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 530a995d7a28fd750002a518269a23e420531408
+  revision: c28613d1f5dcbd1647d30ed379445a96d76dbf83
   specs:
     rails_com (1.2.9)
       acme-client
@@ -176,7 +183,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: bedfdb7b1a55657d47a87c7aded2e56b973829a6
+  revision: 5da126335a6c95e27f9b94941f721425e02f5f81
   specs:
     rails_org (0.1)
       rails_auth
@@ -209,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: bfd7f7ea264638b689158cb50f3dabfd4578db54
+  revision: 7cd023d055b6b7e48ff0e1a42d2fdb07311d5fc4
   specs:
     rails_ship (0.1.0)
       rails_com (~> 1.2)
@@ -226,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 6b67c065c7bb0b4ff5159bc22e14b1a54690a37e
+  revision: e0afac07690cad18801939ca5766d525d4c6cf70
   specs:
     rails_ui (0.1.0)
       rails
@@ -336,7 +343,7 @@ GEM
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
     debug_inspector (1.1.0)
@@ -348,27 +355,31 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (1.4.1)
+    faraday (1.4.2)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.0)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (5.2.2)
       activesupport (>= 5)
     hashie (4.1.0)
-    http-2-next (0.4.2)
+    http-2-next (0.4.3)
     http-accept (1.7.0)
-    http-cookie (1.0.3)
+    http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.14.0)
+    httpx (0.15.0)
       http-2-next (>= 0.4.1)
       timers
     i18n (1.8.10)
@@ -396,7 +407,7 @@ GEM
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.9.1)
+    loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -408,7 +419,7 @@ GEM
     mime-types-data (3.2021.0225)
     mini_magick (4.11.0)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     monetize (1.9.4)
       money (~> 6.12)
@@ -425,7 +436,7 @@ GEM
     multipart-post (2.1.1)
     netrc (0.11.0)
     nio4r (2.5.7)
-    nokogiri (1.11.4)
+    nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     oauth2 (1.4.7)
@@ -469,13 +480,11 @@ GEM
       binding_of_caller (~> 1.0)
       pry (~> 0.13)
     public_suffix (4.0.6)
-    puma (5.3.1)
+    puma (5.3.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-protection (2.1.0)
-      rack
-    rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -509,7 +518,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.2.5)
+    redis (4.3.1)
     regexp_parser (2.1.1)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -541,7 +550,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    semantic_range (3.0.0)
     sidekiq (6.2.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -562,7 +570,7 @@ GEM
     thor (1.1.0)
     timers (4.3.3)
     ttfunk (1.7.0)
-    turbo-rails (0.5.9)
+    turbo-rails (0.5.11)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -574,12 +582,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (6.0.0.beta.6)
-      activesupport (>= 5.2)
-      rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
-    websocket-driver (0.7.3)
+    websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     with_advisory_lock (4.6.0)
@@ -662,8 +665,8 @@ DEPENDENCIES
   tencentcloud-sdk-ocr!
   turbo-rails
   upyun_rails!
+  viter!
   web-console
-  webpacker (= 6.0.0.beta.6)
   wx_pay!
 
 BUNDLED WITH
