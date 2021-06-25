@@ -1,0 +1,3 @@
+[submodule "post"]
+	path = post
+	url = git@github.com:work-design/home.git

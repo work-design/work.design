@@ -75,6 +75,7 @@ gem 'rails_factory', github: 'work-design/rails_factory'
 gem 'rails_finance', github: 'work-design/rails_finance'
 gem 'rails_profile', github: 'work-design/rails_profile'
 gem 'rails_interact', github: 'work-design/rails_interact'
+gem 'rails_markdown', github: 'work-design/rails_markdown'
 
 gem 'turbo-rails'
 
