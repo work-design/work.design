@@ -5980,6 +5980,74 @@ ALTER SEQUENCE public.maintains_id_seq OWNED BY public.maintains.id;
 
 
 --
+-- Name: markdown_gits; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_gits (
+    id bigint NOT NULL,
+    working_directory character varying,
+    remote_url character varying,
+    last_commit_massage character varying,
+    last_commit_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: markdown_gits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_gits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_gits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_gits_id_seq OWNED BY public.markdown_gits.id;
+
+
+--
+-- Name: markdown_posts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_posts (
+    id bigint NOT NULL,
+    markdown character varying,
+    html character varying,
+    layout character varying,
+    path character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: markdown_posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_posts_id_seq OWNED BY public.markdown_posts.id;
+
+
+--
 -- Name: money_givens; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -7258,7 +7326,8 @@ CREATE TABLE public.profiled_profiles (
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint,
     real_name character varying,
-    nick_name character varying
+    nick_name character varying,
+    identity character varying
 );
 
 
@@ -8749,7 +8818,8 @@ CREATE TABLE public.trade_card_advances (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     note character varying,
-    kind character varying
+    kind character varying,
+    card_prepayment_id bigint
 );
 
 
@@ -8809,6 +8879,40 @@ ALTER SEQUENCE public.trade_card_logs_id_seq OWNED BY public.trade_card_logs.id;
 
 
 --
+-- Name: trade_card_prepayments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.trade_card_prepayments (
+    id bigint NOT NULL,
+    card_template_id bigint,
+    token character varying,
+    amount numeric,
+    expire_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: trade_card_prepayments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.trade_card_prepayments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trade_card_prepayments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.trade_card_prepayments_id_seq OWNED BY public.trade_card_prepayments.id;
+
+
+--
 -- Name: trade_card_promotes; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -8856,7 +8960,8 @@ CREATE TABLE public.trade_card_templates (
     description character varying,
     valid_years integer DEFAULT 0,
     valid_months integer DEFAULT 0,
-    currency character varying
+    currency character varying,
+    "default" boolean
 );
 
 
@@ -9091,6 +9196,39 @@ CREATE SEQUENCE public.trade_cashes_id_seq
 --
 
 ALTER SEQUENCE public.trade_cashes_id_seq OWNED BY public.trade_cashes.id;
+
+
+--
+-- Name: trade_exchange_rates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.trade_exchange_rates (
+    id bigint NOT NULL,
+    "from" character varying,
+    "to" character varying,
+    rate numeric,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: trade_exchange_rates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.trade_exchange_rates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trade_exchange_rates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.trade_exchange_rates_id_seq OWNED BY public.trade_exchange_rates.id;
 
 
 --
@@ -12163,6 +12301,20 @@ ALTER TABLE ONLY public.maintains ALTER COLUMN id SET DEFAULT nextval('public.ma
 
 
 --
+-- Name: markdown_gits id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_gits ALTER COLUMN id SET DEFAULT nextval('public.markdown_gits_id_seq'::regclass);
+
+
+--
+-- Name: markdown_posts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_posts ALTER COLUMN id SET DEFAULT nextval('public.markdown_posts_id_seq'::regclass);
+
+
+--
 -- Name: money_givens id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -12688,6 +12840,13 @@ ALTER TABLE ONLY public.trade_card_logs ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: trade_card_prepayments id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_card_prepayments ALTER COLUMN id SET DEFAULT nextval('public.trade_card_prepayments_id_seq'::regclass);
+
+
+--
 -- Name: trade_card_promotes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -12734,6 +12893,13 @@ ALTER TABLE ONLY public.trade_cash_logs ALTER COLUMN id SET DEFAULT nextval('pub
 --
 
 ALTER TABLE ONLY public.trade_cashes ALTER COLUMN id SET DEFAULT nextval('public.trade_cashes_id_seq'::regclass);
+
+
+--
+-- Name: trade_exchange_rates id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_exchange_rates ALTER COLUMN id SET DEFAULT nextval('public.trade_exchange_rates_id_seq'::regclass);
 
 
 --
@@ -14359,6 +14525,22 @@ ALTER TABLE ONLY public.maintains
 
 
 --
+-- Name: markdown_gits markdown_gits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_gits
+    ADD CONSTRAINT markdown_gits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: markdown_posts markdown_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_posts
+    ADD CONSTRAINT markdown_posts_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: money_givens money_givens_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -14967,6 +15149,14 @@ ALTER TABLE ONLY public.trade_card_logs
 
 
 --
+-- Name: trade_card_prepayments trade_card_prepayments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_card_prepayments
+    ADD CONSTRAINT trade_card_prepayments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: trade_card_promotes trade_card_promotes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -15020,6 +15210,14 @@ ALTER TABLE ONLY public.trade_cash_logs
 
 ALTER TABLE ONLY public.trade_cashes
     ADD CONSTRAINT trade_cashes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: trade_exchange_rates trade_exchange_rates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_exchange_rates
+    ADD CONSTRAINT trade_exchange_rates_pkey PRIMARY KEY (id);
 
 
 --
@@ -18622,6 +18820,13 @@ CREATE INDEX index_trade_card_advances_on_card_id ON public.trade_card_advances 
 
 
 --
+-- Name: index_trade_card_advances_on_card_prepayment_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_card_advances_on_card_prepayment_id ON public.trade_card_advances USING btree (card_prepayment_id);
+
+
+--
 -- Name: index_trade_card_advances_on_trade_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -18640,6 +18845,13 @@ CREATE INDEX index_trade_card_logs_on_card_id ON public.trade_card_logs USING bt
 --
 
 CREATE INDEX index_trade_card_logs_on_source_type_and_source_id ON public.trade_card_logs USING btree (source_type, source_id);
+
+
+--
+-- Name: index_trade_card_prepayments_on_card_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_card_prepayments_on_card_template_id ON public.trade_card_prepayments USING btree (card_template_id);
 
 
 --
@@ -19652,6 +19864,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210524155014'),
 ('20210524155842'),
 ('20210525153149'),
-('20210626030529');
+('20210626030529'),
+('20210626030837');
 
 
