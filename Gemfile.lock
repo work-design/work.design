@@ -175,9 +175,11 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 2c58b41eb2b2ff6574e4aab372cf4ff2d7fa90e5
+  revision: 0bf37f25b5ed30a86adbf36d2fef72cb47ed84b5
   specs:
     rails_markdown (0.1.0)
+      git
+      kramdown
       rails_com
 
 GIT
@@ -376,6 +378,8 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
     ffi (1.15.3)
+    git (1.8.1)
+      rchardet (~> 1.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (5.2.2)
@@ -525,6 +529,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    rchardet (1.8.0)
     redis (4.3.1)
     regexp_parser (2.1.1)
     rest-client (2.1.0)

@@ -1,4 +1,4 @@
-class RailsComRenameModule < ActiveRecord::Migration[6.1]
+class RailsComRenameModule2 < ActiveRecord::Migration[6.1]
 
   def change
     rename_table :task_templates, :bench_task_templates
