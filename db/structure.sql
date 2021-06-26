@@ -5987,7 +5987,7 @@ CREATE TABLE public.markdown_gits (
     id bigint NOT NULL,
     working_directory character varying,
     remote_url character varying,
-    last_commit_massage character varying,
+    last_commit_message character varying,
     last_commit_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -19865,6 +19865,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210524155842'),
 ('20210525153149'),
 ('20210626030529'),
-('20210626030837');
+('20210626030837'),
+('20210626051210');
 
 
