@@ -1,6 +1,6 @@
-import consumer from 'rails_ui/cable'
+import { createConsumer } from '@rails/actioncable'
 
-consumer.subscriptions.create('ReceiverChannel', {
+createConsumer.subscriptions.create('ReceiverChannel', {
 
   collection() {
     return $("[data-channel='notices']")
