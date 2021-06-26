@@ -6024,7 +6024,8 @@ CREATE TABLE public.markdown_posts (
     layout character varying,
     path character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    git_id bigint
 );
 
 
@@ -17840,6 +17841,13 @@ CREATE INDEX index_maintains_on_upstream_id ON public.maintains USING btree (ups
 
 
 --
+-- Name: index_markdown_posts_on_git_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_markdown_posts_on_git_id ON public.markdown_posts USING btree (git_id);
+
+
+--
 -- Name: index_money_givens_on_money_type_and_money_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -19866,6 +19874,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210525153149'),
 ('20210626030529'),
 ('20210626030837'),
-('20210626051210');
+('20210626051210'),
+('20210626083910');
 
 
