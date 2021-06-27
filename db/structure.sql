@@ -6025,7 +6025,8 @@ CREATE TABLE public.markdown_posts (
     path character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    git_id bigint
+    git_id bigint,
+    oid character varying
 );
 
 
@@ -19875,6 +19876,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210626030529'),
 ('20210626030837'),
 ('20210626051210'),
-('20210626083910');
+('20210626083910'),
+('20210627035342');
 
 
