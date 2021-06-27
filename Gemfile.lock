@@ -175,12 +175,12 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 23f754720554b943ff6472959c0c642afbd2c32e
+  revision: a05ef5f5e50aede681b0c577de0b9081139d8668
   specs:
     rails_markdown (0.1.0)
-      git
       kramdown
       rails_com
+      rugged
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
@@ -378,8 +378,6 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
     ffi (1.15.3)
-    git (1.8.1)
-      rchardet (~> 1.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (5.2.2)
@@ -529,7 +527,6 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rchardet (1.8.0)
     redis (4.3.1)
     regexp_parser (2.1.1)
     rest-client (2.1.0)
@@ -556,6 +553,7 @@ GEM
     rubyzip (2.3.0)
     rucaptcha (2.5.5)
       railties (>= 3.2)
+    rugged (1.1.0)
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
