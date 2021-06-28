@@ -9,20 +9,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
-
-
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -270,7 +256,7 @@ CREATE TABLE public.agential_agencies (
     updated_at timestamp(6) without time zone NOT NULL,
     client_id bigint,
     agent_id bigint,
-    commission_ratio numeric(4,2),
+    commission_ratio numeric(4,0),
     note character varying
 );
 
@@ -306,193 +292,6 @@ CREATE SEQUENCE public.agential_agencies_id_seq
 --
 
 ALTER SEQUENCE public.agential_agencies_id_seq OWNED BY public.agential_agencies.id;
-
-
---
--- Name: aim_codes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.aim_codes (
-    id bigint NOT NULL,
-    aim_id bigint,
-    controller_path character varying,
-    action_name character varying,
-    code character varying NOT NULL,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: aim_codes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.aim_codes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: aim_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.aim_codes_id_seq OWNED BY public.aim_codes.id;
-
-
---
--- Name: aim_entities; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.aim_entities (
-    id bigint NOT NULL,
-    aim_id bigint,
-    user_id bigint,
-    entity_type character varying,
-    entity_id bigint,
-    reward_expense_id bigint,
-    present_point integer,
-    state character varying,
-    serial_number character varying,
-    last_access_at timestamp without time zone,
-    ip character varying,
-    reward_amount numeric(10,2),
-    aim_logs_count integer DEFAULT 0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: aim_entities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.aim_entities_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: aim_entities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.aim_entities_id_seq OWNED BY public.aim_entities.id;
-
-
---
--- Name: aim_logs; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.aim_logs (
-    id bigint NOT NULL,
-    aim_id bigint,
-    user_id bigint,
-    entity_type character varying,
-    entity_id bigint,
-    serial_number character varying,
-    ip character varying,
-    code character varying,
-    rewarded boolean,
-    created_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: aim_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.aim_logs_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: aim_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.aim_logs_id_seq OWNED BY public.aim_logs.id;
-
-
---
--- Name: aim_users; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.aim_users (
-    id bigint NOT NULL,
-    aim_id bigint,
-    user_id bigint,
-    serial_number character varying,
-    state character varying DEFAULT 'task_doing'::character varying,
-    reward_amount integer DEFAULT 0,
-    aim_entities_count integer DEFAULT 0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: aim_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.aim_users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: aim_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.aim_users_id_seq OWNED BY public.aim_users.id;
-
-
---
--- Name: aims; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.aims (
-    id bigint NOT NULL,
-    name character varying,
-    unit character varying,
-    repeat_type character varying,
-    rate numeric(10,2) DEFAULT 1.0,
-    task_point integer DEFAULT 0,
-    reward_point integer DEFAULT 0,
-    reward_amount integer DEFAULT 0,
-    "verbose" boolean,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: aims_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.aims_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: aims_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.aims_id_seq OWNED BY public.aims.id;
 
 
 --
@@ -537,8 +336,8 @@ ALTER SEQUENCE public.annunciates_id_seq OWNED BY public.annunciates.id;
 CREATE TABLE public.ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
 );
 
 
@@ -553,7 +352,7 @@ CREATE TABLE public.attend_absence_stats (
     annual_add double precision,
     left_annual_days double precision,
     vacation_days double precision,
-    details character varying(1024),
+    details character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     member_id bigint
@@ -593,8 +392,8 @@ CREATE TABLE public.attend_absences (
     kind character varying,
     start_at timestamp without time zone,
     finish_at timestamp without time zone,
-    note character varying(2048),
-    comment character varying(2048),
+    note character varying,
+    comment character varying,
     redeeming boolean,
     redeeming_days character varying[],
     processed boolean,
@@ -709,9 +508,9 @@ CREATE TABLE public.attend_attendance_stats (
     id bigint NOT NULL,
     member_id bigint,
     financial_month_id bigint,
-    costed_absence character varying(1024),
-    redeeming_absence character varying(1024),
-    free_absence character varying(1024),
+    costed_absence character varying,
+    redeeming_absence character varying,
+    free_absence character varying,
     allowance_days integer,
     late_days integer,
     absence_redeeming_hours double precision,
@@ -879,8 +678,8 @@ CREATE TABLE public.attend_overtimes (
     member_id bigint,
     start_at timestamp without time zone,
     finish_at timestamp without time zone,
-    note character varying(1024),
-    comment character varying(1024),
+    note character varying,
+    comment character varying,
     hours double precision,
     state character varying DEFAULT 'init'::character varying,
     created_at timestamp(6) without time zone NOT NULL,
@@ -962,7 +761,7 @@ CREATE TABLE public.auditor_audits (
     audited_changes json DEFAULT '{}'::json,
     related_changes json DEFAULT '{}'::json,
     extra json DEFAULT '{}'::json,
-    note character varying(1024),
+    note character varying,
     remote_ip character varying,
     controller_path character varying,
     action_name character varying,
@@ -1254,7 +1053,7 @@ ALTER SEQUENCE public.auth_user_tags_id_seq OWNED BY public.auth_user_tags.id;
 
 CREATE TABLE public.auth_verify_tokens (
     id bigint NOT NULL,
-    type character varying(100),
+    type character varying,
     token character varying,
     expire_at timestamp without time zone,
     identity character varying,
@@ -1436,7 +1235,7 @@ CREATE TABLE public.bench_facilitates (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     facilitate_taxon_id bigint,
-    price numeric(10,2),
+    price numeric(10,0),
     sku character varying,
     qr_prefix character varying,
     quantity numeric,
@@ -1749,6 +1548,7 @@ CREATE TABLE public.bench_projects (
 --
 
 CREATE SEQUENCE public.bench_projects_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1901,6 +1701,7 @@ CREATE TABLE public.bench_task_timers (
 --
 
 CREATE SEQUENCE public.bench_task_timers_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1925,8 +1726,8 @@ CREATE TABLE public.bench_tasks (
     parent_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    state character varying DEFAULT 0,
-    focus character varying DEFAULT 0,
+    state character varying DEFAULT '0'::character varying,
+    focus character varying DEFAULT '0'::character varying,
     "position" integer DEFAULT 1,
     estimated_time integer,
     actual_time integer,
@@ -1960,6 +1761,7 @@ COMMENT ON COLUMN public.bench_tasks.serial_number IS 'Task Template test repeat
 --
 
 CREATE SEQUENCE public.bench_tasks_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1975,46 +1777,6 @@ ALTER SEQUENCE public.bench_tasks_id_seq OWNED BY public.bench_tasks.id;
 
 
 --
--- Name: bookings; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.bookings (
-    id integer NOT NULL,
-    booker_type character varying,
-    booker_id integer,
-    booked_type character varying,
-    booked_id integer,
-    plan_item_id integer,
-    time_item_id integer,
-    place_id integer,
-    booking_on date,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    seat_id bigint
-);
-
-
---
--- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.bookings_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.bookings_id_seq OWNED BY public.bookings.id;
-
-
---
 -- Name: card_expenses; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2023,7 +1785,7 @@ CREATE TABLE public.card_expenses (
     card_id bigint,
     consumable_type character varying,
     consumable_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -2058,7 +1820,7 @@ CREATE TABLE public.card_returns (
     consumable_type character varying,
     consumable_id bigint,
     card_expense_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -2092,7 +1854,7 @@ CREATE TABLE public.cart_promotes (
     cart_id bigint,
     cart_item_id bigint,
     promote_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     state character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -2127,9 +1889,9 @@ ALTER SEQUENCE public.cart_promotes_id_seq OWNED BY public.cart_promotes.id;
 CREATE TABLE public.charges (
     id bigint NOT NULL,
     unit character varying,
-    min numeric(10,2),
-    max numeric(10,2),
-    price numeric(10,2),
+    min numeric(10,0),
+    max numeric(10,0),
+    price numeric(10,0),
     type character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -2430,7 +2192,7 @@ CREATE TABLE public.com_csps (
     referrer character varying,
     violated_directive character varying,
     effective_directive character varying,
-    original_policy character varying(1024),
+    original_policy character varying,
     disposition character varying,
     blocked_uri character varying,
     line_number character varying,
@@ -2471,7 +2233,7 @@ CREATE TABLE public.com_errs (
     path character varying,
     controller_name character varying,
     action_name character varying,
-    exception character varying(10240),
+    exception character varying,
     exception_object character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -2489,6 +2251,7 @@ CREATE TABLE public.com_errs (
 --
 
 CREATE SEQUENCE public.com_errs_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -2538,75 +2301,6 @@ ALTER SEQUENCE public.com_infos_id_seq OWNED BY public.com_infos.id;
 
 
 --
--- Name: crowd_members; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.crowd_members (
-    id bigint NOT NULL,
-    crowd_id bigint,
-    member_type character varying,
-    member_id bigint,
-    agency_id bigint,
-    state character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: crowd_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.crowd_members_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: crowd_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.crowd_members_id_seq OWNED BY public.crowd_members.id;
-
-
---
--- Name: crowds; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.crowds (
-    id bigint NOT NULL,
-    organ_id bigint,
-    name character varying,
-    member_type character varying,
-    crowd_members_count integer DEFAULT 0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: crowds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.crowds_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: crowds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.crowds_id_seq OWNED BY public.crowds.id;
-
-
---
 -- Name: custom_carts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -2651,8 +2345,8 @@ CREATE TABLE public.custom_parts (
     part_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    original_price numeric(10,2),
-    price numeric(10,2)
+    original_price numeric(10,0),
+    price numeric(10,0)
 );
 
 
@@ -2686,7 +2380,7 @@ CREATE TABLE public.customs (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     product_id bigint,
-    price numeric(10,2),
+    price numeric(10,0),
     organ_id bigint,
     name character varying,
     sku character varying,
@@ -2726,7 +2420,7 @@ ALTER SEQUENCE public.customs_id_seq OWNED BY public.customs.id;
 CREATE TABLE public.datum_data_lists (
     id integer NOT NULL,
     title character varying,
-    comment character varying(4096),
+    comment character varying,
     type character varying,
     data_table character varying,
     export_excel character varying,
@@ -2876,7 +2570,7 @@ CREATE TABLE public.detail_contents (
     title character varying,
     body text,
     "position" integer DEFAULT 0,
-    list character varying(50),
+    list character varying,
     detail_id bigint,
     author_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -2949,7 +2643,7 @@ CREATE TABLE public.detail_items (
     name character varying,
     type character varying,
     key character varying,
-    description character varying(1024),
+    description character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     list_id bigint
@@ -3471,106 +3165,6 @@ ALTER SEQUENCE public.email_templates_id_seq OWNED BY public.email_templates.id;
 
 
 --
--- Name: event_crowds; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.event_crowds (
-    id bigint NOT NULL,
-    event_id bigint,
-    crowd_id bigint,
-    present_number integer DEFAULT 0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: event_crowds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.event_crowds_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: event_crowds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.event_crowds_id_seq OWNED BY public.event_crowds.id;
-
-
---
--- Name: event_grants; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.event_grants (
-    id bigint NOT NULL,
-    event_id bigint,
-    grant_kind character varying,
-    grant_column character varying,
-    filter jsonb DEFAULT '{}'::jsonb,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: event_grants_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.event_grants_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: event_grants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.event_grants_id_seq OWNED BY public.event_grants.id;
-
-
---
--- Name: event_items; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.event_items (
-    id bigint NOT NULL,
-    event_id bigint,
-    name character varying,
-    author_id bigint,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: event_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.event_items_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: event_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.event_items_id_seq OWNED BY public.event_items.id;
-
-
---
 -- Name: event_participants; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -3581,7 +3175,7 @@ CREATE TABLE public.event_participants (
     participant_id bigint,
     state character varying,
     score integer,
-    comment character varying(4096),
+    comment character varying,
     quit_note character varying,
     assigned_status character varying,
     job_id character varying,
@@ -3612,10 +3206,219 @@ ALTER SEQUENCE public.event_participants_id_seq OWNED BY public.event_participan
 
 
 --
--- Name: event_taxons; Type: TABLE; Schema: public; Owner: -
+-- Name: eventual_bookings; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.event_taxons (
+CREATE TABLE public.eventual_bookings (
+    id integer NOT NULL,
+    booker_type character varying,
+    booker_id integer,
+    booked_type character varying,
+    booked_id integer,
+    plan_item_id integer,
+    time_item_id integer,
+    place_id integer,
+    booking_on date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    seat_id bigint
+);
+
+
+--
+-- Name: eventual_bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_bookings_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_bookings_id_seq OWNED BY public.eventual_bookings.id;
+
+
+--
+-- Name: eventual_crowd_members; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_crowd_members (
+    id bigint NOT NULL,
+    crowd_id bigint,
+    member_type character varying,
+    member_id bigint,
+    agency_id bigint,
+    state character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_crowd_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_crowd_members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_crowd_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_crowd_members_id_seq OWNED BY public.eventual_crowd_members.id;
+
+
+--
+-- Name: eventual_crowds; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_crowds (
+    id bigint NOT NULL,
+    organ_id bigint,
+    name character varying,
+    member_type character varying,
+    crowd_members_count integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_crowds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_crowds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_crowds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_crowds_id_seq OWNED BY public.eventual_crowds.id;
+
+
+--
+-- Name: eventual_event_crowds; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_event_crowds (
+    id bigint NOT NULL,
+    event_id bigint,
+    crowd_id bigint,
+    present_number integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_event_crowds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_event_crowds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_event_crowds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_event_crowds_id_seq OWNED BY public.eventual_event_crowds.id;
+
+
+--
+-- Name: eventual_event_grants; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_event_grants (
+    id bigint NOT NULL,
+    event_id bigint,
+    grant_kind character varying,
+    grant_column character varying,
+    filter jsonb DEFAULT '{}'::jsonb,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_event_grants_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_event_grants_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_event_grants_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_event_grants_id_seq OWNED BY public.eventual_event_grants.id;
+
+
+--
+-- Name: eventual_event_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_event_items (
+    id bigint NOT NULL,
+    event_id bigint,
+    name character varying,
+    author_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_event_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_event_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_event_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_event_items_id_seq OWNED BY public.eventual_event_items.id;
+
+
+--
+-- Name: eventual_event_taxons; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_event_taxons (
     id bigint NOT NULL,
     name character varying,
     created_at timestamp(6) without time zone NOT NULL,
@@ -3625,10 +3428,10 @@ CREATE TABLE public.event_taxons (
 
 
 --
--- Name: event_taxons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: eventual_event_taxons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.event_taxons_id_seq
+CREATE SEQUENCE public.eventual_event_taxons_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3637,37 +3440,37 @@ CREATE SEQUENCE public.event_taxons_id_seq
 
 
 --
--- Name: event_taxons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: eventual_event_taxons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.event_taxons_id_seq OWNED BY public.event_taxons.id;
+ALTER SEQUENCE public.eventual_event_taxons_id_seq OWNED BY public.eventual_event_taxons.id;
 
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: -
+-- Name: eventual_events; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.events (
+CREATE TABLE public.eventual_events (
     id bigint NOT NULL,
     event_taxon_id bigint,
     name character varying,
-    description character varying(4096),
+    description character varying,
     "position" integer,
     event_items_count integer DEFAULT 0,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     organ_id bigint,
-    price numeric(10,2),
+    price numeric(10,0),
     event_participants_count integer DEFAULT 0,
     members_count integer DEFAULT 0
 );
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: eventual_events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.events_id_seq
+CREATE SEQUENCE public.eventual_events_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -3676,10 +3479,354 @@ CREATE SEQUENCE public.events_id_seq
 
 
 --
--- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: eventual_events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.events_id_seq OWNED BY public.events.id;
+ALTER SEQUENCE public.eventual_events_id_seq OWNED BY public.eventual_events.id;
+
+
+--
+-- Name: eventual_place_taxon_hierarchies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_place_taxon_hierarchies (
+    id bigint NOT NULL,
+    ancestor_id integer NOT NULL,
+    descendant_id integer NOT NULL,
+    generations integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: eventual_place_taxon_hierarchies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_place_taxon_hierarchies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_place_taxon_hierarchies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_place_taxon_hierarchies_id_seq OWNED BY public.eventual_place_taxon_hierarchies.id;
+
+
+--
+-- Name: eventual_place_taxons; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_place_taxons (
+    id bigint NOT NULL,
+    organ_id bigint,
+    parent_id bigint,
+    name character varying,
+    "position" integer,
+    profit_margin numeric(4,0),
+    parent_ancestors jsonb,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    places_count integer
+);
+
+
+--
+-- Name: eventual_place_taxons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_place_taxons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_place_taxons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_place_taxons_id_seq OWNED BY public.eventual_place_taxons.id;
+
+
+--
+-- Name: eventual_places; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_places (
+    id bigint NOT NULL,
+    organ_id bigint,
+    name character varying,
+    color character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    place_taxon_id bigint,
+    description character varying,
+    area_id bigint,
+    seats_count integer DEFAULT 0,
+    plans_count integer DEFAULT 0,
+    place_taxon_ancestors jsonb
+);
+
+
+--
+-- Name: eventual_places_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_places_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_places_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_places_id_seq OWNED BY public.eventual_places.id;
+
+
+--
+-- Name: eventual_plan_attenders; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_plan_attenders (
+    id integer NOT NULL,
+    plan_item_id integer,
+    attender_type character varying,
+    attender_id integer,
+    place_id integer,
+    attended boolean,
+    state character varying,
+    extra jsonb,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    plan_participant_id bigint,
+    plan_id bigint
+);
+
+
+--
+-- Name: eventual_plan_attenders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_plan_attenders_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_plan_attenders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_plan_attenders_id_seq OWNED BY public.eventual_plan_attenders.id;
+
+
+--
+-- Name: eventual_plan_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_plan_items (
+    id integer NOT NULL,
+    plan_id integer,
+    time_item_id integer,
+    place_id integer,
+    plan_on date,
+    repeat_index character varying,
+    bookings_count integer DEFAULT 0,
+    extra jsonb,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    time_list_id bigint,
+    planned_type character varying,
+    planned_id bigint,
+    event_id bigint,
+    event_item_id bigint,
+    plan_participants_count integer DEFAULT 0
+);
+
+
+--
+-- Name: eventual_plan_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_plan_items_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_plan_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_plan_items_id_seq OWNED BY public.eventual_plan_items.id;
+
+
+--
+-- Name: eventual_plans; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_plans (
+    id integer NOT NULL,
+    time_list_id integer,
+    planned_type character varying,
+    planned_id integer,
+    place_id integer,
+    begin_on date,
+    end_on date,
+    repeat_type character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    repeat_count integer,
+    repeat_days jsonb,
+    title character varying,
+    produced_begin_on date,
+    produced_end_on date,
+    produce_done boolean
+);
+
+
+--
+-- Name: eventual_plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_plans_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_plans_id_seq OWNED BY public.eventual_plans.id;
+
+
+--
+-- Name: eventual_seats; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_seats (
+    id bigint NOT NULL,
+    place_id bigint,
+    name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    min_members integer DEFAULT 1,
+    max_members integer
+);
+
+
+--
+-- Name: eventual_seats_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_seats_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_seats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_seats_id_seq OWNED BY public.eventual_seats.id;
+
+
+--
+-- Name: eventual_time_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_time_items (
+    id integer NOT NULL,
+    time_list_id integer,
+    start_at time without time zone,
+    finish_at time without time zone,
+    "position" integer DEFAULT 1,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: eventual_time_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_time_items_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_time_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_time_items_id_seq OWNED BY public.eventual_time_items.id;
+
+
+--
+-- Name: eventual_time_lists; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.eventual_time_lists (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    interval_minutes integer DEFAULT 0,
+    item_minutes integer DEFAULT 45,
+    "default" boolean,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    organ_id bigint,
+    kind character varying
+);
+
+
+--
+-- Name: eventual_time_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.eventual_time_lists_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: eventual_time_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.eventual_time_lists_id_seq OWNED BY public.eventual_time_lists.id;
 
 
 --
@@ -3929,9 +4076,9 @@ CREATE TABLE public.factory_parts (
     type character varying,
     order_items_count integer DEFAULT 0,
     published boolean DEFAULT true,
-    price numeric(10,2),
-    import_price numeric(10,2),
-    profit_price numeric(10,2),
+    price numeric(10,0),
+    import_price numeric(10,0),
+    profit_price numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint,
@@ -4387,13 +4534,13 @@ CREATE TABLE public.factory_products (
     type character varying,
     order_items_count integer DEFAULT 0,
     published boolean DEFAULT true,
-    price numeric(10,2),
-    profit_price numeric(10,2),
+    price numeric(10,0),
+    profit_price numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    reference_price numeric(10,2),
+    reference_price numeric(10,0),
     organ_id bigint,
-    cost_price numeric(10,2),
+    cost_price numeric(10,0),
     product_taxon_ancestors json,
     str_part_ids character varying,
     profit_margin numeric(4,2),
@@ -4505,11 +4652,11 @@ CREATE TABLE public.finance_expense_items (
     id bigint NOT NULL,
     expense_id bigint,
     financial_taxon_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     note character varying,
     state character varying,
     quantity integer DEFAULT 1,
-    price numeric(10,2),
+    price numeric(10,0),
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     budget_id bigint,
@@ -4545,7 +4692,7 @@ CREATE TABLE public.finance_expense_members (
     expense_id bigint,
     member_id bigint,
     payment_method_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     advance boolean,
     state character varying DEFAULT 'pending'::character varying,
     note character varying,
@@ -4590,8 +4737,8 @@ CREATE TABLE public.finance_expenses (
     type character varying,
     state character varying DEFAULT 'init'::character varying,
     subject character varying,
-    amount numeric(10,2),
-    note character varying(4096),
+    amount numeric(10,0),
+    note character varying,
     invoices_count integer,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -4801,7 +4948,7 @@ CREATE TABLE public.finance_stocks (
     ratio numeric(4,2),
     amount integer DEFAULT 0.0,
     expense_amount integer DEFAULT 0.0,
-    expense_detail json DEFAULT '{}'::json,
+    expense_detail jsonb DEFAULT '{}'::jsonb,
     note character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -4908,7 +5055,7 @@ CREATE TABLE public.good_providers (
     provider_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    export_price numeric(10,2),
+    export_price numeric(10,0),
     verified boolean DEFAULT false,
     selected boolean,
     good_type character varying,
@@ -5002,6 +5149,405 @@ CREATE SEQUENCE public.govern_taxons_id_seq
 --
 
 ALTER SEQUENCE public.govern_taxons_id_seq OWNED BY public.govern_taxons.id;
+
+
+--
+-- Name: growth_aim_codes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_aim_codes (
+    id bigint NOT NULL,
+    aim_id bigint,
+    controller_path character varying,
+    action_name character varying,
+    code character varying NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_aim_codes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_aim_codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_aim_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_aim_codes_id_seq OWNED BY public.growth_aim_codes.id;
+
+
+--
+-- Name: growth_aim_entities; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_aim_entities (
+    id bigint NOT NULL,
+    aim_id bigint,
+    user_id bigint,
+    entity_type character varying,
+    entity_id bigint,
+    reward_expense_id bigint,
+    present_point integer,
+    state character varying,
+    serial_number character varying,
+    last_access_at timestamp without time zone,
+    ip character varying,
+    reward_amount numeric(10,0),
+    aim_logs_count integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_aim_entities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_aim_entities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_aim_entities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_aim_entities_id_seq OWNED BY public.growth_aim_entities.id;
+
+
+--
+-- Name: growth_aim_logs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_aim_logs (
+    id bigint NOT NULL,
+    aim_id bigint,
+    user_id bigint,
+    entity_type character varying,
+    entity_id bigint,
+    serial_number character varying,
+    ip character varying,
+    code character varying,
+    rewarded boolean,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_aim_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_aim_logs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_aim_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_aim_logs_id_seq OWNED BY public.growth_aim_logs.id;
+
+
+--
+-- Name: growth_aim_users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_aim_users (
+    id bigint NOT NULL,
+    aim_id bigint,
+    user_id bigint,
+    serial_number character varying,
+    state character varying DEFAULT 'task_doing'::character varying,
+    reward_amount integer DEFAULT 0,
+    aim_entities_count integer DEFAULT 0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_aim_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_aim_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_aim_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_aim_users_id_seq OWNED BY public.growth_aim_users.id;
+
+
+--
+-- Name: growth_aims; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_aims (
+    id bigint NOT NULL,
+    name character varying,
+    unit character varying,
+    repeat_type character varying,
+    rate numeric(10,0) DEFAULT 1.0,
+    task_point integer DEFAULT 0,
+    reward_point integer DEFAULT 0,
+    reward_amount integer DEFAULT 0,
+    "verbose" boolean,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_aims_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_aims_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_aims_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_aims_id_seq OWNED BY public.growth_aims.id;
+
+
+--
+-- Name: growth_praise_incomes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_praise_incomes (
+    id bigint NOT NULL,
+    reward_id bigint,
+    user_id bigint,
+    earner_id bigint,
+    source_type character varying,
+    source_id bigint,
+    amount numeric(10,0) DEFAULT 0.0,
+    profit_amount numeric(10,0) DEFAULT 0.0,
+    royalty_amount numeric(10,0) DEFAULT 0.0,
+    reward_amount numeric(10,0) DEFAULT 0.0,
+    state character varying DEFAULT 'init'::character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN growth_praise_incomes.amount; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.growth_praise_incomes.amount IS '用户打赏';
+
+
+--
+-- Name: COLUMN growth_praise_incomes.profit_amount; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.growth_praise_incomes.profit_amount IS '平台收入';
+
+
+--
+-- Name: COLUMN growth_praise_incomes.royalty_amount; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.growth_praise_incomes.royalty_amount IS '作者分成';
+
+
+--
+-- Name: COLUMN growth_praise_incomes.reward_amount; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.growth_praise_incomes.reward_amount IS '赏金池';
+
+
+--
+-- Name: growth_praise_incomes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_praise_incomes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_praise_incomes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_praise_incomes_id_seq OWNED BY public.growth_praise_incomes.id;
+
+
+--
+-- Name: growth_praise_users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_praise_users (
+    id bigint NOT NULL,
+    user_id bigint,
+    reward_id bigint,
+    entity_type character varying,
+    entity_id bigint,
+    amount numeric(10,0) DEFAULT 0.0,
+    "position" integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_praise_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_praise_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_praise_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_praise_users_id_seq OWNED BY public.growth_praise_users.id;
+
+
+--
+-- Name: growth_reward_expenses; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_reward_expenses (
+    id bigint NOT NULL,
+    reward_id bigint,
+    user_id bigint,
+    aim_id bigint,
+    amount numeric(10,0) DEFAULT 0.0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_reward_expenses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_reward_expenses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_reward_expenses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_reward_expenses_id_seq OWNED BY public.growth_reward_expenses.id;
+
+
+--
+-- Name: growth_reward_incomes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_reward_incomes (
+    id bigint NOT NULL,
+    reward_id bigint,
+    user_id bigint,
+    reward_amount numeric(10,0) DEFAULT 0.0,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_reward_incomes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_reward_incomes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_reward_incomes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_reward_incomes_id_seq OWNED BY public.growth_reward_incomes.id;
+
+
+--
+-- Name: growth_rewards; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.growth_rewards (
+    id bigint NOT NULL,
+    entity_type character varying,
+    entity_id bigint,
+    min_piece numeric(10,0) DEFAULT 1.0,
+    max_piece numeric(10,0) DEFAULT 10.0,
+    amount numeric(10,0),
+    income_amount numeric(10,0),
+    expense_amount numeric(10,0),
+    start_at timestamp without time zone,
+    finish_at timestamp without time zone,
+    enabled boolean DEFAULT true,
+    lock_version integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: growth_rewards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.growth_rewards_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: growth_rewards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.growth_rewards_id_seq OWNED BY public.growth_rewards.id;
 
 
 --
@@ -5164,6 +5710,7 @@ CREATE TABLE public.links (
 --
 
 CREATE SEQUENCE public.links_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -5197,6 +5744,7 @@ CREATE TABLE public.logs (
 --
 
 CREATE SEQUENCE public.logs_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -5432,13 +5980,84 @@ ALTER SEQUENCE public.maintains_id_seq OWNED BY public.maintains.id;
 
 
 --
+-- Name: markdown_gits; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_gits (
+    id bigint NOT NULL,
+    working_directory character varying,
+    remote_url character varying,
+    last_commit_message character varying,
+    last_commit_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: markdown_gits_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_gits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_gits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_gits_id_seq OWNED BY public.markdown_gits.id;
+
+
+--
+-- Name: markdown_posts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_posts (
+    id bigint NOT NULL,
+    markdown character varying,
+    html character varying,
+    layout character varying,
+    path character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL,
+    git_id bigint,
+    oid character varying,
+    title character varying
+);
+
+
+--
+-- Name: markdown_posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_posts_id_seq OWNED BY public.markdown_posts.id;
+
+
+--
 -- Name: money_givens; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.money_givens (
     id bigint NOT NULL,
     type character varying,
-    amount numeric(10,2) DEFAULT 0.0,
+    amount numeric(10,0) DEFAULT 0.0,
     note character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -5587,9 +6206,9 @@ CREATE TABLE public.notice_notifications (
     notifiable_type character varying,
     notifiable_id integer,
     code character varying,
-    state character varying DEFAULT 0,
+    state character varying DEFAULT '0'::character varying,
     title character varying,
-    body character varying(5000),
+    body character varying,
     link character varying,
     sending_at timestamp without time zone,
     read_at timestamp without time zone,
@@ -5917,7 +6536,7 @@ CREATE TABLE public.org_job_transfers (
     from_job_title_id bigint,
     state character varying DEFAULT 'init'::character varying,
     transfer_on date,
-    reason_note character varying(4096),
+    reason_note character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -6245,9 +6864,9 @@ CREATE TABLE public.org_resigns (
     member_id bigint,
     state character varying DEFAULT 'init'::character varying,
     leave_on date,
-    reason_note character varying(4096),
-    handover_note character varying(4096),
-    comment character varying(4096),
+    reason_note character varying,
+    handover_note character varying,
+    comment character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -6361,8 +6980,8 @@ CREATE TABLE public.org_tutorials (
     finish_on date,
     performance character varying,
     allowance integer,
-    note character varying(4096),
-    comment character varying(4096),
+    note character varying,
+    comment character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -6468,6 +7087,7 @@ CREATE TABLE public.pictures (
 --
 
 CREATE SEQUENCE public.pictures_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -6480,199 +7100,6 @@ CREATE SEQUENCE public.pictures_id_seq
 --
 
 ALTER SEQUENCE public.pictures_id_seq OWNED BY public.pictures.id;
-
-
---
--- Name: place_taxon_hierarchies; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.place_taxon_hierarchies (
-    id bigint NOT NULL,
-    ancestor_id integer NOT NULL,
-    descendant_id integer NOT NULL,
-    generations integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: place_taxon_hierarchies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.place_taxon_hierarchies_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: place_taxon_hierarchies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.place_taxon_hierarchies_id_seq OWNED BY public.place_taxon_hierarchies.id;
-
-
---
--- Name: place_taxons; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.place_taxons (
-    id bigint NOT NULL,
-    organ_id bigint,
-    parent_id bigint,
-    name character varying,
-    "position" integer,
-    profit_margin numeric(4,2),
-    parent_ancestors jsonb,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    places_count integer
-);
-
-
---
--- Name: place_taxons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.place_taxons_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: place_taxons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.place_taxons_id_seq OWNED BY public.place_taxons.id;
-
-
---
--- Name: places; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.places (
-    id bigint NOT NULL,
-    organ_id bigint,
-    name character varying,
-    color character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    place_taxon_id bigint,
-    description character varying,
-    area_id bigint,
-    seats_count integer DEFAULT 0,
-    plans_count integer DEFAULT 0,
-    place_taxon_ancestors jsonb
-);
-
-
---
--- Name: places_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.places_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: places_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.places_id_seq OWNED BY public.places.id;
-
-
---
--- Name: plan_attenders; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.plan_attenders (
-    id integer NOT NULL,
-    plan_item_id integer,
-    attender_type character varying,
-    attender_id integer,
-    place_id integer,
-    attended boolean,
-    state character varying,
-    extra jsonb,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    plan_participant_id bigint,
-    plan_id bigint
-);
-
-
---
--- Name: plan_attenders_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.plan_attenders_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: plan_attenders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.plan_attenders_id_seq OWNED BY public.plan_attenders.id;
-
-
---
--- Name: plan_items; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.plan_items (
-    id integer NOT NULL,
-    plan_id integer,
-    time_item_id integer,
-    place_id integer,
-    plan_on date,
-    repeat_index character varying,
-    bookings_count integer DEFAULT 0,
-    extra jsonb,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    time_list_id bigint,
-    planned_type character varying,
-    planned_id bigint,
-    event_id bigint,
-    event_item_id bigint,
-    plan_participants_count integer DEFAULT 0
-);
-
-
---
--- Name: plan_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.plan_items_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: plan_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.plan_items_id_seq OWNED BY public.plan_items.id;
 
 
 --
@@ -6720,154 +7147,6 @@ ALTER SEQUENCE public.plan_participants_id_seq OWNED BY public.plan_participants
 
 
 --
--- Name: plans; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.plans (
-    id integer NOT NULL,
-    time_list_id integer,
-    planned_type character varying,
-    planned_id integer,
-    place_id integer,
-    begin_on date,
-    end_on date,
-    repeat_type character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    repeat_count integer,
-    repeat_days jsonb,
-    title character varying,
-    produced_begin_on date,
-    produced_end_on date,
-    produce_done boolean
-);
-
-
---
--- Name: plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.plans_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.plans_id_seq OWNED BY public.plans.id;
-
-
---
--- Name: praise_incomes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.praise_incomes (
-    id bigint NOT NULL,
-    reward_id bigint,
-    user_id bigint,
-    earner_id bigint,
-    source_type character varying,
-    source_id bigint,
-    amount numeric(10,2) DEFAULT 0.0,
-    profit_amount numeric(10,2) DEFAULT 0.0,
-    royalty_amount numeric(10,2) DEFAULT 0.0,
-    reward_amount numeric(10,2) DEFAULT 0.0,
-    state character varying DEFAULT 'init'::character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: COLUMN praise_incomes.amount; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.praise_incomes.amount IS '用户打赏';
-
-
---
--- Name: COLUMN praise_incomes.profit_amount; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.praise_incomes.profit_amount IS '平台收入';
-
-
---
--- Name: COLUMN praise_incomes.royalty_amount; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.praise_incomes.royalty_amount IS '作者分成';
-
-
---
--- Name: COLUMN praise_incomes.reward_amount; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.praise_incomes.reward_amount IS '赏金池';
-
-
---
--- Name: praise_incomes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.praise_incomes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: praise_incomes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.praise_incomes_id_seq OWNED BY public.praise_incomes.id;
-
-
---
--- Name: praise_users; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.praise_users (
-    id bigint NOT NULL,
-    user_id bigint,
-    reward_id bigint,
-    entity_type character varying,
-    entity_id bigint,
-    amount numeric(10,2) DEFAULT 0.0,
-    "position" integer,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: praise_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.praise_users_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: praise_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.praise_users_id_seq OWNED BY public.praise_users.id;
-
-
---
 -- Name: product_items; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -6910,7 +7189,7 @@ CREATE TABLE public.profiled_address_users (
     address_id bigint,
     user_id bigint,
     inviter_id bigint,
-    commission_ratio numeric(4,2) DEFAULT 0.0,
+    commission_ratio numeric(4,0) DEFAULT 0.0,
     kind character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
@@ -7050,7 +7329,8 @@ CREATE TABLE public.profiled_profiles (
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint,
     real_name character varying,
-    nick_name character varying
+    nick_name character varying,
+    identity character varying
 );
 
 
@@ -7080,7 +7360,7 @@ ALTER SEQUENCE public.profiled_profiles_id_seq OWNED BY public.profiled_profiles
 CREATE TABLE public.project_funds (
     id bigint NOT NULL,
     project_id bigint,
-    price numeric(10,2),
+    price numeric(10,0),
     visible boolean DEFAULT true,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -7141,6 +7421,7 @@ CREATE TABLE public.project_members (
 --
 
 CREATE SEQUENCE public.project_members_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7442,7 +7723,7 @@ CREATE TABLE public.rally_users (
     rally_id bigint,
     user_id bigint,
     inviter_id bigint,
-    commission_ratio numeric(4,2) DEFAULT 0.0,
+    commission_ratio numeric(4,0) DEFAULT 0.0,
     kind character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -7583,114 +7864,6 @@ ALTER SEQUENCE public.requirements_id_seq OWNED BY public.requirements.id;
 
 
 --
--- Name: reward_expenses; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.reward_expenses (
-    id bigint NOT NULL,
-    reward_id bigint,
-    user_id bigint,
-    aim_id bigint,
-    amount numeric(10,2) DEFAULT 0.0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: reward_expenses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.reward_expenses_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: reward_expenses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.reward_expenses_id_seq OWNED BY public.reward_expenses.id;
-
-
---
--- Name: reward_incomes; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.reward_incomes (
-    id bigint NOT NULL,
-    reward_id bigint,
-    user_id bigint,
-    reward_amount numeric(10,2) DEFAULT 0.0,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: reward_incomes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.reward_incomes_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: reward_incomes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.reward_incomes_id_seq OWNED BY public.reward_incomes.id;
-
-
---
--- Name: rewards; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.rewards (
-    id bigint NOT NULL,
-    entity_type character varying,
-    entity_id bigint,
-    min_piece numeric(10,2) DEFAULT 1.0,
-    max_piece numeric(10,2) DEFAULT 10.0,
-    amount numeric(10,2),
-    income_amount numeric(10,2),
-    expense_amount numeric(10,2),
-    start_at timestamp without time zone,
-    finish_at timestamp without time zone,
-    enabled boolean DEFAULT true,
-    lock_version integer,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: rewards_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.rewards_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rewards_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.rewards_id_seq OWNED BY public.rewards.id;
-
-
---
 -- Name: roled_busynesses; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -7744,6 +7917,7 @@ CREATE TABLE public.roled_governs (
 --
 
 CREATE SEQUENCE public.roled_governs_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7817,6 +7991,7 @@ CREATE TABLE public.roled_role_rules (
 --
 
 CREATE SEQUENCE public.roled_role_rules_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7885,6 +8060,7 @@ CREATE TABLE public.roled_roles (
 --
 
 CREATE SEQUENCE public.roled_roles_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -7958,6 +8134,7 @@ CREATE TABLE public.roled_rules (
 --
 
 CREATE SEQUENCE public.roled_rules_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8012,40 +8189,6 @@ ALTER SEQUENCE public.roled_who_roles_id_seq OWNED BY public.roled_who_roles.id;
 CREATE TABLE public.schema_migrations (
     version character varying NOT NULL
 );
-
-
---
--- Name: seats; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.seats (
-    id bigint NOT NULL,
-    place_id bigint,
-    name character varying,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL,
-    min_members integer DEFAULT 1,
-    max_members integer
-);
-
-
---
--- Name: seats_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.seats_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: seats_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.seats_id_seq OWNED BY public.seats.id;
 
 
 --
@@ -8571,6 +8714,7 @@ CREATE TABLE public.team_members (
 --
 
 CREATE SEQUENCE public.team_members_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8594,7 +8738,7 @@ CREATE TABLE public.teams (
     name character varying,
     teaming_type character varying,
     teaming_id integer,
-    description character varying(1024),
+    description character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     organ_id bigint
@@ -8606,6 +8750,7 @@ CREATE TABLE public.teams (
 --
 
 CREATE SEQUENCE public.teams_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -8621,87 +8766,14 @@ ALTER SEQUENCE public.teams_id_seq OWNED BY public.teams.id;
 
 
 --
--- Name: time_items; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.time_items (
-    id integer NOT NULL,
-    time_list_id integer,
-    start_at time without time zone,
-    finish_at time without time zone,
-    "position" integer DEFAULT 1,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: time_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.time_items_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: time_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.time_items_id_seq OWNED BY public.time_items.id;
-
-
---
--- Name: time_lists; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.time_lists (
-    id integer NOT NULL,
-    name character varying,
-    code character varying,
-    interval_minutes integer DEFAULT 0,
-    item_minutes integer DEFAULT 45,
-    "default" boolean,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    organ_id bigint,
-    kind character varying
-);
-
-
---
--- Name: time_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.time_lists_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: time_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.time_lists_id_seq OWNED BY public.time_lists.id;
-
-
---
 -- Name: trade_advances; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.trade_advances (
     id bigint NOT NULL,
-    price numeric(10,2),
+    price numeric(10,0),
     apple_product_id character varying,
-    amount numeric(10,2),
+    amount numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     card_template_id bigint,
@@ -8743,13 +8815,14 @@ CREATE TABLE public.trade_card_advances (
     card_id bigint,
     advance_id bigint,
     trade_item_id bigint,
-    price numeric(10,2),
-    amount numeric(10,2),
+    price numeric(10,0),
+    amount numeric(10,0),
     state character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     note character varying,
-    kind character varying
+    kind character varying,
+    card_prepayment_id bigint
 );
 
 
@@ -8781,7 +8854,7 @@ CREATE TABLE public.trade_card_logs (
     card_id bigint,
     source_type character varying,
     source_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     title character varying,
     tag_str character varying,
     created_at timestamp without time zone NOT NULL,
@@ -8806,6 +8879,40 @@ CREATE SEQUENCE public.trade_card_logs_id_seq
 --
 
 ALTER SEQUENCE public.trade_card_logs_id_seq OWNED BY public.trade_card_logs.id;
+
+
+--
+-- Name: trade_card_prepayments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.trade_card_prepayments (
+    id bigint NOT NULL,
+    card_template_id bigint,
+    token character varying,
+    amount numeric,
+    expire_at timestamp without time zone,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: trade_card_prepayments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.trade_card_prepayments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trade_card_prepayments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.trade_card_prepayments_id_seq OWNED BY public.trade_card_prepayments.id;
 
 
 --
@@ -8856,7 +8963,8 @@ CREATE TABLE public.trade_card_templates (
     description character varying,
     valid_years integer DEFAULT 0,
     valid_months integer DEFAULT 0,
-    currency character varying
+    currency character varying,
+    "default" boolean
 );
 
 
@@ -8890,9 +8998,9 @@ CREATE TABLE public.trade_cards (
     trade_item_id bigint,
     client_id bigint,
     card_uuid character varying,
-    amount numeric(10,2),
-    expense_amount numeric(10,2),
-    income_amount numeric(10,2),
+    amount numeric(10,0),
+    expense_amount numeric(10,0),
+    income_amount numeric(10,0),
     lock_version integer,
     effect_at timestamp without time zone,
     expire_at timestamp without time zone,
@@ -8930,7 +9038,7 @@ ALTER SEQUENCE public.trade_cards_id_seq OWNED BY public.trade_cards.id;
 
 CREATE TABLE public.trade_carts (
     id bigint NOT NULL,
-    amount numeric(10,2),
+    amount numeric(10,0),
     user_id bigint,
     payment_strategy_id bigint,
     deposit_ratio integer,
@@ -9028,7 +9136,7 @@ CREATE TABLE public.trade_cash_logs (
     user_id bigint,
     source_type character varying,
     source_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     title character varying,
     tag_str character varying,
     created_at timestamp without time zone NOT NULL,
@@ -9062,9 +9170,9 @@ ALTER SEQUENCE public.trade_cash_logs_id_seq OWNED BY public.trade_cash_logs.id;
 CREATE TABLE public.trade_cashes (
     id bigint NOT NULL,
     user_id bigint,
-    amount numeric(10,2) DEFAULT 0.0,
-    income_amount numeric(10,2) DEFAULT 0.0,
-    expense_amount numeric(10,2) DEFAULT 0.0,
+    amount numeric(10,0) DEFAULT 0.0,
+    income_amount numeric(10,0) DEFAULT 0.0,
+    expense_amount numeric(10,0) DEFAULT 0.0,
     lock_version integer,
     account_bank character varying,
     account_name character varying,
@@ -9094,30 +9202,63 @@ ALTER SEQUENCE public.trade_cashes_id_seq OWNED BY public.trade_cashes.id;
 
 
 --
+-- Name: trade_exchange_rates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.trade_exchange_rates (
+    id bigint NOT NULL,
+    "from" character varying,
+    "to" character varying,
+    rate numeric,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: trade_exchange_rates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.trade_exchange_rates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: trade_exchange_rates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.trade_exchange_rates_id_seq OWNED BY public.trade_exchange_rates.id;
+
+
+--
 -- Name: trade_orders; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.trade_orders (
     id bigint NOT NULL,
     uuid character varying NOT NULL,
-    state character varying DEFAULT 0,
-    amount numeric(10,2),
-    received_amount numeric(10,2),
-    item_amount numeric(10,2),
+    state character varying DEFAULT '0'::character varying,
+    amount numeric(10,0),
+    received_amount numeric(10,0),
+    item_amount numeric(10,0),
     currency character varying,
     payment_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     payment_strategy_id bigint,
     myself boolean,
-    overall_reduced_amount numeric(10,2),
-    overall_additional_amount numeric(10,2),
+    overall_reduced_amount numeric(10,0),
+    overall_additional_amount numeric(10,0),
     payment_status character varying,
     user_id bigint,
     cart_id bigint,
     organ_id bigint,
     lock_version integer,
-    note character varying(4096),
+    note character varying,
     expire_at timestamp without time zone,
     extra json DEFAULT '{}'::json,
     trade_items_count integer DEFAULT 0,
@@ -9199,7 +9340,7 @@ CREATE TABLE public.trade_payment_orders (
     id bigint NOT NULL,
     payment_id bigint,
     order_id bigint,
-    check_amount numeric(10,2),
+    check_amount numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     state character varying
@@ -9297,22 +9438,22 @@ ALTER SEQUENCE public.trade_payment_strategies_id_seq OWNED BY public.trade_paym
 
 CREATE TABLE public.trade_payments (
     id bigint NOT NULL,
-    type character varying(255),
-    total_amount numeric(10,2),
-    fee_amount numeric(10,2),
-    income_amount numeric(10,2),
-    checked_amount numeric(10,2),
-    adjust_amount numeric(10,2) DEFAULT 0,
-    payment_uuid character varying(255),
-    notify_type character varying(255),
+    type character varying,
+    total_amount numeric(10,0),
+    fee_amount numeric(10,0),
+    income_amount numeric(10,0),
+    checked_amount numeric(10,0),
+    adjust_amount numeric(10,0) DEFAULT 0.0,
+    payment_uuid character varying,
+    notify_type character varying,
     notified_at timestamp without time zone,
-    pay_status character varying(255),
-    seller_identifier character varying(255),
-    buyer_name character varying(255),
-    buyer_identifier character varying(255),
+    pay_status character varying,
+    seller_identifier character varying,
+    buyer_name character varying,
+    buyer_identifier character varying,
     buyer_bank character varying,
     user_id integer,
-    currency character varying(255),
+    currency character varying,
     comment character varying,
     payment_method_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -9357,8 +9498,8 @@ CREATE TABLE public.trade_payouts (
     operator_id bigint,
     cash_id bigint,
     payout_uuid character varying,
-    requested_amount numeric(10,2),
-    actual_amount numeric(10,2),
+    requested_amount numeric(10,0),
+    actual_amount numeric(10,0),
     state character varying,
     paid_at timestamp without time zone,
     advance boolean DEFAULT false,
@@ -9434,18 +9575,18 @@ ALTER SEQUENCE public.trade_promote_carts_id_seq OWNED BY public.trade_promote_c
 CREATE TABLE public.trade_promote_charges (
     id bigint NOT NULL,
     promote_id bigint,
-    min numeric(10,2) DEFAULT 0,
-    max numeric(10,2) DEFAULT 99999999.99,
-    parameter numeric(10,2),
+    min numeric(10,0) DEFAULT 0.0,
+    max numeric(10,0) DEFAULT 99999999.99,
+    parameter numeric(10,0),
     type character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     contain_max boolean,
     contain_min boolean,
-    base_price numeric(10,2),
+    base_price numeric(10,0),
     unit character varying,
-    filter_min numeric(10,2),
-    filter_max numeric(10,2)
+    filter_min numeric(10,0),
+    filter_max numeric(10,0)
 );
 
 
@@ -9590,12 +9731,12 @@ CREATE TABLE public.trade_refunds (
     payment_id bigint,
     operator_id bigint,
     type character varying,
-    total_amount numeric(10,2),
+    total_amount numeric(10,0),
     buyer_identifier character varying,
-    comment character varying(512),
-    state character varying DEFAULT 0,
+    comment character varying,
+    state character varying DEFAULT '0'::character varying,
     refunded_at timestamp without time zone,
-    reason character varying(512),
+    reason character varying,
     currency character varying,
     refund_uuid character varying,
     created_at timestamp without time zone NOT NULL,
@@ -9632,18 +9773,18 @@ CREATE TABLE public.trade_trade_items (
     id bigint NOT NULL,
     good_type character varying,
     good_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     number integer,
-    reduced_amount numeric(10,2),
-    additional_amount numeric(10,2),
-    single_price numeric(10,2),
+    reduced_amount numeric(10,0),
+    additional_amount numeric(10,0),
+    single_price numeric(10,0),
     myself boolean,
     starred boolean,
-    original_amount numeric(10,2),
-    retail_price numeric(10,2),
-    wholesale_price numeric(10,2),
+    original_amount numeric(10,0),
+    retail_price numeric(10,0),
+    wholesale_price numeric(10,0),
     status character varying,
     good_name character varying,
     weight numeric DEFAULT 0.0,
@@ -9700,15 +9841,15 @@ CREATE TABLE public.trade_trade_promotes (
     id bigint NOT NULL,
     promote_id bigint,
     promote_charge_id bigint,
-    amount numeric(10,2),
+    amount numeric(10,0),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     trade_item_id bigint,
     promote_good_id bigint,
     sequence integer,
-    based_amount numeric(10,2),
-    original_amount numeric(10,2),
-    computed_amount numeric(10,2),
+    based_amount numeric(10,0),
+    original_amount numeric(10,0),
+    computed_amount numeric(10,0),
     note character varying,
     promote_cart_id bigint,
     edited boolean,
@@ -9809,6 +9950,7 @@ CREATE TABLE public.users (
 --
 
 CREATE SEQUENCE public.users_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -11040,6 +11182,7 @@ CREATE TABLE public.whos (
 --
 
 CREATE SEQUENCE public.whos_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -11108,41 +11251,6 @@ ALTER TABLE ONLY public.active_storage_variant_records ALTER COLUMN id SET DEFAU
 --
 
 ALTER TABLE ONLY public.agential_agencies ALTER COLUMN id SET DEFAULT nextval('public.agential_agencies_id_seq'::regclass);
-
-
---
--- Name: aim_codes id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_codes ALTER COLUMN id SET DEFAULT nextval('public.aim_codes_id_seq'::regclass);
-
-
---
--- Name: aim_entities id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_entities ALTER COLUMN id SET DEFAULT nextval('public.aim_entities_id_seq'::regclass);
-
-
---
--- Name: aim_logs id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_logs ALTER COLUMN id SET DEFAULT nextval('public.aim_logs_id_seq'::regclass);
-
-
---
--- Name: aim_users id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_users ALTER COLUMN id SET DEFAULT nextval('public.aim_users_id_seq'::regclass);
-
-
---
--- Name: aims id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aims ALTER COLUMN id SET DEFAULT nextval('public.aims_id_seq'::regclass);
 
 
 --
@@ -11412,13 +11520,6 @@ ALTER TABLE ONLY public.bench_tasks ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
--- Name: bookings id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.bookings ALTER COLUMN id SET DEFAULT nextval('public.bookings_id_seq'::regclass);
-
-
---
 -- Name: card_expenses id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11514,20 +11615,6 @@ ALTER TABLE ONLY public.com_errs ALTER COLUMN id SET DEFAULT nextval('public.com
 --
 
 ALTER TABLE ONLY public.com_infos ALTER COLUMN id SET DEFAULT nextval('public.com_infos_id_seq'::regclass);
-
-
---
--- Name: crowd_members id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.crowd_members ALTER COLUMN id SET DEFAULT nextval('public.crowd_members_id_seq'::regclass);
-
-
---
--- Name: crowds id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.crowds ALTER COLUMN id SET DEFAULT nextval('public.crowds_id_seq'::regclass);
 
 
 --
@@ -11699,27 +11786,6 @@ ALTER TABLE ONLY public.email_templates ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- Name: event_crowds id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_crowds ALTER COLUMN id SET DEFAULT nextval('public.event_crowds_id_seq'::regclass);
-
-
---
--- Name: event_grants id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_grants ALTER COLUMN id SET DEFAULT nextval('public.event_grants_id_seq'::regclass);
-
-
---
--- Name: event_items id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_items ALTER COLUMN id SET DEFAULT nextval('public.event_items_id_seq'::regclass);
-
-
---
 -- Name: event_participants id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -11727,17 +11793,122 @@ ALTER TABLE ONLY public.event_participants ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- Name: event_taxons id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: eventual_bookings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.event_taxons ALTER COLUMN id SET DEFAULT nextval('public.event_taxons_id_seq'::regclass);
+ALTER TABLE ONLY public.eventual_bookings ALTER COLUMN id SET DEFAULT nextval('public.eventual_bookings_id_seq'::regclass);
 
 
 --
--- Name: events id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: eventual_crowd_members id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.events ALTER COLUMN id SET DEFAULT nextval('public.events_id_seq'::regclass);
+ALTER TABLE ONLY public.eventual_crowd_members ALTER COLUMN id SET DEFAULT nextval('public.eventual_crowd_members_id_seq'::regclass);
+
+
+--
+-- Name: eventual_crowds id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_crowds ALTER COLUMN id SET DEFAULT nextval('public.eventual_crowds_id_seq'::regclass);
+
+
+--
+-- Name: eventual_event_crowds id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_crowds ALTER COLUMN id SET DEFAULT nextval('public.eventual_event_crowds_id_seq'::regclass);
+
+
+--
+-- Name: eventual_event_grants id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_grants ALTER COLUMN id SET DEFAULT nextval('public.eventual_event_grants_id_seq'::regclass);
+
+
+--
+-- Name: eventual_event_items id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_items ALTER COLUMN id SET DEFAULT nextval('public.eventual_event_items_id_seq'::regclass);
+
+
+--
+-- Name: eventual_event_taxons id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_taxons ALTER COLUMN id SET DEFAULT nextval('public.eventual_event_taxons_id_seq'::regclass);
+
+
+--
+-- Name: eventual_events id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_events ALTER COLUMN id SET DEFAULT nextval('public.eventual_events_id_seq'::regclass);
+
+
+--
+-- Name: eventual_place_taxon_hierarchies id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_place_taxon_hierarchies ALTER COLUMN id SET DEFAULT nextval('public.eventual_place_taxon_hierarchies_id_seq'::regclass);
+
+
+--
+-- Name: eventual_place_taxons id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_place_taxons ALTER COLUMN id SET DEFAULT nextval('public.eventual_place_taxons_id_seq'::regclass);
+
+
+--
+-- Name: eventual_places id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_places ALTER COLUMN id SET DEFAULT nextval('public.eventual_places_id_seq'::regclass);
+
+
+--
+-- Name: eventual_plan_attenders id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plan_attenders ALTER COLUMN id SET DEFAULT nextval('public.eventual_plan_attenders_id_seq'::regclass);
+
+
+--
+-- Name: eventual_plan_items id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plan_items ALTER COLUMN id SET DEFAULT nextval('public.eventual_plan_items_id_seq'::regclass);
+
+
+--
+-- Name: eventual_plans id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plans ALTER COLUMN id SET DEFAULT nextval('public.eventual_plans_id_seq'::regclass);
+
+
+--
+-- Name: eventual_seats id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_seats ALTER COLUMN id SET DEFAULT nextval('public.eventual_seats_id_seq'::regclass);
+
+
+--
+-- Name: eventual_time_items id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_time_items ALTER COLUMN id SET DEFAULT nextval('public.eventual_time_items_id_seq'::regclass);
+
+
+--
+-- Name: eventual_time_lists id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_time_lists ALTER COLUMN id SET DEFAULT nextval('public.eventual_time_lists_id_seq'::regclass);
 
 
 --
@@ -11979,6 +12150,76 @@ ALTER TABLE ONLY public.govern_taxons ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: growth_aim_codes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_codes ALTER COLUMN id SET DEFAULT nextval('public.growth_aim_codes_id_seq'::regclass);
+
+
+--
+-- Name: growth_aim_entities id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_entities ALTER COLUMN id SET DEFAULT nextval('public.growth_aim_entities_id_seq'::regclass);
+
+
+--
+-- Name: growth_aim_logs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_logs ALTER COLUMN id SET DEFAULT nextval('public.growth_aim_logs_id_seq'::regclass);
+
+
+--
+-- Name: growth_aim_users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_users ALTER COLUMN id SET DEFAULT nextval('public.growth_aim_users_id_seq'::regclass);
+
+
+--
+-- Name: growth_aims id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aims ALTER COLUMN id SET DEFAULT nextval('public.growth_aims_id_seq'::regclass);
+
+
+--
+-- Name: growth_praise_incomes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_praise_incomes ALTER COLUMN id SET DEFAULT nextval('public.growth_praise_incomes_id_seq'::regclass);
+
+
+--
+-- Name: growth_praise_users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_praise_users ALTER COLUMN id SET DEFAULT nextval('public.growth_praise_users_id_seq'::regclass);
+
+
+--
+-- Name: growth_reward_expenses id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_reward_expenses ALTER COLUMN id SET DEFAULT nextval('public.growth_reward_expenses_id_seq'::regclass);
+
+
+--
+-- Name: growth_reward_incomes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_reward_incomes ALTER COLUMN id SET DEFAULT nextval('public.growth_reward_incomes_id_seq'::regclass);
+
+
+--
+-- Name: growth_rewards id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_rewards ALTER COLUMN id SET DEFAULT nextval('public.growth_rewards_id_seq'::regclass);
+
+
+--
 -- Name: interact_abuses id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -12060,6 +12301,20 @@ ALTER TABLE ONLY public.maintain_tags ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.maintains ALTER COLUMN id SET DEFAULT nextval('public.maintains_id_seq'::regclass);
+
+
+--
+-- Name: markdown_gits id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_gits ALTER COLUMN id SET DEFAULT nextval('public.markdown_gits_id_seq'::regclass);
+
+
+--
+-- Name: markdown_posts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_posts ALTER COLUMN id SET DEFAULT nextval('public.markdown_posts_id_seq'::regclass);
 
 
 --
@@ -12252,66 +12507,10 @@ ALTER TABLE ONLY public.pictures ALTER COLUMN id SET DEFAULT nextval('public.pic
 
 
 --
--- Name: place_taxon_hierarchies id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.place_taxon_hierarchies ALTER COLUMN id SET DEFAULT nextval('public.place_taxon_hierarchies_id_seq'::regclass);
-
-
---
--- Name: place_taxons id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.place_taxons ALTER COLUMN id SET DEFAULT nextval('public.place_taxons_id_seq'::regclass);
-
-
---
--- Name: places id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.places ALTER COLUMN id SET DEFAULT nextval('public.places_id_seq'::regclass);
-
-
---
--- Name: plan_attenders id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plan_attenders ALTER COLUMN id SET DEFAULT nextval('public.plan_attenders_id_seq'::regclass);
-
-
---
--- Name: plan_items id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plan_items ALTER COLUMN id SET DEFAULT nextval('public.plan_items_id_seq'::regclass);
-
-
---
 -- Name: plan_participants id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plan_participants ALTER COLUMN id SET DEFAULT nextval('public.plan_participants_id_seq'::regclass);
-
-
---
--- Name: plans id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plans ALTER COLUMN id SET DEFAULT nextval('public.plans_id_seq'::regclass);
-
-
---
--- Name: praise_incomes id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.praise_incomes ALTER COLUMN id SET DEFAULT nextval('public.praise_incomes_id_seq'::regclass);
-
-
---
--- Name: praise_users id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.praise_users ALTER COLUMN id SET DEFAULT nextval('public.praise_users_id_seq'::regclass);
 
 
 --
@@ -12448,27 +12647,6 @@ ALTER TABLE ONLY public.requirements ALTER COLUMN id SET DEFAULT nextval('public
 
 
 --
--- Name: reward_expenses id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reward_expenses ALTER COLUMN id SET DEFAULT nextval('public.reward_expenses_id_seq'::regclass);
-
-
---
--- Name: reward_incomes id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reward_incomes ALTER COLUMN id SET DEFAULT nextval('public.reward_incomes_id_seq'::regclass);
-
-
---
--- Name: rewards id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rewards ALTER COLUMN id SET DEFAULT nextval('public.rewards_id_seq'::regclass);
-
-
---
 -- Name: roled_busynesses id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -12529,13 +12707,6 @@ ALTER TABLE ONLY public.roled_rules ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 ALTER TABLE ONLY public.roled_who_roles ALTER COLUMN id SET DEFAULT nextval('public.roled_who_roles_id_seq'::regclass);
-
-
---
--- Name: seats id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.seats ALTER COLUMN id SET DEFAULT nextval('public.seats_id_seq'::regclass);
 
 
 --
@@ -12651,20 +12822,6 @@ ALTER TABLE ONLY public.teams ALTER COLUMN id SET DEFAULT nextval('public.teams_
 
 
 --
--- Name: time_items id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.time_items ALTER COLUMN id SET DEFAULT nextval('public.time_items_id_seq'::regclass);
-
-
---
--- Name: time_lists id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.time_lists ALTER COLUMN id SET DEFAULT nextval('public.time_lists_id_seq'::regclass);
-
-
---
 -- Name: trade_advances id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -12683,6 +12840,13 @@ ALTER TABLE ONLY public.trade_card_advances ALTER COLUMN id SET DEFAULT nextval(
 --
 
 ALTER TABLE ONLY public.trade_card_logs ALTER COLUMN id SET DEFAULT nextval('public.trade_card_logs_id_seq'::regclass);
+
+
+--
+-- Name: trade_card_prepayments id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_card_prepayments ALTER COLUMN id SET DEFAULT nextval('public.trade_card_prepayments_id_seq'::regclass);
 
 
 --
@@ -12732,6 +12896,13 @@ ALTER TABLE ONLY public.trade_cash_logs ALTER COLUMN id SET DEFAULT nextval('pub
 --
 
 ALTER TABLE ONLY public.trade_cashes ALTER COLUMN id SET DEFAULT nextval('public.trade_cashes_id_seq'::regclass);
+
+
+--
+-- Name: trade_exchange_rates id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_exchange_rates ALTER COLUMN id SET DEFAULT nextval('public.trade_exchange_rates_id_seq'::regclass);
 
 
 --
@@ -13149,46 +13320,6 @@ ALTER TABLE ONLY public.agential_agencies
 
 
 --
--- Name: aim_codes aim_codes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_codes
-    ADD CONSTRAINT aim_codes_pkey PRIMARY KEY (id);
-
-
---
--- Name: aim_entities aim_entities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_entities
-    ADD CONSTRAINT aim_entities_pkey PRIMARY KEY (id);
-
-
---
--- Name: aim_logs aim_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_logs
-    ADD CONSTRAINT aim_logs_pkey PRIMARY KEY (id);
-
-
---
--- Name: aim_users aim_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aim_users
-    ADD CONSTRAINT aim_users_pkey PRIMARY KEY (id);
-
-
---
--- Name: aims aims_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.aims
-    ADD CONSTRAINT aims_pkey PRIMARY KEY (id);
-
-
---
 -- Name: annunciates annunciates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13501,14 +13632,6 @@ ALTER TABLE ONLY public.bench_tasks
 
 
 --
--- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.bookings
-    ADD CONSTRAINT bookings_pkey PRIMARY KEY (id);
-
-
---
 -- Name: card_expenses card_expenses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13618,22 +13741,6 @@ ALTER TABLE ONLY public.com_errs
 
 ALTER TABLE ONLY public.com_infos
     ADD CONSTRAINT com_infos_pkey PRIMARY KEY (id);
-
-
---
--- Name: crowd_members crowd_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.crowd_members
-    ADD CONSTRAINT crowd_members_pkey PRIMARY KEY (id);
-
-
---
--- Name: crowds crowds_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.crowds
-    ADD CONSTRAINT crowds_pkey PRIMARY KEY (id);
 
 
 --
@@ -13829,30 +13936,6 @@ ALTER TABLE ONLY public.email_templates
 
 
 --
--- Name: event_crowds event_crowds_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_crowds
-    ADD CONSTRAINT event_crowds_pkey PRIMARY KEY (id);
-
-
---
--- Name: event_grants event_grants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_grants
-    ADD CONSTRAINT event_grants_pkey PRIMARY KEY (id);
-
-
---
--- Name: event_items event_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.event_items
-    ADD CONSTRAINT event_items_pkey PRIMARY KEY (id);
-
-
---
 -- Name: event_participants event_participants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -13861,19 +13944,139 @@ ALTER TABLE ONLY public.event_participants
 
 
 --
--- Name: event_taxons event_taxons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: eventual_bookings eventual_bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.event_taxons
-    ADD CONSTRAINT event_taxons_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.eventual_bookings
+    ADD CONSTRAINT eventual_bookings_pkey PRIMARY KEY (id);
 
 
 --
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: eventual_crowd_members eventual_crowd_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.events
-    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.eventual_crowd_members
+    ADD CONSTRAINT eventual_crowd_members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_crowds eventual_crowds_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_crowds
+    ADD CONSTRAINT eventual_crowds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_event_crowds eventual_event_crowds_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_crowds
+    ADD CONSTRAINT eventual_event_crowds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_event_grants eventual_event_grants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_grants
+    ADD CONSTRAINT eventual_event_grants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_event_items eventual_event_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_items
+    ADD CONSTRAINT eventual_event_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_event_taxons eventual_event_taxons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_event_taxons
+    ADD CONSTRAINT eventual_event_taxons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_events eventual_events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_events
+    ADD CONSTRAINT eventual_events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_place_taxon_hierarchies eventual_place_taxon_hierarchies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_place_taxon_hierarchies
+    ADD CONSTRAINT eventual_place_taxon_hierarchies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_place_taxons eventual_place_taxons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_place_taxons
+    ADD CONSTRAINT eventual_place_taxons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_places eventual_places_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_places
+    ADD CONSTRAINT eventual_places_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_plan_attenders eventual_plan_attenders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plan_attenders
+    ADD CONSTRAINT eventual_plan_attenders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_plan_items eventual_plan_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plan_items
+    ADD CONSTRAINT eventual_plan_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_plans eventual_plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_plans
+    ADD CONSTRAINT eventual_plans_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_seats eventual_seats_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_seats
+    ADD CONSTRAINT eventual_seats_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_time_items eventual_time_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_time_items
+    ADD CONSTRAINT eventual_time_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: eventual_time_lists eventual_time_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.eventual_time_lists
+    ADD CONSTRAINT eventual_time_lists_pkey PRIMARY KEY (id);
 
 
 --
@@ -14149,6 +14352,86 @@ ALTER TABLE ONLY public.govern_taxons
 
 
 --
+-- Name: growth_aim_codes growth_aim_codes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_codes
+    ADD CONSTRAINT growth_aim_codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_aim_entities growth_aim_entities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_entities
+    ADD CONSTRAINT growth_aim_entities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_aim_logs growth_aim_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_logs
+    ADD CONSTRAINT growth_aim_logs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_aim_users growth_aim_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aim_users
+    ADD CONSTRAINT growth_aim_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_aims growth_aims_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_aims
+    ADD CONSTRAINT growth_aims_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_praise_incomes growth_praise_incomes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_praise_incomes
+    ADD CONSTRAINT growth_praise_incomes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_praise_users growth_praise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_praise_users
+    ADD CONSTRAINT growth_praise_users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_reward_expenses growth_reward_expenses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_reward_expenses
+    ADD CONSTRAINT growth_reward_expenses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_reward_incomes growth_reward_incomes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_reward_incomes
+    ADD CONSTRAINT growth_reward_incomes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: growth_rewards growth_rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.growth_rewards
+    ADD CONSTRAINT growth_rewards_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: interact_abuses interact_abuses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -14242,6 +14525,22 @@ ALTER TABLE ONLY public.maintain_tags
 
 ALTER TABLE ONLY public.maintains
     ADD CONSTRAINT maintains_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: markdown_gits markdown_gits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_gits
+    ADD CONSTRAINT markdown_gits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: markdown_posts markdown_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_posts
+    ADD CONSTRAINT markdown_posts_pkey PRIMARY KEY (id);
 
 
 --
@@ -14461,75 +14760,11 @@ ALTER TABLE ONLY public.pictures
 
 
 --
--- Name: place_taxon_hierarchies place_taxon_hierarchies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.place_taxon_hierarchies
-    ADD CONSTRAINT place_taxon_hierarchies_pkey PRIMARY KEY (id);
-
-
---
--- Name: place_taxons place_taxons_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.place_taxons
-    ADD CONSTRAINT place_taxons_pkey PRIMARY KEY (id);
-
-
---
--- Name: places places_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.places
-    ADD CONSTRAINT places_pkey PRIMARY KEY (id);
-
-
---
--- Name: plan_attenders plan_attenders_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plan_attenders
-    ADD CONSTRAINT plan_attenders_pkey PRIMARY KEY (id);
-
-
---
--- Name: plan_items plan_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plan_items
-    ADD CONSTRAINT plan_items_pkey PRIMARY KEY (id);
-
-
---
 -- Name: plan_participants plan_participants_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.plan_participants
     ADD CONSTRAINT plan_participants_pkey PRIMARY KEY (id);
-
-
---
--- Name: plans plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.plans
-    ADD CONSTRAINT plans_pkey PRIMARY KEY (id);
-
-
---
--- Name: praise_incomes praise_incomes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.praise_incomes
-    ADD CONSTRAINT praise_incomes_pkey PRIMARY KEY (id);
-
-
---
--- Name: praise_users praise_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.praise_users
-    ADD CONSTRAINT praise_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -14685,30 +14920,6 @@ ALTER TABLE ONLY public.requirements
 
 
 --
--- Name: reward_expenses reward_expenses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reward_expenses
-    ADD CONSTRAINT reward_expenses_pkey PRIMARY KEY (id);
-
-
---
--- Name: reward_incomes reward_incomes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.reward_incomes
-    ADD CONSTRAINT reward_incomes_pkey PRIMARY KEY (id);
-
-
---
--- Name: rewards rewards_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.rewards
-    ADD CONSTRAINT rewards_pkey PRIMARY KEY (id);
-
-
---
 -- Name: roled_busynesses roled_busynesses_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -14786,14 +14997,6 @@ ALTER TABLE ONLY public.roled_who_roles
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
-
-
---
--- Name: seats seats_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.seats
-    ADD CONSTRAINT seats_pkey PRIMARY KEY (id);
 
 
 --
@@ -14925,22 +15128,6 @@ ALTER TABLE ONLY public.teams
 
 
 --
--- Name: time_items time_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.time_items
-    ADD CONSTRAINT time_items_pkey PRIMARY KEY (id);
-
-
---
--- Name: time_lists time_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.time_lists
-    ADD CONSTRAINT time_lists_pkey PRIMARY KEY (id);
-
-
---
 -- Name: trade_advances trade_advances_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -14962,6 +15149,14 @@ ALTER TABLE ONLY public.trade_card_advances
 
 ALTER TABLE ONLY public.trade_card_logs
     ADD CONSTRAINT trade_card_logs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: trade_card_prepayments trade_card_prepayments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_card_prepayments
+    ADD CONSTRAINT trade_card_prepayments_pkey PRIMARY KEY (id);
 
 
 --
@@ -15018,6 +15213,14 @@ ALTER TABLE ONLY public.trade_cash_logs
 
 ALTER TABLE ONLY public.trade_cashes
     ADD CONSTRAINT trade_cashes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: trade_exchange_rates trade_exchange_rates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.trade_exchange_rates
+    ADD CONSTRAINT trade_exchange_rates_pkey PRIMARY KEY (id);
 
 
 --
@@ -15540,76 +15743,6 @@ CREATE INDEX index_active_storage_variant_records_on_blob_id ON public.active_st
 
 
 --
--- Name: index_aim_codes_on_aim_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_codes_on_aim_id ON public.aim_codes USING btree (aim_id);
-
-
---
--- Name: index_aim_entities_on_aim_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_entities_on_aim_id ON public.aim_entities USING btree (aim_id);
-
-
---
--- Name: index_aim_entities_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_entities_on_entity_type_and_entity_id ON public.aim_entities USING btree (entity_type, entity_id);
-
-
---
--- Name: index_aim_entities_on_reward_expense_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_entities_on_reward_expense_id ON public.aim_entities USING btree (reward_expense_id);
-
-
---
--- Name: index_aim_entities_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_entities_on_user_id ON public.aim_entities USING btree (user_id);
-
-
---
--- Name: index_aim_logs_on_aim_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_logs_on_aim_id ON public.aim_logs USING btree (aim_id);
-
-
---
--- Name: index_aim_logs_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_logs_on_entity_type_and_entity_id ON public.aim_logs USING btree (entity_type, entity_id);
-
-
---
--- Name: index_aim_logs_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_logs_on_user_id ON public.aim_logs USING btree (user_id);
-
-
---
--- Name: index_aim_users_on_aim_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_users_on_aim_id ON public.aim_users USING btree (aim_id);
-
-
---
--- Name: index_aim_users_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_aim_users_on_user_id ON public.aim_users USING btree (user_id);
-
-
---
 -- Name: index_annunciates_on_annunciation_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15778,6 +15911,13 @@ CREATE INDEX index_auditor_verifications_on_member_id ON public.auditor_verifica
 
 
 --
+-- Name: index_auditor_verifications_on_verified_type_and_verified_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_auditor_verifications_on_verified_type_and_verified_id ON public.auditor_verifications USING btree (verified_type, verified_id);
+
+
+--
 -- Name: index_auditor_verifications_on_verifier_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15796,6 +15936,13 @@ CREATE INDEX index_auditor_verifiers_on_job_title_id ON public.auditor_verifiers
 --
 
 CREATE INDEX index_auditor_verifiers_on_member_id ON public.auditor_verifiers USING btree (member_id);
+
+
+--
+-- Name: index_auditor_verifiers_on_verifiable_type_and_verifiable_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_auditor_verifiers_on_verifiable_type_and_verifiable_id ON public.auditor_verifiers USING btree (verifiable_type, verifiable_id);
 
 
 --
@@ -15845,6 +15992,13 @@ CREATE INDEX index_auth_user_taggeds_on_user_tag_id ON public.auth_user_taggeds 
 --
 
 CREATE INDEX index_auth_user_tags_on_organ_id ON public.auth_user_tags USING btree (organ_id);
+
+
+--
+-- Name: index_auth_user_tags_on_user_tagging_type_and_user_tagging_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_auth_user_tags_on_user_tagging_type_and_user_tagging_id ON public.auth_user_tags USING btree (user_tagging_type, user_tagging_id);
 
 
 --
@@ -16114,55 +16268,6 @@ CREATE INDEX index_bench_tasks_on_user_id ON public.bench_tasks USING btree (use
 
 
 --
--- Name: index_bookings_on_booked_type_and_booked_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_booked_type_and_booked_id ON public.bookings USING btree (booked_type, booked_id);
-
-
---
--- Name: index_bookings_on_booker_type_and_booker_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_booker_type_and_booker_id ON public.bookings USING btree (booker_type, booker_id);
-
-
---
--- Name: index_bookings_on_place_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_place_id ON public.bookings USING btree (place_id);
-
-
---
--- Name: index_bookings_on_plan_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_plan_item_id ON public.bookings USING btree (plan_item_id);
-
-
---
--- Name: index_bookings_on_seat_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_seat_id ON public.bookings USING btree (seat_id);
-
-
---
--- Name: index_bookings_on_time_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_bookings_on_time_item_id ON public.bookings USING btree (time_item_id);
-
-
---
--- Name: index_budgets_on_budgeting; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_budgets_on_budgeting ON public.finance_budgets USING btree (financial_type, financial_id);
-
-
---
 -- Name: index_card_expenses_on_card_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16265,34 +16370,6 @@ CREATE INDEX index_com_acme_identifiers_on_acme_order_id ON public.com_acme_iden
 --
 
 CREATE INDEX index_com_acme_orders_on_acme_account_id ON public.com_acme_orders USING btree (acme_account_id);
-
-
---
--- Name: index_crowd_members_on_agency_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_crowd_members_on_agency_id ON public.crowd_members USING btree (agency_id);
-
-
---
--- Name: index_crowd_members_on_crowd_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_crowd_members_on_crowd_id ON public.crowd_members USING btree (crowd_id);
-
-
---
--- Name: index_crowd_members_on_member_type_and_member_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_crowd_members_on_member_type_and_member_id ON public.crowd_members USING btree (member_type, member_id);
-
-
---
--- Name: index_crowds_on_organ_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_crowds_on_organ_id ON public.crowds USING btree (organ_id);
 
 
 --
@@ -16534,41 +16611,6 @@ CREATE INDEX index_email_templates_on_organ_id ON public.email_templates USING b
 
 
 --
--- Name: index_event_crowds_on_crowd_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_event_crowds_on_crowd_id ON public.event_crowds USING btree (crowd_id);
-
-
---
--- Name: index_event_crowds_on_event_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_event_crowds_on_event_id ON public.event_crowds USING btree (event_id);
-
-
---
--- Name: index_event_grants_on_event_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_event_grants_on_event_id ON public.event_grants USING btree (event_id);
-
-
---
--- Name: index_event_items_on_author_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_event_items_on_author_id ON public.event_items USING btree (author_id);
-
-
---
--- Name: index_event_items_on_event_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_event_items_on_event_id ON public.event_items USING btree (event_id);
-
-
---
 -- Name: index_event_participants_on_event_crowd_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16590,31 +16632,283 @@ CREATE INDEX index_event_participants_on_participant_type_and_participant_id ON 
 
 
 --
--- Name: index_event_taxons_on_organ_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_eventual_bookings_on_booked_type_and_booked_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_event_taxons_on_organ_id ON public.event_taxons USING btree (organ_id);
-
-
---
--- Name: index_events_on_event_taxon_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_events_on_event_taxon_id ON public.events USING btree (event_taxon_id);
+CREATE INDEX index_eventual_bookings_on_booked_type_and_booked_id ON public.eventual_bookings USING btree (booked_type, booked_id);
 
 
 --
--- Name: index_events_on_organ_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_eventual_bookings_on_booker_type_and_booker_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_events_on_organ_id ON public.events USING btree (organ_id);
+CREATE INDEX index_eventual_bookings_on_booker_type_and_booker_id ON public.eventual_bookings USING btree (booker_type, booker_id);
 
 
 --
--- Name: index_expenses_on_financial; Type: INDEX; Schema: public; Owner: -
+-- Name: index_eventual_bookings_on_place_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_expenses_on_financial ON public.finance_expenses USING btree (financial_type, financial_id);
+CREATE INDEX index_eventual_bookings_on_place_id ON public.eventual_bookings USING btree (place_id);
+
+
+--
+-- Name: index_eventual_bookings_on_plan_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_bookings_on_plan_item_id ON public.eventual_bookings USING btree (plan_item_id);
+
+
+--
+-- Name: index_eventual_bookings_on_seat_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_bookings_on_seat_id ON public.eventual_bookings USING btree (seat_id);
+
+
+--
+-- Name: index_eventual_bookings_on_time_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_bookings_on_time_item_id ON public.eventual_bookings USING btree (time_item_id);
+
+
+--
+-- Name: index_eventual_crowd_members_on_agency_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_crowd_members_on_agency_id ON public.eventual_crowd_members USING btree (agency_id);
+
+
+--
+-- Name: index_eventual_crowd_members_on_crowd_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_crowd_members_on_crowd_id ON public.eventual_crowd_members USING btree (crowd_id);
+
+
+--
+-- Name: index_eventual_crowd_members_on_member_type_and_member_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_crowd_members_on_member_type_and_member_id ON public.eventual_crowd_members USING btree (member_type, member_id);
+
+
+--
+-- Name: index_eventual_crowds_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_crowds_on_organ_id ON public.eventual_crowds USING btree (organ_id);
+
+
+--
+-- Name: index_eventual_event_crowds_on_crowd_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_crowds_on_crowd_id ON public.eventual_event_crowds USING btree (crowd_id);
+
+
+--
+-- Name: index_eventual_event_crowds_on_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_crowds_on_event_id ON public.eventual_event_crowds USING btree (event_id);
+
+
+--
+-- Name: index_eventual_event_grants_on_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_grants_on_event_id ON public.eventual_event_grants USING btree (event_id);
+
+
+--
+-- Name: index_eventual_event_items_on_author_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_items_on_author_id ON public.eventual_event_items USING btree (author_id);
+
+
+--
+-- Name: index_eventual_event_items_on_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_items_on_event_id ON public.eventual_event_items USING btree (event_id);
+
+
+--
+-- Name: index_eventual_event_taxons_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_event_taxons_on_organ_id ON public.eventual_event_taxons USING btree (organ_id);
+
+
+--
+-- Name: index_eventual_events_on_event_taxon_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_events_on_event_taxon_id ON public.eventual_events USING btree (event_taxon_id);
+
+
+--
+-- Name: index_eventual_events_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_events_on_organ_id ON public.eventual_events USING btree (organ_id);
+
+
+--
+-- Name: index_eventual_place_taxons_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_place_taxons_on_organ_id ON public.eventual_place_taxons USING btree (organ_id);
+
+
+--
+-- Name: index_eventual_place_taxons_on_parent_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_place_taxons_on_parent_id ON public.eventual_place_taxons USING btree (parent_id);
+
+
+--
+-- Name: index_eventual_places_on_area_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_places_on_area_id ON public.eventual_places USING btree (area_id);
+
+
+--
+-- Name: index_eventual_places_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_places_on_organ_id ON public.eventual_places USING btree (organ_id);
+
+
+--
+-- Name: index_eventual_places_on_place_taxon_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_places_on_place_taxon_id ON public.eventual_places USING btree (place_taxon_id);
+
+
+--
+-- Name: index_eventual_plan_attenders_on_attender_type_and_attender_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_attenders_on_attender_type_and_attender_id ON public.eventual_plan_attenders USING btree (attender_type, attender_id);
+
+
+--
+-- Name: index_eventual_plan_attenders_on_place_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_attenders_on_place_id ON public.eventual_plan_attenders USING btree (place_id);
+
+
+--
+-- Name: index_eventual_plan_attenders_on_plan_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_attenders_on_plan_id ON public.eventual_plan_attenders USING btree (plan_id);
+
+
+--
+-- Name: index_eventual_plan_attenders_on_plan_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_attenders_on_plan_item_id ON public.eventual_plan_attenders USING btree (plan_item_id);
+
+
+--
+-- Name: index_eventual_plan_attenders_on_plan_participant_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_attenders_on_plan_participant_id ON public.eventual_plan_attenders USING btree (plan_participant_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_event_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_event_id ON public.eventual_plan_items USING btree (event_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_event_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_event_item_id ON public.eventual_plan_items USING btree (event_item_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_place_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_place_id ON public.eventual_plan_items USING btree (place_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_planned_type_and_planned_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_planned_type_and_planned_id ON public.eventual_plan_items USING btree (planned_type, planned_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_time_item_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_time_item_id ON public.eventual_plan_items USING btree (time_item_id);
+
+
+--
+-- Name: index_eventual_plan_items_on_time_list_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plan_items_on_time_list_id ON public.eventual_plan_items USING btree (time_list_id);
+
+
+--
+-- Name: index_eventual_plans_on_place_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plans_on_place_id ON public.eventual_plans USING btree (place_id);
+
+
+--
+-- Name: index_eventual_plans_on_planned_type_and_planned_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plans_on_planned_type_and_planned_id ON public.eventual_plans USING btree (planned_type, planned_id);
+
+
+--
+-- Name: index_eventual_plans_on_time_list_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_plans_on_time_list_id ON public.eventual_plans USING btree (time_list_id);
+
+
+--
+-- Name: index_eventual_seats_on_place_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_seats_on_place_id ON public.eventual_seats USING btree (place_id);
+
+
+--
+-- Name: index_eventual_time_items_on_time_list_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_time_items_on_time_list_id ON public.eventual_time_items USING btree (time_list_id);
+
+
+--
+-- Name: index_eventual_time_lists_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_eventual_time_lists_on_organ_id ON public.eventual_time_lists USING btree (organ_id);
 
 
 --
@@ -16933,6 +17227,13 @@ CREATE INDEX index_finance_budgets_on_financial_taxon_id ON public.finance_budge
 
 
 --
+-- Name: index_finance_budgets_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_finance_budgets_on_financial_type_and_financial_id ON public.finance_budgets USING btree (financial_type, financial_id);
+
+
+--
 -- Name: index_finance_budgets_on_fund_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -17052,6 +17353,13 @@ CREATE INDEX index_finance_expenses_on_financial_taxon_id ON public.finance_expe
 
 
 --
+-- Name: index_finance_expenses_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_finance_expenses_on_financial_type_and_financial_id ON public.finance_expenses USING btree (financial_type, financial_id);
+
+
+--
 -- Name: index_finance_expenses_on_fund_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -17098,6 +17406,13 @@ CREATE INDEX index_finance_financial_taxons_on_organ_id ON public.finance_financ
 --
 
 CREATE INDEX index_finance_financial_taxons_on_parent_id ON public.finance_financial_taxons USING btree (parent_id);
+
+
+--
+-- Name: index_finance_fund_incomes_on_financial_type_and_financial_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_finance_fund_incomes_on_financial_type_and_financial_id ON public.finance_fund_incomes USING btree (financial_type, financial_id);
 
 
 --
@@ -17150,13 +17465,6 @@ CREATE INDEX index_finance_stocks_on_organ_id ON public.finance_stocks USING btr
 
 
 --
--- Name: index_fund_incomes_on_financial; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_fund_incomes_on_financial ON public.finance_fund_incomes USING btree (financial_type, financial_id);
-
-
---
 -- Name: index_good_produces_on_good_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -17189,6 +17497,167 @@ CREATE INDEX index_good_providers_on_provider_id ON public.good_providers USING 
 --
 
 CREATE INDEX index_govern_taxons_on_parent_id ON public.govern_taxons USING btree (parent_id);
+
+
+--
+-- Name: index_growth_aim_codes_on_aim_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_codes_on_aim_id ON public.growth_aim_codes USING btree (aim_id);
+
+
+--
+-- Name: index_growth_aim_entities_on_aim_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_entities_on_aim_id ON public.growth_aim_entities USING btree (aim_id);
+
+
+--
+-- Name: index_growth_aim_entities_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_entities_on_entity_type_and_entity_id ON public.growth_aim_entities USING btree (entity_type, entity_id);
+
+
+--
+-- Name: index_growth_aim_entities_on_reward_expense_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_entities_on_reward_expense_id ON public.growth_aim_entities USING btree (reward_expense_id);
+
+
+--
+-- Name: index_growth_aim_entities_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_entities_on_user_id ON public.growth_aim_entities USING btree (user_id);
+
+
+--
+-- Name: index_growth_aim_logs_on_aim_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_logs_on_aim_id ON public.growth_aim_logs USING btree (aim_id);
+
+
+--
+-- Name: index_growth_aim_logs_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_logs_on_entity_type_and_entity_id ON public.growth_aim_logs USING btree (entity_type, entity_id);
+
+
+--
+-- Name: index_growth_aim_logs_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_logs_on_user_id ON public.growth_aim_logs USING btree (user_id);
+
+
+--
+-- Name: index_growth_aim_users_on_aim_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_users_on_aim_id ON public.growth_aim_users USING btree (aim_id);
+
+
+--
+-- Name: index_growth_aim_users_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_aim_users_on_user_id ON public.growth_aim_users USING btree (user_id);
+
+
+--
+-- Name: index_growth_praise_incomes_on_earner_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_incomes_on_earner_id ON public.growth_praise_incomes USING btree (earner_id);
+
+
+--
+-- Name: index_growth_praise_incomes_on_reward_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_incomes_on_reward_id ON public.growth_praise_incomes USING btree (reward_id);
+
+
+--
+-- Name: index_growth_praise_incomes_on_source_type_and_source_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_incomes_on_source_type_and_source_id ON public.growth_praise_incomes USING btree (source_type, source_id);
+
+
+--
+-- Name: index_growth_praise_incomes_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_incomes_on_user_id ON public.growth_praise_incomes USING btree (user_id);
+
+
+--
+-- Name: index_growth_praise_users_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_users_on_entity_type_and_entity_id ON public.growth_praise_users USING btree (entity_type, entity_id);
+
+
+--
+-- Name: index_growth_praise_users_on_reward_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_users_on_reward_id ON public.growth_praise_users USING btree (reward_id);
+
+
+--
+-- Name: index_growth_praise_users_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_praise_users_on_user_id ON public.growth_praise_users USING btree (user_id);
+
+
+--
+-- Name: index_growth_reward_expenses_on_aim_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_reward_expenses_on_aim_id ON public.growth_reward_expenses USING btree (aim_id);
+
+
+--
+-- Name: index_growth_reward_expenses_on_reward_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_reward_expenses_on_reward_id ON public.growth_reward_expenses USING btree (reward_id);
+
+
+--
+-- Name: index_growth_reward_expenses_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_reward_expenses_on_user_id ON public.growth_reward_expenses USING btree (user_id);
+
+
+--
+-- Name: index_growth_reward_incomes_on_reward_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_reward_incomes_on_reward_id ON public.growth_reward_incomes USING btree (reward_id);
+
+
+--
+-- Name: index_growth_reward_incomes_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_reward_incomes_on_user_id ON public.growth_reward_incomes USING btree (user_id);
+
+
+--
+-- Name: index_growth_rewards_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_growth_rewards_on_entity_type_and_entity_id ON public.growth_rewards USING btree (entity_type, entity_id);
 
 
 --
@@ -17371,6 +17840,13 @@ CREATE INDEX index_maintains_on_task_template_id ON public.maintains USING btree
 --
 
 CREATE INDEX index_maintains_on_upstream_id ON public.maintains USING btree (upstream_id);
+
+
+--
+-- Name: index_markdown_posts_on_git_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_markdown_posts_on_git_id ON public.markdown_posts USING btree (git_id);
 
 
 --
@@ -17808,118 +18284,6 @@ CREATE INDEX index_organ_tokens_on_user_id ON public.organ_tokens USING btree (u
 
 
 --
--- Name: index_place_taxons_on_organ_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_place_taxons_on_organ_id ON public.place_taxons USING btree (organ_id);
-
-
---
--- Name: index_place_taxons_on_parent_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_place_taxons_on_parent_id ON public.place_taxons USING btree (parent_id);
-
-
---
--- Name: index_places_on_area_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_places_on_area_id ON public.places USING btree (area_id);
-
-
---
--- Name: index_places_on_organ_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_places_on_organ_id ON public.places USING btree (organ_id);
-
-
---
--- Name: index_places_on_place_taxon_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_places_on_place_taxon_id ON public.places USING btree (place_taxon_id);
-
-
---
--- Name: index_plan_attenders_on_attender_type_and_attender_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_attenders_on_attender_type_and_attender_id ON public.plan_attenders USING btree (attender_type, attender_id);
-
-
---
--- Name: index_plan_attenders_on_place_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_attenders_on_place_id ON public.plan_attenders USING btree (place_id);
-
-
---
--- Name: index_plan_attenders_on_plan_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_attenders_on_plan_id ON public.plan_attenders USING btree (plan_id);
-
-
---
--- Name: index_plan_attenders_on_plan_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_attenders_on_plan_item_id ON public.plan_attenders USING btree (plan_item_id);
-
-
---
--- Name: index_plan_attenders_on_plan_participant_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_attenders_on_plan_participant_id ON public.plan_attenders USING btree (plan_participant_id);
-
-
---
--- Name: index_plan_items_on_event_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_event_id ON public.plan_items USING btree (event_id);
-
-
---
--- Name: index_plan_items_on_event_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_event_item_id ON public.plan_items USING btree (event_item_id);
-
-
---
--- Name: index_plan_items_on_place_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_place_id ON public.plan_items USING btree (place_id);
-
-
---
--- Name: index_plan_items_on_planned_type_and_planned_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_planned_type_and_planned_id ON public.plan_items USING btree (planned_type, planned_id);
-
-
---
--- Name: index_plan_items_on_time_item_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_time_item_id ON public.plan_items USING btree (time_item_id);
-
-
---
--- Name: index_plan_items_on_time_list_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plan_items_on_time_list_id ON public.plan_items USING btree (time_list_id);
-
-
---
 -- Name: index_plan_participants_on_event_participant_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -17938,76 +18302,6 @@ CREATE INDEX index_plan_participants_on_participant_type_and_participant_id ON p
 --
 
 CREATE INDEX index_plan_participants_on_planning_type_and_planning_id ON public.plan_participants USING btree (planning_type, planning_id);
-
-
---
--- Name: index_plans_on_place_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plans_on_place_id ON public.plans USING btree (place_id);
-
-
---
--- Name: index_plans_on_planned_type_and_planned_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plans_on_planned_type_and_planned_id ON public.plans USING btree (planned_type, planned_id);
-
-
---
--- Name: index_plans_on_time_list_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_plans_on_time_list_id ON public.plans USING btree (time_list_id);
-
-
---
--- Name: index_praise_incomes_on_earner_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_incomes_on_earner_id ON public.praise_incomes USING btree (earner_id);
-
-
---
--- Name: index_praise_incomes_on_reward_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_incomes_on_reward_id ON public.praise_incomes USING btree (reward_id);
-
-
---
--- Name: index_praise_incomes_on_source_type_and_source_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_incomes_on_source_type_and_source_id ON public.praise_incomes USING btree (source_type, source_id);
-
-
---
--- Name: index_praise_incomes_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_incomes_on_user_id ON public.praise_incomes USING btree (user_id);
-
-
---
--- Name: index_praise_users_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_users_on_entity_type_and_entity_id ON public.praise_users USING btree (entity_type, entity_id);
-
-
---
--- Name: index_praise_users_on_reward_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_users_on_reward_id ON public.praise_users USING btree (reward_id);
-
-
---
--- Name: index_praise_users_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_praise_users_on_user_id ON public.praise_users USING btree (user_id);
 
 
 --
@@ -18291,48 +18585,6 @@ CREATE INDEX index_requirements_on_volunteer_id ON public.requirements USING btr
 
 
 --
--- Name: index_reward_expenses_on_aim_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_reward_expenses_on_aim_id ON public.reward_expenses USING btree (aim_id);
-
-
---
--- Name: index_reward_expenses_on_reward_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_reward_expenses_on_reward_id ON public.reward_expenses USING btree (reward_id);
-
-
---
--- Name: index_reward_expenses_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_reward_expenses_on_user_id ON public.reward_expenses USING btree (user_id);
-
-
---
--- Name: index_reward_incomes_on_reward_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_reward_incomes_on_reward_id ON public.reward_incomes USING btree (reward_id);
-
-
---
--- Name: index_reward_incomes_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_reward_incomes_on_user_id ON public.reward_incomes USING btree (user_id);
-
-
---
--- Name: index_rewards_on_entity_type_and_entity_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_rewards_on_entity_type_and_entity_id ON public.rewards USING btree (entity_type, entity_id);
-
-
---
 -- Name: index_roled_role_rules_on_rule_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -18358,13 +18610,6 @@ CREATE INDEX index_roled_who_roles_on_role_id ON public.roled_who_roles USING bt
 --
 
 CREATE INDEX index_roled_who_roles_on_who_type_and_who_id ON public.roled_who_roles USING btree (who_type, who_id);
-
-
---
--- Name: index_seats_on_place_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_seats_on_place_id ON public.seats USING btree (place_id);
 
 
 --
@@ -18564,20 +18809,6 @@ CREATE INDEX index_teams_on_organ_id ON public.teams USING btree (organ_id);
 
 
 --
--- Name: index_time_items_on_time_list_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_time_items_on_time_list_id ON public.time_items USING btree (time_list_id);
-
-
---
--- Name: index_time_lists_on_organ_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_time_lists_on_organ_id ON public.time_lists USING btree (organ_id);
-
-
---
 -- Name: index_trade_advances_on_card_template_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -18599,6 +18830,13 @@ CREATE INDEX index_trade_card_advances_on_card_id ON public.trade_card_advances 
 
 
 --
+-- Name: index_trade_card_advances_on_card_prepayment_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_card_advances_on_card_prepayment_id ON public.trade_card_advances USING btree (card_prepayment_id);
+
+
+--
 -- Name: index_trade_card_advances_on_trade_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -18617,6 +18855,13 @@ CREATE INDEX index_trade_card_logs_on_card_id ON public.trade_card_logs USING bt
 --
 
 CREATE INDEX index_trade_card_logs_on_source_type_and_source_id ON public.trade_card_logs USING btree (source_type, source_id);
+
+
+--
+-- Name: index_trade_card_prepayments_on_card_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_card_prepayments_on_card_template_id ON public.trade_card_prepayments USING btree (card_template_id);
 
 
 --
@@ -19075,31 +19320,10 @@ CREATE INDEX index_user_providers_on_user_id ON public.user_providers USING btre
 
 
 --
--- Name: index_user_tags_on_user_tagging; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_user_tags_on_user_tagging ON public.auth_user_tags USING btree (user_tagging_type, user_tagging_id);
-
-
---
 -- Name: index_users_on_inviter_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_users_on_inviter_id ON public.users USING btree (inviter_id);
-
-
---
--- Name: index_verifications_on_verified; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_verifications_on_verified ON public.auditor_verifications USING btree (verified_type, verified_id);
-
-
---
--- Name: index_verifiers_on_verifiable; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_verifiers_on_verifiable ON public.auditor_verifiers USING btree (verifiable_type, verifiable_id);
 
 
 --
@@ -19477,14 +19701,14 @@ CREATE INDEX part_taxon_desc_idx ON public.factory_part_taxon_hierarchies USING 
 -- Name: place_taxon_anc_desc_idx; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX place_taxon_anc_desc_idx ON public.place_taxon_hierarchies USING btree (ancestor_id, descendant_id, generations);
+CREATE UNIQUE INDEX place_taxon_anc_desc_idx ON public.eventual_place_taxon_hierarchies USING btree (ancestor_id, descendant_id, generations);
 
 
 --
 -- Name: place_taxon_desc_idx; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX place_taxon_desc_idx ON public.place_taxon_hierarchies USING btree (descendant_id);
+CREATE INDEX place_taxon_desc_idx ON public.eventual_place_taxon_hierarchies USING btree (descendant_id);
 
 
 --
@@ -19550,334 +19774,6 @@ CREATE INDEX taxon_desc_idx ON public.taxon_hierarchies USING btree (descendant_
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
-('20160224154100'),
-('20160224154626'),
-('20160224155804'),
-('20160224160530'),
-('20160224161000'),
-('20160228160247'),
-('20160229014723'),
-('20160901065523'),
-('20160919093503'),
-('20161005064001'),
-('20161005065037'),
-('20161005070538'),
-('20161005071936'),
-('20161029153921'),
-('20161030034305'),
-('20161030092654'),
-('20161031070735'),
-('20161103102216'),
-('20161103104205'),
-('20161104025258'),
-('20161104062659'),
-('20161104064603'),
-('20161104082941'),
-('20161104091029'),
-('20161108025453'),
-('20161108054558'),
-('20161108153159'),
-('20161109100054'),
-('20161111161429'),
-('20161126072307'),
-('20161218071956'),
-('20161219132145'),
-('20161219134529'),
-('20170321123234'),
-('20170428035214'),
-('20170510081735'),
-('20170510084912'),
-('20170512081745'),
-('20170519101752'),
-('20170531115128'),
-('20170615140930'),
-('20170707074433'),
-('20170815112100'),
-('20170922121002'),
-('20171017104458'),
-('20171017104459'),
-('20171017104460'),
-('20171017104723'),
-('20171017105828'),
-('20171019124701'),
-('20171019133122'),
-('20171019135425'),
-('20171021161307'),
-('20171022041353'),
-('20171022115007'),
-('20171022115910'),
-('20171024100815'),
-('20171024121919'),
-('20171024134516'),
-('20171027123032'),
-('20171027123815'),
-('20171027131623'),
-('20171030121434'),
-('20171030134828'),
-('20171030141232'),
-('20171031115321'),
-('20171101103805'),
-('20171101112746'),
-('20171101114008'),
-('20171101121627'),
-('20171102123651'),
-('20171102132459'),
-('20171102141655'),
-('20171103115836'),
-('20171103140519'),
-('20171103141751'),
-('20171107105950'),
-('20171107114108'),
-('20171107120033'),
-('20171107131933'),
-('20171109134100'),
-('20171109152148'),
-('20171110131207'),
-('20171114111906'),
-('20171114115228'),
-('20171115114755'),
-('20171115120040'),
-('20171115144054'),
-('20171115144429'),
-('20171116115023'),
-('20171122113000'),
-('20171127130016'),
-('20171128105745'),
-('20171128110426'),
-('20171129105235'),
-('20171211233401'),
-('20180104112415'),
-('20180105115717'),
-('20180106082040'),
-('20180118113142'),
-('20180202091035'),
-('20180219115055'),
-('20180219120418'),
-('20180309151417'),
-('20180309155025'),
-('20180309155839'),
-('20180501082148'),
-('20180517070155'),
-('20180519084217'),
-('20180702141840'),
-('20180722081122'),
-('20180722084014'),
-('20180722084904'),
-('20180722142435'),
-('20180816163830'),
-('20181013164836'),
-('20181013165052'),
-('20181013173312'),
-('20181014131918'),
-('20181015141314'),
-('20181015145147'),
-('20181016143231'),
-('20181017155048'),
-('20181017155729'),
-('20181020011819'),
-('20181027033152'),
-('20181027152111'),
-('20181030151847'),
-('20181030155003'),
-('20181104122835'),
-('20181105142958'),
-('20181107154700'),
-('20181123161706'),
-('20181211152327'),
-('20181215054113'),
-('20190101092607'),
-('20190105152729'),
-('20190105160641'),
-('20190107153256'),
-('20190107154837'),
-('20190107163231'),
-('20190108150932'),
-('20190108163345'),
-('20190108171107'),
-('20190108171737'),
-('20190125160017'),
-('20190307063031'),
-('20190430044748'),
-('20190501085930'),
-('20190502095439'),
-('20190502131723'),
-('20190503014020'),
-('20190503093137'),
-('20190503101634'),
-('20190504023556'),
-('20190504030714'),
-('20190504070844'),
-('20190504074427'),
-('20190504141936'),
-('20190505074733'),
-('20190505115112'),
-('20190506010633'),
-('20190506010654'),
-('20190506012643'),
-('20190506013017'),
-('20190506103221'),
-('20190506111246'),
-('20190506133859'),
-('20190506135229'),
-('20190506144020'),
-('20190506154720'),
-('20190508115507'),
-('20190508150537'),
-('20190508154646'),
-('20190514112009'),
-('20190514114705'),
-('20190609014356'),
-('20190609024222'),
-('20190613152020'),
-('20190624121644'),
-('20190625045051'),
-('20190629043844'),
-('20190629073934'),
-('20190629075319'),
-('20190709142604'),
-('20190713061412'),
-('20190713130950'),
-('20190716115108'),
-('20190716153724'),
-('20190716154347'),
-('20190717155858'),
-('20190720110245'),
-('20190720130308'),
-('20190722142526'),
-('20190724153018'),
-('20190725165116'),
-('20190726141539'),
-('20190727140023'),
-('20190730115517'),
-('20190731070025'),
-('20190731134239'),
-('20190731153344'),
-('20190731154831'),
-('20190801021345'),
-('20190801021714'),
-('20190801062152'),
-('20190801085956'),
-('20190803145500'),
-('20190807123911'),
-('20190812141745'),
-('20190812153458'),
-('20190813084942'),
-('20190816034219'),
-('20190816152937'),
-('20190821024936'),
-('20190821034841'),
-('20190831060520'),
-('20190903131610'),
-('20190903133240'),
-('20190904031022'),
-('20190906132907'),
-('20190906150758'),
-('20190906153214'),
-('20190907015107'),
-('20190908091413'),
-('20190912140611'),
-('20190926102326'),
-('20191022134058'),
-('20191105131050'),
-('20191114110605'),
-('20191121124023'),
-('20191121133529'),
-('20191121133949'),
-('20191123154043'),
-('20191218142344'),
-('20191231125902'),
-('20200122121829'),
-('20200122171813'),
-('20200122172409'),
-('20200123062023'),
-('20200123112649'),
-('20200126085340'),
-('20200126095438'),
-('20200126101148'),
-('20200126122103'),
-('20200126131633'),
-('20200127082341'),
-('20200128045900'),
-('20200128064809'),
-('20200128103401'),
-('20200128120804'),
-('20200129121819'),
-('20200130033257'),
-('20200201045719'),
-('20200201134536'),
-('20200202054627'),
-('20200203162210'),
-('20200203162442'),
-('20200204153800'),
-('20200205200412'),
-('20200209035059'),
-('20200209050258'),
-('20200209172922'),
-('20200214173926'),
-('20200215045001'),
-('20200216165911'),
-('20200216170638'),
-('20200217021109'),
-('20200218162131'),
-('20200220140939'),
-('20200220163012'),
-('20200221162642'),
-('20200221164134'),
-('20200221170828'),
-('20200222131434'),
-('20200222160920'),
-('20200222175559'),
-('20200223145106'),
-('20200223164844'),
-('20200223172649'),
-('20200223173320'),
-('20200223181308'),
-('20200225091019'),
-('20200226043900'),
-('20200226051042'),
-('20200227135130'),
-('20200229154435'),
-('20200307171022'),
-('20200307173606'),
-('20200307174209'),
-('20200307180111'),
-('20200307182133'),
-('20200307192935'),
-('20200307194452'),
-('20200308165958'),
-('20200317173122'),
-('20200323083041'),
-('20200323091528'),
-('20200323101558'),
-('20200323112137'),
-('20200326081919'),
-('20200401152216'),
-('20200412140950'),
-('20200412151809'),
-('20200417123945'),
-('20200421162026'),
-('20200421170158'),
-('20200424150905'),
-('20200429164232'),
-('20200429165153'),
-('20200506155749'),
-('20200512132316'),
-('20200512142841'),
-('20200513125251'),
-('20200513160745'),
-('20200514082726'),
-('20200515104938'),
-('20200527044735'),
-('20200610054146'),
-('20200612150826'),
-('20200615111021'),
-('20200617025254'),
-('20200619162526'),
-('20200619164402'),
-('20200620084728'),
-('20200622154628'),
-('20200628105344'),
-('20200701075716'),
 ('20200708094302'),
 ('20200720065905'),
 ('20200728100250'),
@@ -19977,6 +19873,12 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210524153931'),
 ('20210524155014'),
 ('20210524155842'),
-('20210525153149');
+('20210525153149'),
+('20210626030529'),
+('20210626030837'),
+('20210626051210'),
+('20210626083910'),
+('20210627035342'),
+('20210627153350');
 
 

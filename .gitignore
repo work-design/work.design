@@ -7,8 +7,6 @@ tmp/*
 .bundle
 .ruby-version
 public/assets
-public/packs
-public/packs-dev
 public/fonts
 public/.well-known
 storage
@@ -22,7 +20,7 @@ config/credentials/production.key
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
 config/database.yml
-config/webpacker.yml
+config/viter.yml
 config/certs
 config/alipay_rsa2.pem
 config/apiclient_key.pem
