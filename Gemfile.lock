@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 49faf275640f42968be865818f79cae6a381deae
+  revision: 20c5959d35ae0af0b939f600c9ee0340a7586efd
   specs:
     rails_com (1.2.9)
       acme-client
@@ -128,6 +128,13 @@ GIT
   specs:
     rails_detail (0.0.1)
       rails_com (~> 1.2)
+
+GIT
+  remote: https://gitee.com/work-design/rails_doc.git
+  revision: 79dd8eb705279bfbd64eb119d7886ffef5648b16
+  specs:
+    rails_doc (0.1.0)
+      rails_com (>= 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
@@ -218,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 72f7b4d05bbc425d88cf09dfad9af82b00f679fd
+  revision: e497e816c28dabdc83b20a164c003bf866553e81
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -242,7 +249,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: e0afac07690cad18801939ca5766d525d4c6cf70
+  revision: b7e16e58d7d47cd6ba319a93cd49a2b8d5bc8ded
   specs:
     rails_ui (0.1.0)
       rails
@@ -648,6 +655,7 @@ DEPENDENCIES
   rails_com!
   rails_data!
   rails_detail!
+  rails_doc!
   rails_email!
   rails_event!
   rails_factory!
