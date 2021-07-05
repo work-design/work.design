@@ -54,6 +54,7 @@ gem 'default_where', github: 'qinmingyuan/default_where'
 # Engines
 gem 'rails_ui', github: 'work-design/rails_ui'
 gem 'rails_com', github: 'work-design/rails_com'
+gem 'rails_doc', github: 'work-design/rails_doc'
 gem 'rails_org', github: 'work-design/rails_org'
 gem 'rails_auth', github: 'work-design/rails_auth'
 gem 'rails_data', github: 'work-design/rails_data'
