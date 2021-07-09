@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/viter.git
-  revision: f72fcd69f62223a40a2ffece787d1916124b8390
+  revision: f50883b883a58f0bc60b06414f2ef30284ca25ef
   specs:
     viter (0.1.0)
       rails
@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 20c5959d35ae0af0b939f600c9ee0340a7586efd
+  revision: da60c3e4c9bce9a1380b3ef1c664887d6ee706f7
   specs:
     rails_com (1.2.9)
       acme-client
@@ -355,7 +355,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     chunky_png (1.4.0)
-    closure_tree (7.2.0)
+    closure_tree (7.3.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     coderay (1.1.3)
