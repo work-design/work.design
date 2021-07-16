@@ -131,6 +131,13 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://gitee.com/work-design/rails_doc.git
+  revision: 3f1de9070a1ca2152ec797ffd57c79a009d70261
+  specs:
+    rails_doc (0.1.0)
+      rails_com (>= 1.2)
+
+GIT
   remote: https://gitee.com/work-design/rails_email.git
   revision: ce11fc337cc913538a5300ace8b193e41fd42c44
   specs:
@@ -652,6 +659,7 @@ DEPENDENCIES
   rails_com!
   rails_data!
   rails_detail!
+  rails_doc!
   rails_email!
   rails_event!
   rails_factory!
