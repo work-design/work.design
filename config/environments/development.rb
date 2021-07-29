@@ -48,7 +48,6 @@ Rails.application.configure do
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
   config.active_storage.variant_processor = :vips
 
-  config.webpacker.check_yarn_integrity = true if config.respond_to?(:webpacker)
   #config.action_controller.asset_host = '7u2gfi.com1.z0.glb.clouddn.com'
 
   config.action_cable.disable_request_forgery_protection = true
