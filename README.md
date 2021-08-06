@@ -20,9 +20,9 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
   * `bundle install`
   * `yarn install`
 * 检查配置文件
-  * `cp config/credentials/development.yml.enc.example config/credentials/development.yml.enc`
+  * `bin/rails credentials:edit`: 修改 db_development, db_test 为你本地数据库
 * 数据库准备
-  * `cp config/database.yml.example config/database.yml`, 修改配置；
+  * 修改数据库，数据库格式：postgres://username:password@host:port/database
   * `bin/rails db:create`
   * `bin/rails db:schema:load`，因为 migrations 是自动生成的，不太完备，用这个命令准备数据库；
   
