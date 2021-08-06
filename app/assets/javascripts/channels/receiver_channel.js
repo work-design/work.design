@@ -1,6 +1,6 @@
-import { createConsumer } from '@rails/actioncable'
+import consumer from 'rails_ui_engine_ui/javascripts/rails_ui/cable'
 
-createConsumer.subscriptions.create('ReceiverChannel', {
+consumer.subscriptions.create({channel: 'Notice::ReceiverChannel', room: 'room'}, {
 
   collection() {
     return $("[data-channel='notices']")
@@ -19,11 +19,11 @@ createConsumer.subscriptions.create('ReceiverChannel', {
   },
 
   connected() {
-    console.debug('ReceiverChannel connected ')
+    console.debug('connected:', this.identifier)
   },
 
   disconnected() {
-    console.debug('ReceiverChannel disconnected')
+    console.debug('disconnected:', this.identifier)
   }
 
 })

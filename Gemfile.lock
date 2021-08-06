@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/viter.git
-  revision: 68d21b1844497c22df45dea05cf93bc84c809166
+  revision: f007952bb7cf5f1c30d56d0bbb9b1c37bc73317e
   specs:
     viter (0.1.0)
       rails
@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: 124290ea91474e27814c7dfa350d673197c04f23
+  revision: 70e7da1e84a7ddaef0dc19eb705e06927018a008
   specs:
     rails_attend (0.1.0)
       rails_com (~> 1.2)
@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 269763f016106a5eb8216b0c0eab73ccd153c9b7
+  revision: 384e8d19a55b6438ed743fa84265d77c9efc40ce
   specs:
     rails_auth (1.1.0)
       bcrypt (~> 3.1)
@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 3ba74f38a17b286d7c133ee7800fbaa0a6f4b2a2
+  revision: 7fc0febef0c859540d88ea3d83937248279d92e0
   specs:
     rails_com (1.2.9)
       acme-client
@@ -131,7 +131,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_doc.git
-  revision: f3f2a7340a452b024028815840a334d6de68971e
+  revision: 8b4fd3c51d76c1d6d64a23f87e50f26cf8b17627
   specs:
     rails_doc (0.1.0)
       rails_com (>= 1.2)
@@ -183,7 +183,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 1b2d4f85890e11d8fbd3a750b0a0cca1dbbdef37
+  revision: 29de9536338383c189fc0d7a31786c2a70b23447
   specs:
     rails_markdown (0.1.0)
       kramdown
@@ -241,7 +241,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: d86b9abbcf0678bbea123e2c828ebffcc8455d1b
+  revision: f0977cbd43a4ff048eae2405d94b6c3181a2e315
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.14)
@@ -256,7 +256,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 8195b54df826e8356fbce9b4951e8c1b3d356bed
+  revision: 78273608cc841160eb94c92a6d1b9a86e6753bfe
   specs:
     rails_wechat (0.1.0)
       rails_auth
