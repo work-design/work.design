@@ -1,5 +1,5 @@
 <%= form_with theme: 'weui', model: [:my, @requirement] do |f| %>
-  <%= render 'shared/error_messages', target: @requirement %>
+  <%= render 'error_messages', target: @requirement %>
   <%= f.text_field :name, required: true %>
   <%= f.collection_select :from_area_id, Area.leaves, :id, :full_name %>
   <%= f.text_field :from, required: true %>

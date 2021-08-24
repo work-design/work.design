@@ -1,3 +1,6 @@
 [submodule "post"]
 	path = post
 	url = git@github.com:work-design/home.git
+[submodule "docker"]
+	path = docker
+	url = git@github.com:work-design/docker.git
