@@ -8,11 +8,11 @@ require 'pathname'
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', Pathname.new(__dir__).realpath)
 
 require 'rubygems'
-require 'pry'
 require_relative '../config/application'
 
 require 'viter'
 require 'viter/dev_server_runner'
+Viter::Exporter.export
 
 APP_ROOT = File.expand_path('..', __dir__)
 Dir.chdir(APP_ROOT) do
