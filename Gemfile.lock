@@ -79,11 +79,10 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: e9b7751b31580eee7607feaa170c8dc5dcbf2f03
+  revision: cbc8144402963b2628488307a0056cea0367c3fd
   specs:
-    rails_auth (1.1.0)
+    rails_auth (1.2.0)
       bcrypt (~> 3.1)
-      groupdate
       jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
@@ -96,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: bf2cfadeee8af64f0a4ed34d912e0e4485cbc6ca
+  revision: 189212bab062c646d3de61e8a137c83912b3833b
   specs:
     rails_com (1.2.9)
       acme-client
@@ -130,16 +129,17 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_doc.git
-  revision: 5fe31ec144abae258277411a93234ba764700444
+  revision: 8b4fd3c51d76c1d6d64a23f87e50f26cf8b17627
   specs:
     rails_doc (0.1.0)
       rails_com (>= 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: 2bdca1e70d05f933452dfbc0426a95853bda52c2
+  revision: 30c29465e8a6770fb6f70e755bcc0829f4f9feca
   specs:
     rails_email (2.1.6)
+      rails_auth
       rails_com (~> 1.2)
 
 GIT
@@ -182,7 +182,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 1b2d4f85890e11d8fbd3a750b0a0cca1dbbdef37
+  revision: 9b929fab7ad580ad3c94f69466d80a814bc1864f
   specs:
     rails_markdown (0.1.0)
       kramdown
@@ -208,7 +208,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: eccf921b7b6046a715d3e082384f78ab686698bd
+  revision: 881e0c3ff8cc7fc6bbc22cf200d2f716b034716d
   specs:
     rails_profile (0.1.0)
       rails_com (~> 1.2)
@@ -224,7 +224,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 393488f570e7ddefe22317a253bbfbc72041f98b
+  revision: 2e646f2cafc80b718ac43dbc847690677416008d
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -254,9 +254,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 8195b54df826e8356fbce9b4951e8c1b3d356bed
+  revision: df11caf5c2ae7689fdc65c27b997adc80f19d7ae
   specs:
-    rails_wechat (0.1.0)
+    rails_wechat (0.1)
       rails_auth
       rails_com (~> 1.2)
       rqrcode
@@ -391,8 +391,6 @@ GEM
     ffi (1.15.3)
     globalid (0.5.2)
       activesupport (>= 5.0)
-    groupdate (5.2.2)
-      activesupport (>= 5)
     hashie (4.1.0)
     http-2-next (0.5.0)
     http-accept (1.7.0)
