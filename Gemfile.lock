@@ -88,7 +88,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 8fed253e7d9d3c2f422ee1db1e05f70edcc16f75
+  revision: 791c64efdfde477c4ff27eec25a32d9433a0b086
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
@@ -110,7 +110,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 26a0149ebe6cd62491462a3b3f84207168d11031
+  revision: e4d8a3ebe1e4021c2617c705bee0962d8883f6d2
   specs:
     rails_data (1.0.2)
       prawn
@@ -247,9 +247,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 60778d85c650357871ece6410ff61bbd9f9ebdec
+  revision: 9f3fd0d1cc56045aa930389e082daba8051ebbbb
   specs:
-    rails_ui (0.1.0)
+    rails_ui (0.0.1)
       rails
 
 GIT
