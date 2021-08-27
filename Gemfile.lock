@@ -182,9 +182,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 9b929fab7ad580ad3c94f69466d80a814bc1864f
+  revision: 95244949440df63b0731a46d1b17b0749e283b1a
   specs:
-    rails_markdown (0.1.0)
+    rails_markdown (0.1)
       kramdown
       rails_com
       rugged
@@ -199,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 9f125d2724c16e2da8ffe96ba48424aca738600c
+  revision: b5265d1e1566359eca6be6d03996f80c4f1366e7
   specs:
     rails_org (0.1)
       rails_com (~> 1.2)
