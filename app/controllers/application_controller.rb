@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Auth::Controller::Application
   include Wechat::Controller::Application
   include RailsCom::Application
+  include Com::Controller::Admin
   include Roled::Controller::Application
   include Org::Controller::Application
   include Org::Controller::Me
