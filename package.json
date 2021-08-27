@@ -1,5 +1,5 @@
 {
-  "nameme": "one-work",
+  "nameme": "work-design",
   "private": true,
   "dependencies": {
     "@antv/g2plot": "^2.3.13",
