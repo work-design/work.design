@@ -65,9 +65,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: 7e04cac8283e5d064a5c4339c084f84a52637d31
+  revision: bdeb5caa62aa49214200a0575562a088a1db7e12
   specs:
-    rails_attend (0.1.0)
+    rails_attend (0.0.1)
       rails_com (~> 1.2)
 
 GIT
@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: cbc8144402963b2628488307a0056cea0367c3fd
+  revision: 6232cd410cbdae4dfd7a5a48093758150d49e00d
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -199,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 6658a67f71e4c43555a4d6c84434d5012065c693
+  revision: aef68e9b50d95fbac2119aa64011f7a31bec296e
   specs:
     rails_org (0.1)
       rails_com (~> 1.2)
@@ -224,7 +224,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: b1a9be28905a750c4b9aed105f224c24a9e8b34a
+  revision: 33b796c3843d5d8fa98291a3a1bac10df73d701c
   specs:
     rails_role (1.0.3)
       rails_com (~> 1.2)
@@ -239,7 +239,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 382111072f1c9a45013a5d46e28d6fdcf931f695
+  revision: 21a0aee4cab81b6586d145b75f2cab13a103b2e5
   specs:
     rails_trade (0.0.2)
       money-rails (~> 1.14)
