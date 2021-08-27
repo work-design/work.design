@@ -50,10 +50,10 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: c7f87c089ad62260cfd6a80763310eb948685c64
+  revision: 040db0a9d76d68f2281f5edd9c5fb2468c72600a
   specs:
-    tencentcloud-sdk-common (1.0.148)
-    tencentcloud-sdk-ocr (1.0.148)
+    tencentcloud-sdk-common (1.0.149)
+    tencentcloud-sdk-ocr (1.0.149)
       tencentcloud-sdk-common (~> 1.0)
 
 GIT
@@ -88,7 +88,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: efb20c82da40da4c4b30132ae67b908cbbc99ed0
+  revision: 8fed253e7d9d3c2f422ee1db1e05f70edcc16f75
   specs:
     rails_bench (0.1.0)
       rails_com (~> 1.2)
