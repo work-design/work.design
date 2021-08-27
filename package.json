@@ -24,11 +24,14 @@
     "sortablejs": "^1.10.2",
     "stickybits": "^3.7.7",
     "stimulus": "^2.0.0",
-    "viter": "https://gitee.com/qinmingyuan/viter.git",
+    "vite_rails": "^0.0.2",
+    "vue": "^3.2.6",
     "weui": "^2.4.4",
     "weui.js": "^1.2.1"
   },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^1.6.0",
+    "@vue/compiler-sfc": "^3.2.6",
     "sass": "^1.32.0"
   }
 }

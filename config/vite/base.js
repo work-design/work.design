@@ -1,6 +1,4 @@
-const { viteConfig } = require('viter')
-
-debugger
+const { viteConfig } = require('vite_rails')
 
 module.exports = {
   ...viteConfig

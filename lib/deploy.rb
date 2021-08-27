@@ -13,11 +13,10 @@ module Deploy
     'node_modules'
   ]
   SHARED_DIRS = [
-    'public/packs',
+    'public/assets',
     'vendor/bundle'
   ].freeze
   SHARED_FILES = [
-    'config/database.yml',
     'config/apiclient_key.pem',
     'config/credentials/staging.key',
     'config/credentials/production.key'
