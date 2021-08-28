@@ -5585,7 +5585,8 @@ CREATE TABLE public.markdown_posts (
     updated_at timestamp(6) without time zone NOT NULL,
     git_id bigint,
     oid character varying,
-    title character varying
+    title character varying,
+    published boolean DEFAULT true
 );
 
 
@@ -17503,6 +17504,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210626083910'),
 ('20210627035342'),
 ('20210627153350'),
-('20210826170010');
+('20210826170010'),
+('20210827170719');
 
 

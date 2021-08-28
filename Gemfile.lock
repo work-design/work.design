@@ -35,9 +35,9 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/viter.git
-  revision: 997cbc807babe4380f76ad0051518de12135702e
+  revision: a6c36456e695b32d427179c1bfc1c0df2c66792c
   specs:
-    viter (0.1.0)
+    viter (0.1)
       rails
 
 GIT
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: ac68923dbdba1aad39bbc68aa8bdca3e75a7cbf5
+  revision: b2200abe4a149cef8532f22619a6c1bbf934e94e
   specs:
     rails_com (1.2.9)
       acme-client
@@ -105,7 +105,7 @@ GIT
       http-form_data (~> 2.3)
       httpx (~> 0.16)
       kaminari
-      rails (~> 6.1)
+      rails (>= 6.1)
       turbo-rails
 
 GIT
@@ -182,7 +182,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 9581562a03a7bd456936dff5198b0df168a2ab77
+  revision: e5aae1723a0ddaf2770ffc679b24b4491574d109
   specs:
     rails_markdown (0.1)
       kramdown
@@ -261,72 +261,96 @@ GIT
       rails_com (~> 1.2)
       rqrcode
 
+GIT
+  remote: https://github.com/rails/rails.git
+  revision: 9ac1827331e85f01490b57f27e9cdf75a9cd1b69
+  specs:
+    actioncable (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+    actionmailbox (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      activejob (= 7.0.0.alpha)
+      activerecord (= 7.0.0.alpha)
+      activestorage (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      mail (>= 2.7.1)
+    actionmailer (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      actionview (= 7.0.0.alpha)
+      activejob (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 2.0)
+    actionpack (7.0.0.alpha)
+      actionview (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      rack (~> 2.0, >= 2.2.0)
+      rack-test (>= 0.6.3)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actiontext (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      activerecord (= 7.0.0.alpha)
+      activestorage (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      nokogiri (>= 1.8.5)
+    actionview (7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      builder (~> 3.1)
+      erubi (~> 1.4)
+      rails-dom-testing (~> 2.0)
+      rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activejob (7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      globalid (>= 0.3.6)
+    activemodel (7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+    activerecord (7.0.0.alpha)
+      activemodel (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+    activestorage (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      activejob (= 7.0.0.alpha)
+      activerecord (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      marcel (~> 1.0.0)
+      mini_mime (>= 1.1.0)
+    activesupport (7.0.0.alpha)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.5.0.beta2)
+    rails (7.0.0.alpha)
+      actioncable (= 7.0.0.alpha)
+      actionmailbox (= 7.0.0.alpha)
+      actionmailer (= 7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      actiontext (= 7.0.0.alpha)
+      actionview (= 7.0.0.alpha)
+      activejob (= 7.0.0.alpha)
+      activemodel (= 7.0.0.alpha)
+      activerecord (= 7.0.0.alpha)
+      activestorage (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      bundler (>= 1.15.0)
+      railties (= 7.0.0.alpha)
+      sprockets-rails (>= 2.0.0)
+    railties (7.0.0.alpha)
+      actionpack (= 7.0.0.alpha)
+      activesupport (= 7.0.0.alpha)
+      method_source
+      rake (>= 0.13)
+      thor (~> 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
     acme-client (2.0.8)
       faraday (>= 0.17, < 2.0.0)
-    actioncable (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-    actionmailbox (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      activejob (= 6.1.4.1)
-      activerecord (= 6.1.4.1)
-      activestorage (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      mail (>= 2.7.1)
-    actionmailer (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      actionview (= 6.1.4.1)
-      activejob (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      mail (~> 2.5, >= 2.5.4)
-      rails-dom-testing (~> 2.0)
-    actionpack (6.1.4.1)
-      actionview (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      rack (~> 2.0, >= 2.0.9)
-      rack-test (>= 0.6.3)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      activerecord (= 6.1.4.1)
-      activestorage (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      nokogiri (>= 1.8.5)
-    actionview (6.1.4.1)
-      activesupport (= 6.1.4.1)
-      builder (~> 3.1)
-      erubi (~> 1.4)
-      rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    active_record_distinct_on (1.0.0)
-      activerecord (>= 5.2, < 6.2)
-    activejob (6.1.4.1)
-      activesupport (= 6.1.4.1)
-      globalid (>= 0.3.6)
-    activemodel (6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activerecord (6.1.4.1)
-      activemodel (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activestorage (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      activejob (= 6.1.4.1)
-      activerecord (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      marcel (~> 1.0.0)
-      mini_mime (>= 1.1.0)
-    activesupport (6.1.4.1)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 1.6, < 2)
-      minitest (>= 5.1)
-      tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
     addressable (2.8.0)
@@ -339,7 +363,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.8.0)
+    bootsnap (1.8.1)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -506,32 +530,11 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (6.1.4.1)
-      actioncable (= 6.1.4.1)
-      actionmailbox (= 6.1.4.1)
-      actionmailer (= 6.1.4.1)
-      actionpack (= 6.1.4.1)
-      actiontext (= 6.1.4.1)
-      actionview (= 6.1.4.1)
-      activejob (= 6.1.4.1)
-      activemodel (= 6.1.4.1)
-      activerecord (= 6.1.4.1)
-      activestorage (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      bundler (>= 1.15.0)
-      railties (= 6.1.4.1)
-      sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    railties (6.1.4.1)
-      actionpack (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-      method_source
-      rake (>= 0.13)
-      thor (~> 1.0)
     rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
@@ -612,7 +615,7 @@ GEM
     xml-simple (1.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.4.2)
+    zeitwerk (2.5.0.beta2)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
 
@@ -620,7 +623,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_record_distinct_on
   acts_as_list
   alipay2!
   aliyunsdkcore
@@ -648,7 +650,7 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   puma
-  rails (= 6.1.4.1)
+  rails!
   rails_agency!
   rails_attend!
   rails_audit!

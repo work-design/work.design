@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://gitee.com/#{repo}.git" }
+git_source(:origin_github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '6.1.4.1'
+gem 'rails', origin_github: 'rails/rails'
 gem 'puma'
 gem 'sidekiq'
 
 # Store
 gem 'pg'
 gem 'redis'
-gem 'active_record_distinct_on'
 
 # Assets
 gem 'viter', github: 'qinmingyuan/viter'
