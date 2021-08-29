@@ -67,7 +67,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
-ActiveRecord::Base.verbose_query_logs = true
+ActiveRecord.verbose_query_logs = true
 Rails.application.routes.default_url_options = {
   host: 'test.one.work'
 }

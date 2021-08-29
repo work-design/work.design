@@ -94,8 +94,6 @@ end
 
 group :development do
   gem 'web-console'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'listen'
 end
 

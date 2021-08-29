@@ -182,7 +182,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: e5aae1723a0ddaf2770ffc679b24b4491574d109
+  revision: 9a0722c99374747a8087e411c1cd2bca4721f1c9
   specs:
     rails_markdown (0.1)
       kramdown
@@ -247,7 +247,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ui.git
-  revision: 9f3fd0d1cc56045aa930389e082daba8051ebbbb
+  revision: 75f6e0066cd052b2c050ff1103a05099f4ef984e
   specs:
     rails_ui (0.0.1)
       rails
@@ -578,10 +578,6 @@ GEM
       redis (>= 4.2.0)
     spreadsheet (1.2.9)
       ruby-ole
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -682,8 +678,6 @@ DEPENDENCIES
   rucaptcha
   selenium-webdriver
   sidekiq
-  spring
-  spring-watcher-listen (~> 2.0.0)
   tencentcloud-sdk-common!
   tencentcloud-sdk-ocr!
   turbo-rails
