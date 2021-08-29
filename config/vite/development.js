@@ -3,4 +3,10 @@ process.env.RAILS_ENV = process.env.NODE_ENV
 
 const viteConfig = require('./base')
 
-module.exports = viteConfig
+module.exports = {
+  define: {
+    'process.env': {},
+    __dirname: {}
+  },
+  ...viteConfig
+}
