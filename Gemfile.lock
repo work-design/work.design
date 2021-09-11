@@ -5,13 +5,6 @@ GIT
     alipay2 (2.0)
 
 GIT
-  remote: https://gitee.com/qinmingyuan/default_form.git
-  revision: 476ba7231079b1071415ad4e953b55ce16ae1d0d
-  specs:
-    default_form (1.5.1)
-      rails_com (~> 1.2)
-
-GIT
   remote: https://gitee.com/qinmingyuan/default_where.git
   revision: bd6a1950ec0aea030cf741a38b58111a20d14b38
   specs:
@@ -72,14 +65,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 15f491f8d53783ae2f6b9a87a116f3ffbac7f7dd
+  revision: b28360f3df12b621c7d62214b881f7e4b19e4ea2
   specs:
     rails_audit (1.0.3)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 6232cd410cbdae4dfd7a5a48093758150d49e00d
+  revision: 94b24f83e9ac5e8ecf374a9163d76ebbd89ac050
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -95,7 +88,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b2200abe4a149cef8532f22619a6c1bbf934e94e
+  revision: 8949509c4f26ecf76adecfdbb2e221535ee47ac0
   specs:
     rails_com (1.2.9)
       acme-client
@@ -106,11 +99,12 @@ GIT
       httpx (~> 0.16)
       kaminari
       rails (>= 6.1)
+      rails_extend
       turbo-rails
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: e4d8a3ebe1e4021c2617c705bee0962d8883f6d2
+  revision: 228108a0b403a2ed7fc29efd16014b65209c009f
   specs:
     rails_data (1.0.2)
       prawn
@@ -119,6 +113,13 @@ GIT
       roo
       roo-xls
       write_xlsx
+
+GIT
+  remote: https://gitee.com/work-design/rails_design.git
+  revision: 074ee48cd8cd754977c8946f73479fe4a7e9b3f5
+  specs:
+    rails_design (0.0.1)
+      rails
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
@@ -150,15 +151,22 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://gitee.com/work-design/rails_extend.git
+  revision: 9f79c3ba99e3d590841736b4a7855f54035a43cc
+  specs:
+    rails_extend (1.0.0)
+      rails (>= 6.0)
+
+GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 109d7440e08bff6701279be7985a9dbbd0c8ff07
+  revision: 8db7e9bd20ebf446ef614382fcef8cc89d05512b
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 058d824ab071791fef40fb73a4efb25064d6d428
+  revision: 465714a260c1fdf2053f7edd25689ccb12ded883
   specs:
     rails_finance (0.1.0)
       prawn
@@ -182,7 +190,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 7a6df326ce52f33a2d22e1cca2e625d249ca4526
+  revision: 1df4c8c8a17d4f05debc425a8615b50427343bfb
   specs:
     rails_markdown (0.1)
       kramdown
@@ -191,15 +199,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: c61206cd1deebf0e2531ba102237cfd6852b59e4
+  revision: 73bfbcee42ccd1338289a3813b554b461f64c192
   specs:
     rails_notice (1.0.2)
-      rails_auth
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: aef68e9b50d95fbac2119aa64011f7a31bec296e
+  revision: 87bad126ba4747bc2cf2c9bc8eb0880b9d6cbf8d
   specs:
     rails_org (0.1)
       rails_com (~> 1.2)
@@ -208,9 +215,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 881e0c3ff8cc7fc6bbc22cf200d2f716b034716d
+  revision: c1998d0423381dc407c3d8c83bccc3ab522dea68
   specs:
-    rails_profile (0.1.0)
+    rails_profile (0.0.1)
       rails_com (~> 1.2)
 
 GIT
@@ -246,15 +253,8 @@ GIT
       rails_com (~> 1.2)
 
 GIT
-  remote: https://gitee.com/work-design/rails_ui.git
-  revision: 75f6e0066cd052b2c050ff1103a05099f4ef984e
-  specs:
-    rails_ui (0.0.1)
-      rails
-
-GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: df11caf5c2ae7689fdc65c27b997adc80f19d7ae
+  revision: 6f37284b6b521f243a7a415e0a6440a8d86b1b52
   specs:
     rails_wechat (0.1)
       rails_auth
@@ -263,7 +263,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 9ac1827331e85f01490b57f27e9cdf75a9cd1b69
+  revision: f01b541fdfcecf1438d284a288b0e4029c4c7ece
   specs:
     actioncable (7.0.0.alpha)
       actionpack (= 7.0.0.alpha)
@@ -349,7 +349,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    acme-client (2.0.8)
+    acme-client (2.0.9)
       faraday (>= 0.17, < 2.0.0)
     acts_as_list (1.0.4)
       activerecord (>= 4.2)
@@ -611,7 +611,7 @@ GEM
     xml-simple (1.1.8)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.5.0.beta2)
+    zeitwerk (2.5.0.beta3)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
 
@@ -627,7 +627,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara
-  default_form!
   default_where!
   factory_bot_rails
   image_processing
@@ -654,10 +653,12 @@ DEPENDENCIES
   rails_bench!
   rails_com!
   rails_data!
+  rails_design!
   rails_detail!
   rails_doc!
   rails_email!
   rails_event!
+  rails_extend!
   rails_factory!
   rails_finance!
   rails_growth!
@@ -670,7 +671,6 @@ DEPENDENCIES
   rails_role!
   rails_ship!
   rails_trade!
-  rails_ui!
   rails_wechat!
   redis
   rexml

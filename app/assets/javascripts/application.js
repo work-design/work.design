@@ -5,9 +5,8 @@ for (const path in modules) {
 
 // css
 import '../stylesheets/css.scss'
-import 'rails_ui_engine_ui/stylesheets/app.scss'
+import 'rails_design_engine_ui/stylesheets/app.scss'
 import '@fortawesome/fontawesome-free/css/all.css'
 
-import 'rails_ui_engine_ui/javascripts/rails_ui'
-import 'default_form_engine_ui/javascripts/default_form'
+import 'rails_design_engine_ui/javascripts/rails_design'
 import './channels'

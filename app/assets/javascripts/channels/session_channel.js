@@ -1,4 +1,4 @@
-import consumer from 'rails_ui_engine_ui/javascripts/rails_ui/cable'
+import consumer from 'rails_design_engine_ui/javascripts/rails_design/cable'
 
 consumer.subscriptions.create({channel: 'Com::SessionChannel', room: 'room'}, {
 

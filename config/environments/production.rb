@@ -12,6 +12,7 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
 
+  config.active_job.queue_adapter = :sidekiq
   config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')
 
   config.active_storage.service = :upyun
@@ -40,8 +41,6 @@ Rails.application.configure do
   config.action_cable.allowed_request_origins = [
     '*'
   ]
-
-  config.active_job.queue_adapter = :sidekiq
 end
 Rails.application.routes.default_url_options = {
   host: 'work.design',

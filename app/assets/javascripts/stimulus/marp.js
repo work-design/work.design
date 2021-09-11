@@ -1,1 +1,1 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'

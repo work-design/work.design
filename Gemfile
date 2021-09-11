@@ -48,11 +48,11 @@ gem 'paypal-sdk-rest'
 gem 'upyun_rails', github: 'qinmingyuan/upyun_rails'
 
 # Rails Helpers
-gem 'default_form', github: 'qinmingyuan/default_form'
 gem 'default_where', github: 'qinmingyuan/default_where'
 
 # Engines
-gem 'rails_ui', github: 'work-design/rails_ui'
+gem 'rails_design', github: 'work-design/rails_design'
+gem 'rails_extend', github: 'work-design/rails_extend'
 gem 'rails_com', github: 'work-design/rails_com'
 gem 'rails_doc', github: 'work-design/rails_doc'
 gem 'rails_org', github: 'work-design/rails_org'
