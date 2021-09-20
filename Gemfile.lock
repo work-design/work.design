@@ -117,7 +117,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 983c9a36320b2563c72cdc7e344bcdb752b60e5c
+  revision: 383e4a7423663c8233b14d1eeaec2507569310ca
   specs:
     rails_design (0.0.1)
       rails
@@ -167,7 +167,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: bf2e83d3895aa995cafa9cf257f54f0ee7a2af2e
+  revision: 7fbe842506aa2682869474f4eaa39b8dff0784e5
   specs:
     rails_finance (0.0.1)
       prawn
