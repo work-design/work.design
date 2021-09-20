@@ -1,29 +1,29 @@
 {
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.a2a94f53.js",
+    "file": "assets/javascripts/admin/application.c352d7e1.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
       "javascripts/application.js",
       "stylesheets/css.scss",
-      "_field.e98dff7e.js",
-      "_vendor.2ba742a7.js",
+      "_turbo.5acb8738.js",
+      "_vendor.a08d26cf.js",
       "javascripts/channels/receiver_channel.js",
-      "_cable.89abb6c9.js",
+      "_cable.be37694d.js",
       "javascripts/channels/session_channel.js"
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.bef77f30.js",
+    "file": "assets/javascripts/application.bb627f28.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
       "stylesheets/css.scss",
-      "_field.e98dff7e.js",
+      "_turbo.5acb8738.js",
       "javascripts/channels/receiver_channel.js",
       "javascripts/channels/session_channel.js",
-      "_vendor.2ba742a7.js",
-      "_cable.89abb6c9.js"
+      "_vendor.a08d26cf.js",
+      "_cable.be37694d.js"
     ],
     "dynamicImports": [
       "images/avatar.png",
@@ -54,44 +54,44 @@
     "isEntry": true
   },
   "javascripts/channels/receiver_channel.js": {
-    "file": "assets/javascripts/channels/receiver_channel.9249d0c2.js",
+    "file": "assets/javascripts/channels/receiver_channel.4a9c57b7.js",
     "src": "javascripts/channels/receiver_channel.js",
     "isEntry": true,
     "imports": [
-      "_cable.89abb6c9.js",
-      "_vendor.2ba742a7.js"
+      "_cable.be37694d.js",
+      "_vendor.a08d26cf.js"
     ]
   },
   "javascripts/channels/session_channel.js": {
-    "file": "assets/javascripts/channels/session_channel.f6b976f2.js",
+    "file": "assets/javascripts/channels/session_channel.5407678f.js",
     "src": "javascripts/channels/session_channel.js",
     "isEntry": true,
     "imports": [
-      "_cable.89abb6c9.js",
-      "_vendor.2ba742a7.js"
+      "_cable.be37694d.js",
+      "_vendor.a08d26cf.js"
     ]
   },
   "javascripts/channels/index.js": {
-    "file": "assets/javascripts/channels/index.0ab0430f.js",
+    "file": "assets/javascripts/channels/index.4b11e71a.js",
     "src": "javascripts/channels/index.js",
     "isEntry": true,
     "imports": [
       "javascripts/channels/receiver_channel.js",
       "javascripts/channels/session_channel.js",
-      "_cable.89abb6c9.js",
-      "_vendor.2ba742a7.js"
+      "_cable.be37694d.js",
+      "_vendor.a08d26cf.js"
     ]
   },
   "javascripts/phone.js": {
-    "file": "assets/javascripts/phone.530aa395.js",
+    "file": "assets/javascripts/phone.9d3ae472.js",
     "src": "javascripts/phone.js",
     "isEntry": true,
     "imports": [
-      "_field.e98dff7e.js",
-      "_vendor.2ba742a7.js",
+      "_turbo.5acb8738.js",
+      "_vendor.a08d26cf.js",
       "javascripts/channels/receiver_channel.js",
       "javascripts/channels/session_channel.js",
-      "_cable.89abb6c9.js"
+      "_cable.be37694d.js"
     ],
     "css": [
       "assets/javascripts/phone.62f5f24a.css"
@@ -103,11 +103,11 @@
     "isEntry": true
   },
   "javascripts/stimulus/marp.js": {
-    "file": "assets/javascripts/stimulus/marp.d68367d4.js",
+    "file": "assets/javascripts/stimulus/marp.dc965337.js",
     "src": "javascripts/stimulus/marp.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_com/app/views/com/videos/show.js": {
@@ -126,11 +126,11 @@
     "isEntry": true
   },
   "../../../../engine/rails_auth/app/views/auth/sign/sign.js": {
-    "file": "assets/auth/sign/sign.f2a59e1a.js",
+    "file": "assets/auth/sign/sign.e6d369b1.js",
     "src": "../../../../engine/rails_auth/app/views/auth/sign/sign.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_data/app/views/datum/panel/table_lists/chart.js": {
@@ -139,53 +139,53 @@
     "isEntry": true
   },
   "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js": {
-    "file": "assets/datum/panel/table_lists/index.5b9b280b.js",
+    "file": "assets/datum/panel/table_lists/index.02c5f365.js",
     "src": "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js": {
-    "file": "assets/bench/admin/budgets/index.30b3389f.js",
+    "file": "assets/bench/admin/budgets/index.fbf91211.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js": {
-    "file": "assets/finance/me/budgets/index.4c0c538e.js",
+    "file": "assets/finance/me/budgets/index.86a2ac32.js",
     "src": "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js": {
-    "file": "assets/bench/admin/expenses/index.77c3978a.js",
+    "file": "assets/bench/admin/expenses/index.a8f501e9.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js": {
-    "file": "assets/finance/me/expenses/index.0e8ff199.js",
+    "file": "assets/finance/me/expenses/index.f28e9914.js",
     "src": "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js": {
-    "file": "assets/bench/admin/task_templates/index.99df6117.js",
+    "file": "assets/bench/admin/task_templates/index.8223f379.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ],
     "css": [
       "assets/bench/admin/task_templates/index.2e237f3e.css"
@@ -232,11 +232,11 @@
     "isEntry": true
   },
   "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js": {
-    "file": "assets/attend/admin/financial_months/index.56cef096.js",
+    "file": "assets/attend/admin/financial_months/index.248416c3.js",
     "src": "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js": {
@@ -250,43 +250,51 @@
     "isEntry": true
   },
   "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js": {
-    "file": "assets/wechat/admin/replies/index.68f13b0e.js",
+    "file": "assets/wechat/admin/replies/index.6732d729.js",
     "src": "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js": {
-    "file": "assets/factory/my/productions/edit-phone.595e854f.js",
+    "file": "assets/factory/my/productions/edit-phone.4c46256e.js",
     "src": "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_factory/app/views/factory/products/show-phone.js",
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "../../../../engine/rails_factory/app/views/factory/products/show-phone.js": {
-    "file": "assets/factory/products/show-phone.e5185777.js",
+    "file": "assets/factory/products/show-phone.0b2edd20.js",
     "src": "../../../../engine/rails_factory/app/views/factory/products/show-phone.js",
     "isEntry": true,
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
-  "_vendor.2ba742a7.js": {
-    "file": "assets/vendor.2ba742a7.js",
+  "../../../../engine/rails_markdown/app/views/markdown/posts/ppt.js": {
+    "file": "assets/markdown/posts/ppt.70540bc2.js",
+    "src": "../../../../engine/rails_markdown/app/views/markdown/posts/ppt.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.a08d26cf.js"
+    ]
+  },
+  "_vendor.a08d26cf.js": {
+    "file": "assets/vendor.a08d26cf.js",
     "css": [
       "assets/vendor.e41cc7f8.css"
     ]
   },
-  "_field.e98dff7e.js": {
-    "file": "assets/field.e98dff7e.js",
+  "_turbo.5acb8738.js": {
+    "file": "assets/turbo.5acb8738.js",
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ],
     "css": [
-      "assets/field.49d2d2b2.css"
+      "assets/turbo.bdf0ab87.css"
     ],
     "assets": [
       "assets/fa-brands-400.407a9723.eot",
@@ -306,10 +314,10 @@
       "assets/fa-solid-900.fa498fb2.svg"
     ]
   },
-  "_cable.89abb6c9.js": {
-    "file": "assets/cable.89abb6c9.js",
+  "_cable.be37694d.js": {
+    "file": "assets/cable.be37694d.js",
     "imports": [
-      "_vendor.2ba742a7.js"
+      "_vendor.a08d26cf.js"
     ]
   },
   "images/avatar.png": {

@@ -17,8 +17,8 @@ require_relative '../config/application'
 
 require 'viter'
 require 'viter/dev_server_runner'
-Viter::Exporter.export
 
+#Viter::Exporter.export
 APP_ROOT = File.expand_path('..', __dir__)
 Dir.chdir(APP_ROOT) do
   Viter::DevServerRunner.run(ARGV)

@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://gitee.com/#{repo}.git" }
-git_source(:origin_github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
-gem 'rails', origin_github: 'rails/rails'
+gem 'rails', '7.0.0.alpha2'
 gem 'puma'
 gem 'sidekiq'
 
@@ -11,27 +10,24 @@ gem 'pg'
 gem 'redis'
 
 # Assets
-gem 'viter', github: 'qinmingyuan/viter'
+gem 'viter', gitee: 'qinmingyuan/viter'
 
 # Views
 gem 'jbuilder'
-gem 'kramdown'
 
 # Utils
 gem 'bcrypt'
-gem 'kaminari'
 gem 'acts_as_list'
 gem 'rucaptcha'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'rqrcode'
 gem 'rexml'
-gem 'nokogiri'
 
 # Third party
 gem 'octokit'
 gem 'omniauth-github'
-gem 'omniauth-wechat-oauth2', github: 'qinmingyuan/omniauth-wechat-oauth2'
+gem 'omniauth-wechat-oauth2', gitee: 'qinmingyuan/omniauth-wechat-oauth2'
 git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   gem 'tencentcloud-sdk-common'
   gem 'tencentcloud-sdk-ocr'
@@ -39,55 +35,51 @@ end
 gem 'aliyunsdkcore'
 
 # Payment method
-gem 'wx_pay', github: 'qinmingyuan/wx_pay'
-gem 'alipay2', github: 'qinmingyuan/alipay2'
+gem 'wx_pay', gitee: 'qinmingyuan/wx_pay'
+gem 'alipay2', gitee: 'qinmingyuan/alipay2'
 gem 'paypal-sdk-core'
 gem 'paypal-sdk-rest'
 
 # Files
-gem 'upyun_rails', github: 'qinmingyuan/upyun_rails'
+gem 'upyun_rails', gitee: 'qinmingyuan/upyun_rails'
 
 # Rails Helpers
-gem 'default_where', github: 'qinmingyuan/default_where'
+gem 'default_where', gitee: 'qinmingyuan/default_where'
 
 # Engines
-gem 'rails_design', github: 'work-design/rails_design'
-gem 'rails_extend', github: 'work-design/rails_extend'
-gem 'rails_com', github: 'work-design/rails_com'
-gem 'rails_doc', github: 'work-design/rails_doc'
-gem 'rails_org', github: 'work-design/rails_org'
-gem 'rails_auth', github: 'work-design/rails_auth'
-gem 'rails_data', github: 'work-design/rails_data'
-gem 'rails_quip', github: 'work-design/rails_quip'
-gem 'rails_role', github: 'work-design/rails_role'
-gem 'rails_ship', github: 'work-design/rails_ship'
-gem 'rails_audit', github: 'work-design/rails_audit'
-gem 'rails_bench', github: 'work-design/rails_bench'
-gem 'rails_email', github: 'work-design/rails_email'
-gem 'rails_event', github: 'work-design/rails_event'
-gem 'rails_trade', github: 'work-design/rails_trade'
-gem 'rails_agency', github: 'work-design/rails_agency'
-gem 'rails_attend', github: 'work-design/rails_attend'
-gem 'rails_detail', github: 'work-design/rails_detail'
-gem 'rails_growth', github: 'work-design/rails_growth'
-gem 'rails_notice', github: 'work-design/rails_notice'
-gem 'rails_wechat', github: 'work-design/rails_wechat'
-gem 'rails_factory', github: 'work-design/rails_factory'
-gem 'rails_finance', github: 'work-design/rails_finance'
-gem 'rails_profile', github: 'work-design/rails_profile'
-gem 'rails_interact', github: 'work-design/rails_interact'
-gem 'rails_markdown', github: 'work-design/rails_markdown'
+gem 'rails_design', gitee: 'work-design/rails_design'
+gem 'rails_extend', gitee: 'work-design/rails_extend'
+gem 'rails_com', gitee: 'work-design/rails_com'
+gem 'rails_doc', gitee: 'work-design/rails_doc'
+gem 'rails_org', gitee: 'work-design/rails_org'
+gem 'rails_auth', gitee: 'work-design/rails_auth'
+gem 'rails_data', gitee: 'work-design/rails_data'
+gem 'rails_quip', gitee: 'work-design/rails_quip'
+gem 'rails_role', gitee: 'work-design/rails_role'
+gem 'rails_ship', gitee: 'work-design/rails_ship'
+gem 'rails_audit', gitee: 'work-design/rails_audit'
+gem 'rails_bench', gitee: 'work-design/rails_bench'
+gem 'rails_email', gitee: 'work-design/rails_email'
+gem 'rails_event', gitee: 'work-design/rails_event'
+gem 'rails_trade', gitee: 'work-design/rails_trade'
+gem 'rails_agency', gitee: 'work-design/rails_agency'
+gem 'rails_attend', gitee: 'work-design/rails_attend'
+gem 'rails_detail', gitee: 'work-design/rails_detail'
+gem 'rails_growth', gitee: 'work-design/rails_growth'
+gem 'rails_notice', gitee: 'work-design/rails_notice'
+gem 'rails_wechat', gitee: 'work-design/rails_wechat'
+gem 'rails_factory', gitee: 'work-design/rails_factory'
+gem 'rails_finance', gitee: 'work-design/rails_finance'
+gem 'rails_profile', gitee: 'work-design/rails_profile'
+gem 'rails_interact', gitee: 'work-design/rails_interact'
+gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 
 gem 'turbo-rails'
 
 # Debug
-gem 'pry-rails'
-gem 'pry-stack_explorer'
 gem 'amazing_print'
-
 group :development, :test do
-  gem 'byebug'
-  gem 'factory_bot_rails'
+  gem 'debug'
   gem 'capybara'
   gem 'selenium-webdriver'
 end
@@ -97,7 +89,5 @@ group :development do
   gem 'listen'
 end
 
-group :production, :staging do
-end
 gem 'bootsnap', '>= 1.1.0', require: false
 
