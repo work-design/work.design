@@ -1,0 +1,87 @@
+default: &default
+  public_root_path: public
+  cache_path: tmp/cache/viter
+  entry_paths:
+  - /Users/qinmingyuan/work/rails/work_design/app/views
+  - /Users/qinmingyuan/work/rails/work_design/app/assets/entrypoints
+  - /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actionmailbox-7.0.0.alpha2/app/views
+  - /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actiontext-7.0.0.alpha2/app/views
+  - /Users/qinmingyuan/work/engine/rails_design/app/views
+  - /Users/qinmingyuan/work/engine/rails_com/app/views
+  - /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/kaminari-core-1.2.1/app/views
+  - /Users/qinmingyuan/work/engine/rails_doc/app/views
+  - /Users/qinmingyuan/work/engine/rails_org/app/views
+  - /Users/qinmingyuan/work/engine/rails_auth/app/views
+  - /Users/qinmingyuan/work/engine/rails_data/app/views
+  - /Users/qinmingyuan/work/engine/rails_quip/app/views
+  - /Users/qinmingyuan/work/engine/rails_role/app/views
+  - /Users/qinmingyuan/work/engine/rails_ship/app/views
+  - /Users/qinmingyuan/work/engine/rails_audit/app/views
+  - /Users/qinmingyuan/work/engine/rails_bench/app/views
+  - /Users/qinmingyuan/work/engine/rails_email/app/views
+  - /Users/qinmingyuan/work/engine/rails_event/app/views
+  - /Users/qinmingyuan/work/engine/rails_trade/app/views
+  - /Users/qinmingyuan/work/engine/rails_agency/app/views
+  - /Users/qinmingyuan/work/engine/rails_attend/app/views
+  - /Users/qinmingyuan/work/engine/rails_detail/app/views
+  - /Users/qinmingyuan/work/engine/rails_growth/app/views
+  - /Users/qinmingyuan/work/engine/rails_notice/app/views
+  - /Users/qinmingyuan/work/engine/rails_wechat/app/views
+  - /Users/qinmingyuan/work/engine/rails_factory/app/views
+  - /Users/qinmingyuan/work/engine/rails_finance/app/views
+  - /Users/qinmingyuan/work/engine/rails_profile/app/views
+  - /Users/qinmingyuan/work/engine/rails_interact/app/views
+  - /Users/qinmingyuan/work/engine/rails_markdown/app/views
+  alias:
+    abcs: ../public
+    active_storage_ui: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/activestorage-7.0.0.alpha2/app/assets
+    action_cable_engine_ui: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actioncable-7.0.0.alpha2/app/assets
+    action_mailbox_view: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actionmailbox-7.0.0.alpha2/app/views
+    action_text_ui: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actiontext-7.0.0.alpha2/app/assets
+    action_text_view: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/actiontext-7.0.0.alpha2/app/views
+    rails_design_engine_ui: /Users/qinmingyuan/work/engine/rails_design/app/assets
+    rails_design_engine_view: /Users/qinmingyuan/work/engine/rails_design/app/views
+    rails_com_engine_ui: /Users/qinmingyuan/work/engine/rails_com/app/assets
+    rails_com_engine_view: /Users/qinmingyuan/work/engine/rails_com/app/views
+    kaminari_engine_view: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/kaminari-core-1.2.1/app/views
+    turbo_ui: /Users/qinmingyuan/.rbenv/versions/3.0.2/lib/ruby/gems/3.0.0/gems/turbo-rails-0.7.14/app/assets
+    rails_doc_engine_ui: /Users/qinmingyuan/work/engine/rails_doc/app/assets
+    rails_doc_engine_view: /Users/qinmingyuan/work/engine/rails_doc/app/views
+    rails_org_engine_view: /Users/qinmingyuan/work/engine/rails_org/app/views
+    rails_auth_engine_view: /Users/qinmingyuan/work/engine/rails_auth/app/views
+    rails_data_engine_view: /Users/qinmingyuan/work/engine/rails_data/app/views
+    rails_quip_engine_view: /Users/qinmingyuan/work/engine/rails_quip/app/views
+    rails_role_engine_view: /Users/qinmingyuan/work/engine/rails_role/app/views
+    rails_ship_engine_view: /Users/qinmingyuan/work/engine/rails_ship/app/views
+    rails_audit_engine_view: /Users/qinmingyuan/work/engine/rails_audit/app/views
+    rails_bench_engine_vue: /Users/qinmingyuan/work/engine/rails_bench/app/vue
+    rails_bench_engine_view: /Users/qinmingyuan/work/engine/rails_bench/app/views
+    rails_email_engine_view: /Users/qinmingyuan/work/engine/rails_email/app/views
+    rails_event_engine_view: /Users/qinmingyuan/work/engine/rails_event/app/views
+    rails_trade_engine_view: /Users/qinmingyuan/work/engine/rails_trade/app/views
+    rails_agency_engine_view: /Users/qinmingyuan/work/engine/rails_agency/app/views
+    rails_attend_engine_view: /Users/qinmingyuan/work/engine/rails_attend/app/views
+    rails_detail_engine_view: /Users/qinmingyuan/work/engine/rails_detail/app/views
+    rails_growth_engine_view: /Users/qinmingyuan/work/engine/rails_growth/app/views
+    rails_notice_engine_ui: /Users/qinmingyuan/work/engine/rails_notice/app/assets
+    rails_notice_engine_view: /Users/qinmingyuan/work/engine/rails_notice/app/views
+    rails_wechat_engine_view: /Users/qinmingyuan/work/engine/rails_wechat/app/views
+    rails_factory_engine_view: /Users/qinmingyuan/work/engine/rails_factory/app/views
+    rails_finance_engine_view: /Users/qinmingyuan/work/engine/rails_finance/app/views
+    rails_profile_engine_view: /Users/qinmingyuan/work/engine/rails_profile/app/views
+    rails_interact_engine_view: /Users/qinmingyuan/work/engine/rails_interact/app/views
+    rails_markdown_engine_view: /Users/qinmingyuan/work/engine/rails_markdown/app/views
+  build:
+    assetsInlineLimit: 0
+    sourcemap: false
+    assetsDir: assets
+    brotliSize: true
+development:
+  <<: *default
+  server:
+    host: localhost
+    port: 3036
+test:
+  <<: *default
+production:
+  <<: *default

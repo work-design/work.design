@@ -17,7 +17,7 @@ acme
 config/credentials/production.key
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
-config/viter.yml
+config/rails_vite.yml
 config/certs
 config/alipay_rsa2.pem
 config/apiclient_key.pem

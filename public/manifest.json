@@ -1,90 +1,43 @@
 {
-  "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.cb8a3b13.js",
-    "src": "javascripts/admin/application.js",
+  "app/assets/entrypoints/admin/application.js": {
+    "file": "assets/admin/application.d9f4036f.js",
+    "src": "app/assets/entrypoints/admin/application.js",
     "isEntry": true,
     "imports": [
-      "javascripts/application.js",
-      "_turbo.1f7e993c.js",
-      "_vendor.880a3691.js",
-      "javascripts/channels/receiver_channel.js",
-      "_cable.a9120e3d.js",
-      "javascripts/channels/session_channel.js"
+      "app/assets/entrypoints/application.js",
+      "_session_channel.89c92f4e.js",
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "javascripts/application.js": {
-    "file": "assets/javascripts/application.0d28ee7b.js",
-    "src": "javascripts/application.js",
+  "app/assets/entrypoints/application.js": {
+    "file": "assets/application.fa20ea44.js",
+    "src": "app/assets/entrypoints/application.js",
     "isEntry": true,
     "imports": [
-      "_turbo.1f7e993c.js",
-      "javascripts/channels/receiver_channel.js",
-      "javascripts/channels/session_channel.js",
-      "_vendor.880a3691.js",
-      "_cable.a9120e3d.js"
+      "_session_channel.89c92f4e.js",
+      "_vendor.dba8a4cb.js"
     ],
     "dynamicImports": [
-      "images/avatar.png",
-      "images/background.png",
-      "images/banner.png",
-      "images/default_avatar.jpg",
-      "images/digit.png",
-      "images/license.jpg",
-      "images/logo.png",
-      "images/logo1.png",
-      "images/open.png",
-      "images/registration.jpg",
-      "images/required.png",
-      "images/smart.png",
-      "images/wx.png",
-      "images/人员.png",
-      "images/工作内容.png",
-      "images/方法.png",
-      "images/软硬件.png"
-    ]
-  },
-  "javascripts/channels/receiver_channel.js": {
-    "file": "assets/javascripts/channels/receiver_channel.f1ad3f1c.js",
-    "src": "javascripts/channels/receiver_channel.js",
-    "isEntry": true,
-    "imports": [
-      "_cable.a9120e3d.js",
-      "_vendor.880a3691.js"
-    ]
-  },
-  "javascripts/channels/session_channel.js": {
-    "file": "assets/javascripts/channels/session_channel.72f62b3b.js",
-    "src": "javascripts/channels/session_channel.js",
-    "isEntry": true,
-    "imports": [
-      "_cable.a9120e3d.js",
-      "_vendor.880a3691.js"
-    ]
-  },
-  "javascripts/channels/index.js": {
-    "file": "assets/javascripts/channels/index.87141975.js",
-    "src": "javascripts/channels/index.js",
-    "isEntry": true,
-    "imports": [
-      "javascripts/channels/receiver_channel.js",
-      "javascripts/channels/session_channel.js",
-      "_cable.a9120e3d.js",
-      "_vendor.880a3691.js"
-    ]
-  },
-  "javascripts/phone.js": {
-    "file": "assets/javascripts/phone.b54ca13f.js",
-    "src": "javascripts/phone.js",
-    "isEntry": true,
-    "imports": [
-      "_turbo.1f7e993c.js",
-      "_vendor.880a3691.js",
-      "javascripts/channels/receiver_channel.js",
-      "javascripts/channels/session_channel.js",
-      "_cable.a9120e3d.js"
+      "app/assets/images/avatar.png",
+      "app/assets/images/background.png",
+      "app/assets/images/banner.png",
+      "app/assets/images/default_avatar.jpg",
+      "app/assets/images/digit.png",
+      "app/assets/images/license.jpg",
+      "app/assets/images/logo.png",
+      "app/assets/images/logo1.png",
+      "app/assets/images/open.png",
+      "app/assets/images/registration.jpg",
+      "app/assets/images/required.png",
+      "app/assets/images/smart.png",
+      "app/assets/images/wx.png",
+      "app/assets/images/人员.png",
+      "app/assets/images/工作内容.png",
+      "app/assets/images/方法.png",
+      "app/assets/images/软硬件.png"
     ],
     "css": [
-      "assets/javascripts/phone.330d75d3.css"
+      "assets/application.f305eda0.css"
     ],
     "assets": [
       "assets/fa-brands-400.407a9723.eot",
@@ -104,332 +57,339 @@
       "assets/fa-solid-900.fa498fb2.svg"
     ]
   },
-  "javascripts/stimulus/index.js": {
-    "file": "assets/javascripts/stimulus/index.c0962893.js",
-    "src": "javascripts/stimulus/index.js",
-    "isEntry": true
-  },
-  "javascripts/stimulus/marp.js": {
-    "file": "assets/javascripts/stimulus/marp.b90e47d1.js",
-    "src": "javascripts/stimulus/marp.js",
+  "app/assets/entrypoints/phone.js": {
+    "file": "assets/phone.0e3ee28e.js",
+    "src": "app/assets/entrypoints/phone.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_session_channel.89c92f4e.js",
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_com/app/views/com/videos/show.js": {
+  "../../engine/rails_com/app/views/com/videos/show.js": {
     "file": "assets/com/videos/show.ef2d2601.js",
-    "src": "../../../../engine/rails_com/app/views/com/videos/show.js",
+    "src": "../../engine/rails_com/app/views/com/videos/show.js",
     "isEntry": true
   },
-  "../../../../engine/rails_doc/app/views/doc/homes/index.backup.js": {
+  "../../engine/rails_doc/app/views/doc/homes/index.backup.js": {
     "file": "assets/doc/homes/index.1c1b23e5.js",
-    "src": "../../../../engine/rails_doc/app/views/doc/homes/index.backup.js",
+    "src": "../../engine/rails_doc/app/views/doc/homes/index.backup.js",
     "isEntry": true
   },
-  "../../../../engine/rails_auth/app/views/auth/panel/users/panel.js": {
+  "../../engine/rails_auth/app/views/auth/panel/users/panel.js": {
     "file": "assets/auth/panel/users/panel.d97ae8cb.js",
-    "src": "../../../../engine/rails_auth/app/views/auth/panel/users/panel.js",
+    "src": "../../engine/rails_auth/app/views/auth/panel/users/panel.js",
     "isEntry": true
   },
-  "../../../../engine/rails_auth/app/views/auth/sign/sign.js": {
-    "file": "assets/auth/sign/sign.df6b436d.js",
-    "src": "../../../../engine/rails_auth/app/views/auth/sign/sign.js",
+  "../../engine/rails_auth/app/views/auth/sign/sign.js": {
+    "file": "assets/auth/sign/sign.28aa159d.js",
+    "src": "../../engine/rails_auth/app/views/auth/sign/sign.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_data/app/views/datum/panel/table_lists/chart.js": {
+  "../../engine/rails_data/app/views/datum/panel/table_lists/chart.js": {
     "file": "assets/datum/panel/table_lists/chart.b05bc497.js",
-    "src": "../../../../engine/rails_data/app/views/datum/panel/table_lists/chart.js",
+    "src": "../../engine/rails_data/app/views/datum/panel/table_lists/chart.js",
     "isEntry": true
   },
-  "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js": {
-    "file": "assets/datum/panel/table_lists/index.8e2a4ff6.js",
-    "src": "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js",
+  "../../engine/rails_data/app/views/datum/panel/table_lists/index.js": {
+    "file": "assets/datum/panel/table_lists/index.4cef6fe3.js",
+    "src": "../../engine/rails_data/app/views/datum/panel/table_lists/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js": {
-    "file": "assets/bench/admin/budgets/index.162540a2.js",
-    "src": "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js",
+  "../../engine/rails_bench/app/views/bench/admin/budgets/index.js": {
+    "file": "assets/bench/admin/budgets/index.9a71d817.js",
+    "src": "../../engine/rails_bench/app/views/bench/admin/budgets/index.js",
     "isEntry": true,
     "imports": [
-      "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
-      "_vendor.880a3691.js"
+      "../../engine/rails_finance/app/views/finance/me/budgets/index.js",
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js": {
-    "file": "assets/finance/me/budgets/index.fadd3f55.js",
-    "src": "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
+  "../../engine/rails_finance/app/views/finance/me/budgets/index.js": {
+    "file": "assets/finance/me/budgets/index.36c874de.js",
+    "src": "../../engine/rails_finance/app/views/finance/me/budgets/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js": {
-    "file": "assets/bench/admin/expenses/index.136734a2.js",
-    "src": "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js",
+  "../../engine/rails_bench/app/views/bench/admin/expenses/index.js": {
+    "file": "assets/bench/admin/expenses/index.881d73e0.js",
+    "src": "../../engine/rails_bench/app/views/bench/admin/expenses/index.js",
     "isEntry": true,
     "imports": [
-      "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
-      "_vendor.880a3691.js"
+      "../../engine/rails_finance/app/views/finance/me/expenses/index.js",
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js": {
-    "file": "assets/finance/me/expenses/index.9d95be36.js",
-    "src": "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
+  "../../engine/rails_finance/app/views/finance/me/expenses/index.js": {
+    "file": "assets/finance/me/expenses/index.6fc1a138.js",
+    "src": "../../engine/rails_finance/app/views/finance/me/expenses/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js": {
-    "file": "assets/bench/admin/task_templates/index.1cfea544.js",
-    "src": "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js",
+  "../../engine/rails_bench/app/views/bench/admin/task_templates/index.js": {
+    "file": "assets/bench/admin/task_templates/index.3f9fadbd.js",
+    "src": "../../engine/rails_bench/app/views/bench/admin/task_templates/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ],
     "css": [
       "assets/bench/admin/task_templates/index.07692309.css"
     ]
   },
-  "../../../../engine/rails_event/app/views/eventual/my/plans/index-ready.js": {
+  "../../engine/rails_event/app/views/eventual/my/plans/index-ready.js": {
     "file": "assets/eventual/my/plans/index-ready.d55cdcf8.js",
-    "src": "../../../../engine/rails_event/app/views/eventual/my/plans/index-ready.js",
+    "src": "../../engine/rails_event/app/views/eventual/my/plans/index-ready.js",
     "isEntry": true
   },
-  "../../../../engine/rails_event/app/views/eventual/my/plans/index.js": {
+  "../../engine/rails_event/app/views/eventual/my/plans/index.js": {
     "file": "assets/eventual/my/plans/index.07a6634f.js",
-    "src": "../../../../engine/rails_event/app/views/eventual/my/plans/index.js",
+    "src": "../../engine/rails_event/app/views/eventual/my/plans/index.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/orders/new.js": {
+  "../../engine/rails_trade/app/views/trade/admin/orders/new.js": {
     "file": "assets/trade/admin/orders/new.4307ef13.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/orders/new.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/orders/new.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/promote_carts/edit.js": {
+  "../../engine/rails_trade/app/views/trade/admin/promote_carts/edit.js": {
     "file": "assets/trade/admin/promote_carts/edit.4b297316.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/promote_carts/edit.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/promote_carts/edit.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/promote_carts/new.js": {
+  "../../engine/rails_trade/app/views/trade/admin/promote_carts/new.js": {
     "file": "assets/trade/admin/promote_carts/new.455ef95c.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/promote_carts/new.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/promote_carts/new.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/trade_items/create.js": {
+  "../../engine/rails_trade/app/views/trade/admin/trade_items/create.js": {
     "file": "assets/trade/admin/trade_items/create.0548c88c.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/trade_items/create.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/trade_items/create.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/trade_items/index.js": {
+  "../../engine/rails_trade/app/views/trade/admin/trade_items/index.js": {
     "file": "assets/trade/admin/trade_items/index.2b44afea.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/trade_items/index.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/trade_items/index.js",
     "isEntry": true
   },
-  "../../../../engine/rails_trade/app/views/trade/admin/trade_items/only.js": {
+  "../../engine/rails_trade/app/views/trade/admin/trade_items/only.js": {
     "file": "assets/trade/admin/trade_items/only.d50f05d2.js",
-    "src": "../../../../engine/rails_trade/app/views/trade/admin/trade_items/only.js",
+    "src": "../../engine/rails_trade/app/views/trade/admin/trade_items/only.js",
     "isEntry": true
   },
-  "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js": {
-    "file": "assets/attend/admin/financial_months/index.5de4abfb.js",
-    "src": "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js",
+  "../../engine/rails_attend/app/views/attend/admin/financial_months/index.js": {
+    "file": "assets/attend/admin/financial_months/index.ed3e44e8.js",
+    "src": "../../engine/rails_attend/app/views/attend/admin/financial_months/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js": {
+  "../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js": {
     "file": "assets/notice/admin/annunciations/edit_publish.3c849e5e.js",
-    "src": "../../../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js",
+    "src": "../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js",
     "isEntry": true
   },
-  "../../../../engine/rails_notice/app/views/notice/admin/members/new.js": {
+  "../../engine/rails_notice/app/views/notice/admin/members/new.js": {
     "file": "assets/notice/admin/members/new.6c8715e2.js",
-    "src": "../../../../engine/rails_notice/app/views/notice/admin/members/new.js",
+    "src": "../../engine/rails_notice/app/views/notice/admin/members/new.js",
     "isEntry": true
   },
-  "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js": {
-    "file": "assets/wechat/admin/replies/index.9d613e06.js",
-    "src": "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js",
+  "../../engine/rails_wechat/app/views/wechat/admin/replies/index.js": {
+    "file": "assets/wechat/admin/replies/index.0104ea59.js",
+    "src": "../../engine/rails_wechat/app/views/wechat/admin/replies/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js": {
-    "file": "assets/factory/my/productions/edit-phone.8cc5e3ec.js",
-    "src": "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js",
+  "../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js": {
+    "file": "assets/factory/my/productions/edit-phone.01b18a40.js",
+    "src": "../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js",
     "isEntry": true,
     "imports": [
-      "../../../../engine/rails_factory/app/views/factory/products/show-phone.js",
-      "_vendor.880a3691.js"
+      "../../engine/rails_factory/app/views/factory/products/show-phone.js",
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "../../../../engine/rails_factory/app/views/factory/products/show-phone.js": {
-    "file": "assets/factory/products/show-phone.fd65a0d7.js",
-    "src": "../../../../engine/rails_factory/app/views/factory/products/show-phone.js",
+  "../../engine/rails_factory/app/views/factory/products/show-phone.js": {
+    "file": "assets/factory/products/show-phone.0f9cf4bd.js",
+    "src": "../../engine/rails_factory/app/views/factory/products/show-phone.js",
     "isEntry": true,
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "_vendor.880a3691.js": {
-    "file": "assets/vendor.880a3691.js",
+  "../../engine/rails_markdown/app/views/markdown/posts/marp_item.js": {
+    "file": "assets/markdown/posts/marp_item.5c9f5541.js",
+    "src": "../../engine/rails_markdown/app/views/markdown/posts/marp_item.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.dba8a4cb.js"
+    ]
+  },
+  "../../engine/rails_markdown/app/views/markdown/posts/ppt.js": {
+    "file": "assets/markdown/posts/ppt.60152f32.js",
+    "src": "../../engine/rails_markdown/app/views/markdown/posts/ppt.js",
+    "isEntry": true,
+    "imports": [
+      "_vendor.dba8a4cb.js",
+      "../../engine/rails_markdown/app/views/markdown/posts/marp_item.js"
+    ]
+  },
+  "_vendor.dba8a4cb.js": {
+    "file": "assets/vendor.dba8a4cb.js",
     "css": [
       "assets/vendor.0c9aa358.css"
     ]
   },
-  "_turbo.1f7e993c.js": {
-    "file": "assets/turbo.1f7e993c.js",
+  "_session_channel.89c92f4e.js": {
+    "file": "assets/session_channel.89c92f4e.js",
     "imports": [
-      "_vendor.880a3691.js"
+      "_vendor.dba8a4cb.js"
     ]
   },
-  "_cable.a9120e3d.js": {
-    "file": "assets/cable.a9120e3d.js",
-    "imports": [
-      "_vendor.880a3691.js"
-    ]
-  },
-  "images/avatar.png": {
+  "app/assets/images/avatar.png": {
     "file": "assets/avatar.4e8a752c.js",
-    "src": "images/avatar.png",
+    "src": "app/assets/images/avatar.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/avatar.0504b1d7.png"
     ]
   },
-  "images/background.png": {
+  "app/assets/images/background.png": {
     "file": "assets/background.a6b6ff24.js",
-    "src": "images/background.png",
+    "src": "app/assets/images/background.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/background.2f8016b0.png"
     ]
   },
-  "images/banner.png": {
+  "app/assets/images/banner.png": {
     "file": "assets/banner.c0a20434.js",
-    "src": "images/banner.png",
+    "src": "app/assets/images/banner.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/banner.ce65a133.png"
     ]
   },
-  "images/default_avatar.jpg": {
+  "app/assets/images/default_avatar.jpg": {
     "file": "assets/default_avatar.fdb49a16.js",
-    "src": "images/default_avatar.jpg",
+    "src": "app/assets/images/default_avatar.jpg",
     "isDynamicEntry": true,
     "assets": [
       "assets/default_avatar.b33e43b7.jpg"
     ]
   },
-  "images/digit.png": {
+  "app/assets/images/digit.png": {
     "file": "assets/digit.85f92fac.js",
-    "src": "images/digit.png",
+    "src": "app/assets/images/digit.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/digit.37490ad5.png"
     ]
   },
-  "images/license.jpg": {
+  "app/assets/images/license.jpg": {
     "file": "assets/license.5fdb8936.js",
-    "src": "images/license.jpg",
+    "src": "app/assets/images/license.jpg",
     "isDynamicEntry": true,
     "assets": [
       "assets/license.0aa15905.jpg"
     ]
   },
-  "images/logo.png": {
+  "app/assets/images/logo.png": {
     "file": "assets/logo.446c7be5.js",
-    "src": "images/logo.png",
+    "src": "app/assets/images/logo.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/logo.bb9be898.png"
     ]
   },
-  "images/logo1.png": {
+  "app/assets/images/logo1.png": {
     "file": "assets/logo1.bc7e28ee.js",
-    "src": "images/logo1.png",
+    "src": "app/assets/images/logo1.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/logo1.ad798c7a.png"
     ]
   },
-  "images/open.png": {
+  "app/assets/images/open.png": {
     "file": "assets/open.7654e0d4.js",
-    "src": "images/open.png",
+    "src": "app/assets/images/open.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/open.6e466345.png"
     ]
   },
-  "images/registration.jpg": {
+  "app/assets/images/registration.jpg": {
     "file": "assets/registration.c3a0e401.js",
-    "src": "images/registration.jpg",
+    "src": "app/assets/images/registration.jpg",
     "isDynamicEntry": true,
     "assets": [
       "assets/registration.f280eb9b.jpg"
     ]
   },
-  "images/required.png": {
+  "app/assets/images/required.png": {
     "file": "assets/required.d20c04e2.js",
-    "src": "images/required.png",
+    "src": "app/assets/images/required.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/required.d95b6158.png"
     ]
   },
-  "images/smart.png": {
+  "app/assets/images/smart.png": {
     "file": "assets/smart.7fdff6b7.js",
-    "src": "images/smart.png",
+    "src": "app/assets/images/smart.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/smart.9d3e59e4.png"
     ]
   },
-  "images/wx.png": {
+  "app/assets/images/wx.png": {
     "file": "assets/wx.2cd8de8b.js",
-    "src": "images/wx.png",
+    "src": "app/assets/images/wx.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/wx.c411c643.png"
     ]
   },
-  "images/人员.png": {
+  "app/assets/images/人员.png": {
     "file": "assets/人员.c903e3d2.js",
-    "src": "images/人员.png",
+    "src": "app/assets/images/人员.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/人员.a47fdbb6.png"
     ]
   },
-  "images/工作内容.png": {
+  "app/assets/images/工作内容.png": {
     "file": "assets/工作内容.89417cde.js",
-    "src": "images/工作内容.png",
+    "src": "app/assets/images/工作内容.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/工作内容.d52c1cea.png"
     ]
   },
-  "images/方法.png": {
+  "app/assets/images/方法.png": {
     "file": "assets/方法.b5ed565a.js",
-    "src": "images/方法.png",
+    "src": "app/assets/images/方法.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/方法.d2697e83.png"
     ]
   },
-  "images/软硬件.png": {
+  "app/assets/images/软硬件.png": {
     "file": "assets/软硬件.ba204f6e.js",
-    "src": "images/软硬件.png",
+    "src": "app/assets/images/软硬件.png",
     "isDynamicEntry": true,
     "assets": [
       "assets/软硬件.99b45416.png"
