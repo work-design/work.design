@@ -9,15 +9,8 @@ gem 'sidekiq'
 gem 'pg'
 gem 'redis'
 
-# Assets
-gem 'viter', gitee: 'qinmingyuan/viter'
-
-# Views
-gem 'jbuilder'
-
 # Utils
 gem 'bcrypt'
-gem 'acts_as_list'
 gem 'rucaptcha'
 gem 'image_processing'
 gem 'mini_magick'
@@ -47,13 +40,12 @@ gem 'upyun_rails', gitee: 'qinmingyuan/upyun_rails'
 gem 'default_where', gitee: 'qinmingyuan/default_where'
 
 # Engines
-gem 'rails_design', gitee: 'work-design/rails_design'
-gem 'rails_extend', gitee: 'work-design/rails_extend'
 gem 'rails_com', gitee: 'work-design/rails_com'
 gem 'rails_doc', gitee: 'work-design/rails_doc'
 gem 'rails_org', gitee: 'work-design/rails_org'
 gem 'rails_auth', gitee: 'work-design/rails_auth'
 gem 'rails_data', gitee: 'work-design/rails_data'
+gem 'rails_vite', gitee: 'work-design/rails_vite'
 gem 'rails_quip', gitee: 'work-design/rails_quip'
 gem 'rails_role', gitee: 'work-design/rails_role'
 gem 'rails_ship', gitee: 'work-design/rails_ship'
@@ -64,7 +56,9 @@ gem 'rails_event', gitee: 'work-design/rails_event'
 gem 'rails_trade', gitee: 'work-design/rails_trade'
 gem 'rails_agency', gitee: 'work-design/rails_agency'
 gem 'rails_attend', gitee: 'work-design/rails_attend'
+gem 'rails_design', gitee: 'work-design/rails_design'
 gem 'rails_detail', gitee: 'work-design/rails_detail'
+gem 'rails_extend', gitee: 'work-design/rails_extend'
 gem 'rails_growth', gitee: 'work-design/rails_growth'
 gem 'rails_notice', gitee: 'work-design/rails_notice'
 gem 'rails_wechat', gitee: 'work-design/rails_wechat'

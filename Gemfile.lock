@@ -27,13 +27,6 @@ GIT
       rest-client
 
 GIT
-  remote: https://gitee.com/qinmingyuan/viter.git
-  revision: 82d46c2eed89cc27b89811e3ded0cb6797f3b807
-  specs:
-    viter (0.1)
-      rails
-
-GIT
   remote: https://gitee.com/qinmingyuan/wx_pay.git
   revision: 82ee160cc55cdb18a39822904dcbb08b039a14d8
   specs:
@@ -250,6 +243,13 @@ GIT
     rails_trade (0.0.3)
       money-rails (~> 1.14)
       rails_com (~> 1.2)
+
+GIT
+  remote: https://gitee.com/work-design/rails_vite.git
+  revision: 83e7277b96ba4270bc4c764857820951137c749f
+  specs:
+    rails_vite (0.0.1)
+      rails
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
@@ -604,7 +604,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list
   alipay2!
   aliyunsdkcore
   amazing_print
@@ -614,7 +613,6 @@ DEPENDENCIES
   debug
   default_where!
   image_processing
-  jbuilder
   listen
   mini_magick
   octokit
@@ -650,6 +648,7 @@ DEPENDENCIES
   rails_role!
   rails_ship!
   rails_trade!
+  rails_vite!
   rails_wechat!
   redis
   rexml
@@ -661,7 +660,6 @@ DEPENDENCIES
   tencentcloud-sdk-ocr!
   turbo-rails
   upyun_rails!
-  viter!
   web-console
   wx_pay!
 

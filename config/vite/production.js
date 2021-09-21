@@ -3,4 +3,5 @@ process.env.RAILS_ENV = process.env.NODE_ENV
 
 const viteConfig = require('./base')
 
+debugger
 module.exports = viteConfig
