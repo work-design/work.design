@@ -956,10 +956,10 @@ preact@^10.0.5:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.5.13.tgz#85f6c9197ecd736ce8e3bec044d08fd1330fa019"
   integrity sha512-q/vlKIGNwzTLu+jCcvywgGrt+H/1P/oIRSD6mV4ln3hmlC+Aa34C7yfPI4+5bzW8pONyVXYS7SvXosy2dKKtWQ==
 
-rails_vite@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/rails_vite/-/rails_vite-0.0.3.tgz#ad6f750befe525a2062c8dc295c951c7beddc139"
-  integrity sha512-f9F2QnApCEn/e++LPbNHpOXq5GMjepEcpSY1nysiMhFybgDWaH+AUQcPrzbP6lY/QUT1zZgLFqMxFCRfNpY9Ng==
+rails_vite@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/rails_vite/-/rails_vite-0.0.2.tgz#7b662abe3a7c6430820f635a9feb094ad379e518"
+  integrity sha512-8v/x1D9MCKDElRQbDVW8LfZZ4Vz4gMjFjYNs5wPAdJCVoohwfVBBiLf29IHmrhYmpaxTugDr8AGxYWwkcdNhPQ==
   dependencies:
     glob "^7.1.7"
     js-yaml "^4.1.0"

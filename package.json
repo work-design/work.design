@@ -24,7 +24,7 @@
     "postcss-import": "^13.0.0",
     "sortablejs": "^1.10.2",
     "stickybits": "^3.7.7",
-    "rails_vite": "^0.0.3",
+    "rails_vite": "^0.0.2",
     "vue": "^3.2.6",
     "weui": "^2.5.0",
     "weui.js": "^1.2.1"

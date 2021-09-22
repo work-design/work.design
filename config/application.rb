@@ -40,11 +40,6 @@ module OneWork
       html_tag
     end
 
-    console do
-      require 'pry'
-      config.console = Pry
-    end
-
   end
 end
 
