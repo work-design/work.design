@@ -9,7 +9,6 @@ tmp/**/*
 public/assets
 public/fonts
 public/.well-known
-public/manifest.json
 storage
 node_modules
 acme
