@@ -1,21 +1,21 @@
 {
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.69cb5198.js",
+    "file": "assets/javascripts/admin/application.1bf15dfa.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
       "javascripts/application.js",
-      "_session_channel.de18183e.js",
-      "_vendor.e5862fec.js"
+      "_session_channel.b75b772c.js",
+      "_vendor.94204dbe.js"
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.0376d2f1.js",
+    "file": "assets/javascripts/application.dcbcbeb2.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.de18183e.js",
-      "_vendor.e5862fec.js"
+      "_session_channel.b75b772c.js",
+      "_vendor.94204dbe.js"
     ],
     "dynamicImports": [
       "../assets/images/avatar.png",
@@ -37,7 +37,7 @@
       "../assets/images/软硬件.png"
     ],
     "css": [
-      "assets/javascripts/application.d357bb3d.css"
+      "assets/javascripts/application.31efb8f8.css"
     ],
     "assets": [
       "assets/fa-brands-400.407a9723.eot",
@@ -58,12 +58,12 @@
     ]
   },
   "javascripts/phone.js": {
-    "file": "assets/javascripts/phone.91ebda9a.js",
+    "file": "assets/javascripts/phone.6727be5c.js",
     "src": "javascripts/phone.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.de18183e.js",
-      "_vendor.e5862fec.js"
+      "_session_channel.b75b772c.js",
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_com/app/views/com/videos/show.js": {
@@ -82,11 +82,11 @@
     "isEntry": true
   },
   "../../../../engine/rails_auth/app/views/auth/sign/sign.js": {
-    "file": "assets/auth/sign/sign.f87fe71e.js",
+    "file": "assets/auth/sign/sign.30cd16bb.js",
     "src": "../../../../engine/rails_auth/app/views/auth/sign/sign.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_data/app/views/datum/panel/table_lists/chart.js": {
@@ -95,53 +95,53 @@
     "isEntry": true
   },
   "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js": {
-    "file": "assets/datum/panel/table_lists/index.13954f32.js",
+    "file": "assets/datum/panel/table_lists/index.1e8d0524.js",
     "src": "../../../../engine/rails_data/app/views/datum/panel/table_lists/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js": {
-    "file": "assets/bench/admin/budgets/index.fba5199b.js",
+    "file": "assets/bench/admin/budgets/index.d05a9dba.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/budgets/index.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js": {
-    "file": "assets/finance/me/budgets/index.2a555555.js",
+    "file": "assets/finance/me/budgets/index.96d81643.js",
     "src": "../../../../engine/rails_finance/app/views/finance/me/budgets/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js": {
-    "file": "assets/bench/admin/expenses/index.87496230.js",
+    "file": "assets/bench/admin/expenses/index.c68ed5c7.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/expenses/index.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js": {
-    "file": "assets/finance/me/expenses/index.cb2e1164.js",
+    "file": "assets/finance/me/expenses/index.43e1abc1.js",
     "src": "../../../../engine/rails_finance/app/views/finance/me/expenses/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js": {
-    "file": "assets/bench/admin/task_templates/index.fc4ba1c4.js",
+    "file": "assets/bench/admin/task_templates/index.2cdb7dc6.js",
     "src": "../../../../engine/rails_bench/app/views/bench/admin/task_templates/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ],
     "css": [
       "assets/bench/admin/task_templates/index.07692309.css"
@@ -188,11 +188,11 @@
     "isEntry": true
   },
   "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js": {
-    "file": "assets/attend/admin/financial_months/index.91c33b58.js",
+    "file": "assets/attend/admin/financial_months/index.9c01cc9f.js",
     "src": "../../../../engine/rails_attend/app/views/attend/admin/financial_months/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_notice/app/views/notice/admin/annunciations/edit_publish.js": {
@@ -206,60 +206,63 @@
     "isEntry": true
   },
   "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js": {
-    "file": "assets/wechat/admin/replies/index.8fbc0e3f.js",
+    "file": "assets/wechat/admin/replies/index.568e9c4c.js",
     "src": "../../../../engine/rails_wechat/app/views/wechat/admin/replies/index.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js": {
-    "file": "assets/factory/my/productions/edit-phone.95920dce.js",
+    "file": "assets/factory/my/productions/edit-phone.721da0d4.js",
     "src": "../../../../engine/rails_factory/app/views/factory/my/productions/edit-phone.js",
     "isEntry": true,
     "imports": [
       "../../../../engine/rails_factory/app/views/factory/products/show.js",
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_factory/app/views/factory/products/show.js": {
-    "file": "assets/factory/products/show.abaf3e86.js",
+    "file": "assets/factory/products/show.1329686f.js",
     "src": "../../../../engine/rails_factory/app/views/factory/products/show.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_markdown/app/views/markdown/posts/marp_item.js": {
-    "file": "assets/markdown/posts/marp_item.19789f89.js",
+    "file": "assets/markdown/posts/marp_item.b26a59d9.js",
     "src": "../../../../engine/rails_markdown/app/views/markdown/posts/marp_item.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../../../../engine/rails_markdown/app/views/markdown/posts/ppt.js": {
-    "file": "assets/markdown/posts/ppt.b82ed9bf.js",
+    "file": "assets/markdown/posts/ppt.92bf10cb.js",
     "src": "../../../../engine/rails_markdown/app/views/markdown/posts/ppt.js",
     "isEntry": true,
     "imports": [
-      "_vendor.e5862fec.js",
+      "_vendor.94204dbe.js",
       "../../../../engine/rails_markdown/app/views/markdown/posts/marp_item.js"
     ],
     "css": [
       "assets/markdown/posts/ppt.74970531.css"
     ]
   },
-  "_vendor.e5862fec.js": {
-    "file": "assets/vendor.e5862fec.js",
+  "_vendor.94204dbe.js": {
+    "file": "assets/vendor.94204dbe.js",
+    "dynamicImports": [
+      "../../../../engine/rails_design/node_modules/@rails/actioncable/src/index.js"
+    ],
     "css": [
       "assets/vendor.0c9aa358.css"
     ]
   },
-  "_session_channel.de18183e.js": {
-    "file": "assets/session_channel.de18183e.js",
+  "_session_channel.b75b772c.js": {
+    "file": "assets/session_channel.b75b772c.js",
     "imports": [
-      "_vendor.e5862fec.js"
+      "_vendor.94204dbe.js"
     ]
   },
   "../assets/images/avatar.png": {
@@ -397,5 +400,10 @@
     "assets": [
       "assets/软硬件.99b45416.png"
     ]
+  },
+  "../../../../engine/rails_design/node_modules/@rails/actioncable/src/index.js": {
+    "file": "assets/index.17cd47fe.js",
+    "src": "../../../../engine/rails_design/node_modules/@rails/actioncable/src/index.js",
+    "isDynamicEntry": true
   }
 }
