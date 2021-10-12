@@ -220,10 +220,10 @@
     "@babel/helper-validator-identifier" "^7.14.9"
     to-fast-properties "^2.0.0"
 
-"@fortawesome/fontawesome-free@^5.14.0":
-  version "5.15.3"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
-  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+"@fortawesome/fontawesome-pro@^6.0.0-beta2":
+  version "6.0.0-beta2"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.0.0-beta2/fontawesome-pro-6.0.0-beta2.tgz#f9a8d7409130816edabf9cc1288214d414c256f7"
+  integrity sha512-YVlRQCtxuDkpg51gkjgOq/BCawwBh2nd6JsaKvbMhwNppmiWlZPjHkHhz+F2FKkJ80NTXqRPPSiqDy++x9mYPQ==
 
 "@fullcalendar/common@~5.8.0":
   version "5.8.0"
@@ -298,33 +298,10 @@
     "@fullcalendar/daygrid" "~5.8.0"
     tslib "^2.1.0"
 
-"@hotwired/stimulus@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.0.0.tgz#45171e61417af60f0e546665c52fae5b67295cee"
-  integrity sha512-UFIuuf7GjKJoIYromuTmqfzT8gZ8eu5zIB5m2QoEsopymGeN7rfDSTRPyRfwHIqP0x+0vWo4O1LFozw+/sWXxg==
-
-"@hotwired/turbo-rails@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo-rails/-/turbo-rails-7.0.1.tgz#d39816eef215e83468fa306a963e7c874ffe70f7"
-  integrity sha512-0cV7zG9aCzF/foidgfx6WvqKDcRKXJt2aT1fenNFywO7armGTD8S86V8U1IyUAHq+ZkIL26moc+AB40uTZt0oA==
-  dependencies:
-    "@hotwired/turbo" "^7.0.1"
-    "@rails/actioncable" "^6.0.0"
-
-"@hotwired/turbo@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.1.tgz#2a8c6ab2f24914d1d47f3a7a7779e2881e8c61a0"
-  integrity sha512-awqraytYXbHV2NT0WAOnDDDGJeHHnFtnztdXvRuIqgsStUtPKM8B9H7ISm77SwbHemEjxEOB8Ku4RfNbEEXsPQ==
-
 "@rails/actioncable@7.0.0-alpha2":
   version "7.0.0-alpha2"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.0-alpha2.tgz#d061d902f0c214ecd668e52bc8eaf8c7e7373d45"
   integrity sha512-4+AnqL38HYQLX9YrtJiQrEIlG6YmlxxJQd8NqkKDys/pCWaXV8FqK7PFbU8nkEfUxx8kkH/VDALFKPsV9R4xCA==
-
-"@rails/actioncable@^6.0.0":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.4.tgz#d533c3d9176ed7763145162dec4f460a9d6fb550"
-  integrity sha512-dTirb2EMt/YPVkEZp3GSXwjR+dYjbK0b0NtupEiuwj5dsffFfRnvtPK/aqLibZH6J3G8EAHnuoAaTF0neq2ggw==
 
 "@rails/activestorage@7.0.0-alpha2":
   version "7.0.0-alpha2"
