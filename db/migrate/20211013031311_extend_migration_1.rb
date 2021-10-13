@@ -60,7 +60,7 @@ class ExtendMigration1 < ActiveRecord::Migration[7.0]
 
     remove_column :email_smtps, :name, :string
 
-    
+
     remove_column :roled_role_rules, :rule_id, :integer, scale: 8
 
     add_column :com_acme_orders, :expire_at, :datetime, comment: "过期时间"
