@@ -790,8 +790,7 @@ CREATE TABLE public.auth_accounts (
     confirmed boolean DEFAULT false,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    source character varying,
-    inviter_id bigint
+    source character varying
 );
 
 
@@ -862,7 +861,8 @@ CREATE TABLE public.auth_authorized_tokens (
     mock_user boolean,
     identity character varying,
     business character varying,
-    appid character varying
+    appid character varying,
+    uid character varying
 );
 
 
@@ -902,12 +902,13 @@ CREATE TABLE public.auth_oauth_users (
     refresh_token character varying,
     unionid character varying,
     appid character varying,
-    account_id bigint,
     expires_at timestamp without time zone,
     state character varying,
     extra json DEFAULT '{}'::json,
-    request_id bigint,
-    identity character varying
+    identity character varying,
+    user_inviter_id bigint,
+    member_inviter_id bigint,
+    remark character varying
 );
 
 
@@ -1774,7 +1775,8 @@ CREATE TABLE public.com_acme_identifiers (
     updated_at timestamp(6) without time zone NOT NULL,
     dns_valid boolean,
     token character varying,
-    file_valid boolean
+    file_valid boolean,
+    status character varying
 );
 
 
@@ -1809,8 +1811,16 @@ CREATE TABLE public.com_acme_orders (
     orderid character varying,
     url character varying,
     status character varying,
-    issued_at timestamp without time zone
+    issued_at timestamp without time zone,
+    expire_at timestamp(6) without time zone
 );
+
+
+--
+-- Name: COLUMN com_acme_orders.expire_at; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.com_acme_orders.expire_at IS '过期时间';
 
 
 --
@@ -1840,7 +1850,6 @@ CREATE TABLE public.com_blob_defaults (
     id bigint NOT NULL,
     record_class character varying,
     name character varying,
-    private boolean,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -1858,13 +1867,6 @@ COMMENT ON COLUMN public.com_blob_defaults.record_class IS 'AR 类名，如 User
 --
 
 COMMENT ON COLUMN public.com_blob_defaults.name IS '名称, attach 名称，如：avatar';
-
-
---
--- Name: COLUMN com_blob_defaults.private; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON COLUMN public.com_blob_defaults.private IS '是否私有';
 
 
 --
@@ -2979,7 +2981,6 @@ ALTER SEQUENCE public.email_smtp_accounts_id_seq OWNED BY public.email_smtp_acco
 
 CREATE TABLE public.email_smtps (
     id bigint NOT NULL,
-    name character varying,
     address character varying,
     port character varying,
     enable_starttls_auto boolean,
@@ -4536,21 +4537,17 @@ CREATE TABLE public.factory_products (
     description character varying,
     qr_prefix character varying,
     sku character varying,
-    type character varying,
     order_items_count integer DEFAULT 0,
     published boolean DEFAULT true,
-    price numeric(10,2),
-    profit_price numeric(10,2),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    reference_price numeric(10,2),
     organ_id bigint,
-    cost_price numeric(10,2),
     product_taxon_ancestors json,
     str_part_ids character varying,
     profit_margin numeric(4,2),
     min_price numeric,
-    max_price numeric
+    max_price numeric,
+    productions_count integer DEFAULT 0
 );
 
 
@@ -5538,6 +5535,39 @@ ALTER SEQUENCE public.interact_stars_id_seq OWNED BY public.interact_stars.id;
 
 
 --
+-- Name: markdown_catalogs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_catalogs (
+    id bigint NOT NULL,
+    name character varying,
+    path character varying,
+    parent_path character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: markdown_catalogs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_catalogs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_catalogs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_catalogs_id_seq OWNED BY public.markdown_catalogs.id;
+
+
+--
 -- Name: markdown_gits; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -5586,7 +5616,9 @@ CREATE TABLE public.markdown_posts (
     git_id bigint,
     oid character varying,
     title character varying,
-    published boolean DEFAULT true
+    published boolean DEFAULT true,
+    catalog_path character varying DEFAULT ''::character varying,
+    ppt boolean DEFAULT false
 );
 
 
@@ -6050,7 +6082,6 @@ ALTER SEQUENCE public.org_member_departments_id_seq OWNED BY public.org_member_d
 
 CREATE TABLE public.org_members (
     id bigint NOT NULL,
-    user_id bigint,
     organ_id bigint,
     name character varying,
     identity character varying,
@@ -6070,7 +6101,8 @@ CREATE TABLE public.org_members (
     notifiable_types character varying[] DEFAULT '{}'::character varying[],
     counters jsonb DEFAULT '{}'::jsonb,
     showtime integer DEFAULT 0,
-    accept_email boolean DEFAULT true
+    accept_email boolean DEFAULT true,
+    inviter boolean DEFAULT false
 );
 
 
@@ -6494,6 +6526,40 @@ CREATE SEQUENCE public.plan_participants_id_seq
 --
 
 ALTER SEQUENCE public.plan_participants_id_seq OWNED BY public.plan_participants.id;
+
+
+--
+-- Name: profiled_address_organs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.profiled_address_organs (
+    id bigint NOT NULL,
+    organ_id bigint,
+    address_id bigint,
+    kind character varying,
+    "default" boolean DEFAULT false,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: profiled_address_organs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.profiled_address_organs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: profiled_address_organs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.profiled_address_organs_id_seq OWNED BY public.profiled_address_organs.id;
 
 
 --
@@ -6970,7 +7036,6 @@ CREATE TABLE public.roled_role_rules (
     namespace_identifier character varying,
     action_name character varying,
     controller_path character varying,
-    rule_id bigint,
     meta_action_id bigint
 );
 
@@ -7727,7 +7792,8 @@ CREATE TABLE public.trade_card_templates (
     valid_years integer DEFAULT 0,
     valid_months integer DEFAULT 0,
     currency character varying,
-    "default" boolean
+    "default" boolean,
+    text_color character varying
 );
 
 
@@ -7817,7 +7883,8 @@ CREATE TABLE public.trade_carts (
     address_id bigint,
     lock_version integer,
     original_amount numeric DEFAULT 0.0,
-    member_id bigint
+    member_id bigint,
+    current boolean DEFAULT false
 );
 
 
@@ -8559,7 +8626,8 @@ CREATE TABLE public.trade_trade_items (
     user_id bigint,
     produce_plan_id bigint,
     cart_id bigint,
-    order_id bigint
+    order_id bigint,
+    member_id bigint
 );
 
 
@@ -8671,8 +8739,7 @@ CREATE TABLE public.users (
     notifiable_types character varying[] DEFAULT '{}'::character varying[],
     counters jsonb DEFAULT '{}'::jsonb,
     showtime integer DEFAULT 0,
-    accept_email boolean DEFAULT true,
-    inviter_id bigint
+    accept_email boolean DEFAULT true
 );
 
 
@@ -8771,7 +8838,10 @@ CREATE TABLE public.wechat_apps (
     apiclient_cert character varying,
     apiclient_key character varying,
     key_v3 character varying,
-    serial_no character varying
+    serial_no character varying,
+    inviting boolean DEFAULT false,
+    domain character varying,
+    url_link character varying
 );
 
 
@@ -8780,6 +8850,13 @@ CREATE TABLE public.wechat_apps (
 --
 
 COMMENT ON COLUMN public.wechat_apps.key_v3 IS '支付通知解密';
+
+
+--
+-- Name: COLUMN wechat_apps.inviting; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.wechat_apps.inviting IS '可邀请加入';
 
 
 --
@@ -8989,7 +9066,6 @@ CREATE TABLE public.wechat_menus (
     id bigint NOT NULL,
     parent_id bigint,
     type character varying,
-    menu_type character varying,
     name character varying,
     value character varying,
     appid character varying,
@@ -9226,7 +9302,8 @@ CREATE TABLE public.wechat_replies (
     updated_at timestamp(6) without time zone NOT NULL,
     title character varying,
     description character varying,
-    appid character varying
+    appid character varying,
+    msg_type character varying DEFAULT 'news'::character varying
 );
 
 
@@ -9523,7 +9600,8 @@ CREATE TABLE public.wechat_template_configs (
     code character varying DEFAULT 'default'::character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    content character varying
+    content character varying,
+    appid character varying
 );
 
 
@@ -10700,6 +10778,13 @@ ALTER TABLE ONLY public.interact_stars ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: markdown_catalogs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_catalogs ALTER COLUMN id SET DEFAULT nextval('public.markdown_catalogs_id_seq'::regclass);
+
+
+--
 -- Name: markdown_gits id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -10865,6 +10950,13 @@ ALTER TABLE ONLY public.org_tutorials ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.plan_participants ALTER COLUMN id SET DEFAULT nextval('public.plan_participants_id_seq'::regclass);
+
+
+--
+-- Name: profiled_address_organs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.profiled_address_organs ALTER COLUMN id SET DEFAULT nextval('public.profiled_address_organs_id_seq'::regclass);
 
 
 --
@@ -12602,6 +12694,14 @@ ALTER TABLE ONLY public.interact_stars
 
 
 --
+-- Name: markdown_catalogs markdown_catalogs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_catalogs
+    ADD CONSTRAINT markdown_catalogs_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: markdown_gits markdown_gits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -12791,6 +12891,14 @@ ALTER TABLE ONLY public.org_tutorials
 
 ALTER TABLE ONLY public.plan_participants
     ADD CONSTRAINT plan_participants_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: profiled_address_organs profiled_address_organs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.profiled_address_organs
+    ADD CONSTRAINT profiled_address_organs_pkey PRIMARY KEY (id);
 
 
 --
@@ -13731,13 +13839,6 @@ CREATE INDEX index_auditor_verifiers_on_member_id ON public.auditor_verifiers US
 
 
 --
--- Name: index_auth_accounts_on_inviter_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_auth_accounts_on_inviter_id ON public.auth_accounts USING btree (inviter_id);
-
-
---
 -- Name: index_auth_accounts_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -13752,17 +13853,17 @@ CREATE INDEX index_auth_apps_on_appid ON public.auth_apps USING btree (appid);
 
 
 --
--- Name: index_auth_oauth_users_on_account_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_auth_oauth_users_on_member_inviter_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_auth_oauth_users_on_account_id ON public.auth_oauth_users USING btree (account_id);
+CREATE INDEX index_auth_oauth_users_on_member_inviter_id ON public.auth_oauth_users USING btree (member_inviter_id);
 
 
 --
--- Name: index_auth_oauth_users_on_request_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_auth_oauth_users_on_user_inviter_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_auth_oauth_users_on_request_id ON public.auth_oauth_users USING btree (request_id);
+CREATE INDEX index_auth_oauth_users_on_user_inviter_id ON public.auth_oauth_users USING btree (user_inviter_id);
 
 
 --
@@ -15740,13 +15841,6 @@ CREATE INDEX index_org_members_on_organ_root_id ON public.org_members USING btre
 
 
 --
--- Name: index_org_members_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_org_members_on_user_id ON public.org_members USING btree (user_id);
-
-
---
 -- Name: index_org_organ_domains_on_identifier; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15863,6 +15957,20 @@ CREATE INDEX index_plan_participants_on_participant_type_and_participant_id ON p
 --
 
 CREATE INDEX index_plan_participants_on_planning_type_and_planning_id ON public.plan_participants USING btree (planning_type, planning_id);
+
+
+--
+-- Name: index_profiled_address_organs_on_address_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_profiled_address_organs_on_address_id ON public.profiled_address_organs USING btree (address_id);
+
+
+--
+-- Name: index_profiled_address_organs_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_profiled_address_organs_on_organ_id ON public.profiled_address_organs USING btree (organ_id);
 
 
 --
@@ -16010,13 +16118,6 @@ CREATE INDEX index_requirements_on_volunteer_id ON public.requirements USING btr
 --
 
 CREATE INDEX index_roled_role_rules_on_meta_action_id ON public.roled_role_rules USING btree (meta_action_id);
-
-
---
--- Name: index_roled_role_rules_on_rule_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_roled_role_rules_on_rule_id ON public.roled_role_rules USING btree (rule_id);
 
 
 --
@@ -16601,6 +16702,13 @@ CREATE INDEX index_trade_trade_items_on_good_type_and_good_id ON public.trade_tr
 
 
 --
+-- Name: index_trade_trade_items_on_member_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_trade_items_on_member_id ON public.trade_trade_items USING btree (member_id);
+
+
+--
 -- Name: index_trade_trade_items_on_order_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16675,13 +16783,6 @@ CREATE INDEX index_trade_trade_promotes_on_trade_item_id ON public.trade_trade_p
 --
 
 CREATE INDEX index_user_tags_on_user_tagging ON public.auth_user_tags USING btree (user_tagging_type, user_tagging_id);
-
-
---
--- Name: index_users_on_inviter_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_users_on_inviter_id ON public.users USING btree (inviter_id);
 
 
 --
@@ -17505,6 +17606,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210627035342'),
 ('20210627153350'),
 ('20210826170010'),
-('20210827170719');
+('20210827170719'),
+('20211013031311');
 
 
