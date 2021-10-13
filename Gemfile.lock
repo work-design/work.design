@@ -12,13 +12,6 @@ GIT
       activerecord (>= 4.0, <= 7.0)
 
 GIT
-  remote: https://gitee.com/qinmingyuan/omniauth-wechat-oauth2.git
-  revision: 3391e65ce1e58a589ae2cdf6d280399c1ff68a9a
-  specs:
-    omniauth-wechat-oauth2 (0.1.0)
-      omniauth-oauth2 (~> 1.5)
-
-GIT
   remote: https://gitee.com/qinmingyuan/upyun_rails.git
   revision: 515260238c6b235189754c6d145f8d8b67ce9d8e
   specs:
@@ -252,7 +245,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: d94f32f4c40275785e83ac41cac264e3e866505f
+  revision: 75c5e6c726dc6b8253ae747ae4d02af37f0a78e3
   specs:
     rails_wechat (0.1.1)
       rails_auth
@@ -466,6 +459,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     paypal-sdk-core (0.3.4)
       multi_json (~> 1.0)
       xml-simple
@@ -614,7 +610,7 @@ DEPENDENCIES
   mini_magick
   octokit
   omniauth-github
-  omniauth-wechat-oauth2!
+  omniauth-rails_csrf_protection
   paypal-sdk-core
   paypal-sdk-rest
   pg

@@ -20,7 +20,7 @@ gem 'rexml'
 # Third party
 gem 'octokit'
 gem 'omniauth-github'
-gem 'omniauth-wechat-oauth2', gitee: 'qinmingyuan/omniauth-wechat-oauth2'
+gem 'omniauth-rails_csrf_protection'
 git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   gem 'tencentcloud-sdk-common'
   gem 'tencentcloud-sdk-ocr'
