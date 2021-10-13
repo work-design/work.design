@@ -36,10 +36,10 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 80680c8bae5d0a544a64d41aa566858c0105c98d
+  revision: 90227c2ea869e711203ef9d54aeca566a10f3bdf
   specs:
-    tencentcloud-sdk-common (1.0.174)
-    tencentcloud-sdk-ocr (1.0.174)
+    tencentcloud-sdk-common (1.0.179)
+    tencentcloud-sdk-ocr (1.0.179)
       tencentcloud-sdk-common (~> 1.0)
 
 GIT
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: cfd47255969c0b32c04c0aeb15e23ac72c17a40b
+  revision: b5532212d5f3775620dfe58badf72e63e0a87f6f
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -329,7 +329,7 @@ GEM
     aliyunsdkcore (0.0.17)
       activesupport (>= 3.0.0)
       faraday (>= 0.15.4)
-    amazing_print (1.3.0)
+    amazing_print (1.4.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.9.1)
@@ -351,7 +351,7 @@ GEM
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
-    debug (1.2.1)
+    debug (1.2.4)
       irb (>= 1.3.6)
       reline (>= 0.2.7)
     domain_name (0.5.20190701)
@@ -385,9 +385,8 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.17.0)
+    httpx (0.18.0)
       http-2-next (>= 0.4.1)
-      timers
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -398,7 +397,7 @@ GEM
       reline (>= 0.2.7)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
-    jwt (2.2.3)
+    jwt (2.3.0)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -427,7 +426,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0901)
     mini_magick (4.11.0)
-    mini_mime (1.1.1)
+    mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
     monetize (1.11.0)
@@ -481,7 +480,7 @@ GEM
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
     public_suffix (4.0.6)
-    puma (5.5.0)
+    puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
@@ -569,7 +568,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     thor (1.1.0)
-    timers (4.3.3)
     ttfunk (1.7.0)
     turbo-rails (0.8.1)
       rails (>= 6.0.0)

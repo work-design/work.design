@@ -1,20 +1,20 @@
 {
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.1bf15dfa.js",
+    "file": "assets/javascripts/admin/application.157ed88d.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
       "javascripts/application.js",
-      "_session_channel.b75b772c.js",
+      "_session_channel.fdeef506.js",
       "_vendor.94204dbe.js"
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.dcbcbeb2.js",
+    "file": "assets/javascripts/application.90835a30.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.b75b772c.js",
+      "_session_channel.fdeef506.js",
       "_vendor.94204dbe.js"
     ],
     "dynamicImports": [
@@ -37,32 +37,29 @@
       "../assets/images/软硬件.png"
     ],
     "css": [
-      "assets/javascripts/application.31efb8f8.css"
+      "assets/javascripts/application.b7c67902.css"
     ],
     "assets": [
-      "assets/fa-brands-400.407a9723.eot",
-      "assets/fa-brands-400.43c072c1.woff2",
-      "assets/fa-brands-400.aff76e5c.woff",
-      "assets/fa-brands-400.06f4d009.ttf",
-      "assets/fa-brands-400.679b5a52.svg",
-      "assets/fa-regular-400.cf83ffb8.eot",
-      "assets/fa-regular-400.8afc6e5e.woff2",
-      "assets/fa-regular-400.14c9db4f.woff",
-      "assets/fa-regular-400.c651b8a6.ttf",
-      "assets/fa-regular-400.2326849b.svg",
-      "assets/fa-solid-900.75a76115.eot",
-      "assets/fa-solid-900.d0b4256a.woff2",
-      "assets/fa-solid-900.74edc18b.woff",
-      "assets/fa-solid-900.3d06af1f.ttf",
-      "assets/fa-solid-900.fa498fb2.svg"
+      "assets/fa-brands-400.08a6db98.woff2",
+      "assets/fa-brands-400.4e3144fb.ttf",
+      "assets/fa-duotone-900.f093f770.woff2",
+      "assets/fa-duotone-900.efbeb27d.ttf",
+      "assets/fa-light-300.e59ae4af.woff2",
+      "assets/fa-light-300.781845d8.ttf",
+      "assets/fa-regular-400.6c2b98e5.woff2",
+      "assets/fa-regular-400.178720b1.ttf",
+      "assets/fa-solid-900.c38afe2e.woff2",
+      "assets/fa-solid-900.c16e35ae.ttf",
+      "assets/fa-thin-100.a3e1341c.woff2",
+      "assets/fa-thin-100.db8984e6.ttf"
     ]
   },
   "javascripts/phone.js": {
-    "file": "assets/javascripts/phone.6727be5c.js",
+    "file": "assets/javascripts/phone.32fdcc0e.js",
     "src": "javascripts/phone.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.b75b772c.js",
+      "_session_channel.fdeef506.js",
       "_vendor.94204dbe.js"
     ]
   },
@@ -259,8 +256,8 @@
       "assets/vendor.0c9aa358.css"
     ]
   },
-  "_session_channel.b75b772c.js": {
-    "file": "assets/session_channel.b75b772c.js",
+  "_session_channel.fdeef506.js": {
+    "file": "assets/session_channel.fdeef506.js",
     "imports": [
       "_vendor.94204dbe.js"
     ]
