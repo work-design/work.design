@@ -5578,7 +5578,8 @@ CREATE TABLE public.markdown_gits (
     last_commit_message character varying,
     last_commit_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    organ_id bigint
 );
 
 
@@ -6703,7 +6704,6 @@ ALTER SEQUENCE public.profiled_areas_id_seq OWNED BY public.profiled_areas.id;
 
 CREATE TABLE public.profiled_profiles (
     id bigint NOT NULL,
-    user_id bigint,
     gender character varying,
     birthday_type character varying,
     birthday date,
@@ -15554,6 +15554,13 @@ CREATE INDEX index_interact_stars_on_user_id ON public.interact_stars USING btre
 
 
 --
+-- Name: index_markdown_gits_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_markdown_gits_on_organ_id ON public.markdown_gits USING btree (organ_id);
+
+
+--
 -- Name: index_markdown_posts_on_git_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16013,13 +16020,6 @@ CREATE INDEX index_profiled_areas_on_parent_id ON public.profiled_areas USING bt
 --
 
 CREATE INDEX index_profiled_profiles_on_organ_id ON public.profiled_profiles USING btree (organ_id);
-
-
---
--- Name: index_profiled_profiles_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_profiled_profiles_on_user_id ON public.profiled_profiles USING btree (user_id);
 
 
 --
@@ -17607,6 +17607,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210627153350'),
 ('20210826170010'),
 ('20210827170719'),
-('20211013031311');
+('20211013031311'),
+('20211013120109');
 
 
