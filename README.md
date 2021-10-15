@@ -5,13 +5,15 @@
 Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
 
 * 全栈 MVC 框架：[Ruby On Rails](https://github.com/rails/rails)
-* [Turbo](https://turbo.hotwired.dev)
-* [Stimulus](https://stimulus.hotwired.dev)
+* Hotwire：直接传输 HTML 片段的策略
+  * [Turbo](https://turbo.hotwired.dev)
+  * [Stimulus](https://stimulus.hotwired.dev)
 * 静态资源：[Vite](https://github.com/vitejs/vite)
 
-* 前端 CSS
-  * [Bulma](https://github.com/jgthms/bulma): 纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsUI](https://github.com/work-design/rails_ui) 项目中实现；
+* 前端 CSS：纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsDesign](https://github.com/work-design/rails_design) 项目中实现；
+  * [Bulma](https://github.com/jgthms/bulma)
   * [Weui](https://github.com/Tencent/weui)
+
 * 数据库
   * [Postgresql](https://www.postgresql.org)：关系型数据库
   * [Redis](https://redis.io)：内存数据库，用于缓存，队列任务等；
