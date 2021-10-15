@@ -4,11 +4,12 @@
 ## 技术栈
 Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
 
-* [Ruby On Rails](https://github.com/rails/rails): 最新版本
-  * [Turbo](https://turbo.hotwired.dev)
-  * [Stimulus](https://stimulus.hotwired.dev)
-  * [Viter](https://github.com/qinmingyuan/viter)
-* 前端：未采用 jQuery 或其他框架；
+* 全栈 MVC 框架：[Ruby On Rails](https://github.com/rails/rails)
+* [Turbo](https://turbo.hotwired.dev)
+* [Stimulus](https://stimulus.hotwired.dev)
+* 静态资源：[Vite](https://github.com/vitejs/vite)
+
+* 前端 CSS
   * [Bulma](https://github.com/jgthms/bulma): 纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsUI](https://github.com/work-design/rails_ui) 项目中实现；
   * [Weui](https://github.com/Tencent/weui)
 * 数据库
