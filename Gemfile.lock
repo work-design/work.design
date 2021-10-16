@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: 3004744167c5fe255cec29bfcfc903a706ed752a
+  revision: 8d6e4282567f98b1a65dfb96c9db149250f31f29
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 50253ade3697ee3675a576101040faa2ab88c99c
+  revision: 6685408920c0c350b1ec49bf97d14289aae28955
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: b5532212d5f3775620dfe58badf72e63e0a87f6f
+  revision: 17f2cc251cba80487eb1a02f0b246dfad8f4f6a6
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -146,7 +146,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: e824c410bc51ec3b910d721a73d672adbc6f3120
+  revision: fe389fcc3f97cd6a75649f6be194636d8a2f3211
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 422bd71a5f2dc83e6c93b94ad5bb021b380cc7d5
+  revision: 9bd4fb3ecf4e858c248a7ce7138c95b92c28edc8
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -193,7 +193,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: a09d5bc139d37e1874f93db19322eaa6aee71958
+  revision: 41097262f369f28087fcfec59b57867731cfd34c
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 4b060f9069eb445baf88738656760c8714a3ffe4
+  revision: bc1ce090f30d526f59360dcac9d14e1a28e8c3ca
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
@@ -230,7 +230,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 3c84d1ddc79559c8dc2a048896522f304ab9a138
+  revision: c6f4ebc93b6a5161202f1483f1f813b1d3a01412
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
