@@ -5544,7 +5544,8 @@ CREATE TABLE public.markdown_catalogs (
     path character varying,
     parent_path character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    git_id bigint
 );
 
 
@@ -15555,6 +15556,13 @@ CREATE INDEX index_interact_stars_on_user_id ON public.interact_stars USING btre
 
 
 --
+-- Name: index_markdown_catalogs_on_git_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_markdown_catalogs_on_git_id ON public.markdown_catalogs USING btree (git_id);
+
+
+--
 -- Name: index_markdown_gits_on_organ_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -17610,6 +17618,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210827170719'),
 ('20211013031311'),
 ('20211013120109'),
-('20211016082731');
+('20211016082731'),
+('20211017131506');
 
 
