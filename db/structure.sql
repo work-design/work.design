@@ -5579,7 +5579,8 @@ CREATE TABLE public.markdown_gits (
     last_commit_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    organ_id bigint
+    organ_id bigint,
+    type character varying
 );
 
 
@@ -17608,6 +17609,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210826170010'),
 ('20210827170719'),
 ('20211013031311'),
-('20211013120109');
+('20211013120109'),
+('20211016082731');
 
 
