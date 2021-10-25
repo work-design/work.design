@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 1e2f7f62cb8223f0e9ceb679f1c9093d73c0501f
+  revision: 4e2e29cfd17ca2879ff6986b3ef6210437b03018
   specs:
     rails_com (1.2.9)
       acme-client
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 10728509350b2a50e2d6bf7766c5fbf90507b4d2
+  revision: 136b2635c3570a624124c98a5b28ac035a3993d9
   specs:
     rails_data (1.0.2)
       prawn
@@ -103,7 +103,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: c8181aa15e86ac69e01f602b4c010a7d439def18
+  revision: a3265e9a648694f538fb6175e78898e6f0622561
   specs:
     rails_design (0.0.1)
       rails
@@ -146,7 +146,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: f5b3dcf5ca0338bdf53dd0aaf3c26124e90f6d8d
+  revision: 43f2df0d75b0ec4caf272ab22525684fb3cb38ca
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -193,14 +193,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: d669054fa8a3c3d758f50ba45f04b6a3cdcdba2e
+  revision: eda9bec06eb2f5275c98c9d9812c42665ffcb9c5
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: eafe6e6600f5b553761d34428156dec9e14db69e
+  revision: 00785b762845f5d6aea4ecb4a16b0fd532c737a5
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: bc1ce090f30d526f59360dcac9d14e1a28e8c3ca
+  revision: 15016d4798482b73b97b99327e5bd9fb7e98c01f
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
@@ -230,7 +230,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 8b5ee0331a57d29e2ed21ea73fb963c3b81409bd
+  revision: 3870ea6acabb7696b553dc73e4758803997a27b0
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -245,7 +245,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 9a04f53753170e85deef77e527a24ece9bdc33ed
+  revision: d6c28f8873e8fbc79d8c70f3ba95caa2c8ddf464
   specs:
     rails_wechat (0.1.1)
       rails_auth
@@ -338,7 +338,7 @@ GEM
       xpath (~> 3.2)
     childprocess (3.0.0)
     chunky_png (1.4.0)
-    closure_tree (7.3.0)
+    closure_tree (7.4.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
     concurrent-ruby (1.1.9)

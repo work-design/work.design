@@ -4353,7 +4353,8 @@ CREATE TABLE public.factory_product_taxons (
     organ_id bigint,
     parent_ancestors json,
     factory_taxon_id bigint,
-    products_count integer DEFAULT 0
+    products_count integer DEFAULT 0,
+    enabled boolean DEFAULT true
 );
 
 
@@ -4547,7 +4548,8 @@ CREATE TABLE public.factory_products (
     profit_margin numeric(4,2),
     min_price numeric,
     max_price numeric,
-    productions_count integer DEFAULT 0
+    productions_count integer DEFAULT 0,
+    enabled boolean DEFAULT false
 );
 
 
@@ -17619,6 +17621,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211013031311'),
 ('20211013120109'),
 ('20211016082731'),
-('20211017131506');
+('20211017131506'),
+('20211025075306');
 
 
