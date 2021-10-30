@@ -1,20 +1,20 @@
 {
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.3eb9e98f.js",
+    "file": "assets/javascripts/admin/application.3eaa4f27.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
       "javascripts/application.js",
-      "_session_channel.a8104312.js",
+      "_session_channel.e4336aa1.js",
       "_vendor.9066d6eb.js"
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.80508493.js",
+    "file": "assets/javascripts/application.e75e1a4c.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.a8104312.js",
+      "_session_channel.e4336aa1.js",
       "_vendor.9066d6eb.js"
     ],
     "dynamicImports": [
@@ -37,7 +37,7 @@
       "../assets/images/软硬件.png"
     ],
     "css": [
-      "assets/javascripts/application.4f9346d1.css"
+      "assets/javascripts/application.de484cda.css"
     ],
     "assets": [
       "assets/fa-brands-400.08a6db98.woff2",
@@ -55,11 +55,11 @@
     ]
   },
   "javascripts/phone.js": {
-    "file": "assets/javascripts/phone.29214a35.js",
+    "file": "assets/javascripts/phone.09bcae8b.js",
     "src": "javascripts/phone.js",
     "isEntry": true,
     "imports": [
-      "_session_channel.a8104312.js",
+      "_session_channel.e4336aa1.js",
       "_vendor.9066d6eb.js"
     ]
   },
@@ -256,8 +256,8 @@
       "assets/vendor.0c9aa358.css"
     ]
   },
-  "_session_channel.a8104312.js": {
-    "file": "assets/session_channel.a8104312.js",
+  "_session_channel.e4336aa1.js": {
+    "file": "assets/session_channel.e4336aa1.js",
     "imports": [
       "_vendor.9066d6eb.js"
     ]
