@@ -95,12 +95,13 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 136b2635c3570a624124c98a5b28ac035a3993d9
+  revision: fb4995976931214d401b5ed4177872fc618c526c
   specs:
     rails_data (1.0.2)
+      matrix
       prawn
       prawn-table
-      rails_com (~> 1.2)
+      rails_extend
       roo
       roo-xls
       write_xlsx
