@@ -37,10 +37,10 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_agency.git
-  revision: 2971cddbfb80f56499c9e6822cfb02ae721a2e48
+  revision: d3c9196684952b9be45e43b3d0e5169403d30e25
   specs:
-    rails_agency (0.1.0)
-      rails_com (~> 1.2)
+    rails_agency (0.0.1)
+      rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -51,14 +51,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: a4c37ed3f83a7505d04c45b407b15afc4b09c92b
+  revision: 1f64970d210e4e345a980c066e797dd37911d5fe
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: dadbf7e02b8d8ffbcfb303468b58f19b7cf4c48c
+  revision: 9aa225b1e8f22f6bdc1c21f1551a847389cb261f
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -67,14 +67,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: b9b2f76defa624463fd44af92994502ea9423614
+  revision: cc871830bc86a4d32f5079f99dbc70c8a570912e
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 7440ab53ff90c47403e8dc3c78ad6d6c0410f863
+  revision: 055e59792c175864d26a84af51ad2e74c9c24767
   specs:
     rails_com (1.3.0)
       acme-client
@@ -85,6 +85,10 @@ GIT
       httpx (~> 0.16)
       jbuilder
       kaminari
+      net-http
+      net-imap
+      net-pop
+      net-smtp
       rails (>= 6.1)
       rails_extend
       turbo-rails
@@ -103,7 +107,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 3848d4f75bdec98e127bf59fa80178400660fa9b
+  revision: 96922802fb9f21d43908bdd348d2bf9f3d0f7c7b
   specs:
     rails_design (0.0.1)
       rails
@@ -124,7 +128,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: fbce06b090f411c7d2c6a39038d09e88f57171a1
+  revision: af0a42b46f9d4310a856a67919ed568bbb3be340
   specs:
     rails_email (2.1.6)
       rails_auth
@@ -139,21 +143,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 349907744bd6a7daca995fc0061c407483fb295e
+  revision: 0cff0413fd60ff3ce94a6815aa5ec7746efafd63
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 24c5da4e38a8efc85ad6fd72b6ebfd0c3df3ef2c
+  revision: 58a4dda11364fb72d571ed22327dd12a8ae80b8e
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 2bb28ee1e4a01f1f24d2df0b987c2fde6b85e8cd
+  revision: 7bc289d1bbfc99e7495274f6a0542a40e4758b4a
   specs:
     rails_finance (0.0.1)
       prawn
@@ -161,7 +165,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_growth.git
-  revision: a7d870e10d58ec620c7d5270b9fedadf28b65d29
+  revision: 5454a50665473350e803da3d629d1caadc4f6a14
   specs:
     rails_growth (0.0.1)
       rails_com (~> 1.2)
@@ -176,24 +180,23 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 6358382ee2d0a0ba7009b5309ccc46be00c8e9f8
+  revision: 9e47eed3ba4663e02ea1a974d78850799ad1b19b
   specs:
     rails_markdown (0.0.1)
       kramdown
       nokogiri
       rails_com
-      rugged
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: c6b7efc6b3a9092c53c658c1cfcebf935894566a
+  revision: 9c47379c6fd916cccb40821416d8df5d952f477c
   specs:
     rails_notice (1.0.3)
-      rails_com (~> 1.2)
+      rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: e8e0bd8cb428d2da5398f284a46c017f3bbdb0e2
+  revision: 952d5b5182b5a65350bcc682a83f207a331bffb3
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -216,25 +219,26 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: b0e30c394745d12b8d541f8e5ea17bbdeb903ae0
+  revision: f3d7e72089b54740173d2111ad5ab26de4165af4
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: e0ae67b164085ceab6d2eacafb9bed8888ee239f
+  revision: cb75a88ae668b1b842014d97930eb64473df6a54
   specs:
     rails_ship (0.0.1)
       rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: f51b9c8269314be94e653dae3f6b19d6476d7d9d
+  revision: 1500ee12fe8c11cac5dd4f0e278321a199363f4f
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
-      rails_com (~> 1.2)
+      rails_extend
+      rails_notice
 
 GIT
   remote: https://gitee.com/work-design/rails_vite.git
@@ -245,7 +249,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 7fb95e44f00f7b3386294c47455ff2a11e3bb61f
+  revision: 78c6f8f1629728cc7339273b8650e8183b33a324
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -348,6 +352,7 @@ GEM
     debug (1.2.4)
       irb (>= 1.3.6)
       reline (>= 0.2.7)
+    digest (3.0.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.10.0)
@@ -387,9 +392,10 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.5.9)
+    io-wait (0.2.0)
     irb (1.3.7)
       reline (>= 0.2.7)
-    jbuilder (2.11.2)
+    jbuilder (2.11.3)
       activesupport (>= 5.0.0)
     jwt (2.3.0)
     kaminari (1.2.1)
@@ -436,6 +442,24 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    net-http (0.2.0)
+      net-protocol
+      uri
+    net-imap (0.2.2)
+      digest
+      net-protocol
+      strscan
+    net-pop (0.1.1)
+      digest
+      net-protocol
+      timeout
+    net-protocol (0.1.2)
+      io-wait
+      timeout
+    net-smtp (0.3.0)
+      digest
+      net-protocol
+      timeout
     netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.12.5)
@@ -544,7 +568,6 @@ GEM
     rubyzip (2.3.2)
     rucaptcha (2.5.5)
       railties (>= 3.2)
-    rugged (1.2.0)
     sawyer (0.8.2)
       addressable (>= 2.3.5)
       faraday (> 0.8, < 2.0)
@@ -564,7 +587,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    strscan (3.0.1)
     thor (1.1.0)
+    timeout (0.2.0)
     ttfunk (1.7.0)
     turbo-rails (0.8.1)
       rails (>= 6.0.0)
@@ -573,6 +598,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8)
+    uri (0.11.0)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)

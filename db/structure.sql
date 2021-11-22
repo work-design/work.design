@@ -4119,12 +4119,15 @@ ALTER SEQUENCE public.factory_parts_id_seq OWNED BY public.factory_parts.id;
 CREATE TABLE public.factory_produce_plans (
     id bigint NOT NULL,
     title character varying,
-    start_at timestamp without time zone,
-    finish_at timestamp without time zone,
     state character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    organ_id bigint
+    organ_id bigint,
+    scene_id bigint,
+    produce_on date,
+    serial_number integer,
+    book_finish_at timestamp(6) without time zone,
+    book_start_at timestamp(6) without time zone
 );
 
 
@@ -4154,7 +4157,9 @@ ALTER SEQUENCE public.factory_produce_plans_id_seq OWNED BY public.factory_produ
 CREATE TABLE public.factory_produces (
     id bigint NOT NULL,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    name character varying,
+    content character varying
 );
 
 
@@ -4354,7 +4359,9 @@ CREATE TABLE public.factory_product_taxons (
     parent_ancestors json,
     factory_taxon_id bigint,
     products_count integer DEFAULT 0,
-    enabled boolean DEFAULT true
+    enabled boolean DEFAULT true,
+    template_id bigint,
+    scene_id bigint
 );
 
 
@@ -4421,12 +4428,12 @@ ALTER SEQUENCE public.factory_production_carts_id_seq OWNED BY public.factory_pr
 CREATE TABLE public.factory_production_items (
     id bigint NOT NULL,
     production_id bigint,
-    product_plan_id bigint,
     state character varying DEFAULT 'producing'::character varying,
     qr_code character varying,
     produced_at timestamp without time zone,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    production_plan_id bigint
 );
 
 
@@ -4480,6 +4487,53 @@ CREATE SEQUENCE public.factory_production_parts_id_seq
 --
 
 ALTER SEQUENCE public.factory_production_parts_id_seq OWNED BY public.factory_production_parts.id;
+
+
+--
+-- Name: factory_production_plans; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.factory_production_plans (
+    id bigint NOT NULL,
+    production_id bigint,
+    product_id bigint,
+    scene_id bigint,
+    start_at timestamp(6) without time zone,
+    finish_at timestamp(6) without time zone,
+    state character varying,
+    planned_count integer DEFAULT 0,
+    production_items_count integer DEFAULT 0,
+    produce_on date,
+    specialty boolean DEFAULT false,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN factory_production_plans.specialty; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.factory_production_plans.specialty IS '主推';
+
+
+--
+-- Name: factory_production_plans_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.factory_production_plans_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: factory_production_plans_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.factory_production_plans_id_seq OWNED BY public.factory_production_plans.id;
 
 
 --
@@ -4570,6 +4624,45 @@ CREATE SEQUENCE public.factory_products_id_seq
 --
 
 ALTER SEQUENCE public.factory_products_id_seq OWNED BY public.factory_products.id;
+
+
+--
+-- Name: factory_scenes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.factory_scenes (
+    id bigint NOT NULL,
+    organ_id bigint,
+    title character varying,
+    book_start_days integer DEFAULT 1,
+    book_start_at time without time zone,
+    book_finish_days integer DEFAULT 0,
+    book_finish_at time without time zone,
+    deliver_start_at time without time zone,
+    deliver_finish_at time without time zone,
+    specialty boolean DEFAULT false,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: factory_scenes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.factory_scenes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: factory_scenes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.factory_scenes_id_seq OWNED BY public.factory_scenes.id;
 
 
 --
@@ -5534,6 +5627,185 @@ CREATE SEQUENCE public.interact_stars_id_seq
 --
 
 ALTER SEQUENCE public.interact_stars_id_seq OWNED BY public.interact_stars.id;
+
+
+--
+-- Name: jia_bo_apps; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.jia_bo_apps (
+    id bigint NOT NULL,
+    member_code character varying,
+    api_key character varying,
+    devices_count integer DEFAULT 0,
+    templates_count integer DEFAULT 0,
+    base_url character varying DEFAULT 'https://api.poscom.cn/apisc'::character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: jia_bo_apps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.jia_bo_apps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jia_bo_apps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.jia_bo_apps_id_seq OWNED BY public.jia_bo_apps.id;
+
+
+--
+-- Name: jia_bo_devices; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.jia_bo_devices (
+    id bigint NOT NULL,
+    app_id bigint,
+    device_id character varying,
+    dev_name character varying,
+    grp_id character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: jia_bo_devices_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.jia_bo_devices_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jia_bo_devices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.jia_bo_devices_id_seq OWNED BY public.jia_bo_devices.id;
+
+
+--
+-- Name: jia_bo_parameters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.jia_bo_parameters (
+    id bigint NOT NULL,
+    template_id bigint,
+    name character varying,
+    code character varying,
+    comment character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN jia_bo_parameters.name; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_parameters.name IS '参数名称';
+
+
+--
+-- Name: COLUMN jia_bo_parameters.code; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_parameters.code IS '参数 code';
+
+
+--
+-- Name: COLUMN jia_bo_parameters.comment; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_parameters.comment IS '评论';
+
+
+--
+-- Name: jia_bo_parameters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.jia_bo_parameters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jia_bo_parameters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.jia_bo_parameters_id_seq OWNED BY public.jia_bo_parameters.id;
+
+
+--
+-- Name: jia_bo_templates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.jia_bo_templates (
+    id bigint NOT NULL,
+    app_id bigint,
+    code character varying,
+    type character varying,
+    title character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: COLUMN jia_bo_templates.code; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_templates.code IS '模板编号';
+
+
+--
+-- Name: COLUMN jia_bo_templates.type; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_templates.type IS '模板类型';
+
+
+--
+-- Name: COLUMN jia_bo_templates.title; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.jia_bo_templates.title IS '模板名称';
+
+
+--
+-- Name: jia_bo_templates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.jia_bo_templates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: jia_bo_templates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.jia_bo_templates_id_seq OWNED BY public.jia_bo_templates.id;
 
 
 --
@@ -7840,9 +8112,8 @@ CREATE TABLE public.trade_cards (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     agency_id bigint,
-    user_id bigint,
-    member_id bigint,
-    currency character varying
+    currency character varying,
+    cart_id bigint
 );
 
 
@@ -7876,7 +8147,6 @@ CREATE TABLE public.trade_carts (
     payment_strategy_id bigint,
     deposit_ratio integer,
     organ_id bigint,
-    trade_items_count integer DEFAULT 0,
     retail_price numeric DEFAULT 0.0,
     discount_price numeric DEFAULT 0.0,
     bulk_price numeric DEFAULT 0.0,
@@ -7888,7 +8158,9 @@ CREATE TABLE public.trade_carts (
     lock_version integer,
     original_amount numeric DEFAULT 0.0,
     member_id bigint,
-    current boolean DEFAULT false
+    current boolean DEFAULT false,
+    member_organ_id bigint,
+    auto boolean DEFAULT false
 );
 
 
@@ -7904,6 +8176,13 @@ COMMENT ON COLUMN public.trade_carts.retail_price IS '商品汇总的原价';
 --
 
 COMMENT ON COLUMN public.trade_carts.original_amount IS '原价，应用优惠之前的价格';
+
+
+--
+-- Name: COLUMN trade_carts.auto; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.trade_carts.auto IS '自动下单';
 
 
 --
@@ -8631,7 +8910,9 @@ CREATE TABLE public.trade_trade_items (
     produce_plan_id bigint,
     cart_id bigint,
     order_id bigint,
-    member_id bigint
+    member_id bigint,
+    produce_on date,
+    expire_at timestamp(6) without time zone
 );
 
 
@@ -8647,6 +8928,13 @@ COMMENT ON COLUMN public.trade_trade_items.weight IS '重量';
 --
 
 COMMENT ON COLUMN public.trade_trade_items.unit IS '单位';
+
+
+--
+-- Name: COLUMN trade_trade_items.produce_on; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.trade_trade_items.produce_on IS '对接生产管理';
 
 
 --
@@ -8743,7 +9031,8 @@ CREATE TABLE public.users (
     notifiable_types character varying[] DEFAULT '{}'::character varying[],
     counters jsonb DEFAULT '{}'::jsonb,
     showtime integer DEFAULT 0,
-    accept_email boolean DEFAULT true
+    accept_email boolean DEFAULT true,
+    avatar_url character varying
 );
 
 
@@ -8845,7 +9134,8 @@ CREATE TABLE public.wechat_apps (
     serial_no character varying,
     inviting boolean DEFAULT false,
     domain character varying,
-    url_link character varying
+    url_link character varying,
+    weapp_id character varying
 );
 
 
@@ -8861,6 +9151,13 @@ COMMENT ON COLUMN public.wechat_apps.key_v3 IS '支付通知解密';
 --
 
 COMMENT ON COLUMN public.wechat_apps.inviting IS '可邀请加入';
+
+
+--
+-- Name: COLUMN wechat_apps.weapp_id; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON COLUMN public.wechat_apps.weapp_id IS '关联的小程序';
 
 
 --
@@ -9144,13 +9441,13 @@ CREATE TABLE public.wechat_notices (
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     notification_id bigint,
-    subscribe_id bigint,
     link character varying DEFAULT 'index'::character varying,
     msg_id character varying,
     status character varying,
     type character varying,
     appid character varying,
-    open_id character varying
+    open_id character varying,
+    msg_request_id bigint
 );
 
 
@@ -9228,7 +9525,8 @@ CREATE TABLE public.wechat_receives (
     encrypt_data character varying,
     message_hash json,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    msg_format character varying DEFAULT 'xml'::character varying
 );
 
 
@@ -9306,8 +9604,7 @@ CREATE TABLE public.wechat_replies (
     updated_at timestamp(6) without time zone NOT NULL,
     title character varying,
     description character varying,
-    appid character varying,
-    msg_type character varying DEFAULT 'news'::character varying
+    appid character varying
 );
 
 
@@ -9350,7 +9647,8 @@ CREATE TABLE public.wechat_requests (
     init_wechat_user boolean,
     init_user_tag boolean,
     reply_body jsonb,
-    reply_encrypt jsonb
+    reply_encrypt jsonb,
+    sent_at timestamp(6) without time zone
 );
 
 
@@ -9750,7 +10048,8 @@ CREATE TABLE public.wechat_user_tags (
     user_tagged_id bigint,
     appid character varying,
     tag_name character varying,
-    open_id character varying
+    open_id character varying,
+    member_inviter_id bigint
 );
 
 
@@ -10600,6 +10899,13 @@ ALTER TABLE ONLY public.factory_production_parts ALTER COLUMN id SET DEFAULT nex
 
 
 --
+-- Name: factory_production_plans id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.factory_production_plans ALTER COLUMN id SET DEFAULT nextval('public.factory_production_plans_id_seq'::regclass);
+
+
+--
 -- Name: factory_productions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -10611,6 +10917,13 @@ ALTER TABLE ONLY public.factory_productions ALTER COLUMN id SET DEFAULT nextval(
 --
 
 ALTER TABLE ONLY public.factory_products ALTER COLUMN id SET DEFAULT nextval('public.factory_products_id_seq'::regclass);
+
+
+--
+-- Name: factory_scenes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.factory_scenes ALTER COLUMN id SET DEFAULT nextval('public.factory_scenes_id_seq'::regclass);
 
 
 --
@@ -10779,6 +11092,34 @@ ALTER TABLE ONLY public.interact_comments ALTER COLUMN id SET DEFAULT nextval('p
 --
 
 ALTER TABLE ONLY public.interact_stars ALTER COLUMN id SET DEFAULT nextval('public.interact_stars_id_seq'::regclass);
+
+
+--
+-- Name: jia_bo_apps id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_apps ALTER COLUMN id SET DEFAULT nextval('public.jia_bo_apps_id_seq'::regclass);
+
+
+--
+-- Name: jia_bo_devices id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_devices ALTER COLUMN id SET DEFAULT nextval('public.jia_bo_devices_id_seq'::regclass);
+
+
+--
+-- Name: jia_bo_parameters id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_parameters ALTER COLUMN id SET DEFAULT nextval('public.jia_bo_parameters_id_seq'::regclass);
+
+
+--
+-- Name: jia_bo_templates id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_templates ALTER COLUMN id SET DEFAULT nextval('public.jia_bo_templates_id_seq'::regclass);
 
 
 --
@@ -12490,6 +12831,14 @@ ALTER TABLE ONLY public.factory_production_parts
 
 
 --
+-- Name: factory_production_plans factory_production_plans_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.factory_production_plans
+    ADD CONSTRAINT factory_production_plans_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: factory_productions factory_productions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -12503,6 +12852,14 @@ ALTER TABLE ONLY public.factory_productions
 
 ALTER TABLE ONLY public.factory_products
     ADD CONSTRAINT factory_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: factory_scenes factory_scenes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.factory_scenes
+    ADD CONSTRAINT factory_scenes_pkey PRIMARY KEY (id);
 
 
 --
@@ -12695,6 +13052,38 @@ ALTER TABLE ONLY public.interact_comments
 
 ALTER TABLE ONLY public.interact_stars
     ADD CONSTRAINT interact_stars_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jia_bo_apps jia_bo_apps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_apps
+    ADD CONSTRAINT jia_bo_apps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jia_bo_devices jia_bo_devices_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_devices
+    ADD CONSTRAINT jia_bo_devices_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jia_bo_parameters jia_bo_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_parameters
+    ADD CONSTRAINT jia_bo_parameters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: jia_bo_templates jia_bo_templates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.jia_bo_templates
+    ADD CONSTRAINT jia_bo_templates_pkey PRIMARY KEY (id);
 
 
 --
@@ -14928,6 +15317,13 @@ CREATE INDEX index_factory_produce_plans_on_organ_id ON public.factory_produce_p
 
 
 --
+-- Name: index_factory_produce_plans_on_scene_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_produce_plans_on_scene_id ON public.factory_produce_plans USING btree (scene_id);
+
+
+--
 -- Name: index_factory_product_part_taxons_on_part_taxon_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15012,6 +15408,20 @@ CREATE INDEX index_factory_product_taxons_on_parent_id ON public.factory_product
 
 
 --
+-- Name: index_factory_product_taxons_on_scene_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_product_taxons_on_scene_id ON public.factory_product_taxons USING btree (scene_id);
+
+
+--
+-- Name: index_factory_product_taxons_on_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_product_taxons_on_template_id ON public.factory_product_taxons USING btree (template_id);
+
+
+--
 -- Name: index_factory_production_carts_on_cart_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -15040,17 +15450,17 @@ CREATE INDEX index_factory_production_carts_on_user_id ON public.factory_product
 
 
 --
--- Name: index_factory_production_items_on_product_plan_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_factory_production_items_on_product_plan_id ON public.factory_production_items USING btree (product_plan_id);
-
-
---
 -- Name: index_factory_production_items_on_production_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_factory_production_items_on_production_id ON public.factory_production_items USING btree (production_id);
+
+
+--
+-- Name: index_factory_production_items_on_production_plan_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_production_items_on_production_plan_id ON public.factory_production_items USING btree (production_plan_id);
 
 
 --
@@ -15065,6 +15475,27 @@ CREATE INDEX index_factory_production_parts_on_part_id ON public.factory_product
 --
 
 CREATE INDEX index_factory_production_parts_on_production_id ON public.factory_production_parts USING btree (production_id);
+
+
+--
+-- Name: index_factory_production_plans_on_product_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_production_plans_on_product_id ON public.factory_production_plans USING btree (product_id);
+
+
+--
+-- Name: index_factory_production_plans_on_production_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_production_plans_on_production_id ON public.factory_production_plans USING btree (production_id);
+
+
+--
+-- Name: index_factory_production_plans_on_scene_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_production_plans_on_scene_id ON public.factory_production_plans USING btree (scene_id);
 
 
 --
@@ -15093,6 +15524,13 @@ CREATE INDEX index_factory_products_on_product_taxon_id ON public.factory_produc
 --
 
 CREATE INDEX index_factory_products_on_sku ON public.factory_products USING btree (sku);
+
+
+--
+-- Name: index_factory_scenes_on_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_factory_scenes_on_organ_id ON public.factory_scenes USING btree (organ_id);
 
 
 --
@@ -15555,6 +15993,27 @@ CREATE INDEX index_interact_stars_on_starred_type_and_starred_id ON public.inter
 --
 
 CREATE INDEX index_interact_stars_on_user_id ON public.interact_stars USING btree (user_id);
+
+
+--
+-- Name: index_jia_bo_devices_on_app_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_jia_bo_devices_on_app_id ON public.jia_bo_devices USING btree (app_id);
+
+
+--
+-- Name: index_jia_bo_parameters_on_template_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_jia_bo_parameters_on_template_id ON public.jia_bo_parameters USING btree (template_id);
+
+
+--
+-- Name: index_jia_bo_templates_on_app_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_jia_bo_templates_on_app_id ON public.jia_bo_templates USING btree (app_id);
 
 
 --
@@ -16377,10 +16836,10 @@ CREATE INDEX index_trade_cards_on_card_template_id ON public.trade_cards USING b
 
 
 --
--- Name: index_trade_cards_on_member_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_trade_cards_on_cart_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_trade_cards_on_member_id ON public.trade_cards USING btree (member_id);
+CREATE INDEX index_trade_cards_on_cart_id ON public.trade_cards USING btree (cart_id);
 
 
 --
@@ -16398,13 +16857,6 @@ CREATE INDEX index_trade_cards_on_trade_item_id ON public.trade_cards USING btre
 
 
 --
--- Name: index_trade_cards_on_user_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_trade_cards_on_user_id ON public.trade_cards USING btree (user_id);
-
-
---
 -- Name: index_trade_carts_on_address_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -16416,6 +16868,13 @@ CREATE INDEX index_trade_carts_on_address_id ON public.trade_carts USING btree (
 --
 
 CREATE INDEX index_trade_carts_on_member_id ON public.trade_carts USING btree (member_id);
+
+
+--
+-- Name: index_trade_carts_on_member_organ_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_trade_carts_on_member_organ_id ON public.trade_carts USING btree (member_organ_id);
 
 
 --
@@ -16902,17 +17361,17 @@ CREATE INDEX index_wechat_news_reply_items_on_news_reply_id ON public.wechat_new
 
 
 --
+-- Name: index_wechat_notices_on_msg_request_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_wechat_notices_on_msg_request_id ON public.wechat_notices USING btree (msg_request_id);
+
+
+--
 -- Name: index_wechat_notices_on_notification_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_wechat_notices_on_notification_id ON public.wechat_notices USING btree (notification_id);
-
-
---
--- Name: index_wechat_notices_on_subscribe_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_wechat_notices_on_subscribe_id ON public.wechat_notices USING btree (subscribe_id);
 
 
 --
@@ -17067,6 +17526,13 @@ CREATE INDEX index_wechat_templates_on_appid ON public.wechat_templates USING bt
 --
 
 CREATE INDEX index_wechat_templates_on_template_config_id ON public.wechat_templates USING btree (template_config_id);
+
+
+--
+-- Name: index_wechat_user_tags_on_member_inviter_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_wechat_user_tags_on_member_inviter_id ON public.wechat_user_tags USING btree (member_inviter_id);
 
 
 --
@@ -17622,6 +18088,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211013120109'),
 ('20211016082731'),
 ('20211017131506'),
-('20211025075306');
+('20211025075306'),
+('20211122121433');
 
 
