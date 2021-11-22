@@ -683,7 +683,6 @@ DEPENDENCIES
   tencentcloud-sdk-ocr!
   turbo-rails
   upyun_rails!
-  uri
   web-console
   wx_pay!
 
