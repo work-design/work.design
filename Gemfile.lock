@@ -44,7 +44,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: cd198f95eb007fe47348442d1c4e7a77244b05b6
+  revision: 1e22ba099b239ca45e340c46cd253f7a1d398651
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: cc871830bc86a4d32f5079f99dbc70c8a570912e
+  revision: 787a82d28930b8c6c065affdeaf73119160c4884
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 463f8aca88dbae250c5969eb190a2610845a1543
+  revision: cca0cc29d6ff72642dae4dfdb6abb34b28642679
   specs:
     rails_markdown (0.0.1)
       kramdown
