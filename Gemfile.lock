@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 055e59792c175864d26a84af51ad2e74c9c24767
+  revision: 94b93ef857e6679501d9544eaf64a88980e7e2a9
   specs:
     rails_com (1.3.0)
       acme-client
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 030563ad23ed58d02538f142d373bd12ed3345bc
+  revision: e502059c740a92fbf0a68cdb14ec9f440319f2b7
   specs:
     rails_markdown (0.0.1)
       kramdown
