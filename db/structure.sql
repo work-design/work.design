@@ -5809,6 +5809,40 @@ ALTER SEQUENCE public.jia_bo_templates_id_seq OWNED BY public.jia_bo_templates.i
 
 
 --
+-- Name: markdown_assets; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.markdown_assets (
+    id bigint NOT NULL,
+    git_id bigint,
+    name character varying,
+    path character varying,
+    download_url character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: markdown_assets_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.markdown_assets_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: markdown_assets_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.markdown_assets_id_seq OWNED BY public.markdown_assets.id;
+
+
+--
 -- Name: markdown_catalogs; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -11123,6 +11157,13 @@ ALTER TABLE ONLY public.jia_bo_templates ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: markdown_assets id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_assets ALTER COLUMN id SET DEFAULT nextval('public.markdown_assets_id_seq'::regclass);
+
+
+--
 -- Name: markdown_catalogs id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -13084,6 +13125,14 @@ ALTER TABLE ONLY public.jia_bo_parameters
 
 ALTER TABLE ONLY public.jia_bo_templates
     ADD CONSTRAINT jia_bo_templates_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: markdown_assets markdown_assets_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.markdown_assets
+    ADD CONSTRAINT markdown_assets_pkey PRIMARY KEY (id);
 
 
 --
@@ -16017,6 +16066,13 @@ CREATE INDEX index_jia_bo_templates_on_app_id ON public.jia_bo_templates USING b
 
 
 --
+-- Name: index_markdown_assets_on_git_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_markdown_assets_on_git_id ON public.markdown_assets USING btree (git_id);
+
+
+--
 -- Name: index_markdown_catalogs_on_git_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -18089,6 +18145,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211016082731'),
 ('20211017131506'),
 ('20211025075306'),
-('20211122121433');
+('20211122121433'),
+('20211123030057');
 
 
