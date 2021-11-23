@@ -1,6 +1,6 @@
 {
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.2600dead.js",
+    "file": "assets/javascripts/admin/application.f0227096.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
@@ -10,7 +10,7 @@
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.af988b2d.js",
+    "file": "assets/javascripts/application.16e6a8f0.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
@@ -37,7 +37,7 @@
       "../assets/images/软硬件.png"
     ],
     "css": [
-      "assets/javascripts/application.369d864d.css"
+      "assets/javascripts/application.d6dd2c1f.css"
     ],
     "assets": [
       "assets/fa-brands-400.08a6db98.woff2",
@@ -51,7 +51,9 @@
       "assets/fa-solid-900.c38afe2e.woff2",
       "assets/fa-solid-900.c16e35ae.ttf",
       "assets/fa-thin-100.a3e1341c.woff2",
-      "assets/fa-thin-100.db8984e6.ttf"
+      "assets/fa-thin-100.db8984e6.ttf",
+      "assets/osc-next.9307deac.svg",
+      "assets/osc-prev.8234d9f4.svg"
     ]
   },
   "javascripts/phone.js": {
