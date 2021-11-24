@@ -5853,7 +5853,8 @@ CREATE TABLE public.markdown_catalogs (
     parent_path character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
-    git_id bigint
+    git_id bigint,
+    "position" integer
 );
 
 
@@ -6542,7 +6543,8 @@ CREATE TABLE public.org_organs (
     cached_role_ids integer[],
     official boolean,
     joinable boolean,
-    domain character varying
+    domain character varying,
+    code character varying
 );
 
 
@@ -18146,6 +18148,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211017131506'),
 ('20211025075306'),
 ('20211122121433'),
-('20211123030057');
+('20211123030057'),
+('20211124153817');
 
 
