@@ -67,14 +67,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 787a82d28930b8c6c065affdeaf73119160c4884
+  revision: b7935c5e54288aced1ba3a766bf945233de2e5af
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 94b93ef857e6679501d9544eaf64a88980e7e2a9
+  revision: 0e28e71c58c932483680626085e3cbbc36ee5fc5
   specs:
     rails_com (1.3.0)
       acme-client
@@ -144,7 +144,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 0cff0413fd60ff3ce94a6815aa5ec7746efafd63
+  revision: 00073cc2528d0ac7ffe4e00532cef57222af8ab4
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 7f89b3e6e04f5458305d02cb65dde0334fa16dc3
+  revision: e58563a9bf3e2cfab860a5c3989612755af7ec3e
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -197,7 +197,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 952d5b5182b5a65350bcc682a83f207a331bffb3
+  revision: 0908c9a5e1b2f85010ebadebf26e048001115e62
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -250,7 +250,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 78c6f8f1629728cc7339273b8650e8183b33a324
+  revision: 68f439fb5dda7a926ff83627efbedbb206b47263
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
