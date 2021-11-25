@@ -642,6 +642,7 @@ DEPENDENCIES
   image_processing
   listen
   mini_magick
+  nokogiri
   octokit
   omniauth-github
   omniauth-rails_csrf_protection

@@ -16,6 +16,7 @@ gem 'image_processing'
 gem 'mini_magick'
 gem 'rqrcode'
 gem 'rexml'
+gem 'nokogiri'
 
 # Third party
 gem 'octokit'
