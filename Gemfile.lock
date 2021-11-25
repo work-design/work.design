@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 39a8269f44b92538bbd83745a0edd2d6dee23fd3
+  revision: 110f021ee303be80369c460dc6586ef550491c87
   specs:
     rails_com (1.3.0)
       acme-client
@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 58a4dda11364fb72d571ed22327dd12a8ae80b8e
+  revision: 28ae14f0dd0f104f780006b7ec389692a1262662
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -250,7 +250,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 68f439fb5dda7a926ff83627efbedbb206b47263
+  revision: aeb7203e057e7af5efab9d99c6733a8cc8e0ad4d
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
