@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 110f021ee303be80369c460dc6586ef550491c87
+  revision: a636dd317e2ef0b01306771e6ed1c47c1bb0dbaf
   specs:
     rails_com (1.3.0)
       acme-client
@@ -467,6 +467,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
+      racc (~> 1.4)
+    nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)

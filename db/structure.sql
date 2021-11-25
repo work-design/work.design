@@ -1733,7 +1733,9 @@ CREATE TABLE public.com_acme_accounts (
     email character varying,
     kid character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    ali_key text,
+    ali_secret text
 );
 
 
@@ -18149,6 +18151,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211025075306'),
 ('20211122121433'),
 ('20211123030057'),
-('20211124153817');
+('20211124153817'),
+('20211125094947');
 
 
