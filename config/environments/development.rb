@@ -68,8 +68,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
 ActiveRecord.verbose_query_logs = true
-Rails.application.routes.default_url_options = {
-  host: 'test.one.work'
-}
+
 #ActionCable.server.config.logger = Logger.new(nil)
 ENV['EDITOR'] = 'code --wait'
