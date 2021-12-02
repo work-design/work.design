@@ -3,7 +3,7 @@ module Auth
     self.table_name = 'users'
 
     include Model::User
-    include Roled::Model::User
+    include Roled::Ext::User
     include Notice::Model::User
     include Notice::Ext::Setting
     include Trade::Ext::User

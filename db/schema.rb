@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_094947) do
+ActiveRecord::Schema.define(version: 2021_12_02_142329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2764,9 +2764,9 @@ ActiveRecord::Schema.define(version: 2021_11_25_094947) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean "visible"
-    t.string "who_types", array: true
     t.jsonb "role_hash", default: {}
     t.boolean "default"
+    t.string "type"
   end
 
   create_table "roled_rule_operations", id: { scale: 8 }, force: :cascade do |t|
@@ -2793,13 +2793,12 @@ ActiveRecord::Schema.define(version: 2021_11_25_094947) do
   end
 
   create_table "roled_who_roles", id: { scale: 8 }, force: :cascade do |t|
-    t.string "who_type"
     t.bigint "who_id", scale: 8
     t.bigint "role_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["role_id"], name: "index_roled_who_roles_on_role_id"
-    t.index ["who_type", "who_id"], name: "index_roled_who_roles_on_who_type_and_who_id"
   end
 
   create_table "ship_cars", id: { scale: 8 }, force: :cascade do |t|

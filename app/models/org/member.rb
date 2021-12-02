@@ -2,7 +2,7 @@ module Org
   class Member < ApplicationRecord
     include Model::Member
     include Bench::Model::Member
-    include Roled::Model::User
+    include Roled::Ext::Member
     include Trade::Model::Member
     include Finance::Ext::Member
     include Notice::Model::Member
