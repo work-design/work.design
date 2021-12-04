@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: edbc9cad1b016bc87ac2fe695cf110add360aba0
+  revision: f3fe5d12f37e1e2701af6f318afdca0c2f476845
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: d88a09730020b40667a94983a1c8ce6f4249533b
+  revision: 8f3fdd63833c5ae4a96133397ff6481515632461
   specs:
     rails_design (0.0.1)
       rails
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: d0df366d7abdea0181ab5d857711a7348d742516
+  revision: 803adaf01ec940b91aa4101aa6f99cec0c40a3aa
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -197,7 +197,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: ee9e2319b3d81ff3b941f78dcafa8ea12e69f03e
+  revision: a5c2ea5b368819d9e51f934afa817f15189a73da
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -220,7 +220,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: cc585ef7d29653ba911a5689233602136eac822e
+  revision: 9aa140b1b8b7e7775fc1eba0f89a017e0355f40f
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)

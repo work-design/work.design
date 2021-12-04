@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_142329) do
+ActiveRecord::Schema.define(version: 2021_12_04_141001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -2160,6 +2160,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "git_id", scale: 8
     t.integer "position", scale: 4
+    t.boolean "nav", default: false, comment: "是否导航菜单"
     t.index ["git_id"], name: "index_markdown_catalogs_on_git_id"
   end
 
@@ -2338,7 +2339,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.integer "cached_role_ids", scale: 4, array: true
     t.bigint "super_job_title_id", scale: 8
     t.integer "super_grade", scale: 4
     t.index ["department_id"], name: "index_org_job_titles_on_department_id"
@@ -2401,7 +2401,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.jsonb "department_ancestors"
     t.string "experience"
     t.string "attendance_number"
-    t.integer "cached_role_ids", scale: 4, array: true
     t.string "notifiable_types", default: [], array: true
     t.jsonb "counters", default: {}
     t.integer "showtime", scale: 4, default: 0
@@ -2458,7 +2457,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.jsonb "area_ancestors"
     t.integer "limit_wechat_menu", scale: 4, default: 1
     t.jsonb "parent_ancestors"
-    t.integer "cached_role_ids", scale: 4, array: true
     t.boolean "official", comment: "是否官方"
     t.boolean "joinable", comment: "是否可搜索并加入"
     t.string "domain"
@@ -2501,7 +2499,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.string "name"
     t.string "description"
     t.integer "grade", scale: 4
-    t.integer "cached_role_ids", scale: 4, array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organ_id"], name: "index_org_super_job_titles_on_organ_id"
@@ -3422,7 +3419,6 @@ ActiveRecord::Schema.define(version: 2021_12_02_142329) do
     t.string "timezone"
     t.string "locale"
     t.string "source"
-    t.integer "cached_role_ids", scale: 4, array: true
     t.string "invited_code"
     t.string "notifiable_types", default: [], array: true
     t.jsonb "counters", default: {}
