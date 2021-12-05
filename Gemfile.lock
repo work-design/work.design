@@ -220,7 +220,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 45a91586db655f8c5e129d5588b03e0064aae056
+  revision: 59650c0bef373581ba8de5a2addb9dd023bf8405
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
