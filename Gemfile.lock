@@ -220,7 +220,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_role.git
-  revision: 59650c0bef373581ba8de5a2addb9dd023bf8405
+  revision: eca0dba08acba96cb4a6502a0448d7f9d2151d07
   specs:
     rails_role (1.0.4)
       rails_com (~> 1.2)
@@ -234,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 10a8d15e8aeb3bae13df51885f11f3a25a180579
+  revision: c304cf509e6cab330aea905824277f9482dad390
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
