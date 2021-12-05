@@ -4,6 +4,8 @@ tmp/**/*
 !log/.keep
 !tmp/.keep
 
+app/assets/images/**/
+
 .bundle
 .ruby-version
 public/assets
