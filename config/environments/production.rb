@@ -5,7 +5,7 @@ Rails.application.configure do
 
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  #config.action_controller.asset_host = 'static.work.design'
+  config.action_controller.asset_host = 'static.work.design'
 
   config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/2' }
 
