@@ -9,7 +9,7 @@ Rails.application.configure do
 
   config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/2' }
 
-  config.public_file_server.enabled = false # nginx 直接伺服 public 目录下文件
+  config.public_file_server.enabled = true
 
   config.active_job.queue_adapter = :sidekiq
   config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')
