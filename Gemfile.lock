@@ -144,7 +144,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 8e233c0762bdde532d589ea683ddc22063db98e6
+  revision: 01f83dba45125e1fe26b985334652953e7eb0df9
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: b24df14cb76a7a841fcdbb32227ff99089a75e0e
+  revision: 3f601c2302035190459d9736079129463d99bf85
   specs:
     rails_markdown (0.0.1)
       kramdown

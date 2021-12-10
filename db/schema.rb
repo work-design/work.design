@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_04_141001) do
+ActiveRecord::Schema.define(version: 2021_12_10_160802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -696,6 +696,12 @@ ActiveRecord::Schema.define(version: 2021_12_04_141001) do
   create_table "com_blob_defaults", id: { scale: 8 }, force: :cascade do |t|
     t.string "record_class", comment: "AR 类名，如 User"
     t.string "name", comment: "名称, attach 名称，如：avatar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "com_blob_temps", id: { scale: 8 }, force: :cascade do |t|
+    t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -2161,7 +2167,9 @@ ActiveRecord::Schema.define(version: 2021_12_04_141001) do
     t.bigint "git_id", scale: 8
     t.integer "position", scale: 4
     t.boolean "nav", default: false, comment: "是否导航菜单"
+    t.bigint "organ_id", scale: 8
     t.index ["git_id"], name: "index_markdown_catalogs_on_git_id"
+    t.index ["organ_id"], name: "index_markdown_catalogs_on_organ_id"
   end
 
   create_table "markdown_gits", id: { scale: 8 }, force: :cascade do |t|
@@ -2940,6 +2948,7 @@ ActiveRecord::Schema.define(version: 2021_12_04_141001) do
     t.string "unit"
     t.decimal "quantity", default: "0.0"
     t.decimal "unified_quantity", default: "0.0"
+    t.boolean "open", default: false
     t.index ["card_template_id"], name: "index_trade_advances_on_card_template_id"
   end
 
