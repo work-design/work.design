@@ -5,6 +5,7 @@ tmp/**/*
 !tmp/.keep
 
 app/assets/images/**/
+app/views/yanglan
 
 .bundle
 .ruby-version
