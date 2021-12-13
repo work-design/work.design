@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_10_160802) do
+ActiveRecord::Schema.define(version: 2021_12_13_132800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -1659,6 +1659,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_160802) do
     t.boolean "specialty", default: false, comment: "主推"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "trade_items_count", scale: 4, default: 0
     t.index ["product_id"], name: "index_factory_production_plans_on_product_id"
     t.index ["production_id"], name: "index_factory_production_plans_on_production_id"
     t.index ["scene_id"], name: "index_factory_production_plans_on_scene_id"
@@ -2125,7 +2126,10 @@ ActiveRecord::Schema.define(version: 2021_12_10_160802) do
     t.string "grp_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organ_id", scale: 8
+    t.boolean "default", default: false
     t.index ["app_id"], name: "index_jia_bo_devices_on_app_id"
+    t.index ["organ_id"], name: "index_jia_bo_devices_on_organ_id"
   end
 
   create_table "jia_bo_parameters", id: { scale: 8 }, force: :cascade do |t|
@@ -2145,6 +2149,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_160802) do
     t.string "title", comment: "模板名称"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "thumb_url"
     t.index ["app_id"], name: "index_jia_bo_templates_on_app_id"
   end
 
@@ -2429,6 +2434,7 @@ ActiveRecord::Schema.define(version: 2021_12_10_160802) do
     t.boolean "default"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "beian", comment: "备案号"
     t.index ["identifier"], name: "index_org_organ_domains_on_identifier"
     t.index ["organ_id"], name: "index_org_organ_domains_on_organ_id"
   end
@@ -3379,11 +3385,13 @@ ActiveRecord::Schema.define(version: 2021_12_10_160802) do
     t.bigint "member_id", scale: 8
     t.date "produce_on", comment: "对接生产管理"
     t.datetime "expire_at", precision: 6
+    t.bigint "organ_id", scale: 8
     t.index ["address_id"], name: "index_trade_trade_items_on_address_id"
     t.index ["cart_id"], name: "index_trade_trade_items_on_cart_id"
     t.index ["good_type", "good_id"], name: "index_trade_trade_items_on_good_type_and_good_id"
     t.index ["member_id"], name: "index_trade_trade_items_on_member_id"
     t.index ["order_id"], name: "index_trade_trade_items_on_order_id"
+    t.index ["organ_id"], name: "index_trade_trade_items_on_organ_id"
     t.index ["produce_plan_id"], name: "index_trade_trade_items_on_produce_plan_id"
     t.index ["user_id"], name: "index_trade_trade_items_on_user_id"
   end

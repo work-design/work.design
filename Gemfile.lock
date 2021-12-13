@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 33b483970e1d806c0220cc26d5206d46bacf1f54
+  revision: 8481f2d85c2c1d96a895bb3ce3e3288f67352f6d
   specs:
     rails_com (1.3.0)
       acme-client
@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 0a1488c7cccc5b76e777fa91353094232314156d
+  revision: eb0958c04b2371e9d9825c98dc8f4b159f22c110
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -173,7 +173,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_interact.git
-  revision: 34b4b6181747039e6b6dcd215a8e447829ea08f5
+  revision: 499b124bfe76720309ebcd09a733518a9e86ad04
   specs:
     rails_interact (0.1.0)
       rails_com (~> 1.2)
@@ -197,7 +197,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 62b058141e8296ba76572c308771f941b7004bc3
+  revision: 98386e885b78e3b90a43a55c6b4eae4840c7d95f
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -234,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 24c71db20542230767da970779188a8b9e629f76
+  revision: ef8b72f627a5c50bfa40bae61645627c78588978
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -459,7 +459,7 @@ GEM
     net-protocol (0.1.2)
       io-wait
       timeout
-    net-smtp (0.3.0)
+    net-smtp (0.3.1)
       digest
       net-protocol
       timeout
