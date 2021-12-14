@@ -1,6 +1,126 @@
 {
+  "../views/yanglan/assets/Cabinet-SI.jpg": {
+    "file": "assets/yanglan/assets/Cabinet-SI.edb2128f.js",
+    "src": "../views/yanglan/assets/Cabinet-SI.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/CALOMAT-6F.jpg": {
+    "file": "assets/yanglan/assets/CALOMAT-6F.0c7c17f4.js",
+    "src": "../views/yanglan/assets/CALOMAT-6F.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/CEMS.png": {
+    "file": "assets/yanglan/assets/CEMS.67de15ae.js",
+    "src": "../views/yanglan/assets/CEMS.png",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/brand.jpg": {
+    "file": "assets/yanglan/assets/certs/brand.5853a9b2.js",
+    "src": "../views/yanglan/assets/certs/brand.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/iso4001.jpg": {
+    "file": "assets/yanglan/assets/certs/iso4001.a50d024f.js",
+    "src": "../views/yanglan/assets/certs/iso4001.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/iso9001.jpg": {
+    "file": "assets/yanglan/assets/certs/iso9001.05ef1e3d.js",
+    "src": "../views/yanglan/assets/certs/iso9001.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/pda.jpg": {
+    "file": "assets/yanglan/assets/certs/pda.07908569.js",
+    "src": "../views/yanglan/assets/certs/pda.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/CGA.jpg": {
+    "file": "assets/yanglan/assets/CGA.e69c839d.js",
+    "src": "../views/yanglan/assets/CGA.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/contact.jpg": {
+    "file": "assets/yanglan/assets/contact.3992560e.js",
+    "src": "../views/yanglan/assets/contact.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/Electrochemical-oxygen-sensor-for-ultramat-23.png": {
+    "file": "assets/yanglan/assets/Electrochemical-oxygen-sensor-for-ultramat-23.4a08b311.js",
+    "src": "../views/yanglan/assets/Electrochemical-oxygen-sensor-for-ultramat-23.png",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/GC.jpg": {
+    "file": "assets/yanglan/assets/GC.9d7f7567.js",
+    "src": "../views/yanglan/assets/GC.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/Laserl.png": {
+    "file": "assets/yanglan/assets/Laserl.5ec534eb.js",
+    "src": "../views/yanglan/assets/Laserl.png",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/LDS6.jpg": {
+    "file": "assets/yanglan/assets/LDS6.4b1511eb.js",
+    "src": "../views/yanglan/assets/LDS6.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/maxum-ii.jpg": {
+    "file": "assets/yanglan/assets/maxum-ii.f8945522.js",
+    "src": "../views/yanglan/assets/maxum-ii.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/Oxymat6-1.jpg": {
+    "file": "assets/yanglan/assets/Oxymat6-1.5ab91162.js",
+    "src": "../views/yanglan/assets/Oxymat6-1.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/Oxymat6-2.jpg": {
+    "file": "assets/yanglan/assets/Oxymat6-2.01f1b838.js",
+    "src": "../views/yanglan/assets/Oxymat6-2.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/Oxymat61.jpg": {
+    "file": "assets/yanglan/assets/Oxymat61.bfa63dfd.js",
+    "src": "../views/yanglan/assets/Oxymat61.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/SITRANS-SL.jpg": {
+    "file": "assets/yanglan/assets/SITRANS-SL.3095199e.js",
+    "src": "../views/yanglan/assets/SITRANS-SL.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/UItramat-6.jpg": {
+    "file": "assets/yanglan/assets/UItramat-6.f87267cb.js",
+    "src": "../views/yanglan/assets/UItramat-6.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/ULTRMAT-23.jpg": {
+    "file": "assets/yanglan/assets/ULTRMAT-23.47fad84e.js",
+    "src": "../views/yanglan/assets/ULTRMAT-23.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/图片1.png": {
+    "file": "assets/yanglan/assets/图片1.bdab9be8.js",
+    "src": "../views/yanglan/assets/图片1.png",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/图片5.jpg": {
+    "file": "assets/yanglan/assets/图片5.0871eaad.js",
+    "src": "../views/yanglan/assets/图片5.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/图片6.jpg": {
+    "file": "assets/yanglan/assets/图片6.c6f85a7b.js",
+    "src": "../views/yanglan/assets/图片6.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/图片7.jpg": {
+    "file": "assets/yanglan/assets/图片7.2228c1a4.js",
+    "src": "../views/yanglan/assets/图片7.jpg",
+    "isEntry": true
+  },
   "javascripts/admin/application.js": {
-    "file": "assets/javascripts/admin/application.c9054c47.js",
+    "file": "assets/javascripts/admin/application.247cfb6b.js",
     "src": "javascripts/admin/application.js",
     "isEntry": true,
     "imports": [
@@ -10,7 +130,7 @@
     ]
   },
   "javascripts/application.js": {
-    "file": "assets/javascripts/application.cfcc17b8.js",
+    "file": "assets/javascripts/application.c36d1faa.js",
     "src": "javascripts/application.js",
     "isEntry": true,
     "imports": [
@@ -25,7 +145,6 @@
       "../assets/images/digit.png",
       "../assets/images/license.jpg",
       "../assets/images/logo.png",
-      "../assets/images/logo1.png",
       "../assets/images/open.png",
       "../assets/images/registration.jpg",
       "../assets/images/required.png",
@@ -35,10 +154,10 @@
       "../assets/images/工作内容.png",
       "../assets/images/方法.png",
       "../assets/images/软硬件.png",
-      "../assets/images/yanglan/banner.jpg"
+      "../assets/images/one_work/logo.png"
     ],
     "css": [
-      "assets/javascripts/application.d6dd2c1f.css"
+      "assets/javascripts/application.3c19d2ff.css"
     ],
     "assets": [
       "assets/fa-brands-400.08a6db98.woff2",
@@ -276,14 +395,6 @@
       "assets/logo.bb9be898.png"
     ]
   },
-  "../assets/images/logo1.png": {
-    "file": "assets/logo1.bc7e28ee.js",
-    "src": "../assets/images/logo1.png",
-    "isDynamicEntry": true,
-    "assets": [
-      "assets/logo1.ad798c7a.png"
-    ]
-  },
   "../assets/images/open.png": {
     "file": "assets/open.7654e0d4.js",
     "src": "../assets/images/open.png",
@@ -356,12 +467,12 @@
       "assets/软硬件.99b45416.png"
     ]
   },
-  "../assets/images/yanglan/banner.jpg": {
-    "file": "assets/banner.9ad8ea51.js",
-    "src": "../assets/images/yanglan/banner.jpg",
+  "../assets/images/one_work/logo.png": {
+    "file": "assets/logo.431251bc.js",
+    "src": "../assets/images/one_work/logo.png",
     "isDynamicEntry": true,
     "assets": [
-      "assets/banner.861abeaf.jpg"
+      "assets/logo.ad798c7a.png"
     ]
   }
 }

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
-gem 'rails', '7.0.0.alpha2'
+gem 'rails', '7.0.0.rc1'
 gem 'puma'
 gem 'sidekiq'
 
