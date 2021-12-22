@@ -197,7 +197,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 2456d084e337d3c6d7fb2c22b38dcb5591b3e746
+  revision: 71fd50b8f8748361229dad4d52706e2964f9662f
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
