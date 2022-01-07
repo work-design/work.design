@@ -3,15 +3,11 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-
+  url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db %>
 development:
   <<: *default
-  url: <%= Rails.application.credentials.db_dev %>
-
 test:
   <<: *default
-  url: <%= Rails.application.credentials.db_test %>
-
+  url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db_test %>
 production:
   <<: *default
-  url: <%= Rails.application.credentials.db %>
