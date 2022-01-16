@@ -29,10 +29,10 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: f87140549cfc879a6f5213465b181c20fa9a86b5
+  revision: 50ccc6aab2da111c046b706775ad95ff374bacf6
   specs:
-    tencentcloud-sdk-common (1.0.237)
-    tencentcloud-sdk-ocr (1.0.237)
+    tencentcloud-sdk-common (1.0.242)
+    tencentcloud-sdk-ocr (1.0.242)
       tencentcloud-sdk-common (~> 1.0)
 
 GIT
@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 8736139220b286281b581e9e25db0da048880301
+  revision: bdffceccb3622ed70ff749b7373eb08f660b5b82
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 33afbf3fa94303c5fd84241d689506c6a02e08f4
+  revision: 9124284146ee5dafac98585abb56e677b9f980eb
   specs:
     rails_com (1.3.0)
       acme-client
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 6c6698789e772aefa2f88b3cec69f75874b60516
+  revision: d9707a334972756a2346a5b33a5f1d8c2c724463
   specs:
     rails_design (0.0.1)
       rails
@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 352d993ed2ead68ebb2e8df4c7e35ac8fbf8171c
+  revision: b359910b604a7521c46f7dd58484e1dfb3680580
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -234,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 0e0ec3c9c99df4de047da3284a5cced1a7660722
+  revision: de592f83216a78744a3baba1f8cb2b9db6143a9c
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -250,7 +250,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: a598e5df7f0bca302ea45c07bb1e19717bd29776
+  revision: ae13406bfd26205732deae8284bf791ffe114744
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -338,7 +338,7 @@ GEM
     amazing_print (1.4.0)
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.9.3)
+    bootsnap (1.9.4)
       msgpack (~> 1.0)
     builder (3.2.4)
     capybara (3.36.0)
@@ -381,14 +381,14 @@ GEM
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
-    faraday-multipart (1.0.2)
+    faraday-multipart (1.0.3)
       multipart-post (>= 1.2, < 3)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    ffi (1.15.4)
+    ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashie (5.0.0)
@@ -397,7 +397,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.18.5)
+    httpx (0.18.7)
       http-2-next (>= 0.4.1)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
@@ -426,7 +426,7 @@ GEM
     kaminari-core (1.2.2)
     kramdown (2.3.1)
       rexml
-    listen (3.7.0)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.13.0)
@@ -444,7 +444,7 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
-    monetize (1.11.0)
+    monetize (1.12.0)
       money (~> 6.12)
     money (6.16.0)
       i18n (>= 0.6.4, <= 2)
@@ -477,8 +477,12 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.0)
+    nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
+      racc (~> 1.4)
+    nokogiri (1.13.1-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
@@ -486,7 +490,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    octokit (4.21.0)
+    octokit (4.22.0)
       faraday (>= 0.9)
       sawyer (~> 0.8.0, >= 0.5.3)
     omniauth (2.0.4)
@@ -599,7 +603,7 @@ GEM
     thor (1.2.1)
     timeout (0.2.0)
     ttfunk (1.7.0)
-    turbo-rails (1.0.0)
+    turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.4)
@@ -696,4 +700,4 @@ DEPENDENCIES
   wx_pay!
 
 BUNDLED WITH
-   2.3.0.dev
+   2.3.4
