@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: b359910b604a7521c46f7dd58484e1dfb3680580
+  revision: 245f9fb4a89b9f0ad2072daf8f1a0089664d85b1
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -197,7 +197,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 4105e45f176c89b0da2a68cfda619fc465db1d38
+  revision: d1146f3c60a3d15a2849bb6f20e3329db2004502
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
