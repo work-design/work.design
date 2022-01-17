@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_22_023319) do
+ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -885,6 +885,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "headers", array: true
     t.string "footers", array: true
     t.jsonb "parameters"
+    t.jsonb "extra", default: {}
     t.index ["data_list_id"], name: "index_datum_table_lists_on_data_list_id"
   end
 
@@ -1686,7 +1687,9 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "enabled", default: false
     t.jsonb "vip_price", default: {}
+    t.bigint "product_taxon_id", scale: 8
     t.index ["product_id"], name: "index_factory_productions_on_product_id"
+    t.index ["product_taxon_id"], name: "index_factory_productions_on_product_taxon_id"
   end
 
   create_table "factory_products", id: { scale: 8 }, force: :cascade do |t|
@@ -1787,7 +1790,6 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "note"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "cash_id", scale: 8
     t.bigint "operator_id", scale: 8
     t.string "payable_type"
     t.bigint "payable_id", scale: 8
@@ -1799,12 +1801,13 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "account_bank"
     t.string "account_name"
     t.string "account_num"
-    t.index ["cash_id"], name: "index_finance_expense_members_on_cash_id"
+    t.bigint "wallet_id", scale: 8
     t.index ["expense_id"], name: "index_finance_expense_members_on_expense_id"
     t.index ["member_id"], name: "index_finance_expense_members_on_member_id"
     t.index ["operator_id"], name: "index_finance_expense_members_on_operator_id"
     t.index ["payable_type", "payable_id"], name: "index_finance_expense_members_on_payable"
     t.index ["payment_method_id"], name: "index_finance_expense_members_on_payment_method_id"
+    t.index ["wallet_id"], name: "index_finance_expense_members_on_wallet_id"
   end
 
   create_table "finance_expenses", id: { scale: 8 }, force: :cascade do |t|
@@ -2205,6 +2208,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.boolean "published", default: true
     t.string "catalog_path", default: ""
     t.boolean "ppt", default: false
+    t.boolean "nav", default: false, comment: "是否导航菜单"
     t.index ["git_id"], name: "index_markdown_posts_on_git_id"
   end
 
@@ -2935,7 +2939,10 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "detail"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organ_id", scale: 8
+    t.jsonb "area_ancestors"
     t.index ["area_id"], name: "index_ship_stations_on_area_id"
+    t.index ["organ_id"], name: "index_ship_stations_on_organ_id"
   end
 
   create_table "spatial_ref_sys", primary_key: "srid", id: { type: :integer, scale: 4, default: nil }, force: :cascade do |t|
@@ -2943,7 +2950,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.integer "auth_srid", scale: 4
     t.string "srtext", scale: 2048
     t.string "proj4text", scale: 2048
-    t.check_constraint "(srid > 0) AND (srid <= 998999)", name: "spatial_ref_sys_srid_check"
+    t.check_constraint "srid > 0 AND srid <= 998999", name: "spatial_ref_sys_srid_check"
   end
 
   create_table "stats", id: { scale: 8 }, force: :cascade do |t|
@@ -3187,8 +3194,12 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.bigint "address_id", scale: 8
     t.bigint "produce_plan_id", scale: 8
     t.decimal "original_amount", default: "0.0", comment: "原价，应用优惠之前的价格"
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["cart_id"], name: "index_trade_orders_on_cart_id"
+    t.index ["member_id"], name: "index_trade_orders_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_orders_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_orders_on_organ_id"
     t.index ["payment_strategy_id"], name: "index_trade_orders_on_payment_strategy_id"
     t.index ["produce_plan_id"], name: "index_trade_orders_on_produce_plan_id"
@@ -3264,6 +3275,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.boolean "verified", default: true
     t.integer "lock_version", scale: 4
     t.decimal "refunded_amount", default: "0.0"
+    t.jsonb "extra", default: {}
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
   end
@@ -3273,7 +3285,6 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "payable_type"
     t.bigint "payable_id", scale: 8
     t.bigint "operator_id", scale: 8
-    t.bigint "cash_id", scale: 8
     t.string "payout_uuid"
     t.decimal "requested_amount", limit: 2, precision: 10
     t.decimal "actual_amount", limit: 2, precision: 10
@@ -3285,9 +3296,10 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "account_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cash_id"], name: "index_trade_payouts_on_cash_id"
+    t.bigint "wallet_id", scale: 8
     t.index ["operator_id"], name: "index_trade_payouts_on_operator_id"
     t.index ["payable_type", "payable_id"], name: "index_trade_payouts_on_payable_type_and_payable_id"
+    t.index ["wallet_id"], name: "index_trade_payouts_on_wallet_id"
   end
 
   create_table "trade_privileges", id: { scale: 8 }, force: :cascade do |t|
@@ -3727,6 +3739,7 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "raw_pic_url"
     t.index ["news_reply_id"], name: "index_wechat_news_reply_items_on_news_reply_id"
   end
 
@@ -3758,6 +3771,31 @@ ActiveRecord::Schema.define(version: 2021_12_22_023319) do
     t.datetime "access_token_expires_at"
     t.string "pre_auth_code"
     t.datetime "pre_auth_code_expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "wechat_provider_tickets", id: { scale: 8 }, force: :cascade do |t|
+    t.integer "timestamp", scale: 4
+    t.string "nonce"
+    t.string "msg_signature"
+    t.string "suite_id"
+    t.string "ticket_data"
+    t.string "agent_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "wechat_providers", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.string "corp_id"
+    t.string "provider_secret"
+    t.string "suite_id"
+    t.string "secret"
+    t.string "token"
+    t.string "encoding_aes_key"
+    t.string "suite_ticket"
+    t.string "suite_ticket_pre"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
