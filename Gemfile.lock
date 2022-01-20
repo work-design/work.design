@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 9b025a2af5f514b692dfec1310bbad626f0aec42
+  revision: 057ca5a520d7b8c3ffccf41963cabaa9f6d16dfa
   specs:
     rails_design (0.0.1)
       rails
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 9efb273f9ab954935582b92129b12177d4d34952
+  revision: 9f99ad2624822e7028b2fa84071718f361ca4633
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -479,10 +479,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
-      racc (~> 1.4)
-    nokogiri (1.13.1-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
