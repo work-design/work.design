@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: def7e1fb741216888c177c1dc25406e49867aefd
+  revision: 27d995c4e1069ebb2b0b5a0f26d0bfd4766ba01b
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 057ca5a520d7b8c3ffccf41963cabaa9f6d16dfa
+  revision: b60ba94696232a5e6759b6fc0efc57388939023e
   specs:
     rails_design (0.0.1)
       rails
@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 78fd82593b5299285db73ddb75af1f5218cd3293
+  revision: 91f5b1b7431e3885085e63498773e63b8e92c25a
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -479,10 +479,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.1)
       mini_portile2 (~> 2.7.0)
-      racc (~> 1.4)
-    nokogiri (1.13.1-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
