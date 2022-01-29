@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 7745f5a19472c74d1819eba542b7f017eac1817d
+  revision: 33511fcbf00689b307d31bbd4128a6589187cef8
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: e9826af7e2482067d2799b1646306ebd6a19df43
+  revision: 99fbe373728328ffed3a4c340f4258acb70005ff
   specs:
     rails_markdown (0.0.1)
       kramdown
