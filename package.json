@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@antv/g2plot": "^2.3.13",
-    "@fortawesome/fontawesome-pro": "^6.0.0-beta2",
+    "@fortawesome/fontawesome-pro": "^6.0.0-beta3",
     "@fullcalendar/core": "^5.8.0",
     "@fullcalendar/daygrid": "^5.8.0",
     "@fullcalendar/resource-common": "^5.8.0",
@@ -16,8 +16,6 @@
     "rails_vite": "^0.0.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.6.0",
-    "@vue/compiler-sfc": "^3.2.6",
     "sass": "^1.32.0"
   }
 }
