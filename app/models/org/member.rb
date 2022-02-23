@@ -3,7 +3,7 @@ module Org
     include Model::Member
     include Bench::Model::Member
     include Roled::Ext::Member
-    include Trade::Model::Member
+    include Trade::Ext::Member
     include Finance::Ext::Member
     include Notice::Model::Member
     include Notice::Ext::Setting

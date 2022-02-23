@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_084931) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "action_mailbox_inbound_emails", id: { scale: 8 }, force: :cascade do |t|
     t.integer "status", scale: 4, default: 0, null: false
     t.string "message_id", null: false
     t.string "message_checksum", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["message_id", "message_checksum"], name: "index_action_mailbox_inbound_emails_uniqueness", unique: true
   end
 
@@ -30,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.text "body"
     t.string "record_type", null: false
     t.integer "record_id", scale: 4, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -40,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "record_type", null: false
     t.bigint "record_id", scale: 8, null: false
     t.bigint "blob_id", scale: 8, null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -52,7 +50,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.text "metadata"
     t.bigint "byte_size", scale: 8, null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name"
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -60,15 +58,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "active_storage_variant_records", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "blob_id", scale: 8
     t.string "variation_digest", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["blob_id"], name: "index_active_storage_variant_records_on_blob_id"
   end
 
   create_table "agential_agencies", id: { scale: 8 }, force: :cascade do |t|
     t.string "relation"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "client_id", scale: 8
     t.bigint "agent_id", scale: 8
     t.decimal "commission_ratio", limit: 2, precision: 4, comment: "交易时抽成比例"
@@ -82,8 +80,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.float "left_annual_days"
     t.float "vacation_days"
     t.string "details", scale: 1024
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "member_id", scale: 8
     t.index ["member_id"], name: "index_attend_absence_stats_on_member_id"
   end
@@ -95,16 +93,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "state", default: "init"
     t.float "hours", default: 0.0
     t.string "kind"
-    t.datetime "start_at"
-    t.datetime "finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
     t.string "note", scale: 2048
     t.string "comment", scale: 2048
     t.boolean "redeeming"
     t.string "redeeming_days", array: true
     t.boolean "processed"
     t.boolean "divided"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_attend_absences_on_member_id"
     t.index ["merged_id"], name: "index_attend_absences_on_merged_id"
   end
@@ -115,13 +113,13 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "source", default: "machine"
     t.string "state", default: "init"
     t.string "name"
-    t.datetime "record_at"
+    t.datetime "record_at", precision: nil
     t.boolean "processed"
     t.string "kind"
     t.string "note"
     t.string "record_at_str"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "number"
     t.index ["attendance_id"], name: "index_attend_attendance_logs_on_attendance_id"
     t.index ["member_id"], name: "index_attend_attendance_logs_on_member_id"
@@ -133,8 +131,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "on_time", default: "08:30"
     t.string "off_time"
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.date "effect_on"
     t.date "expire_on"
     t.index ["member_id"], name: "index_attend_attendance_settings_on_member_id"
@@ -152,8 +150,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.float "cost_absence_hours"
     t.float "holiday_redeeming_hours"
     t.boolean "processed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["financial_month_id"], name: "index_attend_attendance_stats_on_financial_month_id"
     t.index ["member_id"], name: "index_attend_attendance_stats_on_member_id"
   end
@@ -170,18 +168,18 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.float "interval_hours"
     t.float "total_hours"
     t.date "attend_on"
-    t.datetime "start_at"
-    t.datetime "finish_at"
-    t.datetime "interval_start_at"
-    t.datetime "interval_finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
+    t.datetime "interval_start_at", precision: nil
+    t.datetime "interval_finish_at", precision: nil
     t.string "kind"
     t.integer "absence_minutes", scale: 4
     t.boolean "absence_redeeming"
     t.string "lost_logs", array: true
     t.boolean "workday", default: true
     t.boolean "processed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["interval_absence_id"], name: "index_attend_attendances_on_interval_absence_id"
     t.index ["late_absence_id"], name: "index_attend_attendances_on_late_absence_id"
     t.index ["leave_absence_id"], name: "index_attend_attendances_on_leave_absence_id"
@@ -194,8 +192,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "kind", comment: "holiday, workday"
     t.string "scope"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_attend_extra_days_on_organ_id"
   end
 
@@ -205,21 +203,21 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.date "end_date"
     t.string "working_days"
     t.string "color", default: "#8fdf82"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_attend_financial_months_on_organ_id"
   end
 
   create_table "attend_overtimes", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "member_id", scale: 8
-    t.datetime "start_at"
-    t.datetime "finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
     t.string "note", scale: 1024
     t.string "comment", scale: 1024
     t.float "hours"
     t.string "state", default: "init"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_attend_overtimes_on_member_id"
   end
 
@@ -233,10 +231,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.json "pending_changes", default: {}
     t.json "related_changes", default: {}
     t.string "comment"
-    t.datetime "approved_at"
+    t.datetime "approved_at", precision: nil
     t.integer "unapproved_approvals_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["approving_type", "approving_id"], name: "index_auditor_approvals_on_approving_type_and_approving_id"
     t.index ["operator_type", "operator_id"], name: "index_auditor_approvals_on_operator_type_and_operator_id"
   end
@@ -254,7 +252,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "remote_ip"
     t.string "controller_path"
     t.string "action_name"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["audited_type", "audited_id"], name: "index_auditor_audits_on_audited_type_and_audited_id"
     t.index ["created_at"], name: "index_auditor_audits_on_created_at"
     t.index ["operator_type", "operator_id"], name: "index_auditor_audits_on_operator_type_and_operator_id"
@@ -270,8 +268,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "note"
     t.integer "position", scale: 4
     t.boolean "confirmed"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["job_title_id"], name: "index_auditor_verifications_on_job_title_id"
     t.index ["member_id"], name: "index_auditor_verifications_on_member_id"
     t.index ["verified_type", "verified_id"], name: "index_verifications_on_verified"
@@ -285,8 +283,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "job_title_id", scale: 8
     t.string "name"
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["job_title_id"], name: "index_auditor_verifiers_on_job_title_id"
     t.index ["member_id"], name: "index_auditor_verifiers_on_member_id"
     t.index ["verifiable_type", "verifiable_id"], name: "index_verifiers_on_verifiable"
@@ -297,8 +295,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "type"
     t.string "identity"
     t.boolean "confirmed", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "source"
     t.index ["user_id"], name: "index_auth_accounts_on_user_id"
   end
@@ -306,18 +304,18 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "auth_apps", id: { scale: 8 }, force: :cascade do |t|
     t.string "appid"
     t.string "jwt_key"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["appid"], name: "index_auth_apps_on_appid"
   end
 
   create_table "auth_authorized_tokens", id: { scale: 8 }, force: :cascade do |t|
     t.string "token"
-    t.datetime "expire_at"
+    t.datetime "expire_at", precision: nil
     t.string "session_key"
     t.integer "access_counter", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "mock_member"
     t.boolean "mock_user"
     t.string "identity"
@@ -331,14 +329,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "uid"
     t.string "name"
     t.string "avatar_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "type"
     t.string "access_token"
     t.string "refresh_token"
     t.string "unionid"
     t.string "appid"
-    t.datetime "expires_at"
+    t.datetime "expires_at", precision: nil
     t.string "state"
     t.json "extra", default: {}
     t.string "identity"
@@ -352,8 +350,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "auth_user_taggeds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "user_tag_id", scale: 8
     t.bigint "user_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_auth_user_taggeds_on_user_id"
     t.index ["user_tag_id"], name: "index_auth_user_taggeds_on_user_tag_id"
   end
@@ -362,8 +360,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_id", scale: 8
     t.string "name"
     t.integer "user_taggeds_count", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "user_tagging_type"
     t.bigint "user_tagging_id", scale: 8
     t.index ["organ_id"], name: "index_auth_user_tags_on_organ_id"
@@ -373,11 +371,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "auth_verify_tokens", id: { scale: 8 }, force: :cascade do |t|
     t.string "type", scale: 100
     t.string "token"
-    t.datetime "expire_at"
+    t.datetime "expire_at", precision: nil
     t.string "identity"
     t.integer "access_counter", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "bench_facilitate_indicators", id: { scale: 8 }, force: :cascade do |t|
@@ -385,16 +383,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "indicator_id", scale: 8
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["facilitate_id"], name: "index_bench_facilitate_indicators_on_facilitate_id"
     t.index ["facilitate_taxon_id"], name: "index_bench_facilitate_indicators_on_facilitate_taxon_id"
     t.index ["indicator_id"], name: "index_bench_facilitate_indicators_on_indicator_id"
   end
 
   create_table "bench_facilitate_providers", id: { scale: 8 }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "facilitate_id", scale: 8
     t.bigint "provider_id", scale: 8
     t.boolean "selected"
@@ -408,8 +406,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "facilitate_taxon_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "facilitate_taxon_desc_idx"
   end
@@ -418,8 +416,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "position", scale: 4, default: 0
     t.integer "facilitates_count", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "parent_id", scale: 8
     t.json "parent_ancestors"
     t.bigint "organ_id", scale: 8
@@ -435,8 +433,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "bench_facilitates", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "facilitate_taxon_id", scale: 8
     t.decimal "price", limit: 2, precision: 10
     t.string "sku"
@@ -462,8 +460,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "unit"
     t.decimal "reference_min"
     t.decimal "reference_max"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.string "target_source"
@@ -479,8 +477,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "position", scale: 4
     t.integer "project_mileposts_count", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_bench_mileposts_on_organ_id"
   end
 
@@ -489,8 +487,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "facilitate_id", scale: 8
     t.bigint "provider_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["facilitate_id"], name: "index_bench_project_facilitates_on_facilitate_id"
     t.index ["facilitate_taxon_id"], name: "index_bench_project_facilitates_on_facilitate_taxon_id"
     t.index ["project_id"], name: "index_bench_project_facilitates_on_project_id"
@@ -501,12 +499,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "project_id", scale: 8
     t.bigint "indicator_id", scale: 8
     t.date "recorded_on"
-    t.datetime "recorded_at"
+    t.datetime "recorded_at", precision: nil
     t.string "value"
     t.string "source"
     t.string "comment"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "state"
     t.index ["indicator_id"], name: "index_bench_project_indicators_on_indicator_id"
     t.index ["project_id"], name: "index_bench_project_indicators_on_project_id"
@@ -518,8 +516,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.date "recorded_on"
     t.boolean "current"
     t.string "milepost_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["milepost_id"], name: "index_bench_project_mileposts_on_milepost_id"
     t.index ["project_id"], name: "index_bench_project_mileposts_on_project_id"
   end
@@ -528,8 +526,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.date "begin_on"
     t.date "end_on"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "note"
     t.decimal "fund_budget"
     t.decimal "fund_expense"
@@ -542,16 +540,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "project_id", scale: 8
     t.json "origin_data"
     t.json "valuable_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["project_id"], name: "index_bench_project_webhooks_on_project_id"
   end
 
   create_table "bench_projects", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.bigint "taxon_id", scale: 8
     t.string "state"
@@ -565,16 +563,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   end
 
   create_table "bench_schedules", id: { scale: 8 }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "bench_task_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "task_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "task_desc_idx"
   end
@@ -583,8 +581,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "task_template_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "task_template_desc_idx"
   end
@@ -593,8 +591,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.integer "parent_id", scale: 4
     t.integer "position", scale: 4, default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "taxon_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.bigint "job_title_id", scale: 8
@@ -615,27 +613,27 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "bench_task_timers", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "task_id", scale: 4
     t.integer "duration", scale: 4
-    t.datetime "finish_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "finish_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["task_id"], name: "index_bench_task_timers_on_task_id"
   end
 
   create_table "bench_tasks", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.string "title"
     t.integer "parent_id", scale: 4
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "state", default: "0"
     t.string "focus", default: "0"
     t.integer "position", scale: 4, default: 1
     t.integer "estimated_time", scale: 4
     t.integer "actual_time", scale: 4
-    t.datetime "done_at"
+    t.datetime "done_at", precision: nil
     t.integer "children_count", scale: 4, default: 0
     t.bigint "member_id", scale: 8
     t.bigint "user_id", scale: 8
-    t.datetime "start_at"
+    t.datetime "start_at", precision: nil
     t.json "parent_ancestors"
     t.bigint "organ_id", scale: 8
     t.bigint "job_title_id", scale: 8
@@ -657,8 +655,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "com_acme_accounts", id: { scale: 8 }, force: :cascade do |t|
     t.string "email"
     t.string "kid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "ali_key"
     t.text "ali_secret"
   end
@@ -673,8 +671,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "domain"
     t.boolean "wildcard"
     t.string "url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "dns_valid"
     t.string "token"
     t.boolean "file_valid"
@@ -684,34 +682,34 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "com_acme_orders", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "acme_account_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "orderid"
     t.string "url"
     t.string "status"
-    t.datetime "issued_at"
-    t.datetime "expire_at", precision: 6, comment: "过期时间"
+    t.datetime "issued_at", precision: nil
+    t.datetime "expire_at", comment: "过期时间"
     t.index ["acme_account_id"], name: "index_com_acme_orders_on_acme_account_id"
   end
 
   create_table "com_blob_defaults", id: { scale: 8 }, force: :cascade do |t|
     t.string "record_class", comment: "AR 类名，如 User"
     t.string "name", comment: "名称, attach 名称，如：avatar"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_blob_temps", id: { scale: 8 }, force: :cascade do |t|
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_cache_lists", id: { scale: 8 }, force: :cascade do |t|
     t.string "path"
     t.string "key"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_csps", id: { scale: 8 }, force: :cascade do |t|
@@ -727,6 +725,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "source_file"
     t.string "status_code"
     t.string "script_sample"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
+  create_table "com_debugs", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -737,8 +741,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "action_name"
     t.string "exception", scale: 10240
     t.string "exception_object"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "exception_backtrace", array: true
     t.string "ip"
     t.jsonb "headers"
@@ -752,8 +756,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "value"
     t.string "version"
     t.string "platform"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_meta_actions", id: { scale: 8 }, force: :cascade do |t|
@@ -768,8 +772,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "position", scale: 4
     t.boolean "landmark"
     t.string "operation", default: "read"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["business_identifier"], name: "index_com_meta_actions_on_business_identifier"
     t.index ["controller_path"], name: "index_com_meta_actions_on_controller_path"
     t.index ["namespace_identifier"], name: "index_com_meta_actions_on_namespace_identifier"
@@ -779,8 +783,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "identifier", default: "", null: false
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["identifier"], name: "index_com_meta_businesses_on_identifier"
   end
 
@@ -795,8 +799,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "defined_model"
     t.boolean "belongs_enable"
     t.string "belongs_table"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_name"], name: "index_com_meta_columns_on_record_name"
   end
 
@@ -806,8 +810,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "controller_path", null: false
     t.string "controller_name", null: false
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["business_identifier"], name: "index_com_meta_controllers_on_business_identifier"
     t.index ["controller_path"], name: "index_com_meta_controllers_on_controller_path"
     t.index ["namespace_identifier"], name: "index_com_meta_controllers_on_namespace_identifier"
@@ -819,8 +823,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "description"
     t.boolean "defined_db"
     t.boolean "customizable", comment: "是否允许用户定制"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_name"], name: "index_com_meta_models_on_record_name"
   end
 
@@ -830,16 +834,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "verify_organ"
     t.boolean "verify_member"
     t.boolean "verify_user"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["identifier"], name: "index_com_meta_namespaces_on_identifier"
   end
 
   create_table "com_meta_operations", id: { scale: 8 }, force: :cascade do |t|
     t.string "action_name"
     t.string "operation", default: "read"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "datum_data_lists", id: { type: :serial, scale: 4 }, force: :cascade do |t|
@@ -849,8 +853,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "data_table"
     t.string "export_excel"
     t.string "export_pdf"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.jsonb "parameters"
     t.jsonb "columns"
     t.integer "x_position", scale: 4
@@ -859,8 +863,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "datum_record_lists", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "data_list_id", scale: 4
     t.boolean "done"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.jsonb "parameters"
     t.jsonb "columns"
     t.index ["data_list_id"], name: "index_datum_record_lists_on_data_list_id"
@@ -868,8 +872,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "datum_table_items", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "table_list_id", scale: 4
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "fields", array: true
     t.index ["table_list_id"], name: "index_datum_table_items_on_table_list_id"
   end
@@ -880,8 +884,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "timestamp"
     t.boolean "done"
     t.boolean "published"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "headers", array: true
     t.string "footers", array: true
     t.jsonb "parameters"
@@ -897,8 +901,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "list", scale: 50
     t.bigint "detail_id", scale: 8
     t.bigint "author_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "detail_type"
     t.index ["author_id"], name: "index_detail_contents_on_author_id"
     t.index ["detail_id"], name: "index_detail_contents_on_detail_id"
@@ -907,8 +911,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "detail_entity_items", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "list_id", scale: 8
     t.bigint "item_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "value"
     t.string "entity_type"
     t.bigint "entity_id", scale: 8
@@ -924,8 +928,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "type"
     t.string "key"
     t.string "description", scale: 1024
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "list_id", scale: 8
     t.index ["list_id"], name: "index_detail_items_on_list_id"
   end
@@ -935,8 +939,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "knowable_id", scale: 8
     t.bigint "knowledge_id", scale: 8
     t.boolean "primary"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["knowable_type", "knowable_id"], name: "index_detail_knowings_on_knowable_type_and_knowable_id"
     t.index ["knowledge_id"], name: "index_detail_knowings_on_knowledge_id"
   end
@@ -945,8 +949,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "knowledge_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "knowledge_desc_idx"
   end
@@ -957,8 +961,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.text "body"
     t.integer "position", scale: 4
     t.json "parent_ancestors"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["parent_id"], name: "index_detail_knowledges_on_parent_id"
   end
 
@@ -967,8 +971,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "position", scale: 4
     t.integer "items_count", scale: 4, default: 0
     t.integer "status", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.index ["organ_id"], name: "index_detail_lists_on_organ_id"
   end
@@ -977,9 +981,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "post_id", scale: 8
     t.string "synced_type"
     t.bigint "synced_id", scale: 8
-    t.datetime "synced_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "synced_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "source_id"
     t.index ["post_id"], name: "index_detail_post_syncs_on_post_id"
     t.index ["synced_type", "synced_id"], name: "index_detail_post_syncs_on_synced_type_and_synced_id"
@@ -987,8 +991,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "detail_posts", id: { scale: 8 }, force: :cascade do |t|
     t.string "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "title"
     t.string "content"
     t.string "link"
@@ -1003,8 +1007,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "taxon_id", scale: 8
     t.bigint "list_id", scale: 8
     t.bigint "item_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "default_value"
     t.index ["item_id"], name: "index_detail_taxon_items_on_item_id"
     t.index ["list_id"], name: "index_detail_taxon_items_on_list_id"
@@ -1014,8 +1018,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "doc_maps", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.jsonb "mappings"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "doc_subjects", id: { scale: 8 }, force: :cascade do |t|
@@ -1031,8 +1035,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "response_type"
     t.string "response_body"
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_doc_subjects_on_rule_id"
   end
 
@@ -1046,8 +1050,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "cc_to"
     t.string "sent_status"
     t.string "sent_string"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "template_id", scale: 8
     t.string "mail_from"
     t.index ["template_id"], name: "index_email_logs_on_template_id"
@@ -1055,16 +1059,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "email_reasons", id: { scale: 8 }, force: :cascade do |t|
     t.string "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "email_smtp_accounts", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "smtp_id", scale: 8
     t.string "user_name"
     t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.index ["smtp_id"], name: "index_email_smtp_accounts_on_smtp_id"
   end
@@ -1076,8 +1080,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "ssl"
     t.string "authentication"
     t.string "openssl_verify_mode"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "email_subscriptions", id: { scale: 8 }, force: :cascade do |t|
@@ -1085,10 +1089,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "smtp_account_id", scale: 8
     t.string "address"
     t.string "state"
-    t.datetime "subscribe_at"
-    t.datetime "unsubscribe_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "subscribe_at", precision: nil
+    t.datetime "unsubscribe_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "reason_id", scale: 8
     t.index ["reason_id"], name: "index_email_subscriptions_on_reason_id"
     t.index ["smtp_account_id"], name: "index_email_subscriptions_on_smtp_account_id"
@@ -1099,8 +1103,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "honorific"
     t.string "body"
     t.string "order_prefix"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.string "contact"
     t.string "subject"
@@ -1118,8 +1122,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "quit_note"
     t.string "assigned_status"
     t.string "job_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "event_crowd_id", scale: 8
     t.integer "crowd_member_id", scale: 4
     t.index ["event_crowd_id"], name: "index_event_participants_on_event_crowd_id"
@@ -1136,8 +1140,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "time_item_id", scale: 4
     t.integer "place_id", scale: 4
     t.date "booking_on"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "seat_id", scale: 8
     t.index ["booked_type", "booked_id"], name: "index_eventual_bookings_on_booked_type_and_booked_id"
     t.index ["booker_type", "booker_id"], name: "index_eventual_bookings_on_booker_type_and_booker_id"
@@ -1153,8 +1157,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "member_id", scale: 8
     t.bigint "agency_id", scale: 8
     t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["agency_id"], name: "index_eventual_crowd_members_on_agency_id"
     t.index ["crowd_id"], name: "index_eventual_crowd_members_on_crowd_id"
     t.index ["member_type", "member_id"], name: "index_eventual_crowd_members_on_member_type_and_member_id"
@@ -1165,8 +1169,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "member_type"
     t.integer "crowd_members_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_eventual_crowds_on_organ_id"
   end
 
@@ -1174,8 +1178,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "event_id", scale: 8
     t.bigint "crowd_id", scale: 8
     t.integer "present_number", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["crowd_id"], name: "index_eventual_event_crowds_on_crowd_id"
     t.index ["event_id"], name: "index_eventual_event_crowds_on_event_id"
   end
@@ -1185,8 +1189,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "grant_kind"
     t.string "grant_column"
     t.jsonb "filter", default: {}
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_eventual_event_grants_on_event_id"
   end
 
@@ -1194,8 +1198,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "event_id", scale: 8
     t.string "name"
     t.bigint "author_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_eventual_event_items_on_author_id"
     t.index ["event_id"], name: "index_eventual_event_items_on_event_id"
   end
@@ -1212,8 +1216,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "assigned_status"
     t.string "job_id"
     t.string "state", default: "in_studying"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["crowd_member_id"], name: "index_eventual_event_participants_on_crowd_member_id"
     t.index ["event_crowd_id"], name: "index_eventual_event_participants_on_event_crowd_id"
     t.index ["event_id"], name: "index_eventual_event_participants_on_event_id"
@@ -1222,8 +1226,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "eventual_event_taxons", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.index ["organ_id"], name: "index_eventual_event_taxons_on_organ_id"
   end
@@ -1234,8 +1238,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "description", scale: 4096
     t.integer "position", scale: 4
     t.integer "event_items_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.decimal "price", limit: 2, precision: 10
     t.integer "event_participants_count", scale: 4, default: 0
@@ -1248,8 +1252,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "place_taxon_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "place_taxon_desc_idx"
   end
@@ -1261,8 +1265,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "position", scale: 4
     t.decimal "profit_margin", limit: 2, precision: 4
     t.jsonb "parent_ancestors"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "places_count", scale: 4
     t.index ["organ_id"], name: "index_eventual_place_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_eventual_place_taxons_on_parent_id"
@@ -1272,8 +1276,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_id", scale: 8
     t.string "name"
     t.string "color"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "place_taxon_id", scale: 8
     t.string "description"
     t.bigint "area_id", scale: 8
@@ -1293,8 +1297,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "attended"
     t.string "state"
     t.jsonb "extra"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "plan_participant_id", scale: 8
     t.bigint "plan_id", scale: 8
     t.index ["attender_type", "attender_id"], name: "index_eventual_plan_attenders_on_attender_type_and_attender_id"
@@ -1312,8 +1316,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "repeat_index"
     t.integer "bookings_count", scale: 4, default: 0
     t.jsonb "extra"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "time_list_id", scale: 8
     t.string "planned_type"
     t.bigint "planned_id", scale: 8
@@ -1336,8 +1340,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "participant_id", scale: 8
     t.string "type"
     t.string "status", comment: "默认 event_participant 有效"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["event_participant_id"], name: "index_eventual_plan_participants_on_event_participant_id"
     t.index ["participant_type", "participant_id"], name: "index_eventual_plan_participants_on_participant"
     t.index ["planning_type", "planning_id"], name: "index_eventual_plan_participants_on_planning"
@@ -1351,8 +1355,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.date "begin_on"
     t.date "end_on"
     t.string "repeat_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "repeat_count", scale: 4
     t.jsonb "repeat_days"
     t.string "title"
@@ -1367,8 +1371,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "eventual_seats", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "place_id", scale: 8
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "min_members", scale: 4, default: 1
     t.integer "max_members", scale: 4
     t.index ["place_id"], name: "index_eventual_seats_on_place_id"
@@ -1379,8 +1383,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.time "start_at"
     t.time "finish_at"
     t.integer "position", scale: 4, default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["time_list_id"], name: "index_eventual_time_items_on_time_list_id"
   end
 
@@ -1390,8 +1394,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "interval_minutes", scale: 4, default: 0
     t.integer "item_minutes", scale: 4, default: 45
     t.boolean "default"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.string "kind"
     t.index ["organ_id"], name: "index_eventual_time_lists_on_organ_id"
@@ -1400,8 +1404,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "factory_factory_providers", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "factory_taxon_id", scale: 8
     t.bigint "provider_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["factory_taxon_id"], name: "index_factory_factory_providers_on_factory_taxon_id"
     t.index ["provider_id"], name: "index_factory_factory_providers_on_provider_id"
   end
@@ -1409,8 +1413,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "factory_factory_taxons", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "factory_part_items", id: { scale: 8 }, force: :cascade do |t|
@@ -1418,22 +1422,22 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "product_item_id", scale: 8
     t.string "qr_code"
     t.string "state"
-    t.datetime "received_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "received_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["part_id"], name: "index_factory_part_items_on_part_id"
     t.index ["product_item_id"], name: "index_factory_part_items_on_product_item_id"
   end
 
   create_table "factory_part_plans", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "part_id", scale: 8
-    t.datetime "start_at"
-    t.datetime "finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
     t.string "state"
     t.integer "purchased_count", scale: 4, default: 0
     t.integer "received_count", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "product_id", scale: 8
     t.bigint "production_id", scale: 8
     t.index ["part_id"], name: "index_factory_part_plans_on_part_id"
@@ -1450,8 +1454,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "export_price"
     t.boolean "verified"
     t.boolean "selected"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_factory_part_providers_on_organ_id"
     t.index ["part_id"], name: "index_factory_part_providers_on_part_id"
     t.index ["product_id"], name: "index_factory_part_providers_on_product_id"
@@ -1463,8 +1467,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "part_taxon_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "part_taxon_desc_idx"
   end
@@ -1473,8 +1477,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "position", scale: 4, default: 1
     t.bigint "parent_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.jsonb "parent_ancestors"
     t.boolean "take_stock", comment: "可盘点"
@@ -1497,8 +1501,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "price", limit: 2, precision: 10
     t.decimal "import_price", limit: 2, precision: 10
     t.decimal "profit_price", limit: 2, precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.jsonb "part_taxon_ancestors"
     t.integer "part_providers_count", scale: 4, default: 0
@@ -1510,21 +1514,21 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "factory_produce_plans", id: { scale: 8 }, force: :cascade do |t|
     t.string "title"
     t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.bigint "scene_id", scale: 8
     t.date "produce_on"
     t.integer "serial_number", scale: 4
-    t.datetime "book_finish_at", precision: 6
-    t.datetime "book_start_at", precision: 6
+    t.datetime "book_finish_at"
+    t.datetime "book_start_at"
     t.index ["organ_id"], name: "index_factory_produce_plans_on_organ_id"
     t.index ["scene_id"], name: "index_factory_produce_plans_on_scene_id"
   end
 
   create_table "factory_produces", id: { scale: 8 }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.string "content"
   end
@@ -1536,8 +1540,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "min_select", scale: 4, default: 1
     t.integer "max_select", scale: 4, default: 1, comment: "最大同时选择，1则为单选"
     t.json "part_taxon_ancestors"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["part_taxon_id"], name: "index_factory_product_part_taxons_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_product_part_taxons_on_product_id"
   end
@@ -1545,8 +1549,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "factory_product_parts", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "product_id", scale: 8
     t.bigint "part_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "part_taxon_id", scale: 8
     t.boolean "default"
     t.index ["part_id"], name: "index_factory_product_parts_on_part_id"
@@ -1556,13 +1560,13 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "factory_product_plans", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "product_id", scale: 8
-    t.datetime "start_at"
-    t.datetime "finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
     t.string "state"
     t.integer "planned_count", scale: 4, default: 0
     t.integer "produced_count", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "produce_plan_id", scale: 8
     t.index ["produce_plan_id"], name: "index_factory_product_plans_on_produce_plan_id"
     t.index ["product_id"], name: "index_factory_product_plans_on_product_id"
@@ -1572,10 +1576,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "product_id", scale: 8
     t.bigint "produce_id", scale: 8
     t.integer "position", scale: 4
-    t.datetime "start_at"
-    t.datetime "finish_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["produce_id"], name: "index_factory_product_produces_on_produce_id"
     t.index ["product_id"], name: "index_factory_product_produces_on_product_id"
   end
@@ -1584,8 +1588,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "product_taxon_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "product_taxon_desc_idx"
   end
@@ -1594,8 +1598,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "position", scale: 4, default: 1
     t.bigint "parent_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.json "parent_ancestors"
     t.bigint "factory_taxon_id", scale: 8
@@ -1616,10 +1620,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "product_id", scale: 8
     t.bigint "production_id", scale: 8
     t.string "state", default: "init"
-    t.datetime "customized_at"
+    t.datetime "customized_at", precision: nil
     t.decimal "original_price", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_factory_production_carts_on_cart_id"
     t.index ["product_id"], name: "index_factory_production_carts_on_product_id"
     t.index ["production_id"], name: "index_factory_production_carts_on_production_id"
@@ -1630,9 +1634,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "production_id", scale: 8
     t.string "state", default: "producing"
     t.string "qr_code"
-    t.datetime "produced_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "produced_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "production_plan_id", scale: 8
     t.index ["production_id"], name: "index_factory_production_items_on_production_id"
     t.index ["production_plan_id"], name: "index_factory_production_items_on_production_plan_id"
@@ -1642,8 +1646,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "production_id", scale: 8
     t.bigint "part_id", scale: 8
     t.decimal "price", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["part_id"], name: "index_factory_production_parts_on_part_id"
     t.index ["production_id"], name: "index_factory_production_parts_on_production_id"
   end
@@ -1652,15 +1656,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "production_id", scale: 8
     t.bigint "product_id", scale: 8
     t.bigint "scene_id", scale: 8
-    t.datetime "start_at", precision: 6
-    t.datetime "finish_at", precision: 6
+    t.datetime "start_at"
+    t.datetime "finish_at"
     t.string "state"
     t.integer "planned_count", scale: 4, default: 0
     t.integer "production_items_count", scale: 4, default: 0
     t.date "produce_on"
     t.boolean "specialty", default: false, comment: "主推"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "trade_items_count", scale: 4, default: 0
     t.index ["product_id"], name: "index_factory_production_plans_on_product_id"
     t.index ["production_id"], name: "index_factory_production_plans_on_production_id"
@@ -1683,11 +1687,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "unit"
     t.decimal "quantity", default: "0.0"
     t.decimal "unified_quantity", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "enabled", default: false
     t.jsonb "vip_price", default: {}
     t.bigint "product_taxon_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.boolean "automatic", default: false
+    t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_id"], name: "index_factory_productions_on_product_id"
     t.index ["product_taxon_id"], name: "index_factory_productions_on_product_taxon_id"
   end
@@ -1700,8 +1707,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "sku"
     t.integer "order_items_count", scale: 4, default: 0
     t.boolean "published", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.json "product_taxon_ancestors"
     t.string "str_part_ids"
@@ -1724,16 +1731,17 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.time "deliver_start_at"
     t.time "deliver_finish_at"
     t.boolean "specialty", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "automatic", default: false
     t.index ["organ_id"], name: "index_factory_scenes_on_organ_id"
   end
 
   create_table "finance_assessments", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
     t.decimal "amount", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.decimal "trustee_amount"
     t.index ["organ_id"], name: "index_finance_assessments_on_organ_id"
   end
@@ -1748,8 +1756,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "subject"
     t.decimal "amount"
     t.string "note", scale: 4096
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "task_id", scale: 8
     t.string "type"
     t.bigint "fund_id", scale: 8
@@ -1771,8 +1779,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "state"
     t.integer "quantity", scale: 4, default: 1
     t.decimal "price", limit: 2, precision: 10
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "budget_id", scale: 8
     t.decimal "budget_amount"
     t.index ["budget_id"], name: "index_finance_expense_items_on_budget_id"
@@ -1788,8 +1796,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "advance"
     t.string "state", default: "pending"
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "operator_id", scale: 8
     t.string "payable_type"
     t.bigint "payable_id", scale: 8
@@ -1797,7 +1805,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "payout_uuid"
     t.decimal "requested_amount"
     t.decimal "actual_amount"
-    t.datetime "paid_at"
+    t.datetime "paid_at", precision: nil
     t.string "account_bank"
     t.string "account_name"
     t.string "account_num"
@@ -1821,8 +1829,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "amount", limit: 2, precision: 10
     t.string "note", scale: 4096
     t.integer "invoices_count", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.bigint "budget_id", scale: 8
     t.string "financial_type"
@@ -1844,8 +1852,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "financial_taxon_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "financial_taxon_desc_idx"
   end
@@ -1857,8 +1865,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "position", scale: 4
     t.boolean "take_stock", comment: "是否有库存"
     t.boolean "individual", comment: "是否可盘点"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.index ["organ_id"], name: "index_finance_financial_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_finance_financial_taxons_on_parent_id"
@@ -1871,8 +1879,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "financial_id", scale: 8
     t.boolean "visible"
     t.decimal "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "note"
     t.string "state", default: "init"
     t.index ["financial_type", "financial_id"], name: "index_fund_incomes_on_financial"
@@ -1892,8 +1900,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "unit"
     t.decimal "quantity", default: "0.0"
     t.decimal "unified_quantity", default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.jsonb "budget_detail", default: {}
     t.decimal "expense_amount", default: "0.0"
     t.jsonb "expense_detail", default: {}
@@ -1909,10 +1917,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "ratio", limit: 2, precision: 4
     t.integer "amount", scale: 4, default: 0, comment: "发行量"
     t.integer "expense_amount", scale: 4, default: 0
-    t.json "expense_detail", default: {}
+    t.jsonb "expense_detail", default: {}
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.decimal "assess_amount"
     t.bigint "member_id", scale: 8
     t.bigint "organ_id", scale: 8
@@ -1926,8 +1934,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "controller_path"
     t.string "action_name"
     t.string "code", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["aim_id"], name: "index_growth_aim_codes_on_aim_id"
   end
 
@@ -1940,12 +1948,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "present_point", scale: 4
     t.string "state"
     t.string "serial_number"
-    t.datetime "last_access_at"
+    t.datetime "last_access_at", precision: nil
     t.string "ip"
     t.decimal "reward_amount", limit: 2, precision: 10
     t.integer "aim_logs_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["aim_id"], name: "index_growth_aim_entities_on_aim_id"
     t.index ["entity_type", "entity_id"], name: "index_growth_aim_entities_on_entity_type_and_entity_id"
     t.index ["reward_expense_id"], name: "index_growth_aim_entities_on_reward_expense_id"
@@ -1961,7 +1969,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "ip"
     t.string "code"
     t.boolean "rewarded"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["aim_id"], name: "index_growth_aim_logs_on_aim_id"
     t.index ["entity_type", "entity_id"], name: "index_growth_aim_logs_on_entity_type_and_entity_id"
     t.index ["user_id"], name: "index_growth_aim_logs_on_user_id"
@@ -1974,8 +1982,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "state", default: "task_doing"
     t.integer "reward_amount", scale: 4, default: 0
     t.integer "aim_entities_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["aim_id"], name: "index_growth_aim_users_on_aim_id"
     t.index ["user_id"], name: "index_growth_aim_users_on_user_id"
   end
@@ -1989,8 +1997,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "reward_point", scale: 4, default: 0
     t.integer "reward_amount", scale: 4, default: 0
     t.boolean "verbose"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "growth_praise_incomes", id: { scale: 8 }, force: :cascade do |t|
@@ -2004,8 +2012,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "royalty_amount", limit: 2, precision: 10, default: "0.0", comment: "作者分成"
     t.decimal "reward_amount", limit: 2, precision: 10, default: "0.0", comment: "赏金池"
     t.string "state", default: "init"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["earner_id"], name: "index_growth_praise_incomes_on_earner_id"
     t.index ["reward_id"], name: "index_growth_praise_incomes_on_reward_id"
     t.index ["source_type", "source_id"], name: "index_growth_praise_incomes_on_source_type_and_source_id"
@@ -2019,8 +2027,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "entity_id", scale: 8
     t.decimal "amount", limit: 2, precision: 10, default: "0.0"
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["entity_type", "entity_id"], name: "index_growth_praise_users_on_entity_type_and_entity_id"
     t.index ["reward_id"], name: "index_growth_praise_users_on_reward_id"
     t.index ["user_id"], name: "index_growth_praise_users_on_user_id"
@@ -2031,8 +2039,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "user_id", scale: 8
     t.bigint "aim_id", scale: 8
     t.decimal "amount", limit: 2, precision: 10, default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["aim_id"], name: "index_growth_reward_expenses_on_aim_id"
     t.index ["reward_id"], name: "index_growth_reward_expenses_on_reward_id"
     t.index ["user_id"], name: "index_growth_reward_expenses_on_user_id"
@@ -2042,8 +2050,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "reward_id", scale: 8
     t.bigint "user_id", scale: 8
     t.decimal "reward_amount", limit: 2, precision: 10, default: "0.0"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["reward_id"], name: "index_growth_reward_incomes_on_reward_id"
     t.index ["user_id"], name: "index_growth_reward_incomes_on_user_id"
   end
@@ -2056,12 +2064,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "amount", limit: 2, precision: 10
     t.decimal "income_amount", limit: 2, precision: 10
     t.decimal "expense_amount", limit: 2, precision: 10
-    t.datetime "start_at"
-    t.datetime "finish_at"
+    t.datetime "start_at", precision: nil
+    t.datetime "finish_at", precision: nil
     t.boolean "enabled", default: true
     t.integer "lock_version", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["entity_type", "entity_id"], name: "index_growth_rewards_on_entity_type_and_entity_id"
   end
 
@@ -2070,8 +2078,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "abusement_type"
     t.bigint "abusement_id", scale: 8
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["abusement_type", "abusement_id"], name: "index_interact_abuses_on_abusement_type_and_abusement_id"
     t.index ["user_id"], name: "index_interact_abuses_on_user_id"
   end
@@ -2081,8 +2089,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "attitudinal_type"
     t.bigint "attitudinal_id", scale: 8
     t.string "opinion"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["attitudinal_type", "attitudinal_id"], name: "index_interact_attitudes_on_attitudinal_type_and_attitudinal_id"
     t.index ["user_id"], name: "index_interact_attitudes_on_user_id"
   end
@@ -2098,8 +2106,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.float "score", default: 0.0
     t.integer "liked_count", scale: 4, default: 0
     t.integer "star_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_interact_comments_on_commentable_type_and_commentable_id"
     t.index ["parent_id"], name: "index_interact_comments_on_parent_id"
     t.index ["user_id"], name: "index_interact_comments_on_user_id"
@@ -2109,8 +2117,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "starred_type"
     t.bigint "starred_id", scale: 8
     t.bigint "user_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["starred_type", "starred_id"], name: "index_interact_stars_on_starred_type_and_starred_id"
     t.index ["user_id"], name: "index_interact_stars_on_user_id"
   end
@@ -2121,8 +2129,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "devices_count", scale: 4, default: 0
     t.integer "templates_count", scale: 4, default: 0
     t.string "base_url", default: "https://api.poscom.cn/apisc"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jia_bo_devices", id: { scale: 8 }, force: :cascade do |t|
@@ -2130,8 +2138,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "device_id"
     t.string "dev_name"
     t.string "grp_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.boolean "default", default: false
     t.index ["app_id"], name: "index_jia_bo_devices_on_app_id"
@@ -2143,8 +2151,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name", comment: "参数名称"
     t.string "code", comment: "参数 code"
     t.string "comment", comment: "评论"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["template_id"], name: "index_jia_bo_parameters_on_template_id"
   end
 
@@ -2153,8 +2161,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "code", comment: "模板编号"
     t.string "type", comment: "模板类型"
     t.string "title", comment: "模板名称"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "thumb_url"
     t.index ["app_id"], name: "index_jia_bo_templates_on_app_id"
   end
@@ -2164,8 +2172,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "path"
     t.string "download_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["git_id"], name: "index_markdown_assets_on_git_id"
   end
 
@@ -2173,8 +2181,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "path"
     t.string "parent_path"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "git_id", scale: 8
     t.integer "position", scale: 4
     t.boolean "nav", default: false, comment: "是否导航菜单"
@@ -2187,9 +2195,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "working_directory"
     t.string "remote_url"
     t.string "last_commit_message"
-    t.datetime "last_commit_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_commit_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.string "type"
     t.index ["organ_id"], name: "index_markdown_gits_on_organ_id"
@@ -2200,8 +2208,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "html"
     t.string "layout"
     t.string "path"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "git_id", scale: 8
     t.string "oid"
     t.string "title"
@@ -2209,7 +2217,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "catalog_path", default: ""
     t.boolean "ppt", default: false
     t.boolean "nav", default: false, comment: "是否导航菜单"
+    t.bigint "organ_id", scale: 8
     t.index ["git_id"], name: "index_markdown_posts_on_git_id"
+    t.index ["organ_id"], name: "index_markdown_posts_on_organ_id"
   end
 
   create_table "notice_annunciations", id: { scale: 8 }, force: :cascade do |t|
@@ -2219,8 +2229,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.string "body"
     t.string "link"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "notifications_count", scale: 4
     t.integer "readed_count", scale: 4
     t.string "type"
@@ -2234,9 +2244,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "department_id", scale: 8
     t.integer "notifications_count", scale: 4, default: 0
     t.string "state"
-    t.datetime "annunciated_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "annunciated_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["annunciation_id"], name: "index_notice_member_annunciates_on_annunciation_id"
     t.index ["department_id"], name: "index_notice_member_annunciates_on_department_id"
     t.index ["job_title_id"], name: "index_notice_member_annunciates_on_job_title_id"
@@ -2245,10 +2255,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "notice_notification_sendings", id: { scale: 8 }, force: :cascade do |t|
     t.string "way"
     t.string "sent_to"
-    t.datetime "sent_at"
+    t.datetime "sent_at", precision: nil
     t.string "sent_result"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "notification_id", scale: 8
     t.index ["notification_id"], name: "index_notice_notification_sendings_on_notification_id"
   end
@@ -2261,11 +2271,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.string "body", scale: 5000
     t.string "link"
-    t.datetime "sending_at"
-    t.datetime "read_at"
+    t.datetime "sending_at", precision: nil
+    t.datetime "read_at", precision: nil
     t.boolean "verbose", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "archived"
     t.boolean "official"
     t.bigint "organ_id", scale: 8
@@ -2289,9 +2299,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "user_tag_id", scale: 8
     t.integer "notifications_count", scale: 4, default: 0
     t.string "state"
-    t.datetime "annunciated_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "annunciated_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["annunciation_id"], name: "index_notice_user_annunciates_on_annunciation_id"
     t.index ["user_tag_id"], name: "index_notice_user_annunciates_on_user_tag_id"
   end
@@ -2301,8 +2311,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_handle_id", scale: 8
     t.bigint "department_id", scale: 8
     t.bigint "job_title_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_org_department_grants_on_department_id"
     t.index ["job_title_id"], name: "index_org_department_grants_on_job_title_id"
     t.index ["organ_handle_id"], name: "index_org_department_grants_on_organ_handle_id"
@@ -2313,8 +2323,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "department_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "department_desc_idx"
   end
@@ -2325,8 +2335,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "member_departments_count", scale: 4, default: 0
     t.integer "needed_number", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "all_member_departments_count", scale: 4
     t.bigint "superior_id", scale: 8
     t.jsonb "superior_ancestors"
@@ -2345,8 +2355,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.text "duties"
     t.integer "salary_min", scale: 4
     t.integer "salary_max", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_org_job_descriptions_on_department_id"
   end
 
@@ -2356,8 +2366,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "grade", scale: 4
     t.integer "limit_member", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "description"
     t.bigint "super_job_title_id", scale: 8
     t.integer "super_grade", scale: 4
@@ -2377,8 +2387,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "state", default: "init"
     t.date "transfer_on"
     t.string "reason_note", scale: 4096
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["from_department_id"], name: "index_org_job_transfers_on_from_department_id"
     t.index ["from_job_title_id"], name: "index_org_job_transfers_on_from_job_title_id"
     t.index ["from_office_id"], name: "index_org_job_transfers_on_from_office_id"
@@ -2394,8 +2404,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "department_root_id", scale: 8
     t.bigint "department_id", scale: 8
     t.integer "grade", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.jsonb "department_ancestors"
     t.bigint "superior_id", scale: 8
     t.index ["department_id"], name: "index_org_member_departments_on_department_id"
@@ -2413,8 +2423,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.date "join_on"
     t.boolean "enabled", default: true
     t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "pomodoro", scale: 4
     t.bigint "organ_root_id", scale: 8
     t.boolean "owned"
@@ -2439,8 +2449,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "identifier"
     t.string "appid"
     t.boolean "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "beian", comment: "备案号"
     t.index ["identifier"], name: "index_org_organ_domains_on_identifier"
     t.index ["organ_id"], name: "index_org_organ_domains_on_organ_id"
@@ -2451,16 +2461,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "description"
     t.string "record_class"
     t.string "record_column"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "org_organ_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "organ_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "organ_desc_idx"
   end
@@ -2468,8 +2478,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "org_organs", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.integer "limit_wechat", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "area_id", scale: 8
     t.bigint "parent_id", scale: 8
     t.string "address"
@@ -2490,15 +2500,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "position", scale: 4
     t.integer "resigns_count", scale: 4, default: 0
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "org_resign_references", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "resign_id", scale: 8
     t.bigint "resign_reason_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["resign_id"], name: "index_org_resign_references_on_resign_id"
     t.index ["resign_reason_id"], name: "index_org_resign_references_on_resign_reason_id"
   end
@@ -2510,8 +2520,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "reason_note", scale: 4096
     t.string "handover_note", scale: 4096
     t.string "comment", scale: 4096
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_org_resigns_on_member_id"
   end
 
@@ -2520,8 +2530,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "description"
     t.integer "grade", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_org_super_job_titles_on_organ_id"
   end
 
@@ -2532,8 +2542,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.integer "grade", scale: 4
     t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "supporter_id", scale: 8
     t.json "department_ancestors"
     t.index ["department_id"], name: "index_org_supports_on_department_id"
@@ -2555,8 +2565,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "allowance", scale: 4
     t.string "note", scale: 4096
     t.string "comment", scale: 4096
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_org_tutorials_on_member_id"
     t.index ["tutor_id"], name: "index_org_tutorials_on_tutor_id"
   end
@@ -2565,8 +2575,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "event_participant_id", scale: 8
     t.string "participant_type"
     t.bigint "participant_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "planning_type"
     t.bigint "planning_id", scale: 8
     t.string "type"
@@ -2581,8 +2591,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "address_id", scale: 8
     t.string "kind"
     t.boolean "default", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_profiled_address_organs_on_address_id"
     t.index ["organ_id"], name: "index_profiled_address_organs_on_organ_id"
   end
@@ -2593,8 +2603,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "inviter_id", scale: 8
     t.decimal "commission_ratio", limit: 2, precision: 4, default: "0.0", comment: "佣金比例"
     t.string "kind"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "role", default: "ordinary"
     t.index ["address_id"], name: "index_profiled_address_users_on_address_id"
     t.index ["inviter_id"], name: "index_profiled_address_users_on_inviter_id"
@@ -2604,8 +2614,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "profiled_addresses", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "area_id", scale: 8
     t.string "detail"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "name"
     t.string "contact"
     t.string "tel"
@@ -2624,8 +2634,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
     t.integer "generations", scale: 4, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["ancestor_id", "descendant_id", "generations"], name: "area_anc_desc_idx", unique: true
     t.index ["descendant_id"], name: "area_desc_idx"
   end
@@ -2636,8 +2646,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "parent_id", scale: 8
     t.boolean "published", default: true
     t.boolean "popular", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.json "parent_ancestors"
     t.string "timezone"
     t.string "locale"
@@ -2650,8 +2660,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "gender"
     t.string "birthday_type"
     t.date "birthday"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "organ_id", scale: 8
     t.string "real_name"
     t.string "nick_name"
@@ -2664,8 +2674,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "facilitate_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["facilitate_id"], name: "index_project_taxon_facilitates_on_facilitate_id"
     t.index ["facilitate_taxon_id"], name: "index_project_taxon_facilitates_on_facilitate_taxon_id"
     t.index ["taxon_id"], name: "index_project_taxon_facilitates_on_taxon_id"
@@ -2675,8 +2685,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "taxon_id", scale: 8
     t.bigint "facilitate_taxon_id", scale: 8
     t.bigint "indicator_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["facilitate_taxon_id"], name: "index_project_taxon_indicators_on_facilitate_taxon_id"
     t.index ["indicator_id"], name: "index_project_taxon_indicators_on_indicator_id"
     t.index ["taxon_id"], name: "index_project_taxon_indicators_on_taxon_id"
@@ -2686,8 +2696,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "record_name", default: "ProjectTaxon"
     t.jsonb "parameters", default: {}
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.decimal "fund_budget"
     t.decimal "fund_expense"
     t.decimal "budget_amount"
@@ -2701,8 +2711,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_id", scale: 8
     t.bigint "user_id", scale: 8
     t.string "access_token"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "private_folder_id"
     t.string "name"
     t.string "profile_picture_url"
@@ -2717,8 +2727,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.date "pick_on"
     t.time "pick_at"
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", scale: 8
     t.bigint "volunteer_id", scale: 8
     t.string "state", default: "init"
@@ -2733,15 +2743,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "roled_busynesses", id: { scale: 8 }, force: :cascade do |t|
     t.string "identifier"
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
   end
 
   create_table "roled_governs", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "position", scale: 4, default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "namespace_identifier"
     t.string "business_identifier"
     t.string "controller_path"
@@ -2754,14 +2764,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "verify_organ"
     t.boolean "verify_member"
     t.boolean "verify_user"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roled_role_rules", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "role_id", scale: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "params_name"
     t.string "params_identifier"
     t.string "business_identifier"
@@ -2775,16 +2785,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "roled_role_types", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "role_id", scale: 8
     t.string "who_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["role_id"], name: "index_roled_role_types_on_role_id"
   end
 
   create_table "roled_roles", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "visible"
     t.jsonb "role_hash", default: {}
     t.boolean "default"
@@ -2794,14 +2804,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "roled_rule_operations", id: { scale: 8 }, force: :cascade do |t|
     t.string "action_name"
     t.string "operation", default: "read"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roled_rules", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.integer "position", scale: 4, default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.string "namespace_identifier"
     t.string "business_identifier"
     t.string "action_name"
@@ -2817,8 +2827,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "roled_who_roles", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "who_id", scale: 8
     t.bigint "role_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "type"
     t.index ["role_id"], name: "index_roled_who_roles_on_role_id"
   end
@@ -2826,8 +2836,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "ship_cars", id: { scale: 8 }, force: :cascade do |t|
     t.string "location"
     t.string "number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", scale: 8
     t.jsonb "detail"
     t.index ["user_id"], name: "index_ship_cars_on_user_id"
@@ -2837,8 +2847,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "user_id", scale: 8
     t.string "name"
     t.string "number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.jsonb "detail"
     t.index ["user_id"], name: "index_ship_drivers_on_user_id"
   end
@@ -2846,8 +2856,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "ship_favorites", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "user_id", scale: 8
     t.bigint "driver_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "remark"
     t.index ["driver_id"], name: "index_ship_favorites_on_driver_id"
     t.index ["user_id"], name: "index_ship_favorites_on_user_id"
@@ -2858,8 +2868,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "similar_id", scale: 8
     t.integer "position", scale: 4
     t.decimal "score"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["line_id"], name: "index_ship_line_similars_on_line_id"
     t.index ["similar_id"], name: "index_ship_line_similars_on_similar_id"
   end
@@ -2867,8 +2877,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "ship_lines", id: { scale: 8 }, force: :cascade do |t|
     t.string "start_name"
     t.string "finish_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "locations_count", scale: 4, default: 0
     t.bigint "user_id", scale: 8
     t.path "path"
@@ -2886,8 +2896,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "cityname"
     t.decimal "lat", limit: 8, precision: 10
     t.decimal "lng", limit: 8, precision: 11
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.point "coordinate"
     t.index ["area_id"], name: "index_ship_locations_on_area_id"
@@ -2897,8 +2907,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "ship_packageds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "package_id", scale: 8
     t.bigint "trade_item_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "trade_item_status"
     t.index ["package_id"], name: "index_ship_packageds_on_package_id"
     t.index ["trade_item_id"], name: "index_ship_packageds_on_trade_item_id"
@@ -2906,8 +2916,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "ship_packages", id: { scale: 8 }, force: :cascade do |t|
     t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.date "expected_on"
     t.string "pick_mode"
     t.bigint "address_id", scale: 8
@@ -2922,8 +2932,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "ship_shipments", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "package_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "shipping_type"
     t.bigint "shipping_id", scale: 8
     t.bigint "address_id", scale: 8
@@ -2937,20 +2947,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "area_id", scale: 8
     t.string "name"
     t.string "detail"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.jsonb "area_ancestors"
     t.index ["area_id"], name: "index_ship_stations_on_area_id"
     t.index ["organ_id"], name: "index_ship_stations_on_organ_id"
-  end
-
-  create_table "spatial_ref_sys", primary_key: "srid", id: { type: :integer, scale: 4, default: nil }, force: :cascade do |t|
-    t.string "auth_name", scale: 256
-    t.integer "auth_srid", scale: 4
-    t.string "srtext", scale: 2048
-    t.string "proj4text", scale: 2048
-    t.check_constraint "srid > 0 AND srid <= 998999", name: "spatial_ref_sys_srid_check"
   end
 
   create_table "stats", id: { scale: 8 }, force: :cascade do |t|
@@ -2958,8 +2960,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "oauth_users_count", scale: 4
     t.integer "users_count", scale: 4
     t.integer "requirements_count", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.date "date"
   end
 
@@ -2967,8 +2969,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "price", limit: 2, precision: 10
     t.string "apple_product_id"
     t.decimal "amount", limit: 2, precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "card_template_id", scale: 8
     t.string "name"
     t.string "sku"
@@ -2991,8 +2993,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "price", limit: 2, precision: 10
     t.decimal "amount", limit: 2, precision: 10
     t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "note"
     t.string "kind"
     t.bigint "card_prepayment_id", scale: 8
@@ -3009,8 +3011,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "amount", limit: 2, precision: 10
     t.string "title"
     t.string "tag_str"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["card_id"], name: "index_trade_card_logs_on_card_id"
     t.index ["source_type", "source_id"], name: "index_trade_card_logs_on_source_type_and_source_id"
   end
@@ -3019,9 +3021,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "card_template_id", scale: 8
     t.string "token"
     t.decimal "amount"
-    t.datetime "expire_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "expire_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["card_template_id"], name: "index_trade_card_prepayments_on_card_template_id"
   end
 
@@ -3030,8 +3032,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "promote_id", scale: 8
     t.decimal "income_min", limit: 2, precision: 10, default: "0.0"
     t.decimal "income_max", limit: 2, precision: 10, default: "99999999.98999999"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["card_template_id"], name: "index_trade_card_promotes_on_card_template_id"
     t.index ["promote_id"], name: "index_trade_card_promotes_on_promote_id"
   end
@@ -3048,8 +3050,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "note"
     t.date "last_expire_on"
     t.string "kind"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_trade_card_purchases_on_card_id"
     t.index ["purchase_id"], name: "index_trade_card_purchases_on_purchase_id"
     t.index ["trade_item_id"], name: "index_trade_card_purchases_on_trade_item_id"
@@ -3058,8 +3060,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "trade_card_templates", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "description"
     t.string "text_color"
     t.integer "cards_count", scale: 4, default: 0
@@ -3078,21 +3080,29 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "expense_amount", limit: 2, precision: 10
     t.decimal "income_amount", limit: 2, precision: 10
     t.integer "lock_version", scale: 4
-    t.datetime "effect_at"
-    t.datetime "expire_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "effect_at", precision: nil
+    t.datetime "expire_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "agency_id", scale: 8
     t.bigint "cart_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
     t.index ["agency_id"], name: "index_trade_cards_on_agency_id"
     t.index ["card_template_id"], name: "index_trade_cards_on_card_template_id"
     t.index ["cart_id"], name: "index_trade_cards_on_cart_id"
+    t.index ["member_id"], name: "index_trade_cards_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_cards_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_cards_on_organ_id"
     t.index ["trade_item_id"], name: "index_trade_cards_on_trade_item_id"
+    t.index ["user_id"], name: "index_trade_cards_on_user_id"
   end
 
   create_table "trade_carts", id: { scale: 8 }, force: :cascade do |t|
     t.decimal "amount", limit: 2, precision: 10
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "user_id", scale: 8
     t.bigint "payment_strategy_id", scale: 8
     t.integer "deposit_ratio", scale: 4
@@ -3108,9 +3118,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "lock_version", scale: 4
     t.decimal "original_amount", default: "0.0", comment: "原价，应用优惠之前的价格"
     t.bigint "member_id", scale: 8
-    t.boolean "current", default: false
     t.bigint "member_organ_id", scale: 8
     t.boolean "auto", default: false, comment: "自动下单"
+    t.boolean "myself", default: true, comment: "自己下单，即 member.user.id == user_id"
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
     t.index ["member_id"], name: "index_trade_carts_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_carts_on_member_organ_id"
@@ -3125,8 +3135,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.decimal "amount", default: "0.0"
     t.string "note"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cash_id"], name: "index_trade_cash_givens_on_cash_id"
     t.index ["organ_id"], name: "index_trade_cash_givens_on_organ_id"
   end
@@ -3139,8 +3149,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "amount", limit: 2, precision: 10
     t.string "title"
     t.string "tag_str"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["cash_id"], name: "index_trade_cash_logs_on_cash_id"
     t.index ["source_type", "source_id"], name: "index_trade_cash_logs_on_source_type_and_source_id"
     t.index ["user_id"], name: "index_trade_cash_logs_on_user_id"
@@ -3154,8 +3164,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "lock_version", scale: 4
     t.string "account_bank"
     t.string "account_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "account_number"
     t.index ["user_id"], name: "index_trade_cashes_on_user_id"
   end
@@ -3164,8 +3174,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "from"
     t.string "to"
     t.decimal "rate"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "trade_orders", id: { scale: 8 }, force: :cascade do |t|
@@ -3176,8 +3186,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "item_amount", limit: 2, precision: 10
     t.string "currency"
     t.integer "payment_id", scale: 4
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "payment_strategy_id", scale: 8
     t.boolean "myself"
     t.decimal "overall_reduced_amount", limit: 2, precision: 10
@@ -3188,7 +3198,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_id", scale: 8
     t.integer "lock_version", scale: 4
     t.string "note", scale: 4096
-    t.datetime "expire_at"
+    t.datetime "expire_at", precision: nil
     t.json "extra", default: {}
     t.integer "trade_items_count", scale: 4, default: 0
     t.bigint "address_id", scale: 8
@@ -3213,8 +3223,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "bank"
     t.text "extra"
     t.boolean "verified"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "creator_id", scale: 8
     t.boolean "myself", default: true
     t.index ["creator_id"], name: "index_trade_payment_methods_on_creator_id"
@@ -3224,8 +3234,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "payment_id", scale: 8
     t.bigint "order_id", scale: 8
     t.decimal "check_amount", limit: 2, precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "state"
     t.index ["order_id"], name: "index_trade_payment_orders_on_order_id"
     t.index ["payment_id"], name: "index_trade_payment_orders_on_payment_id"
@@ -3233,20 +3243,24 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
 
   create_table "trade_payment_references", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "payment_method_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "state"
     t.bigint "cart_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
     t.index ["cart_id"], name: "index_trade_payment_references_on_cart_id"
+    t.index ["member_id"], name: "index_trade_payment_references_on_member_id"
     t.index ["payment_method_id"], name: "index_trade_payment_references_on_payment_method_id"
+    t.index ["user_id"], name: "index_trade_payment_references_on_user_id"
   end
 
   create_table "trade_payment_strategies", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
     t.string "strategy"
     t.integer "period", scale: 4, default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "trade_payments", id: { scale: 8 }, force: :cascade do |t|
@@ -3258,7 +3272,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "adjust_amount", limit: 2, precision: 10, default: "0.0"
     t.string "payment_uuid", scale: 255
     t.string "notify_type", scale: 255
-    t.datetime "notified_at"
+    t.datetime "notified_at", precision: nil
     t.string "pay_status", scale: 255
     t.string "seller_identifier", scale: 255
     t.string "buyer_name", scale: 255
@@ -3268,8 +3282,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "currency", scale: 255
     t.string "comment"
     t.bigint "payment_method_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "state"
     t.bigint "organ_id", scale: 8
     t.boolean "verified", default: true
@@ -3289,13 +3303,13 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "requested_amount", limit: 2, precision: 10
     t.decimal "actual_amount", limit: 2, precision: 10
     t.string "state"
-    t.datetime "paid_at"
+    t.datetime "paid_at", precision: nil
     t.boolean "advance", default: false
     t.string "account_bank"
     t.string "account_name"
     t.string "account_num"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "wallet_id", scale: 8
     t.index ["operator_id"], name: "index_trade_payouts_on_operator_id"
     t.index ["payable_type", "payable_id"], name: "index_trade_payouts_on_payable_type_and_payable_id"
@@ -3311,22 +3325,22 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "price", comment: "价格"
     t.string "code"
     t.integer "position", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["card_template_id"], name: "index_trade_privileges_on_card_template_id"
     t.index ["privileged_type", "privileged_id"], name: "index_trade_privileges_on_privileged"
   end
 
   create_table "trade_promote_carts", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "promote_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "state"
     t.string "status"
     t.integer "trade_promotes_count", scale: 4, default: 0
     t.bigint "promote_good_id", scale: 8
-    t.datetime "effect_at"
-    t.datetime "expire_at"
+    t.datetime "effect_at", precision: nil
+    t.datetime "expire_at", precision: nil
     t.bigint "cart_id", scale: 8
     t.index ["cart_id"], name: "index_trade_promote_carts_on_cart_id"
     t.index ["promote_good_id"], name: "index_trade_promote_carts_on_promote_good_id"
@@ -3339,8 +3353,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.decimal "max", limit: 2, precision: 10, default: "99999999.99"
     t.decimal "parameter", limit: 2, precision: 10
     t.string "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "contain_max"
     t.boolean "contain_min"
     t.decimal "base_price", limit: 2, precision: 10
@@ -3354,8 +3368,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "promote_id", scale: 8
     t.string "extra_name"
     t.string "column_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["promote_id"], name: "index_trade_promote_extras_on_promote_id"
   end
 
@@ -3363,19 +3377,19 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "good_type"
     t.bigint "good_id", scale: 8
     t.bigint "promote_id", scale: 8
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "status"
-    t.datetime "effect_at"
-    t.datetime "expire_at"
+    t.datetime "effect_at", precision: nil
+    t.datetime "expire_at", precision: nil
     t.index ["good_type", "good_id"], name: "index_trade_promote_goods_on_good_type_and_good_id"
     t.index ["promote_id"], name: "index_trade_promote_goods_on_promote_id"
   end
 
   create_table "trade_promotes", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "verified", default: false
     t.integer "sequence", scale: 4, default: 1
     t.string "scope"
@@ -3409,8 +3423,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.integer "months", scale: 4, default: 0
     t.integer "days", scale: 4, default: 0
     t.boolean "default", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["card_template_id"], name: "index_trade_purchases_on_card_template_id"
   end
 
@@ -3423,12 +3437,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "buyer_identifier"
     t.string "comment", scale: 512
     t.string "state", default: "0"
-    t.datetime "refunded_at"
+    t.datetime "refunded_at", precision: nil
     t.string "reason", scale: 512
     t.string "currency"
     t.string "refund_uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.json "response"
     t.bigint "organ_id", scale: 8
     t.index ["operator_id"], name: "index_trade_refunds_on_operator_id"
@@ -3441,8 +3455,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "good_type"
     t.bigint "good_id", scale: 8
     t.decimal "amount", limit: 2, precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "number", scale: 4
     t.decimal "reduced_amount", limit: 2, precision: 10
     t.decimal "additional_amount", limit: 2, precision: 10
@@ -3466,15 +3480,21 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "order_id", scale: 8
     t.bigint "member_id", scale: 8
     t.date "produce_on", comment: "对接生产管理"
-    t.datetime "expire_at", precision: 6
+    t.datetime "expire_at"
     t.bigint "organ_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.bigint "scene_id", scale: 8
     t.index ["address_id"], name: "index_trade_trade_items_on_address_id"
+    t.index ["agent_id"], name: "index_trade_trade_items_on_agent_id"
     t.index ["cart_id"], name: "index_trade_trade_items_on_cart_id"
     t.index ["good_type", "good_id"], name: "index_trade_trade_items_on_good_type_and_good_id"
     t.index ["member_id"], name: "index_trade_trade_items_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_trade_items_on_member_organ_id"
     t.index ["order_id"], name: "index_trade_trade_items_on_order_id"
     t.index ["organ_id"], name: "index_trade_trade_items_on_organ_id"
     t.index ["produce_plan_id"], name: "index_trade_trade_items_on_produce_plan_id"
+    t.index ["scene_id"], name: "index_trade_trade_items_on_scene_id"
     t.index ["user_id"], name: "index_trade_trade_items_on_user_id"
   end
 
@@ -3482,8 +3502,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "promote_id", scale: 8
     t.bigint "promote_charge_id", scale: 8
     t.decimal "amount", limit: 2, precision: 10
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.bigint "trade_item_id", scale: 8
     t.bigint "promote_good_id", scale: 8
     t.integer "sequence", scale: 4
@@ -3497,13 +3517,21 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "order_id", scale: 8
     t.string "status", default: "init"
     t.string "promote_name"
+    t.bigint "organ_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
     t.index ["cart_id"], name: "index_trade_trade_promotes_on_cart_id"
+    t.index ["member_id"], name: "index_trade_trade_promotes_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_trade_promotes_on_member_organ_id"
     t.index ["order_id"], name: "index_trade_trade_promotes_on_order_id"
+    t.index ["organ_id"], name: "index_trade_trade_promotes_on_organ_id"
     t.index ["promote_cart_id"], name: "index_trade_trade_promotes_on_promote_cart_id"
     t.index ["promote_charge_id"], name: "index_trade_trade_promotes_on_promote_charge_id"
     t.index ["promote_good_id"], name: "index_trade_trade_promotes_on_promote_good_id"
     t.index ["promote_id"], name: "index_trade_trade_promotes_on_promote_id"
     t.index ["trade_item_id"], name: "index_trade_trade_promotes_on_trade_item_id"
+    t.index ["user_id"], name: "index_trade_trade_promotes_on_user_id"
   end
 
   create_table "trade_wallet_advances", id: { scale: 8 }, force: :cascade do |t|
@@ -3516,8 +3544,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "state"
     t.string "note"
     t.string "kind"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["advance_id"], name: "index_trade_wallet_advances_on_advance_id"
     t.index ["card_prepayment_id"], name: "index_trade_wallet_advances_on_card_prepayment_id"
     t.index ["trade_item_id"], name: "index_trade_wallet_advances_on_trade_item_id"
@@ -3531,8 +3559,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.string "tag_str"
     t.decimal "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["source_type", "source_id"], name: "index_trade_wallet_logs_on_source"
     t.index ["wallet_id"], name: "index_trade_wallet_logs_on_wallet_id"
   end
@@ -3541,9 +3569,9 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "wallet_template_id", scale: 8
     t.string "token"
     t.decimal "amount"
-    t.datetime "expire_at", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["wallet_template_id"], name: "index_trade_wallet_prepayments_on_wallet_template_id"
   end
 
@@ -3556,8 +3584,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "code"
     t.string "platform"
     t.boolean "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_trade_wallet_templates_on_organ_id"
   end
 
@@ -3573,8 +3601,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "account_number"
     t.integer "lock_version", scale: 4
     t.boolean "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_trade_wallets_on_cart_id"
     t.index ["wallet_template_id"], name: "index_trade_wallets_on_wallet_template_id"
   end
@@ -3582,10 +3610,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "users", id: { type: :serial, scale: 4 }, force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
-    t.datetime "last_login_at"
+    t.datetime "last_login_at", precision: nil
     t.inet "last_login_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "disabled", default: false
     t.integer "pomodoro", scale: 4, default: 25
     t.string "timezone"
@@ -3603,7 +3631,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "platform_id", scale: 8
     t.string "appid"
     t.string "access_token"
-    t.datetime "access_token_expires_at"
+    t.datetime "access_token_expires_at", precision: nil
     t.string "refresh_token"
     t.string "func_infos", array: true
     t.string "nick_name"
@@ -3615,8 +3643,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.json "business_info"
     t.string "service_type"
     t.string "verify_type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
   end
 
@@ -3631,12 +3659,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "token", null: false
     t.string "access_token"
     t.string "jsapi_ticket"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.string "type"
-    t.datetime "access_token_expires_at"
-    t.datetime "jsapi_ticket_expires_at"
+    t.datetime "access_token_expires_at", precision: nil
+    t.datetime "jsapi_ticket_expires_at", precision: nil
     t.string "mch_id"
     t.string "key"
     t.boolean "shared"
@@ -3657,21 +3685,73 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "wechat_auths", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "platform_id", scale: 8
     t.string "auth_code"
-    t.datetime "auth_code_expires_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "auth_code_expires_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "request_id", scale: 8
     t.boolean "testcase"
     t.index ["platform_id"], name: "index_wechat_auths_on_platform_id"
     t.index ["request_id"], name: "index_wechat_auths_on_request_id"
   end
 
+  create_table "wechat_corp_users", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "provider_id", scale: 8
+    t.string "corp_id"
+    t.string "user_id"
+    t.string "device_id"
+    t.string "user_ticket"
+    t.datetime "ticket_expires_at"
+    t.string "open_userid"
+    t.string "open_id"
+    t.string "identity"
+    t.string "name"
+    t.string "gender"
+    t.string "avatar_url"
+    t.string "qr_code"
+    t.integer "department", scale: 4, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corp_id"], name: "index_wechat_corp_users_on_corp_id"
+    t.index ["provider_id"], name: "index_wechat_corp_users_on_provider_id"
+  end
+
+  create_table "wechat_corps", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "provider_id", scale: 8
+    t.string "name"
+    t.string "corp_id"
+    t.string "corp_type"
+    t.string "subject_type"
+    t.datetime "verified_end_at"
+    t.string "square_logo_url"
+    t.integer "user_max", scale: 4
+    t.string "full_name"
+    t.string "wxqrcode"
+    t.string "industry"
+    t.string "sub_industry"
+    t.string "location"
+    t.jsonb "auth_corp_info"
+    t.jsonb "auth_user_info"
+    t.jsonb "register_code_info"
+    t.jsonb "agent"
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "jsapi_ticket"
+    t.datetime "jsapi_ticket_expires_at"
+    t.string "permanent_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corp_id"], name: "index_wechat_corps_on_corp_id"
+    t.index ["organ_id"], name: "index_wechat_corps_on_organ_id"
+    t.index ["provider_id"], name: "index_wechat_corps_on_provider_id"
+  end
+
   create_table "wechat_extractions", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "extractor_id", scale: 8
     t.string "name"
     t.string "matched"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "request_id", scale: 8
     t.integer "serial_number", scale: 4
     t.index ["extractor_id"], name: "index_wechat_extractions_on_extractor_id"
@@ -3683,8 +3763,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "prefix"
     t.string "suffix"
     t.boolean "more"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "serial"
     t.integer "serial_start", scale: 4
     t.time "start_at"
@@ -3699,8 +3779,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "response_id", scale: 8
     t.string "hooked_type"
     t.bigint "hooked_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["hooked_type", "hooked_id"], name: "index_wechat_hooks_on_hooked"
     t.index ["response_id"], name: "index_wechat_hooks_on_response_id"
   end
@@ -3712,8 +3792,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "attachment_name"
     t.string "media_id"
     t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["source_type", "source_id"], name: "index_wechat_medias_on_source"
     t.index ["user_id"], name: "index_wechat_medias_on_user_id"
   end
@@ -3724,8 +3804,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "name"
     t.string "value"
     t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.string "mp_appid"
     t.string "mp_pagepath"
@@ -3737,16 +3817,16 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "title"
     t.string "description"
     t.string "url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "raw_pic_url"
     t.index ["news_reply_id"], name: "index_wechat_news_reply_items_on_news_reply_id"
   end
 
   create_table "wechat_notices", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "template_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "notification_id", scale: 8
     t.string "link", default: "index"
     t.string "msg_id"
@@ -3768,11 +3848,31 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "encoding_aes_key"
     t.string "verify_ticket"
     t.string "access_token"
-    t.datetime "access_token_expires_at"
+    t.datetime "access_token_expires_at", precision: nil
     t.string "pre_auth_code"
-    t.datetime "pre_auth_code_expires_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "pre_auth_code_expires_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wechat_provider_receives", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "provider_id", scale: 8
+    t.string "corp_id"
+    t.string "user_id"
+    t.string "agent_id"
+    t.string "msg_id"
+    t.string "msg_type"
+    t.string "event"
+    t.string "event_key"
+    t.string "content"
+    t.string "encrypt_data"
+    t.jsonb "message_hash"
+    t.string "msg_format", default: "xml"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corp_id"], name: "index_wechat_provider_receives_on_corp_id"
+    t.index ["provider_id"], name: "index_wechat_provider_receives_on_provider_id"
+    t.index ["user_id"], name: "index_wechat_provider_receives_on_user_id"
   end
 
   create_table "wechat_provider_tickets", id: { scale: 8 }, force: :cascade do |t|
@@ -3782,8 +3882,10 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "suite_id"
     t.string "ticket_data"
     t.string "agent_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.jsonb "message_hash"
+    t.string "info_type"
   end
 
   create_table "wechat_providers", id: { scale: 8 }, force: :cascade do |t|
@@ -3796,8 +3898,14 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "encoding_aes_key"
     t.string "suite_ticket"
     t.string "suite_ticket_pre"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "pre_auth_code"
+    t.datetime "pre_auth_code_expires_at"
+    t.string "provider_access_token"
+    t.datetime "provider_access_token_expires_at"
   end
 
   create_table "wechat_receives", id: { scale: 8 }, force: :cascade do |t|
@@ -3809,8 +3917,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "content"
     t.string "encrypt_data"
     t.json "message_hash"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "msg_format", default: "xml"
     t.index ["appid"], name: "index_wechat_receives_on_appid"
     t.index ["open_id"], name: "index_wechat_receives_on_open_id"
@@ -3820,8 +3928,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "wechat_registers", id: { scale: 8 }, force: :cascade do |t|
     t.string "id_name"
     t.string "id_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "state", default: "init"
     t.string "appid"
     t.bigint "user_id", scale: 8
@@ -3840,8 +3948,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "type"
     t.string "value"
     t.json "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "title"
     t.string "description"
     t.string "appid"
@@ -3852,15 +3960,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "response_id", scale: 8
     t.string "request_type"
     t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["response_id"], name: "index_wechat_request_responses_on_response_id"
   end
 
   create_table "wechat_requests", id: { scale: 8 }, force: :cascade do |t|
     t.text "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "type"
     t.string "msg_type"
     t.string "event"
@@ -3873,15 +3981,15 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.boolean "init_user_tag"
     t.jsonb "reply_body"
     t.jsonb "reply_encrypt"
-    t.datetime "sent_at", precision: 6
+    t.datetime "sent_at"
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
   end
 
   create_table "wechat_responses", id: { scale: 8 }, force: :cascade do |t|
     t.string "match_value"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "expire_at", precision: nil
     t.boolean "contain", default: true
     t.string "request_types", array: true
     t.string "appid"
@@ -3893,8 +4001,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
   create_table "wechat_scene_menus", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "scene_id", scale: 8
     t.bigint "menu_id", scale: 8
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "tag_id", scale: 8
     t.index ["menu_id"], name: "index_wechat_scene_menus_on_menu_id"
     t.index ["scene_id"], name: "index_wechat_scene_menus_on_scene_id"
@@ -3905,12 +4013,12 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.bigint "organ_id", scale: 8
     t.string "match_value"
     t.integer "expire_seconds", scale: 4
-    t.datetime "expire_at"
+    t.datetime "expire_at", precision: nil
     t.string "qrcode_ticket"
     t.string "qrcode_url"
     t.string "appid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "menu_id"
     t.index ["appid"], name: "index_wechat_scenes_on_appid"
     t.index ["organ_id"], name: "index_wechat_scenes_on_organ_id"
@@ -3924,18 +4032,18 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "appid"
     t.string "open_id"
     t.json "body"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["request_id"], name: "index_wechat_services_on_request_id"
   end
 
   create_table "wechat_subscribes", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "wechat_user_id", scale: 8
     t.bigint "template_id", scale: 8
-    t.datetime "sending_at"
+    t.datetime "sending_at", precision: nil
     t.string "status", default: "accept"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["template_id"], name: "index_wechat_subscribes_on_template_id"
     t.index ["wechat_user_id"], name: "index_wechat_subscribes_on_wechat_user_id"
   end
@@ -3945,8 +4053,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "tag_id"
     t.integer "count", scale: 4
     t.integer "user_tags_count", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_tag_id", scale: 8
     t.string "tagging_type"
     t.bigint "tagging_id", scale: 8
@@ -3962,8 +4070,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "description"
     t.string "notifiable_type"
     t.string "code", default: "default"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "content"
     t.string "appid"
   end
@@ -3977,8 +4085,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "rule"
     t.string "mapping"
     t.string "color"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["template_config_id"], name: "index_wechat_template_key_words_on_template_config_id"
   end
 
@@ -3989,8 +4097,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "content"
     t.string "example"
     t.integer "template_type", scale: 4
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "template_config_id", scale: 8
     t.index ["appid"], name: "index_wechat_templates_on_appid"
     t.index ["template_config_id"], name: "index_wechat_templates_on_template_config_id"
@@ -4003,13 +4111,13 @@ ActiveRecord::Schema.define(version: 2022_01_17_084931) do
     t.string "msg_signature"
     t.string "appid"
     t.string "ticket_data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "wechat_user_tags", id: { scale: 8 }, force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_tagged_id", scale: 8
     t.string "appid"
     t.string "tag_name"

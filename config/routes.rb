@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   namespace :board do
-    root 'home#index'
   end
   namespace :my do
     root 'home#index'
