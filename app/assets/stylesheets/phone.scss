@@ -1,0 +1,9 @@
+$body-size: 15px;
+$table-head-cell-border-width: 0 0 1px;
+
+.fa-flash {
+  --fa-animation-duration: 2s;
+}
+
+@import 'rails_design_engine_ui/stylesheets/phone.scss';
+@import '@fortawesome/fontawesome-pro/css/all.css';
