@@ -1,4 +1,4 @@
-class FacebookUser < OauthUser
+class FacebookUser < Auth::OauthUser
   attribute :provider, :string, default: 'facebook'
 
   def save_info(oauth_params)

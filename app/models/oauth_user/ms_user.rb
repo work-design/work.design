@@ -1,4 +1,4 @@
-class MsUser < OauthUser
+class MsUser < Auth::OauthUser
   attribute :provider, :string, default: 'microsoft_v2_auth'
 
   def save_info(oauth_params)

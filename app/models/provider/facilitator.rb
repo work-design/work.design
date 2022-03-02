@@ -1,5 +1,0 @@
-class Facilitator < Provider
-
-end
-
-

@@ -12,6 +12,11 @@ module OneWork
       "#{config.root}/app/models/verify_token",
       "#{config.root}/app/models/provider"
     ]
+    config.eager_load_paths += Dir[
+      "#{config.root}/app/models/oauth_user",
+      "#{config.root}/app/models/verify_token",
+      "#{config.root}/app/models/provider"
+    ]
 
     config.time_zone = 'Beijing'
     config.ssl_options = { hsts: { subdomains: true } }
