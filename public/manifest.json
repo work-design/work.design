@@ -39,6 +39,16 @@
     "src": "../views/yanglan/assets/certs/4.jpg",
     "isEntry": true
   },
+  "../views/yanglan/assets/certs/4001.jpg": {
+    "file": "assets/yanglan/assets/certs/4001.436cdb55.js",
+    "src": "../views/yanglan/assets/certs/4001.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/45001.jpg": {
+    "file": "assets/yanglan/assets/certs/45001.2e6eb197.js",
+    "src": "../views/yanglan/assets/certs/45001.jpg",
+    "isEntry": true
+  },
   "../views/yanglan/assets/certs/5.jpg": {
     "file": "assets/yanglan/assets/certs/5.811aa1c9.js",
     "src": "../views/yanglan/assets/certs/5.jpg",
@@ -47,6 +57,11 @@
   "../views/yanglan/assets/certs/6.jpg": {
     "file": "assets/yanglan/assets/certs/6.bc3ccc76.js",
     "src": "../views/yanglan/assets/certs/6.jpg",
+    "isEntry": true
+  },
+  "../views/yanglan/assets/certs/9001.jpg": {
+    "file": "assets/yanglan/assets/certs/9001.8e5f1ce5.js",
+    "src": "../views/yanglan/assets/certs/9001.jpg",
     "isEntry": true
   },
   "../views/yanglan/assets/CGA.jpg": {
@@ -262,7 +277,7 @@
       "../assets/images/one_work/logo.png"
     ],
     "css": [
-      "assets/javascripts/application.6d03fa94.css"
+      "assets/javascripts/application.89e175f1.css"
     ],
     "assets": [
       "assets/fa-brands-400.fb347c28.woff2",
