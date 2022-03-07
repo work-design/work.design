@@ -29,10 +29,10 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 774b7797358b933a4901e2cd2e4107cd0e65e86d
+  revision: a2900b48c0e2a52046d3a68667d2b94753889712
   specs:
-    tencentcloud-sdk-common (1.0.263)
-    tencentcloud-sdk-ocr (1.0.263)
+    tencentcloud-sdk-common (1.0.271)
+    tencentcloud-sdk-ocr (1.0.271)
       tencentcloud-sdk-common (~> 1.0)
 
 GIT
@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 30d772cdc194a2c21aff029a80e7b75c7049c055
+  revision: a4fc9533afb6c4137d4caa473cbf996c53ab1ccb
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -390,7 +390,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.19.3)
+    httpx (0.19.4)
       http-2-next (>= 0.4.1)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -472,6 +472,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
