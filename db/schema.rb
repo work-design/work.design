@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_09_075307) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -324,6 +324,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "uid"
   end
 
+  create_table "auth_disposable_tokens", id: { scale: 8 }, force: :cascade do |t|
+    t.string "token"
+    t.string "identity"
+    t.datetime "used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["identity"], name: "index_auth_disposable_tokens_on_identity"
+    t.index ["token"], name: "index_auth_disposable_tokens_on_token", unique: true
+  end
+
   create_table "auth_oauth_users", id: { scale: 8 }, force: :cascade do |t|
     t.string "provider"
     t.string "uid"
@@ -449,6 +459,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.decimal "import_price", default: "0.0"
     t.decimal "profit_price", default: "0.0"
     t.jsonb "vip_price", default: {}
+    t.string "good_type"
     t.index ["facilitate_taxon_id"], name: "index_bench_facilitates_on_facilitate_taxon_id"
     t.index ["organ_id"], name: "index_bench_facilitates_on_organ_id"
   end
@@ -673,9 +684,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "dns_valid"
     t.string "token"
-    t.boolean "file_valid"
     t.string "status"
     t.index ["acme_order_id"], name: "index_com_acme_identifiers_on_acme_order_id"
   end
@@ -697,6 +706,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "name", comment: "名称, attach 名称，如：avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "macro"
   end
 
   create_table "com_blob_temps", id: { scale: 8 }, force: :cascade do |t|
@@ -733,6 +743,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state", default: "init"
   end
 
   create_table "com_errs", id: { type: :serial, scale: 4 }, force: :cascade do |t|
@@ -1522,6 +1533,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.integer "serial_number", scale: 4
     t.datetime "book_finish_at"
     t.datetime "book_start_at"
+    t.integer "production_plans_count", scale: 4, default: 0
     t.index ["organ_id"], name: "index_factory_produce_plans_on_organ_id"
     t.index ["scene_id"], name: "index_factory_produce_plans_on_scene_id"
   end
@@ -1694,6 +1706,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.bigint "product_taxon_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.boolean "automatic", default: false
+    t.string "good_type"
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_id"], name: "index_factory_productions_on_product_id"
     t.index ["product_taxon_id"], name: "index_factory_productions_on_product_taxon_id"
@@ -1721,8 +1734,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.index ["sku"], name: "index_factory_products_on_sku"
   end
 
-  create_table "factory_scenes", id: { scale: 8 }, force: :cascade do |t|
+  create_table "factory_scene_automatics", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
+    t.bigint "scene_id", scale: 8
+    t.integer "advance_days", scale: 4, default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_factory_scene_automatics_on_organ_id"
+    t.index ["scene_id"], name: "index_factory_scene_automatics_on_scene_id"
+  end
+
+  create_table "factory_scenes", id: { scale: 8 }, force: :cascade do |t|
     t.string "title"
     t.integer "book_start_days", scale: 4, default: 1
     t.time "book_start_at"
@@ -1733,8 +1755,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.boolean "specialty", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "automatic", default: false
-    t.index ["organ_id"], name: "index_factory_scenes_on_organ_id"
   end
 
   create_table "finance_assessments", id: { scale: 8 }, force: :cascade do |t|
@@ -1908,6 +1928,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.bigint "buyer_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.jsonb "vip_price", default: {}
+    t.string "good_type"
     t.index ["buyer_id"], name: "index_finance_funds_on_buyer_id"
     t.index ["organ_id"], name: "index_finance_funds_on_organ_id"
   end
@@ -2982,6 +3003,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.boolean "open", default: false
     t.bigint "wallet_template_id", scale: 8
     t.jsonb "vip_price", default: {}
+    t.string "good_type"
     t.index ["card_template_id"], name: "index_trade_advances_on_card_template_id"
     t.index ["wallet_template_id"], name: "index_trade_advances_on_wallet_template_id"
   end
@@ -3290,8 +3312,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.integer "lock_version", scale: 4
     t.decimal "refunded_amount", default: "0.0"
     t.jsonb "extra", default: {}
+    t.bigint "wallet_id", scale: 8
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
+    t.index ["wallet_id"], name: "index_trade_payments_on_wallet_id"
   end
 
   create_table "trade_payouts", id: { scale: 8 }, force: :cascade do |t|
@@ -3382,8 +3406,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "status"
     t.datetime "effect_at", precision: nil
     t.datetime "expire_at", precision: nil
+    t.bigint "organ_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
+    t.string "state", default: "unused"
+    t.integer "trade_promotes_count", scale: 4, default: 0
     t.index ["good_type", "good_id"], name: "index_trade_promote_goods_on_good_type_and_good_id"
+    t.index ["member_id"], name: "index_trade_promote_goods_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
+    t.index ["organ_id"], name: "index_trade_promote_goods_on_organ_id"
     t.index ["promote_id"], name: "index_trade_promote_goods_on_promote_id"
+    t.index ["user_id"], name: "index_trade_promote_goods_on_user_id"
   end
 
   create_table "trade_promotes", id: { scale: 8 }, force: :cascade do |t|
@@ -3425,6 +3459,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.boolean "default", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "good_type"
     t.index ["card_template_id"], name: "index_trade_purchases_on_card_template_id"
   end
 
@@ -3445,10 +3480,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.datetime "updated_at", precision: nil, null: false
     t.json "response"
     t.bigint "organ_id", scale: 8
+    t.bigint "wallet_id", scale: 8
     t.index ["operator_id"], name: "index_trade_refunds_on_operator_id"
     t.index ["order_id"], name: "index_trade_refunds_on_order_id"
     t.index ["organ_id"], name: "index_trade_refunds_on_organ_id"
     t.index ["payment_id"], name: "index_trade_refunds_on_payment_id"
+    t.index ["wallet_id"], name: "index_trade_refunds_on_wallet_id"
   end
 
   create_table "trade_trade_items", id: { scale: 8 }, force: :cascade do |t|
@@ -3475,7 +3512,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.json "extra", default: {}
     t.bigint "address_id", scale: 8
     t.bigint "user_id", scale: 8
-    t.bigint "produce_plan_id", scale: 8
     t.bigint "cart_id", scale: 8
     t.bigint "order_id", scale: 8
     t.bigint "member_id", scale: 8
@@ -3493,7 +3529,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.index ["member_organ_id"], name: "index_trade_trade_items_on_member_organ_id"
     t.index ["order_id"], name: "index_trade_trade_items_on_order_id"
     t.index ["organ_id"], name: "index_trade_trade_items_on_organ_id"
-    t.index ["produce_plan_id"], name: "index_trade_trade_items_on_produce_plan_id"
     t.index ["scene_id"], name: "index_trade_trade_items_on_scene_id"
     t.index ["user_id"], name: "index_trade_trade_items_on_user_id"
   end
@@ -3603,7 +3638,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.boolean "default"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
     t.index ["cart_id"], name: "index_trade_wallets_on_cart_id"
+    t.index ["member_id"], name: "index_trade_wallets_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_wallets_on_member_organ_id"
+    t.index ["organ_id"], name: "index_trade_wallets_on_organ_id"
+    t.index ["user_id"], name: "index_trade_wallets_on_user_id"
     t.index ["wallet_template_id"], name: "index_trade_wallets_on_wallet_template_id"
   end
 
@@ -3679,6 +3722,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_084802) do
     t.string "domain"
     t.string "url_link"
     t.string "weapp_id", comment: "关联的小程序"
+    t.boolean "global", default: false
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 
