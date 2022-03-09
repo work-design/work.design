@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: f1b8b33ff98b3502bfeac938c3d93841f2585947
+  revision: 6c4f851a72ada3b1e2a41ee347d2f849b5397057
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -472,6 +472,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.3-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
