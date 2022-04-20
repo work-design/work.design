@@ -5,7 +5,7 @@ Bundler.require(*Rails.groups)
 
 module OneWork
   class Application < Rails::Application
-    config.load_defaults 7.0
+    config.load_defaults Rails::VERSION::STRING.to_f
 
     config.autoload_paths += Dir[
       "#{config.root}/app/models/oauth_user",
@@ -28,9 +28,10 @@ module OneWork
       g.javascript_engine false
       g.helper false
       g.jbuilder true
-      g.fixture_replacement :factory_bot
     end
+    config.server_timing = true
 
+    config.active_job.queue_adapter = :good_job
     config.active_record.belongs_to_required_by_default = true
 
     config.action_controller.forgery_protection_origin_check = true
