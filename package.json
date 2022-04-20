@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@antv/g2plot": "^2.3.13",
-    "@fortawesome/fontawesome-pro": "^6.0.0-beta3",
+    "@fortawesome/fontawesome-pro": "^6.1.1",
     "@fullcalendar/core": "^5.8.0",
     "@fullcalendar/daygrid": "^5.8.0",
     "@fullcalendar/resource-common": "^5.8.0",

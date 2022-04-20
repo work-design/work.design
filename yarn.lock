@@ -198,10 +198,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@fortawesome/fontawesome-pro@^6.0.0-beta3":
-  version "6.0.0"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.0.0/fontawesome-pro-6.0.0.tgz#04fde7aa6548e0b458978d0419ac54119360df51"
-  integrity sha512-SXtj013o/Q+rkI60tKhx8XqBm4mQhVSd1LIZmaU8N8wG0xMys5rGuOy/lHUiSBBdysPDM5j5AvgwXxW8LywSmQ==
+"@fortawesome/fontawesome-pro@^6.1.1":
+  version "6.1.1"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.1.1/fontawesome-pro-6.1.1.tgz#ff731c472fb4c93947e506806f3e1d7b2cd0a971"
+  integrity sha512-0w6GM8sCXNpcBLUz4bx61JvjjoCvfEIz5wBz2KjLNw9qk1F2XiUWuifXobvLbwaA7kqPGBRPo3U8Zw7zyaJ9sA==
 
 "@fullcalendar/common@~5.10.1":
   version "5.10.1"
