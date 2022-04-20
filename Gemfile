@@ -3,7 +3,7 @@ git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
 gem 'rails'
 gem 'puma'
-gem 'sidekiq'
+gem 'good_job'
 
 # Store
 gem 'pg'
