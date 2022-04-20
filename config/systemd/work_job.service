@@ -1,0 +1,15 @@
+[Unit]
+Description=Good job for Meal design
+After=syslog.target network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/ubuntu/web/work_design/current
+ExecStart=/bin/bash -lc '/home/ubuntu/.rbenv/shims/bundle exec good_job start'
+Environment='RAILS_ENV=production'
+
+RestartSec=1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
