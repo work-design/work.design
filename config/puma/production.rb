@@ -4,22 +4,27 @@ plugin :tmp_restart
 
 port 3002
 workers 2
+preload_app!
 threads 2, 32
 environment 'production'
 directory dir
-prune_bundler true
-#early_hints true
 
 bind "unix://#{File.expand_path('tmp/sockets/puma.sock', dir)}"
 pidfile "#{File.expand_path('tmp/pids/puma.pid', dir)}"
 state_path "#{File.expand_path('tmp/sockets/puma.state', dir)}"
 activate_control_app "unix://#{File.expand_path('tmp/sockets/pumactl.sock', dir)}"
-stdout_redirect "#{File.expand_path('log/puma.stdout.log', dir)}",
-                "#{File.expand_path('log/puma.stdout.log', dir)}",
-                true
+stdout_redirect(
+  "#{File.expand_path('log/puma.stdout.log', dir)}",
+  "#{File.expand_path('log/puma.stderr.log', dir)}",
+  true
+)
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+end
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
 end
 
 on_restart do
