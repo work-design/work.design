@@ -5,4 +5,13 @@ RailsExtend.configure do |config|
     '/@fs',
     '/assets'
   ]
+  config.ignore_models = [
+    'GoodJob::ActiveJobJob',
+    'GoodJob::Execution',
+    'GoodJob::Process',
+    'GoodJob::Job'
+  ]
+  config.override_prefixes = [
+    'application'
+  ]
 end
