@@ -46,7 +46,6 @@ gem 'rails_doc', gitee: 'work-design/rails_doc'
 gem 'rails_org', gitee: 'work-design/rails_org'
 gem 'rails_auth', gitee: 'work-design/rails_auth'
 gem 'rails_data', gitee: 'work-design/rails_data'
-gem 'rails_vite', gitee: 'work-design/rails_vite'
 gem 'rails_quip', gitee: 'work-design/rails_quip'
 gem 'rails_ship', gitee: 'work-design/rails_ship'
 gem 'rails_audit', gitee: 'work-design/rails_audit'
@@ -69,6 +68,7 @@ gem 'rails_interact', gitee: 'work-design/rails_interact'
 gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 
 gem 'turbo-rails'
+gem 'propshaft'
 
 # Debug
 gem 'amazing_print'

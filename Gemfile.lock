@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: ca43c570ca6fa921afcc7419b54c2304e3d085dd
+  revision: f68d07e74ebe9e6b011b0d39f6ea1119deee57bc
   specs:
     rails_com (1.3.0)
       acme-client
@@ -108,7 +108,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 937da260c2b680f79c43cdd243cb77702afc6710
+  revision: 1dbe9146d0866a4d7308345303e91609ad1c10b3
   specs:
     rails_design (0.0.1)
       rails
@@ -151,7 +151,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 0212d6abbc978487bfed520d07bd4a6d146039da
+  revision: 74966674e6145f0cd48afa639585b201302f226c
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -190,7 +190,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: 7ea475451ef79aa5e04fd71a17d2fff209e2f412
+  revision: 3ea227bfbd718324d33300b0aa9cb9a0413f66c0
   specs:
     rails_notice (1.0.3)
       rails_extend
@@ -227,7 +227,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 2db10c46f00a5ebaf2eb208a93c0815ae21823ae
+  revision: a2e8e631218d8bf9d59d55e20cbc4d29b1d7cdfb
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -235,15 +235,8 @@ GIT
       rails_notice
 
 GIT
-  remote: https://gitee.com/work-design/rails_vite.git
-  revision: d565f52c196db60c161cf1e71308d75c89b77f23
-  specs:
-    rails_vite (0.0.1)
-      rails
-
-GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 688e13bf8022cc6d97b30c5eb6a820e4c0c39168
+  revision: 1e4bbe9e2c00f147d64ebb76d02b0abf641213f3
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -511,6 +504,11 @@ GEM
       ttfunk (~> 1.7)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
+    propshaft (0.6.4)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -649,6 +647,7 @@ DEPENDENCIES
   paypal-sdk-core
   paypal-sdk-rest
   pg
+  propshaft
   puma
   rails
   rails_agency!
@@ -675,7 +674,6 @@ DEPENDENCIES
   rails_quip!
   rails_ship!
   rails_trade!
-  rails_vite!
   rails_wechat!
   redis
   rexml

@@ -13,9 +13,14 @@
     "@rails/actioncable": "7.0.1",
     "@rails/activestorage": "7.0.1",
     "bulma": "^0.9.3",
-    "rails_vite": "^0.0.5"
+    "rails_design": "^0.0.6"
   },
   "devDependencies": {
-    "sass": "^1.32.0"
+    "esbuild": "^0.14.36",
+    "sass": "^1.50.1"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build:css": "sass ./app/assets/stylesheets/entrypoints:./app/assets/builds --no-source-map --load-path=node_modules"
   }
 }
