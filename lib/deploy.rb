@@ -111,5 +111,5 @@ OptionParser.new do |opts|
 end.parse!
 
 if $0 == __FILE__
-  Deploy.exec_cmds(options[:env], added_cmds: 'systemctl --user restart sidekiq_work')
+  Deploy.exec_cmds(options[:env], added_cmds: 'systemctl --user restart meal_job')
 end
