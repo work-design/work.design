@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_31_100603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -326,13 +326,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
   end
 
   create_table "auth_disposable_tokens", id: { scale: 8 }, force: :cascade do |t|
-    t.string "token"
     t.string "identity"
     t.datetime "used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["identity"], name: "index_auth_disposable_tokens_on_identity"
-    t.index ["token"], name: "index_auth_disposable_tokens_on_token", unique: true
   end
 
   create_table "auth_oauth_users", id: { scale: 8 }, force: :cascade do |t|
@@ -1405,6 +1403,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.index ["organ_id"], name: "index_eventual_time_lists_on_organ_id"
   end
 
+  create_table "factory_brands", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "name"
+    t.string "code"
+    t.integer "products_count", scale: 4, default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_factory_brands_on_organ_id"
+  end
+
   create_table "factory_factory_providers", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "factory_taxon_id", scale: 8
     t.bigint "provider_id", scale: 8
@@ -1419,6 +1427,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.integer "position", scale: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "factory_fits", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "product_id", scale: 8
+    t.bigint "production_id", scale: 8
+    t.bigint "part_brand_id", scale: 8
+    t.bigint "part_serial_id", scale: 8
+    t.bigint "part_product_id", scale: 8
+    t.bigint "part_production_id", scale: 8
+    t.string "grade"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["part_brand_id"], name: "index_factory_fits_on_part_brand_id"
+    t.index ["part_product_id"], name: "index_factory_fits_on_part_product_id"
+    t.index ["part_production_id"], name: "index_factory_fits_on_part_production_id"
+    t.index ["part_serial_id"], name: "index_factory_fits_on_part_serial_id"
+    t.index ["product_id"], name: "index_factory_fits_on_product_id"
+    t.index ["production_id"], name: "index_factory_fits_on_production_id"
   end
 
   create_table "factory_part_items", id: { scale: 8 }, force: :cascade do |t|
@@ -1450,21 +1476,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
   end
 
   create_table "factory_part_providers", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "part_id", scale: 8
     t.bigint "product_id", scale: 8
     t.bigint "production_id", scale: 8
     t.bigint "provider_id", scale: 8
     t.bigint "organ_id", scale: 8
-    t.decimal "export_price"
     t.boolean "verified"
     t.boolean "selected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "upstream_product_id", scale: 8
+    t.bigint "upstream_production_id", scale: 8
+    t.decimal "cost_price"
     t.index ["organ_id"], name: "index_factory_part_providers_on_organ_id"
-    t.index ["part_id"], name: "index_factory_part_providers_on_part_id"
     t.index ["product_id"], name: "index_factory_part_providers_on_product_id"
     t.index ["production_id"], name: "index_factory_part_providers_on_production_id"
     t.index ["provider_id"], name: "index_factory_part_providers_on_provider_id"
+    t.index ["upstream_product_id"], name: "index_factory_part_providers_on_upstream_product_id"
+    t.index ["upstream_production_id"], name: "index_factory_part_providers_on_upstream_production_id"
   end
 
   create_table "factory_part_taxon_hierarchies", id: false, force: :cascade do |t|
@@ -1491,24 +1519,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
   end
 
   create_table "factory_parts", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "part_taxon_id", scale: 8
-    t.string "name"
-    t.string "description"
-    t.string "qr_prefix"
-    t.string "sku"
-    t.string "type"
-    t.integer "order_items_count", scale: 4, default: 0
-    t.boolean "published", default: true
-    t.decimal "price", limit: 2, precision: 10
-    t.decimal "import_price", limit: 2, precision: 10
-    t.decimal "profit_price", limit: 2, precision: 10
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.bigint "organ_id", scale: 8
-    t.integer "part_providers_count", scale: 4, default: 0
-    t.index ["organ_id"], name: "index_factory_parts_on_organ_id"
-    t.index ["part_taxon_id"], name: "index_factory_parts_on_part_taxon_id"
-    t.index ["sku"], name: "index_factory_parts_on_sku"
   end
 
   create_table "factory_produce_plans", id: { scale: 8 }, force: :cascade do |t|
@@ -1608,6 +1620,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.boolean "enabled", default: true
     t.bigint "template_id", scale: 8
     t.bigint "scene_id", scale: 8
+    t.boolean "take_stock", comment: "可盘点"
+    t.boolean "partial", default: false
     t.index ["factory_taxon_id"], name: "index_factory_product_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_product_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_factory_product_taxons_on_parent_id"
@@ -1635,10 +1649,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "production_id", scale: 8
     t.string "state", default: "producing"
     t.string "qr_code"
-    t.datetime "produced_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "production_plan_id", scale: 8
+    t.bigint "product_item_id", scale: 8
+    t.datetime "came_at"
+    t.index ["product_item_id"], name: "index_factory_production_items_on_product_item_id"
     t.index ["production_id"], name: "index_factory_production_items_on_production_id"
     t.index ["production_plan_id"], name: "index_factory_production_items_on_production_plan_id"
   end
@@ -1719,9 +1735,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.decimal "max_price"
     t.integer "productions_count", scale: 4, default: 0
     t.integer "product_parts_count", scale: 4, default: 0
+    t.bigint "unifier_id", scale: 8
+    t.bigint "brand_id", scale: 8
+    t.bigint "upstream_product_id", scale: 8
+    t.bigint "source_product_id", scale: 8
+    t.string "type"
+    t.boolean "specialty", default: false
+    t.integer "fits_count", scale: 4, default: 0
+    t.integer "part_providers_count", scale: 4, default: 0
+    t.jsonb "product_taxon_ancestors"
+    t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
     t.index ["product_taxon_id"], name: "index_factory_products_on_product_taxon_id"
     t.index ["sku"], name: "index_factory_products_on_sku"
+    t.index ["source_product_id"], name: "index_factory_products_on_source_product_id"
+    t.index ["unifier_id"], name: "index_factory_products_on_unifier_id"
+    t.index ["upstream_product_id"], name: "index_factory_products_on_upstream_product_id"
+  end
+
+  create_table "factory_provides", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "provider_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_factory_provides_on_organ_id"
+    t.index ["provider_id"], name: "index_factory_provides_on_provider_id"
   end
 
   create_table "factory_scene_automatics", id: { scale: 8 }, force: :cascade do |t|
@@ -1743,6 +1781,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.time "deliver_start_at"
     t.time "deliver_finish_at"
     t.boolean "specialty", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "factory_serial_hierarchies", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "ancestor_id", scale: 8
+    t.bigint "descendant_id", scale: 8
+    t.integer "generations", scale: 4, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "factory/serial_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_factory_serial_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_factory_serial_hierarchies_on_descendant_id"
+  end
+
+  create_table "factory_serials", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "brand_id", scale: 8
+    t.bigint "parent_id", scale: 8
+    t.string "name"
+    t.integer "position", scale: 4
+    t.integer "products_count", scale: 4, default: 0
+    t.jsonb "parent_ancestors", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_factory_serials_on_brand_id"
+    t.index ["parent_id"], name: "index_factory_serials_on_parent_id"
+  end
+
+  create_table "factory_unifiers", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -2672,8 +2741,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "station_id", scale: 8
     t.string "floor", comment: "楼层"
     t.string "room", comment: "房间号"
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
     t.index ["area_id"], name: "index_profiled_addresses_on_area_id"
+    t.index ["member_id"], name: "index_profiled_addresses_on_member_id"
+    t.index ["member_organ_id"], name: "index_profiled_addresses_on_member_organ_id"
     t.index ["station_id"], name: "index_profiled_addresses_on_station_id"
+    t.index ["user_id"], name: "index_profiled_addresses_on_user_id"
   end
 
   create_table "profiled_area_hierarchies", id: false, force: :cascade do |t|
@@ -2877,14 +2952,56 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.index ["role_id"], name: "index_roled_who_roles_on_role_id"
   end
 
+  create_table "ship_box_specifications", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "name"
+    t.integer "width", scale: 4
+    t.integer "length", scale: 4
+    t.integer "height", scale: 4
+    t.integer "boxes_count", scale: 4, default: 0
+    t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_ship_box_specifications_on_organ_id"
+  end
+
+  create_table "ship_boxes", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "box_specification_id", scale: 8
+    t.string "code"
+    t.datetime "loaded_at"
+    t.datetime "unloaded_at"
+    t.string "status"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_specification_id"], name: "index_ship_boxes_on_box_specification_id"
+    t.index ["organ_id"], name: "index_ship_boxes_on_organ_id"
+  end
+
+  create_table "ship_car_drivers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "car_id", scale: 8
+    t.bigint "driver_id", scale: 8
+    t.jsonb "repeat_days"
+    t.string "event_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["car_id"], name: "index_ship_car_drivers_on_car_id"
+    t.index ["driver_id"], name: "index_ship_car_drivers_on_driver_id"
+  end
+
   create_table "ship_cars", id: { scale: 8 }, force: :cascade do |t|
     t.string "location"
     t.string "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", scale: 8
     t.jsonb "detail"
-    t.index ["user_id"], name: "index_ship_cars_on_user_id"
+    t.bigint "organ_id", scale: 8
+    t.string "brand", comment: "车品牌"
+    t.string "tel", comment: "随车电话"
+    t.string "carriage"
+    t.string "kind"
+    t.index ["organ_id"], name: "index_ship_cars_on_organ_id"
   end
 
   create_table "ship_drivers", id: { scale: 8 }, force: :cascade do |t|
@@ -2894,6 +3011,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "detail"
+    t.bigint "organ_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.index ["member_id"], name: "index_ship_drivers_on_member_id"
+    t.index ["organ_id"], name: "index_ship_drivers_on_organ_id"
     t.index ["user_id"], name: "index_ship_drivers_on_user_id"
   end
 
@@ -2905,6 +3026,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.string "remark"
     t.index ["driver_id"], name: "index_ship_favorites_on_driver_id"
     t.index ["user_id"], name: "index_ship_favorites_on_user_id"
+  end
+
+  create_table "ship_item_shipments", id: { scale: 8 }, force: :cascade do |t|
+    t.string "item_type"
+    t.bigint "item_id", scale: 8
+    t.bigint "shipment_id", scale: 8
+    t.datetime "loaded_at"
+    t.datetime "unloaded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_type", "item_id"], name: "index_ship_item_shipments_on_item"
+    t.index ["shipment_id"], name: "index_ship_item_shipments_on_shipment_id"
   end
 
   create_table "ship_line_similars", id: { scale: 8 }, force: :cascade do |t|
@@ -2924,12 +3057,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "locations_count", scale: 4, default: 0
-    t.bigint "user_id", scale: 8
-    t.path "path"
-    t.polygon "pathway"
     t.string "name"
-    t.index ["pathway"], name: "index_ship_lines_on_pathway", using: :gist
-    t.index ["user_id"], name: "index_ship_lines_on_user_id"
   end
 
   create_table "ship_locations", id: { scale: 8 }, force: :cascade do |t|
@@ -2944,8 +3072,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.point "coordinate"
+    t.string "name"
     t.index ["area_id"], name: "index_ship_locations_on_area_id"
     t.index ["line_id"], name: "index_ship_locations_on_line_id"
+  end
+
+  create_table "ship_package_shipments", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "box_id", scale: 8
+    t.bigint "package_id", scale: 8
+    t.bigint "shipment_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_ship_package_shipments_on_box_id"
+    t.index ["package_id"], name: "index_ship_package_shipments_on_package_id"
+    t.index ["shipment_id"], name: "index_ship_package_shipments_on_shipment_id"
   end
 
   create_table "ship_packageds", id: { scale: 8 }, force: :cascade do |t|
@@ -2968,22 +3108,47 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "wait_item_id", scale: 8
     t.bigint "user_id", scale: 8
     t.bigint "produce_plan_id", scale: 8
+    t.bigint "box_id", scale: 8
+    t.datetime "boxed_in_at"
+    t.datetime "boxed_out_at"
+    t.datetime "loaded_at"
+    t.datetime "unloaded_at"
     t.index ["address_id"], name: "index_ship_packages_on_address_id"
+    t.index ["box_id"], name: "index_ship_packages_on_box_id"
     t.index ["produce_plan_id"], name: "index_ship_packages_on_produce_plan_id"
     t.index ["user_id"], name: "index_ship_packages_on_user_id"
     t.index ["wait_item_id"], name: "index_ship_packages_on_wait_item_id"
   end
 
+  create_table "ship_shipment_items", id: { scale: 8 }, force: :cascade do |t|
+    t.string "item_type"
+    t.bigint "item_id", scale: 8
+    t.bigint "shipment_id", scale: 8
+    t.datetime "loaded_at"
+    t.datetime "unloaded_at"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_type", "item_id"], name: "index_ship_shipment_items_on_item"
+    t.index ["shipment_id"], name: "index_ship_shipment_items_on_shipment_id"
+  end
+
   create_table "ship_shipments", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "package_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "shipping_type"
     t.bigint "shipping_id", scale: 8
-    t.bigint "address_id", scale: 8
     t.string "state"
-    t.index ["address_id"], name: "index_ship_shipments_on_address_id"
-    t.index ["package_id"], name: "index_ship_shipments_on_package_id"
+    t.bigint "line_id", scale: 8
+    t.bigint "car_id", scale: 8
+    t.bigint "driver_id", scale: 8
+    t.string "type"
+    t.datetime "left_at"
+    t.datetime "arrived_at"
+    t.date "load_on"
+    t.index ["car_id"], name: "index_ship_shipments_on_car_id"
+    t.index ["driver_id"], name: "index_ship_shipments_on_driver_id"
+    t.index ["line_id"], name: "index_ship_shipments_on_line_id"
     t.index ["shipping_type", "shipping_id"], name: "index_ship_shipments_on_shipping_type_and_shipping_id"
   end
 
@@ -2997,6 +3162,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.jsonb "area_ancestors"
     t.index ["area_id"], name: "index_ship_stations_on_area_id"
     t.index ["organ_id"], name: "index_ship_stations_on_organ_id"
+  end
+
+  create_table "ship_user_lines", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "line_id", scale: 8
+    t.bigint "user_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["line_id"], name: "index_ship_user_lines_on_line_id"
+    t.index ["user_id"], name: "index_ship_user_lines_on_user_id"
   end
 
   create_table "stats", id: { scale: 8 }, force: :cascade do |t|
@@ -3112,7 +3286,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.integer "cards_count", scale: 4, default: 0
     t.string "code"
     t.integer "grade", scale: 4, default: 1, comment: "会员级别"
+    t.bigint "promote_id", scale: 8
     t.index ["organ_id"], name: "index_trade_card_templates_on_organ_id"
+    t.index ["promote_id"], name: "index_trade_card_templates_on_promote_id"
   end
 
   create_table "trade_cards", id: { scale: 8 }, force: :cascade do |t|
@@ -3133,6 +3309,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
+    t.boolean "temporary", default: false, comment: "在购物车勾选临时生效"
     t.index ["agency_id"], name: "index_trade_cards_on_agency_id"
     t.index ["card_template_id"], name: "index_trade_cards_on_card_template_id"
     t.index ["member_id"], name: "index_trade_cards_on_member_id"
@@ -3148,7 +3325,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "order_id", scale: 8
     t.bigint "promote_id", scale: 8
     t.bigint "promote_charge_id", scale: 8
-    t.bigint "promote_good_id", scale: 8
     t.integer "sequence", scale: 4
     t.decimal "original_amount", comment: "初始价格"
     t.decimal "based_amount", default: "0.0", comment: "基于此价格计算，默认为 trade_item 的 amount，与sequence有关"
@@ -3164,7 +3340,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.index ["order_id"], name: "index_trade_cart_promotes_on_order_id"
     t.index ["organ_id"], name: "index_trade_cart_promotes_on_organ_id"
     t.index ["promote_charge_id"], name: "index_trade_cart_promotes_on_promote_charge_id"
-    t.index ["promote_good_id"], name: "index_trade_cart_promotes_on_promote_good_id"
     t.index ["promote_id"], name: "index_trade_cart_promotes_on_promote_id"
   end
 
@@ -3191,6 +3366,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.boolean "auto", default: false, comment: "自动下单"
     t.boolean "myself", default: true, comment: "自己下单，即 member.user.id == user_id"
     t.jsonb "extra", default: {}
+    t.string "good_type"
+    t.string "aim"
+    t.integer "trade_items_count", scale: 4, default: 0
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
     t.index ["member_id"], name: "index_trade_carts_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_carts_on_member_organ_id"
@@ -3294,6 +3472,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.decimal "original_amount", default: "0.0", comment: "原价，应用优惠之前的价格"
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
+    t.string "serial_number"
+    t.datetime "paid_at"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["member_id"], name: "index_trade_orders_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_orders_on_member_organ_id"
@@ -3405,8 +3585,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
 
   create_table "trade_privileges", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "card_template_id", scale: 8
-    t.string "privileged_type"
-    t.bigint "privileged_id", scale: 8
     t.string "name"
     t.integer "amount", scale: 4, comment: "额度"
     t.decimal "price", comment: "价格"
@@ -3414,8 +3592,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.integer "position", scale: 4
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "promote_id", scale: 8
     t.index ["card_template_id"], name: "index_trade_privileges_on_card_template_id"
-    t.index ["privileged_type", "privileged_id"], name: "index_trade_privileges_on_privileged"
+    t.index ["promote_id"], name: "index_trade_privileges_on_promote_id"
   end
 
   create_table "trade_promote_carts", id: { scale: 8 }, force: :cascade do |t|
@@ -3473,12 +3652,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
-    t.string "state", default: "unused"
     t.string "type"
     t.integer "item_promotes_count", scale: 4, default: 0
-    t.integer "cart_promotes_count", scale: 4, default: 0
     t.string "identity"
     t.integer "blacklists_count", scale: 4, default: 0
+    t.integer "use_limit", scale: 4
+    t.boolean "over_limit", default: false
     t.index ["good_type", "good_id"], name: "index_trade_promote_goods_on_good_type_and_good_id"
     t.index ["member_id"], name: "index_trade_promote_goods_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
@@ -3564,8 +3743,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.decimal "reduced_amount", limit: 2, precision: 10
     t.decimal "additional_amount", limit: 2, precision: 10
     t.decimal "single_price", limit: 2, precision: 10
-    t.boolean "myself"
-    t.boolean "starred"
     t.decimal "original_amount", limit: 2, precision: 10
     t.decimal "retail_price", limit: 2, precision: 10
     t.decimal "wholesale_price", limit: 2, precision: 10
@@ -3587,6 +3764,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_20_045456) do
     t.bigint "agent_id", scale: 8
     t.bigint "scene_id", scale: 8
     t.string "vip_code"
+    t.boolean "fetch_oneself", default: false, comment: "自取"
+    t.datetime "fetch_start_at"
+    t.datetime "fetch_finish_at"
+    t.string "aim", default: "use"
     t.index ["address_id"], name: "index_trade_trade_items_on_address_id"
     t.index ["agent_id"], name: "index_trade_trade_items_on_agent_id"
     t.index ["good_type", "good_id"], name: "index_trade_trade_items_on_good_type_and_good_id"

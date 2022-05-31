@@ -133,7 +133,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: af51569cb66d8475b33e7552befaef06b12f3066
+  revision: 2e8e39096d0b683566afe18d0281966ecb83dea9
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
@@ -450,10 +450,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.6-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.9)
       faraday (>= 0.17.3, < 3.0)
