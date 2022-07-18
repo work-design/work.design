@@ -234,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 4f54289d54a0a2a491718e5548e1f38568d88df5
+  revision: 126656e9a58be126c1729f7ff41d569098c3ec9a
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -452,6 +452,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.7)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.7-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.7-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.6)
       faraday (>= 0.17.3, < 3.0)
