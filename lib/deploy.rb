@@ -9,16 +9,12 @@ module Deploy
   MOVED_DIRS = [
     'log',
     'tmp',
-    'storage',
-    'node_modules'
   ]
   SHARED_DIRS = [
     'public/assets',
     'vendor/bundle'
   ].freeze
   SHARED_FILES = [
-    'config/apiclient_key.pem',
-    'config/credentials/staging.key',
     'config/credentials/production.key'
   ].freeze
   INIT_DIRS = [
@@ -36,18 +32,16 @@ module Deploy
     OpenSSL::HMAC.hexdigest('sha1', RailsCom.config.github_hmac_key, data)
   end
 
-  def init(root = Pathname.pwd)
+  def init_shared_paths(root = Pathname.pwd.join('../shared'))
     dirs = []
-    shared = root.join('../shared')
-    dirs += MOVED_DIRS.map { |dir| shared.join(dir) }
-    dirs += SHARED_DIRS.map { |dir| shared.join(dir) }
-    dirs += INIT_DIRS.map { |dir| shared.join(dir) }
+    dirs += MOVED_DIRS.map { |dir| root.join(dir) }
+    dirs += SHARED_DIRS.map { |dir| root.join(dir) }
+    dirs += INIT_DIRS.map { |dir| root.join(dir) }
     FileUtils.mkdir_p dirs
 
     SHARED_FILES.map do |path|
-      `touch #{shared.join(path)}`
+      `touch #{root.join(path)}`
     end
-    ln_shared_paths(root)
   end
 
   def ln_shared_paths(root = Pathname.pwd)
@@ -70,8 +64,9 @@ module Deploy
   end
 
   def exec_cmds(env, added_cmds: [], **options)
+    logger.debug "Deploy at #{Time.now}"
     cmds = []
-    cmds << 'git pull'
+    cmds << 'git pull' #  --recurse-submodules
     cmds << 'bundle install'
     cmds << "RAILS_ENV=#{env} bundle exec rake db:migrate"
     cmds << 'bundle exec pumactl restart'
@@ -79,14 +74,16 @@ module Deploy
     cmds.each do |cmd|
       exec_cmd(cmd)
     end
+    logger.debug "Deploy finished at #{Time.now}"
   end
 
   def exec_cmd(cmd)
     Open3.popen2e(cmd) do |_, output, thread|
-      logger.debug "=====> #{cmd} (PID: #{thread.pid})"
+      logger.debug "\e[35m#{cmd} (PID: #{thread.pid})\e[0m"
       output.each_line do |line|
-        logger.debug line
+        logger.debug line.chomp
       end
+      puts "\n"
     end
   end
 

@@ -286,27 +286,15 @@
   resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.1.0.tgz#27e44e0e3dc5bd1d4bda0766d579cf5a14091cd7"
   integrity sha512-Q8kGjqwPqER+CtpQudbH+3Zgs2X4zb6pBAlr6NsKTXadg45pAOvxI9i4QpuHbwSzR2+x87HUm+rot9F/Pe8rxA==
 
-"@rails/actioncable@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.1.tgz#8f383b672e142d009f89b725d49b0832d99da74a"
-  integrity sha512-lbGc1z2RXdiWZJE/8o2GSe2gek82EoKd2YvjRrqV//0J3/JImONUYwZ2XPmS1R9R2oth1XlIG0YidqdeTty0TA==
+"@rails/actioncable@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.3.tgz#71f08e958883af64f6a20489318b5e95d2c6dc5b"
+  integrity sha512-Iefl21FZD+ck1di6xSHMYzSzRiNJTHV4NrAzCfDfqc/wPz4xncrP8f2/fJ+2jzwKIaDn76UVMsALh7R5OzsF8Q==
 
-"@rails/actioncable@^7.0.0":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.2.tgz#69a6d999f4087e0537dd38fe0963db1f4305d650"
-  integrity sha512-G26maXW1Kx0LxQdmNNuNjQlRO/QlXNr3QfuwKiOKb5FZQGYe2OwtHTGXBAjSoiu4dW36XYMT/+L1Wo1Yov4ZXA==
-
-"@rails/activestorage@7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.1.tgz#207f445b684a210a9673b9f7177d83fa9e199088"
-  integrity sha512-086z2aymPsfJITR8tbXjMr5OipfoFcoWJn5y5krXx3zo9zCEBQjSVR/tS2oHQGCSxIsF0E7a9Ds1cFXrnEdSKQ==
-  dependencies:
-    spark-md5 "^3.0.1"
-
-"@rails/activestorage@^7.0.0":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.2.tgz#81986034e1a38d931c40213073973b5a4c5b86e0"
-  integrity sha512-E/W80bMnlhmLz63GvY4fn82s9nDk8ZnzWBO++G3uQhwKAT/xdHgdL8VNfTOK14VKCQwHxJuBCXYnFXY68FOfFw==
+"@rails/activestorage@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.3.tgz#516770d49f702bb2b746a826779465a513804003"
+  integrity sha512-pdIoQUNcimjbSlhUgnRyFimVvsp/J9C1yTxV3P40oQrRU81f3uM9tT4IY/wMfe691Zj7tJBiqsbThUoPT88TAA==
   dependencies:
     spark-md5 "^3.0.1"
 
@@ -372,10 +360,10 @@ braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
-bulma@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
-  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
+bulma@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.4.tgz#0ca8aeb1847a34264768dba26a064c8be72674a1"
+  integrity sha512-86FlT5+1GrsgKbPLRRY7cGDg8fsJiP/jzTqXXVqiUZZ2aZT8uemEOHlU1CDU+TxklPEZ11HZNNWclRBBecP4CQ==
 
 call-bind@^1.0.0, call-bind@^1.0.2, call-bind@~1.0.2:
   version "1.0.2"
@@ -409,13 +397,13 @@ chalk@^1.1.1:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
-choices.js@^9.0.1:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-9.1.0.tgz#fdf5c1f9df4f85f015fb82c01841f22d15b56ee0"
-  integrity sha512-6NnqiE/MNnNAiMzdW7phJ49nMQylkKMQ6La6PAS1+h1VhrGt38MOPnjzEJ3cRaECieqaGpl9eFGtI2icW27r8A==
+choices.js@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-10.1.0.tgz#034a40b7aa82e2a38f19ff8fae5bbfa6047862f4"
+  integrity sha512-NtrFt7c7ZQEGmkWsAV+EHynJhADWoZ82JEfg1+vQ9MMKJD4Ax2rzYPxXe+Q64i0HgUgWG/XTN3gN2pB8UFFFlA==
   dependencies:
     deepmerge "^4.2.2"
-    fuse.js "^3.4.6"
+    fuse.js "^6.5.3"
     redux "^4.1.2"
 
 "chokidar@>=3.0.0 <4.0.0":
@@ -756,10 +744,10 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-fuse.js@^3.4.6:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.6.1.tgz#7de85fdd6e1b3377c23ce010892656385fd9b10c"
-  integrity sha512-hT9yh/tiinkmirKrlv4KWOjztdoZo1mx9Qh4KvWqC7isoXwdUY3PNWUxceF4/qO9R6riA2C29jdTOeQOIROjgw==
+fuse.js@^6.5.3:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.6.2.tgz#fe463fed4b98c0226ac3da2856a415576dc9a111"
+  integrity sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==
 
 get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
   version "1.1.1"
@@ -833,10 +821,10 @@ has@^1.0.3, has@~1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-highlight.js@^11.3.1:
-  version "11.5.1"
-  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.5.1.tgz#027c24e4509e2f4dcd00b4a6dda542ce0a1f7aea"
-  integrity sha512-LKzHqnxr4CrD2YsNoIf/o5nJ09j4yi/GcH5BnYz9UnVpZdS4ucMgvP61TDty5xJcFGRjnH4DpujkS9bHT3hq0Q==
+highlight.js@^11.5.1:
+  version "11.6.0"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-11.6.0.tgz#a50e9da05763f1bb0c1322c8f4f755242cff3f5a"
+  integrity sha512-ig1eqDzJaB0pqEvlPVIpSSyMaO92bH1N2rJpLMN/nX396wTpDA4Eq0uK+7I/2XG17pFaaKE0kjV/XPeGt7Evjw==
 
 immutable@^4.0.0:
   version "4.0.0"
@@ -1006,10 +994,10 @@ longest@^1.0.1:
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   integrity sha1-MKCy2jj3N3DoKUoNIuZiXtd9AJc=
 
-luxon@^2.1.1:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.3.2.tgz#5f2f3002b8c39b60a7b7ad24b2a85d90dc5db49c"
-  integrity sha512-MlAQQVMFhGk4WUA6gpfsy0QycnKP0+NlCBJRVRNPxxSIbjrCbQ65nrpJD3FVyJNZLuJ0uoqL57ye6BmDYgHaSw==
+luxon@^2.4.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.5.0.tgz#098090f67d690b247e83c090267a60b1aa8ea96c"
+  integrity sha512-IDkEPB80Rb6gCAU+FEib0t4FeJ4uVOuX1CQ9GsvU3O+JAGIgu0J7sf1OarXKaKDygTZIoJyU6YdZzTFRu+YR0A==
 
 minimatch@^3.0.4:
   version "3.1.2"
@@ -1093,22 +1081,22 @@ preact@^10.0.5:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.6.6.tgz#f1899bc8dab7c0788b858481532cb3b5d764a520"
   integrity sha512-dgxpTFV2vs4vizwKohYKkk7g7rmp1wOOcfd4Tz3IB3Wi+ivZzsn/SpeKJhRENSE+n8sUfsAl4S3HiCVT923ABw==
 
-rails_design@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/rails_design/-/rails_design-0.0.6.tgz#80561d182b58baebfcdf2a76c386659ba091e11b"
-  integrity sha512-BNG7aOCdyWrwiMatOQyndjDLvtmj+faC0H5dnbXuhTY6tiyKaOpH1pX7Wh/U+5V/G7JnKZPY7SjxWk7UqOTliA==
+rails_design@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/rails_design/-/rails_design-0.0.7.tgz#65fce3735a04b2a371fb312d41d72cca99c480b4"
+  integrity sha512-QTgtC02PgOtMSiDGkmloH8DQOZPOdvCXg8f/p33KesdtXCCiamsYc3pmDQ0TkjlppVXZawqZcpCdgH895kK1gQ==
   dependencies:
     "@hotwired/stimulus" "^3.0.1"
     "@hotwired/turbo" "^7.1.0"
-    "@rails/actioncable" "^7.0.0"
-    "@rails/activestorage" "^7.0.0"
-    bulma "^0.9.3"
-    choices.js "^9.0.1"
-    highlight.js "^11.3.1"
-    luxon "^2.1.1"
-    sortablejs "^1.13.0"
+    "@rails/actioncable" "^7.0.3"
+    "@rails/activestorage" "^7.0.3"
+    bulma "^0.9.4"
+    choices.js "^10.1.0"
+    highlight.js "^11.5.1"
+    luxon "^2.4.0"
+    sortablejs "^1.15.0"
     vconsole "^3.11.2"
-    weui "^2.5.0"
+    weui "^2.5.9"
 
 readdirp@~3.6.0:
   version "3.6.0"
@@ -1202,7 +1190,7 @@ size-sensor@^1.0.1:
   resolved "https://registry.yarnpkg.com/size-sensor/-/size-sensor-1.0.1.tgz#f84e46206d3e259faff1d548e4b3beca93219dbb"
   integrity sha512-QTy7MnuugCFXIedXRpUSk9gUnyNiaxIdxGfUjr8xxXOqIB3QvBUYP9+b51oCg2C4dnhaeNk/h57TxjbvoJrJUA==
 
-sortablejs@^1.13.0:
+sortablejs@^1.15.0:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.15.0.tgz#53230b8aa3502bb77a29e2005808ffdb4a5f7e2a"
   integrity sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==
@@ -1356,10 +1344,10 @@ vconsole@^3.11.2:
     core-js "^3.11.0"
     mutation-observer "^1.0.3"
 
-weui@^2.5.0:
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/weui/-/weui-2.5.4.tgz#374ee1f7a69e8c76f9fef3e05670a03de225587f"
-  integrity sha512-N3VyhScMUXU3deOhusfxyUSTkVnat7vMgcd96seqd1xnKUc7/6vt7eDKbw+McG/pPduQYp2bZ1JdG8UxjFq0KQ==
+weui@^2.5.9:
+  version "2.5.9"
+  resolved "https://registry.yarnpkg.com/weui/-/weui-2.5.9.tgz#f625dfbc0bd55ec432b359bcf07827db634a8af2"
+  integrity sha512-53D9X8U/mA9Kd7DM5zOCZ521UGNbzKDuLDVCcpFXO1KJk/GCEDpanL2rkgC8iLE1MUBGBmGzr6bSnKtXAD9hkQ==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
