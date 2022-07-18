@@ -43,6 +43,7 @@ gem 'default_where', gitee: 'qinmingyuan/default_where'
 
 # Engines
 gem 'rails_com', gitee: 'work-design/rails_com'
+gem 'rails_crm', gitee: 'work-design/rails_crm'
 gem 'rails_doc', gitee: 'work-design/rails_doc'
 gem 'rails_org', gitee: 'work-design/rails_org'
 gem 'rails_auth', gitee: 'work-design/rails_auth'

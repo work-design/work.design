@@ -83,6 +83,15 @@ GIT
       turbo-rails
 
 GIT
+  remote: https://gitee.com/work-design/rails_crm.git
+  revision: b1cafa509c858f2975f4619b36599a8bc65e5d29
+  specs:
+    rails_crm (0.0.1)
+      rails_extend
+      rails_profile
+      rails_trade
+
+GIT
   remote: https://gitee.com/work-design/rails_data.git
   revision: e543206e6bf9a0badf6afddc32cc6ee89dc2af51
   specs:
@@ -444,10 +453,6 @@ GEM
     nokogiri (1.13.7)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.7-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.7-x86_64-linux)
-      racc (~> 1.4)
     oauth2 (2.0.6)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -641,6 +646,7 @@ DEPENDENCIES
   rails_auth!
   rails_bench!
   rails_com!
+  rails_crm!
   rails_data!
   rails_design!
   rails_detail!
