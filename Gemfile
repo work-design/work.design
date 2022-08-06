@@ -25,7 +25,7 @@ gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   gem 'tencentcloud-sdk-common'
-  gem 'tencentcloud-sdk-ocr'
+  #gem 'tencentcloud-sdk-ocr'
 end
 gem 'aliyunsdkcore'
 

@@ -29,11 +29,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: f9a906d9f8c6c45a1e946da2f1315f676a899c7c
+  revision: 3a8260daeb8319d18f66938b641f9991abc1a4cd
   specs:
-    tencentcloud-sdk-common (1.0.357)
-    tencentcloud-sdk-ocr (1.0.357)
-      tencentcloud-sdk-common (~> 1.0)
+    tencentcloud-sdk-common (3.0.381)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -44,14 +42,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 3db61a46ed6afb8f3fca79935812c42d87e54b08
+  revision: 62ee392f9761cb1f184f7b1b20d368804fa46d87
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 1668d3b93fbfad42d8393ab127af9af5017b181f
+  revision: 9b6b643e4ac30720518eaddd0bd7d0c7f9f5d324
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -60,14 +58,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: ca239307c671e4d4df1cc31ef5b93c6ff7850895
+  revision: 3a4ff9a4b081806a73dbd4ad3b2b3499e1b78647
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 9713d990974372e45f7823f89ec495faae997485
+  revision: 25bc9ca0a4d6f493a00596850a0b76157a4b0f9a
   specs:
     rails_com (1.3.0)
       acme-client
@@ -84,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 1a999379e6d58aed423d57fd4f776679099e8353
+  revision: 4b41f34fefc62b8a81a00d1825e00a6045d62168
   specs:
     rails_crm (0.0.1)
       rails_extend
@@ -93,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: e543206e6bf9a0badf6afddc32cc6ee89dc2af51
+  revision: 4fda797099b4ba8f47f4310ed7bb1a968bb0aefc
   specs:
     rails_data (1.0.2)
       matrix
@@ -106,7 +104,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 544ee535e70237c024615616f93d36753ac960ce
+  revision: 48bd80a0b276e817b7e53396c9e0698b2119ac0b
   specs:
     rails_design (0.0.1)
       rails
@@ -127,7 +125,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: e7f299d6aa9174c752064f3b82b9797cb45eb81e
+  revision: f0192757a9c7a92a3a3547d52d4c4293d9eca4b5
   specs:
     rails_email (0.0.2)
       rails_auth
@@ -135,28 +133,28 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: c6330a37648db84487d546eceb1adde48f64dee8
+  revision: fff2c7ecff7ec3d89012b84e3cea77dac8c6a38c
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 0fec9966b0874242138aa3ca233ca57f54017909
+  revision: 3968d51ec1c68eaf846fd4e4238163a3d32f0c4f
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 9a346369ace00ea56bb331814482198098151ec4
+  revision: 628cfbc16a593c5f065e54967cc6e0191587e5d8
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 973d0c166e66c41dab9875a8219e2858b4cc6b29
+  revision: b28ff4e286c8890ecc8daa2f41ef1a33f1c38b05
   specs:
     rails_finance (0.0.1)
       prawn
@@ -188,21 +186,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: bebb759741d03730ebe3296a9701cd5ca5720ce3
+  revision: f04c08d9e2852973372f4bed16751213f2ec5e9f
   specs:
     rails_notice (1.0.3)
       rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 70b9a03dbe022dddfbc94ccdb54cb290d995ab81
+  revision: 2541b914fc912021edf239e4e7b22df036568834
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 26806a3aefa91545acc52eb783ff461e92f56ba7
+  revision: 9496e0b190ee9f9db97255eb5377157bef8dad2a
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -218,14 +216,15 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 39223eea84cd05eb298a01e38f161b1e7fe9d177
+  revision: 35947474b2a43ccd9bfe2d9a2072333c271a2c21
   specs:
     rails_ship (0.0.1)
       rails_extend
+      rails_trade
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 7c2b7a03ed7f4b080d468eec6d4e934e952cd978
+  revision: 6e0936e48ad325d8d3fb2096fad659c8139ee7fa
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -234,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 6604bea1415f41e855a271057da120a234f1c38f
+  revision: a56046864404d7632224c46154fcc82acbb0eff8
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -323,7 +322,7 @@ GEM
     amazing_print (1.4.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
-    bootsnap (1.12.0)
+    bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.37.1)
@@ -348,13 +347,13 @@ GEM
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    erubi (1.10.0)
+    erubi (1.11.0)
     et-orbi (1.2.7)
       tzinfo
-    faraday (2.3.0)
+    faraday (2.4.0)
       faraday-net_http (~> 2.0)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (2.0.3)
+    faraday-net_http (2.1.0)
     faraday-retry (1.0.3)
     ffi (1.15.5)
     fugit (1.5.3)
@@ -362,7 +361,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    good_job (3.2.0)
+    good_job (3.4.0)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -370,14 +369,13 @@ GEM
       railties (>= 6.0.0)
       thor (>= 0.14.1)
       webrick (>= 1.3)
-      zeitwerk (>= 2.0)
     hashie (5.0.0)
     http-2-next (0.5.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.20.3)
+    httpx (0.20.4)
       http-2-next (>= 0.4.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -429,7 +427,7 @@ GEM
       monetize (~> 1.9)
       money (~> 6.13)
       railties (>= 3.0)
-    msgpack (1.5.3)
+    msgpack (1.5.4)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     net-http (0.2.2)
@@ -450,12 +448,12 @@ GEM
       timeout
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.7)
+    nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.7-arm64-darwin)
+    nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.13.7-x86_64-linux)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.6)
       faraday (>= 0.17.3, < 3.0)
@@ -464,7 +462,7 @@ GEM
       rack (>= 1.2, < 3)
       rash_alt (>= 0.4, < 1)
       version_gem (~> 1.1)
-    octokit (5.1.0)
+    octokit (5.2.0)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
     omniauth (2.1.0)
@@ -487,7 +485,7 @@ GEM
       multi_json (~> 1.0)
       xml-simple
     pdf-core (0.9.0)
-    pg (1.4.1)
+    pg (1.4.2)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -504,7 +502,7 @@ GEM
     raabro (1.4.0)
     racc (1.6.0)
     rack (2.2.4)
-    rack-protection (2.2.1)
+    rack-protection (2.2.2)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -557,7 +555,7 @@ GEM
       nokogiri
       roo (>= 2.0.0, < 3)
       spreadsheet (> 0.9.0)
-    rqrcode (2.1.1)
+    rqrcode (2.1.2)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
@@ -579,7 +577,7 @@ GEM
       websocket (~> 1.0)
     spreadsheet (1.3.0)
       ruby-ole
-    strscan (3.0.3)
+    strscan (3.0.4)
     thor (1.2.1)
     timeout (0.3.0)
     ttfunk (1.7.0)
@@ -587,7 +585,7 @@ GEM
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
@@ -677,7 +675,6 @@ DEPENDENCIES
   sd_notify
   selenium-webdriver
   tencentcloud-sdk-common!
-  tencentcloud-sdk-ocr!
   turbo-rails
   upyun_rails!
   web-console
