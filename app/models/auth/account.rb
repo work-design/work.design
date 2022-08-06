@@ -1,7 +1,8 @@
 module Auth
   class Account < ApplicationRecord
-    include Org::Model::Account
-    include Wechat::Model::Account
     include Model::Account
+    include Org::Model::Account
+    include Wechat::Ext::Account
+    include Profiled::Ext::Account
   end
 end
