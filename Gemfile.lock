@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 8a542aec5230b2ac674285364c4cf8ef2a8e5485
+  revision: 70044eb708fb6633361441dfee4aba8ff5c6a892
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -361,7 +361,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    good_job (3.4.0)
+    good_job (3.4.1)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
