@@ -215,6 +215,13 @@ GIT
       rails_detail
 
 GIT
+  remote: https://gitee.com/work-design/rails_serve.git
+  revision: 21a7551accd43e01382309a1720c8015ca511a0f
+  specs:
+    rails_serve (0.0.1)
+      rails (>= 7.0.3.1)
+
+GIT
   remote: https://gitee.com/work-design/rails_ship.git
   revision: 6f90aa07319daf018f7d4240abc49384d18add36
   specs:
@@ -665,6 +672,7 @@ DEPENDENCIES
   rails_org!
   rails_profile!
   rails_quip!
+  rails_serve!
   rails_ship!
   rails_trade!
   rails_wechat!
