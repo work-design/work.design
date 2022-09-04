@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_04_082252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -436,6 +436,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.string "description"
     t.integer "indicators_count", scale: 4, default: 0
     t.bigint "taxon_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.index ["organ_id"], name: "index_bench_facilitate_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_bench_facilitate_taxons_on_parent_id"
     t.index ["taxon_id"], name: "index_bench_facilitate_taxons_on_taxon_id"
   end
@@ -461,7 +463,39 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.jsonb "card_price", default: {}
     t.jsonb "wallet_price", default: {}
     t.decimal "invest_ratio", default: "0.0", comment: "抽成比例"
+    t.bigint "organ_id", scale: 8
+    t.bigint "standard_id", scale: 8
     t.index ["facilitate_taxon_id"], name: "index_bench_facilitates_on_facilitate_taxon_id"
+    t.index ["organ_id"], name: "index_bench_facilitates_on_organ_id"
+    t.index ["standard_id"], name: "index_bench_facilitates_on_standard_id"
+  end
+
+  create_table "bench_facilitatings", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "facilitate_id", scale: 8
+    t.bigint "facilitator_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "wallet_payment_id", scale: 8
+    t.bigint "item_id", scale: 8
+    t.datetime "start_at"
+    t.datetime "finish_at"
+    t.datetime "estimate_finish_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facilitate_id"], name: "index_bench_facilitatings_on_facilitate_id"
+    t.index ["facilitator_id"], name: "index_bench_facilitatings_on_facilitator_id"
+    t.index ["item_id"], name: "index_bench_facilitatings_on_item_id"
+    t.index ["member_id"], name: "index_bench_facilitatings_on_member_id"
+    t.index ["wallet_payment_id"], name: "index_bench_facilitatings_on_wallet_payment_id"
+  end
+
+  create_table "bench_facilitators", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "facilitate_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facilitate_id"], name: "index_bench_facilitators_on_facilitate_id"
+    t.index ["member_id"], name: "index_bench_facilitators_on_member_id"
   end
 
   create_table "bench_indicators", id: { scale: 8 }, force: :cascade do |t|
@@ -574,6 +608,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "bench_standard_providers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "facilitate_id", scale: 8
+    t.boolean "selected", default: false
+    t.string "note"
+    t.decimal "export_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facilitate_id"], name: "index_bench_standard_providers_on_facilitate_id"
+  end
+
   create_table "bench_task_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", scale: 4, null: false
     t.integer "descendant_id", scale: 4, null: false
@@ -656,6 +700,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.index ["organ_id"], name: "index_bench_tasks_on_organ_id"
     t.index ["task_template_id"], name: "index_bench_tasks_on_task_template_id"
     t.index ["user_id"], name: "index_bench_tasks_on_user_id"
+  end
+
+  create_table "bench_taxon_facilitates", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "taxon_id", scale: 8
+    t.bigint "facilitate_taxon_id", scale: 8
+    t.bigint "facilitate_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facilitate_id"], name: "index_bench_taxon_facilitates_on_facilitate_id"
+    t.index ["facilitate_taxon_id"], name: "index_bench_taxon_facilitates_on_facilitate_taxon_id"
+    t.index ["taxon_id"], name: "index_bench_taxon_facilitates_on_taxon_id"
+  end
+
+  create_table "bench_taxon_indicators", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "taxon_id", scale: 8
+    t.bigint "facilitate_taxon_id", scale: 8
+    t.bigint "indicator_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facilitate_taxon_id"], name: "index_bench_taxon_indicators_on_facilitate_taxon_id"
+    t.index ["indicator_id"], name: "index_bench_taxon_indicators_on_indicator_id"
+    t.index ["taxon_id"], name: "index_bench_taxon_indicators_on_taxon_id"
+  end
+
+  create_table "bench_taxons", id: { scale: 8 }, force: :cascade do |t|
+    t.string "record_name"
+    t.string "name"
+    t.integer "projects_count", scale: 4, default: 0
+    t.jsonb "parameters", default: {}
+    t.decimal "fund_budget", default: "0.0"
+    t.decimal "fund_expense", default: "0.0"
+    t.decimal "budget_amount", default: "0.0"
+    t.decimal "expense_amount", default: "0.0"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_acme_accounts", id: { scale: 8 }, force: :cascade do |t|
@@ -3211,30 +3290,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.index ["wallet_payment_id"], name: "index_serve_servings_on_wallet_payment_id"
   end
 
+  create_table "ship_box_buys", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "box_specification_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.integer "buyable_count", scale: 4, default: 0
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_specification_id"], name: "index_ship_box_buys_on_box_specification_id"
+    t.index ["organ_id"], name: "index_ship_box_buys_on_organ_id"
+  end
+
   create_table "ship_box_holds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "box_specification_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
     t.integer "boxes_count", scale: 4, default: 0
-    t.integer "saleable", scale: 4
     t.integer "buyable", scale: 4
-    t.string "name"
-    t.string "sku"
-    t.decimal "price", default: "0.0"
-    t.decimal "advance_price", default: "0.0"
-    t.jsonb "card_price", default: {}
-    t.jsonb "wallet_price", default: {}
-    t.jsonb "extra", default: {}
-    t.string "unit"
-    t.decimal "quantity", default: "0.0"
-    t.decimal "unified_quantity", default: "0.0"
-    t.decimal "invest_ratio", default: "0.0", comment: "抽成比例"
-    t.string "good_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "member_organ_id", scale: 8
+    t.integer "sellable", scale: 4
+    t.decimal "sell_price"
+    t.decimal "buy_price"
     t.index ["box_specification_id"], name: "index_ship_box_holds_on_box_specification_id"
     t.index ["member_id"], name: "index_ship_box_holds_on_member_id"
+    t.index ["member_organ_id"], name: "index_ship_box_holds_on_member_organ_id"
     t.index ["organ_id"], name: "index_ship_box_holds_on_organ_id"
     t.index ["user_id"], name: "index_ship_box_holds_on_user_id"
   end
@@ -3263,6 +3345,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_163324) do
     t.bigint "boxed_id", scale: 8
     t.index ["box_id"], name: "index_ship_box_logs_on_box_id"
     t.index ["boxed_type", "boxed_id"], name: "index_ship_box_logs_on_boxed"
+  end
+
+  create_table "ship_box_sells", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "box_specification_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.integer "sellable_count", scale: 4, default: 0
+    t.string "name"
+    t.string "sku"
+    t.decimal "price", default: "0.0"
+    t.decimal "advance_price", default: "0.0"
+    t.jsonb "card_price", default: {}
+    t.jsonb "wallet_price", default: {}
+    t.jsonb "extra", default: {}
+    t.string "unit"
+    t.decimal "quantity", default: "0.0"
+    t.decimal "unified_quantity", default: "0.0"
+    t.decimal "invest_ratio", default: "0.0", comment: "抽成比例"
+    t.string "good_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_specification_id"], name: "index_ship_box_sells_on_box_specification_id"
+    t.index ["organ_id"], name: "index_ship_box_sells_on_organ_id"
   end
 
   create_table "ship_box_specifications", id: { scale: 8 }, force: :cascade do |t|
