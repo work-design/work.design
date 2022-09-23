@@ -133,13 +133,14 @@
     "@antv/util" "~2.0.5"
     tslib "^2.0.0"
 
-"@antv/g2plot@^2.3.13":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.4.8.tgz#9b3432468d1a5719c584e35ea8e9a5fbd302091e"
-  integrity sha512-Ox9ZAYKfaZR5q69PQSWPsQKp4fNHJIS6BxMeKLp+OHmwXwVWFYA6YvsxivnKKdom/2QBJGzcA9EwdNUjs1gkQA==
+"@antv/g2plot@^2.4.20":
+  version "2.4.20"
+  resolved "https://registry.yarnpkg.com/@antv/g2plot/-/g2plot-2.4.20.tgz#323fdac575fefbfbfc0e446ba08103f0295185ff"
+  integrity sha512-MHFTe3zdEHy/5VHdG9LmX9jQy9NdZm31olQjhE65eGpxhX5N1ibyo+qO247I9Jazb4sLD5LNWYPtPHofUOUaNg==
   dependencies:
     "@antv/event-emitter" "^0.1.2"
     "@antv/g2" "^4.1.26"
+    "@antv/util" "^2.0.17"
     d3-hierarchy "^2.0.0"
     d3-regression "^1.3.5"
     fmin "^0.0.2"
@@ -183,7 +184,7 @@
     fecha "~4.2.0"
     tslib "^2.0.0"
 
-"@antv/util@^2.0.9", "@antv/util@~2.0.0", "@antv/util@~2.0.12", "@antv/util@~2.0.13", "@antv/util@~2.0.3", "@antv/util@~2.0.5":
+"@antv/util@^2.0.17", "@antv/util@^2.0.9", "@antv/util@~2.0.0", "@antv/util@~2.0.12", "@antv/util@~2.0.13", "@antv/util@~2.0.3", "@antv/util@~2.0.5":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@antv/util/-/util-2.0.17.tgz#e8ef42aca7892815b229269f3dd10c6b3c7597a9"
   integrity sha512-o6I9hi5CIUvLGDhth0RxNSFDRwXeywmt6ExR4+RmVAzIi48ps6HUy+svxOCayvrPBN37uE6TAc2KDofRo0nK9Q==
@@ -198,10 +199,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@fortawesome/fontawesome-pro@^6.1.1":
-  version "6.1.1"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.1.1/fontawesome-pro-6.1.1.tgz#ff731c472fb4c93947e506806f3e1d7b2cd0a971"
-  integrity sha512-0w6GM8sCXNpcBLUz4bx61JvjjoCvfEIz5wBz2KjLNw9qk1F2XiUWuifXobvLbwaA7kqPGBRPo3U8Zw7zyaJ9sA==
+"@fortawesome/fontawesome-free@^6.2.0":
+  version "6.2.0"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/6.2.0/fontawesome-free-6.2.0.tgz#ba3510825b332816fe7190f28827f8cb33a298b5"
+  integrity sha512-CNR7qRIfCwWHNN7FnKUniva94edPdyQzil/zCwk3v6k4R6rR2Fr8i4s3PM7n/lyfPA6Zfko9z5WDzFxG9SW1uQ==
 
 "@fullcalendar/common@~5.10.1":
   version "5.10.1"
@@ -276,25 +277,25 @@
     "@fullcalendar/daygrid" "~5.10.1"
     tslib "^2.1.0"
 
-"@hotwired/stimulus@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.0.1.tgz#141f15645acaa3b133b7c247cad58ae252ffae85"
-  integrity sha512-oHsJhgY2cip+K2ED7vKUNd2P+BEswVhrCYcJ802DSsblJFv7mPFVk3cQKvm2vHgHeDVdnj7oOKrBbzp1u8D+KA==
+"@hotwired/stimulus@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.1.0.tgz#20215251e5afe6e0a3787285181ba1bfc9097df0"
+  integrity sha512-iDMHUhiEJ1xFeicyHcZQQgBzhtk5mPR0QZO3L6wtqzMsJEk2TKECuCQTGKjm+KJTHVY0dKq1dOOAWvODjpd2Mg==
 
-"@hotwired/turbo@^7.1.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.1.0.tgz#27e44e0e3dc5bd1d4bda0766d579cf5a14091cd7"
-  integrity sha512-Q8kGjqwPqER+CtpQudbH+3Zgs2X4zb6pBAlr6NsKTXadg45pAOvxI9i4QpuHbwSzR2+x87HUm+rot9F/Pe8rxA==
+"@hotwired/turbo@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.2.0.tgz#4ff90d80fda17e69b04a12bbf0a42f09953504f6"
+  integrity sha512-CYr6N9NfqsjhmZx1xVQ8zYcDo4hTm7sTUpJydbNgMRyG+YfF/9ADIQQ2TtcBdkl2zi/12a3OTWX0UMzNZnAK9w==
 
-"@rails/actioncable@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.3.tgz#71f08e958883af64f6a20489318b5e95d2c6dc5b"
-  integrity sha512-Iefl21FZD+ck1di6xSHMYzSzRiNJTHV4NrAzCfDfqc/wPz4xncrP8f2/fJ+2jzwKIaDn76UVMsALh7R5OzsF8Q==
+"@rails/actioncable@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.4.tgz#70a3ca56809f7aaabb80af2f9c01ae51e1a8ed41"
+  integrity sha512-tz4oM+Zn9CYsvtyicsa/AwzKZKL+ITHWkhiu7x+xF77clh2b4Rm+s6xnOgY/sGDWoFWZmtKsE95hxBPkgQQNnQ==
 
-"@rails/activestorage@^7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.3.tgz#516770d49f702bb2b746a826779465a513804003"
-  integrity sha512-pdIoQUNcimjbSlhUgnRyFimVvsp/J9C1yTxV3P40oQrRU81f3uM9tT4IY/wMfe691Zj7tJBiqsbThUoPT88TAA==
+"@rails/activestorage@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-7.0.4.tgz#56bc3052f60e8867b40a87ed5ff3c0afe536643e"
+  integrity sha512-K2fV9C0z88fapu58nt9uHzMylsmJWUFuaIFvuZQEf1WTiPMsgTsj1bf8+cD81zXfTXYMZDQNRq4164JmuBKD3A==
   dependencies:
     spark-md5 "^3.0.1"
 
@@ -994,10 +995,10 @@ longest@^1.0.1:
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   integrity sha1-MKCy2jj3N3DoKUoNIuZiXtd9AJc=
 
-luxon@^2.4.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/luxon/-/luxon-2.5.0.tgz#098090f67d690b247e83c090267a60b1aa8ea96c"
-  integrity sha512-IDkEPB80Rb6gCAU+FEib0t4FeJ4uVOuX1CQ9GsvU3O+JAGIgu0J7sf1OarXKaKDygTZIoJyU6YdZzTFRu+YR0A==
+luxon@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.0.3.tgz#573e65531efd3d92265feb640f02ba7a192e2388"
+  integrity sha512-+EfHWnF+UT7GgTnq5zXg3ldnTKL2zdv7QJgsU5bjjpbH17E3qi/puMhQyJVYuCq+FRkogvB5WB6iVvUr+E4a7w==
 
 minimatch@^3.0.4:
   version "3.1.2"
@@ -1081,22 +1082,23 @@ preact@^10.0.5:
   resolved "https://registry.yarnpkg.com/preact/-/preact-10.6.6.tgz#f1899bc8dab7c0788b858481532cb3b5d764a520"
   integrity sha512-dgxpTFV2vs4vizwKohYKkk7g7rmp1wOOcfd4Tz3IB3Wi+ivZzsn/SpeKJhRENSE+n8sUfsAl4S3HiCVT923ABw==
 
-rails_design@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/rails_design/-/rails_design-0.0.7.tgz#65fce3735a04b2a371fb312d41d72cca99c480b4"
-  integrity sha512-QTgtC02PgOtMSiDGkmloH8DQOZPOdvCXg8f/p33KesdtXCCiamsYc3pmDQ0TkjlppVXZawqZcpCdgH895kK1gQ==
+rails_design@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/rails_design/-/rails_design-0.0.8.tgz#00934a79fdef2933aef08457de051c2da9f0c936"
+  integrity sha512-9NDQUDvwqPNMHfMd3j+cXgRt9KGn6N21RJq0j5WoZMQ++zGp0OvOwbqkLA04h7Vqon/Psf29anjiL+EfZEjD+A==
   dependencies:
-    "@hotwired/stimulus" "^3.0.1"
-    "@hotwired/turbo" "^7.1.0"
-    "@rails/actioncable" "^7.0.3"
-    "@rails/activestorage" "^7.0.3"
+    "@antv/g2plot" "^2.4.20"
+    "@hotwired/stimulus" "^3.1.0"
+    "@hotwired/turbo" "^7.2.0"
+    "@rails/actioncable" "^7.0.4"
+    "@rails/activestorage" "^7.0.4"
     bulma "^0.9.4"
     choices.js "^10.1.0"
     highlight.js "^11.5.1"
-    luxon "^2.4.0"
+    luxon "^3.0.3"
     sortablejs "^1.15.0"
     vconsole "^3.11.2"
-    weui "^2.5.9"
+    weui "^2.5.14"
 
 readdirp@~3.6.0:
   version "3.6.0"
@@ -1344,10 +1346,10 @@ vconsole@^3.11.2:
     core-js "^3.11.0"
     mutation-observer "^1.0.3"
 
-weui@^2.5.9:
-  version "2.5.9"
-  resolved "https://registry.yarnpkg.com/weui/-/weui-2.5.9.tgz#f625dfbc0bd55ec432b359bcf07827db634a8af2"
-  integrity sha512-53D9X8U/mA9Kd7DM5zOCZ521UGNbzKDuLDVCcpFXO1KJk/GCEDpanL2rkgC8iLE1MUBGBmGzr6bSnKtXAD9hkQ==
+weui@^2.5.14:
+  version "2.5.14"
+  resolved "https://registry.yarnpkg.com/weui/-/weui-2.5.14.tgz#5624c7a1ceb25df008d42a120136593ed495aa48"
+  integrity sha512-TtwQHgJgpBCd0erJ7b7BI2HlALFwRYRoycmoIG+NvoUNP+a3/bPlza3O38J2OZiSBVSBcel7Ye5D+ic0y65tsQ==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"

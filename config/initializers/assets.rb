@@ -1,5 +1,5 @@
 Rails.configuration.assets.paths += [
-  Rails.root.join('node_modules/@fortawesome/fontawesome-pro/webfonts').to_s
+  Rails.root.join('node_modules/@fortawesome/fontawesome-free/webfonts').to_s
 ]
 
 #Rails.configuration.assets.excluded_paths << GoodJob::Engine.root.join('app/assets/vendor').to_s

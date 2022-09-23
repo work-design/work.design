@@ -2,16 +2,14 @@
   "nameme": "work-design",
   "private": true,
   "dependencies": {
-    "@antv/g2plot": "^2.3.13",
-    "@fortawesome/fontawesome-pro": "^6.1.1",
+    "@fortawesome/fontawesome-free": "^6.2.0",
     "@fullcalendar/core": "^5.8.0",
     "@fullcalendar/daygrid": "^5.8.0",
     "@fullcalendar/resource-common": "^5.8.0",
     "@fullcalendar/resource-daygrid": "^5.8.0",
     "@fullcalendar/resource-timegrid": "^5.8.0",
     "@fullcalendar/timegrid": "^5.8.0",
-    "bulma": "^0.9.4",
-    "rails_design": "^0.0.7"
+    "rails_design": "^0.0.8"
   },
   "devDependencies": {
     "esbuild": "^0.14.36",
