@@ -1,11 +1,8 @@
 $fa-font-path: '';
-@import '@fortawesome/fontawesome-pro/scss/brands.scss';
-@import '@fortawesome/fontawesome-pro/scss/duotone.scss';
-@import '@fortawesome/fontawesome-pro/scss/fontawesome.scss';
-@import '@fortawesome/fontawesome-pro/scss/light.scss';
-@import '@fortawesome/fontawesome-pro/scss/regular.scss';
-@import '@fortawesome/fontawesome-pro/scss/solid.scss';
-@import '@fortawesome/fontawesome-pro/scss/thin.scss';
+@import '@fortawesome/fontawesome-free/scss/brands.scss';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/regular.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
 
 .fa-flash {
   --fa-animation-duration: 2s;

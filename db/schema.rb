@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2838,7 +2838,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.string "port", default: "3000"
     t.string "host"
     t.string "identifier"
-    t.string "appid"
     t.boolean "default"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -2885,7 +2884,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.string "domain"
     t.string "code"
     t.bigint "corp_user_id", scale: 8
-    t.string "corp_id"
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["parent_id"], name: "index_org_organs_on_parent_id"
@@ -4007,6 +4005,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.string "delivery", default: "init"
     t.integer "done_number", scale: 4, comment: "已达成交易数量"
     t.integer "rest_number", scale: 4
+    t.datetime "rent_finish_at"
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["agent_id"], name: "index_trade_items_on_agent_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
@@ -4065,6 +4064,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
     t.boolean "pay_auto"
+    t.string "aim"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["agent_id"], name: "index_trade_orders_on_agent_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
@@ -4364,6 +4364,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.datetime "finish_at"
     t.datetime "estimate_finish_at"
     t.decimal "invest_amount", comment: "投资分成"
+    t.string "good_type"
+    t.bigint "good_id", scale: 8
+    t.index ["good_type", "good_id"], name: "index_trade_rents_on_good"
     t.index ["member_id"], name: "index_trade_rents_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_rents_on_member_organ_id"
     t.index ["rentable_type", "rentable_id"], name: "index_trade_rents_on_rentable"
@@ -4690,6 +4693,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "suite_id"
+    t.string "host"
+    t.string "token"
+    t.string "encoding_aes_key"
     t.index ["corp_id"], name: "index_wechat_corps_on_corp_id"
     t.index ["provider_id"], name: "index_wechat_corps_on_provider_id"
   end
@@ -4824,6 +4830,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.index ["msg_request_id"], name: "index_wechat_notices_on_msg_request_id"
     t.index ["notification_id"], name: "index_wechat_notices_on_notification_id"
     t.index ["template_id"], name: "index_wechat_notices_on_template_id"
+  end
+
+  create_table "wechat_platform_tickets", id: { scale: 8 }, force: :cascade do |t|
+    t.string "signature"
+    t.integer "timestamp", scale: 4
+    t.string "nonce"
+    t.string "msg_signature"
+    t.string "appid"
+    t.string "ticket_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "wechat_platforms", id: { scale: 8 }, force: :cascade do |t|
@@ -5095,6 +5112,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.string "redirect_action", default: "index", comment: "默认跳转"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "kind"
   end
 
   create_table "wechat_tags", id: { scale: 8 }, force: :cascade do |t|
@@ -5150,17 +5168,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_091531) do
     t.datetime "updated_at", null: false
     t.string "template_kind"
     t.index ["appid"], name: "index_wechat_templates_on_appid"
-  end
-
-  create_table "wechat_tickets", id: { scale: 8 }, force: :cascade do |t|
-    t.string "signature"
-    t.integer "timestamp", scale: 4
-    t.string "nonce"
-    t.string "msg_signature"
-    t.string "appid"
-    t.string "ticket_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "wechat_user_tags", id: { scale: 8 }, force: :cascade do |t|
