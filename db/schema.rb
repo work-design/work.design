@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_06_103443) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3363,6 +3363,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "box_host_id", scale: 8
+    t.index ["box_host_id"], name: "index_ship_box_proxy_buys_on_box_host_id"
     t.index ["box_specification_id"], name: "index_ship_box_proxy_buys_on_box_specification_id"
     t.index ["organ_id"], name: "index_ship_box_proxy_buys_on_organ_id"
   end
@@ -4366,6 +4368,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
     t.decimal "invest_amount", comment: "投资分成"
     t.string "good_type"
     t.bigint "good_id", scale: 8
+    t.jsonb "extra"
     t.index ["good_type", "good_id"], name: "index_trade_rents_on_good"
     t.index ["member_id"], name: "index_trade_rents_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_rents_on_member_organ_id"
@@ -4599,16 +4602,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
     t.string "type"
     t.datetime "access_token_expires_at", precision: nil
     t.datetime "jsapi_ticket_expires_at", precision: nil
-    t.string "mch_id"
-    t.string "key"
     t.boolean "shared"
     t.string "oauth2_state"
     t.string "user_name"
     t.boolean "oauth_enable", default: true
-    t.string "apiclient_cert"
-    t.string "apiclient_key"
-    t.string "key_v3", comment: "支付通知解密"
-    t.string "serial_no"
     t.boolean "inviting", default: false, comment: "可邀请加入"
     t.string "domain"
     t.string "url_link"
@@ -4830,6 +4827,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_133749) do
     t.index ["msg_request_id"], name: "index_wechat_notices_on_msg_request_id"
     t.index ["notification_id"], name: "index_wechat_notices_on_notification_id"
     t.index ["template_id"], name: "index_wechat_notices_on_template_id"
+  end
+
+  create_table "wechat_payees", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "appid"
+    t.string "mch_id", comment: "支付专用、商户号"
+    t.text "key"
+    t.text "key_v3"
+    t.string "serial_no"
+    t.text "apiclient_cert"
+    t.text "apiclient_key"
+    t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_wechat_payees_on_appid"
+    t.index ["organ_id"], name: "index_wechat_payees_on_organ_id"
   end
 
   create_table "wechat_platform_tickets", id: { scale: 8 }, force: :cascade do |t|

@@ -17,6 +17,6 @@
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/entrypoints:./app/assets/builds --no-source-map --load-path=node_modules"
+    "build:css": "sass app/assets/stylesheets:app/assets/builds --load-path=node_modules"
   }
 }

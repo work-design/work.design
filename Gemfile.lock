@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 081ed9b69048eb13f2ed492aa337218e7504dd3d
+  revision: d99e45c530fa728fa6783d4cfc5d96494f076ea8
   specs:
-    tencentcloud-sdk-common (3.0.422)
+    tencentcloud-sdk-common (3.0.423)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -42,14 +42,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 8c29cae959c25ace6d17ede7c8b5b0f22f625591
+  revision: 82cbac77e3856c3d72af7c6b99a6f6393ff1c9a2
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 023e89e8629359702ed633dcc922f3260d36aa75
+  revision: dec4912fec1a80379d013833538463c3b81d5cbb
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -58,14 +58,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: bf51fc7cccb01059922b222b79ed005de293ef94
+  revision: dcfc1c5793f056327c8a64bd19af75a94b1dfe47
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 604cd5c614b512d5f1787ffe53b2620d29331bd0
+  revision: f27475bebe947030c9f02a320b53ea4458f6167a
   specs:
     rails_com (1.3.0)
       acme-client
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 8889cda3aea585a4f56006235dd442b702da15d3
+  revision: 5f360656249e71b6d5fbaa105b19adb960574b26
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 7d7f1b9d14dd8ddd9d851a30a4d954bfbb178e5e
+  revision: b134dea46c8e90d7e7c9f7b96ecd04b413762dde
   specs:
     rails_data (1.0.2)
       matrix
@@ -125,7 +125,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: 3e882f09ed08ff5461eec43665757336e35d8e7f
+  revision: c6223e94e862040728588a117fc5c6488053859d
   specs:
     rails_email (0.0.2)
       rails_auth
@@ -133,7 +133,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: dd03df6ee9693a4badf606b06ecef751adf7030c
+  revision: 98332954b6fdc41fd761300dc010df49b58bd0cf
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
@@ -147,14 +147,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 18f4bc1291b734ef930be9232e2e7d15eb47f70c
+  revision: ecc0cc2c30ec9f0747669afc2f0e042ec172c5bc
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: c3e3070abed8c0db722f8e60443f9f7a8595932e
+  revision: d77815cdeda9efc96c583e864a294e8b95ee257a
   specs:
     rails_finance (0.0.1)
       prawn
@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: ae80c40e65dbcee02a2d5292526992a5e5a4ea54
+  revision: b333edfe61da428085b45187f90ac792ab355ee2
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -186,21 +186,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: 1aaa4a0a3a46ffcd551b2da248ad2bb853b30c44
+  revision: c1affd34090e346c07afff2d9a9a0d71d5264369
   specs:
     rails_notice (1.0.3)
       rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 209bc770cfb4e4619d6ebfd16dff9b9fb20730d1
+  revision: 1e81c5989f208946d8044ab87186f7364d5aee16
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 8fac0635604a7ef0dd6733d6d627de55770eb88d
+  revision: 7a9f698fa0d2812f72c7e7f9a1cd3014d2767d60
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 6690d1b4df3ea913020e089bc22de2ba06e0262d
+  revision: df6e822b1bace25e3ca9b4c0393a1126c35b45db
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -224,7 +224,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 3b04de309f67e0149d7430784a91fbbbbf13311c
+  revision: ca66c3768123f1930e6da65415d015f96c9bf458
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: a292899c031c003f7d432ec7db9235c6599c0846
+  revision: 3f4f586f1090bf773951398b11b6830bfb59892b
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -350,7 +350,7 @@ GEM
     erubi (1.11.0)
     et-orbi (1.2.7)
       tzinfo
-    faraday (2.5.2)
+    faraday (2.6.0)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.0)
@@ -375,7 +375,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.21.0)
+    httpx (0.21.1)
       http-2-next (>= 0.4.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -383,7 +383,7 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-console (0.5.11)
-    irb (1.4.1)
+    irb (1.4.2)
       reline (>= 0.3.0)
     jwt (2.5.0)
     kaminari (1.2.2)
@@ -427,12 +427,12 @@ GEM
       monetize (~> 1.9)
       money (~> 6.13)
       railties (>= 3.0)
-    msgpack (1.5.6)
+    msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     net-http (0.2.2)
       uri
-    net-imap (0.3.0)
+    net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
       net-protocol
@@ -496,7 +496,7 @@ GEM
     raabro (1.4.0)
     racc (1.6.0)
     rack (2.2.4)
-    rack-protection (3.0.1)
+    rack-protection (3.0.2)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
@@ -607,7 +607,7 @@ GEM
       rexml
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   arm64-darwin
