@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: d7a4ba1b540dc5e68e3cc86bceb816232d3bf72d
+  revision: 907351cd886d2a760f32c4564b89a2d78f4f8333
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -355,7 +355,7 @@ GEM
     faraday (2.6.0)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.0)
+    faraday-net_http (3.0.1)
     faraday-retry (1.0.3)
     ffi (1.15.5)
     fugit (1.7.1)
@@ -448,6 +448,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
