@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: cc7bb45c0599cb42d3b9bac1bdf421050c674f0b
+  revision: 283ee26acf5fd4ab98d45e533fa54f9db004f11e
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -104,7 +104,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 27f0386c382f5cc786fb7aa19a08c6ac80078bbe
+  revision: 9d70f77ac6428342e843bb5c1681205f01dd96b6
   specs:
     rails_design (0.0.1)
       rails
@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: b1c49c828d91623149736fb854dc5226546d084d
+  revision: d0bd7d53229747c4f39c6e5458f42083d357de86
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -235,7 +235,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: cb180691b94187df326473e9787f46a5c0f423c9
+  revision: b177f67782f5b83ac272ca9c127c528f1152f4b6
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -448,6 +448,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
