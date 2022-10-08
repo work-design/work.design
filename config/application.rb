@@ -21,7 +21,6 @@ module OneWork
     config.time_zone = 'Beijing'
     config.ssl_options = { hsts: { subdomains: true } }
     config.i18n.default_locale = :zh
-
     config.generators do |g|
       g.stylesheets false
       g.javasricpts false
@@ -30,17 +29,17 @@ module OneWork
       g.jbuilder true
     end
     config.server_timing = true
+    config.middleware.delete ActionDispatch::RequestId # 记录X-Request-Id（方便查看请求在群集中的哪台执行）
 
     config.active_job.queue_adapter = :good_job
+
     config.active_record.belongs_to_required_by_default = true
+    config.active_record.encryption.support_unencrypted_data = true
 
     config.action_controller.forgery_protection_origin_check = true
     config.action_controller.per_form_csrf_tokens = true
 
     config.action_view.form_with_generates_remote_forms = true
-
-    config.middleware.delete ActionDispatch::RequestId # 记录X-Request-Id（方便查看请求在群集中的哪台执行）
-
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
       html_tag
     end
