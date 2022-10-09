@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_08_121843) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_09_124106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2591,6 +2591,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_08_121843) do
     t.datetime "updated_at", null: false
     t.bigint "organ_id", scale: 8
     t.string "type"
+    t.string "identity"
+    t.string "secret"
+    t.string "host"
     t.index ["organ_id"], name: "index_markdown_gits_on_organ_id"
   end
 
