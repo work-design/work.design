@@ -20,7 +20,7 @@ module OneWork
 
     config.time_zone = 'Beijing'
     config.ssl_options = { hsts: { subdomains: true } }
-    config.i18n.default_locale = :zh
+    config.logger = ActiveSupport::Logger.new(config.default_log_file, 'daily')
     config.generators do |g|
       g.stylesheets false
       g.javasricpts false
@@ -30,6 +30,7 @@ module OneWork
     end
     config.server_timing = true
     config.middleware.delete ActionDispatch::RequestId # 记录X-Request-Id（方便查看请求在群集中的哪台执行）
+    config.i18n.default_locale = :zh
 
     config.active_job.queue_adapter = :good_job
 
