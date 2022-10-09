@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: afc0c42b373b67c03f86b797d63c0749e96611fe
+  revision: a4e8dcbbb283f8894fcac626a98fc94662fa735d
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
@@ -448,6 +448,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
