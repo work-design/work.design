@@ -65,7 +65,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 05ba43e604323cd130f9b7756dd1fb2a0324885c
+  revision: 4a62531a28acc35a71bc9fad26c84414fbdbba25
   specs:
     rails_com (1.3.0)
       acme-client
@@ -154,7 +154,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: d77815cdeda9efc96c583e864a294e8b95ee257a
+  revision: 2d794df9675ff14d07fa1e488431c4febcd46680
   specs:
     rails_finance (0.0.1)
       prawn
@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 237d5a19d15843b2f4297b1789de163887310a80
+  revision: c9126c49814e0caeeb6e94fe4af306d2485cc6da
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -195,7 +195,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 517565a92b33fcb7e48fad748d3a1f1a16e2a6b6
+  revision: 91d3f783fd51d5d641cff9223a2c7d34b421bb7b
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -218,7 +218,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 850a376564d9709c9331aaa302508cce140f4be4
+  revision: df93e582debae37d8ede7b41ec80ed520b9efd25
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: db1641c84f100f8b562b030084a85cf64515a9fd
+  revision: 1c57e350501bf221a6aa00f297ad223fb03e3432
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -448,6 +448,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
