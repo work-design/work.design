@@ -1,8 +1,7 @@
-class ChagneDispoableTokens < ActiveRecord::Migration[7.0]
+class ChangeDispableTableType < ActiveRecord::Migration[7.0]
   def change
     drop_table :auth_disposable_tokens
-    create_table :auth_disposable_tokens do |t|
-      t.string :token, index: {:unique=>true}
+    create_table :auth_disposable_tokens, id: :uuid do |t|
       t.string :identity, index: true
       t.datetime :used_at
       t.timestamps
