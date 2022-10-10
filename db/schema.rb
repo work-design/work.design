@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_09_142559) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_10_072646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -328,11 +328,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_09_142559) do
   end
 
   create_table "auth_disposable_tokens", id: { scale: 8 }, force: :cascade do |t|
+    t.string "token"
     t.string "identity"
     t.datetime "used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["identity"], name: "index_auth_disposable_tokens_on_identity"
+    t.index ["token"], name: "index_auth_disposable_tokens_on_token", unique: true
   end
 
   create_table "auth_oauth_users", id: { scale: 8 }, force: :cascade do |t|
