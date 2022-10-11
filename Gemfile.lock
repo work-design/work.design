@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 3d50b6c51675dabd21a8f4bfcf29beb52bb0290e
+  revision: 857ab8fb8848c23677e478a98f0ca0e9710e4889
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -448,10 +448,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
-      racc (~> 1.4)
-    nokogiri (1.13.8-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
