@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :schedules
 
+  root to: 'home#index'
   controller :home do
-    get :index
     get :why
     get :soft
   end
@@ -34,7 +34,6 @@ Rails.application.routes.draw do
     resources :order_items
   end
 
-  root to: 'home#index'
   mount ActionCable.server => '/cable'
 
 end
