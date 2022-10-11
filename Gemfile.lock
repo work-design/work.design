@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: a4e8dcbbb283f8894fcac626a98fc94662fa735d
+  revision: dc6d25a851f7036c131e43224ac4f8858ff12cfd
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
