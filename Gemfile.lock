@@ -195,7 +195,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 91d3f783fd51d5d641cff9223a2c7d34b421bb7b
+  revision: 6fb3f794e620838bf7039cdf572da56b451bcc96
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 1c57e350501bf221a6aa00f297ad223fb03e3432
+  revision: 3d50b6c51675dabd21a8f4bfcf29beb52bb0290e
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
