@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_083717) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2579,6 +2579,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_083717) do
     t.boolean "nav", default: false, comment: "是否导航菜单"
     t.bigint "organ_id", scale: 8
     t.integer "depth", scale: 4
+    t.string "home_path"
     t.index ["git_id"], name: "index_markdown_catalogs_on_git_id"
     t.index ["organ_id"], name: "index_markdown_catalogs_on_organ_id"
   end

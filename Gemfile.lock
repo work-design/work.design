@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 7082d52f8a335331439e1f9e8ecab8666996e7c4
+  revision: a8ed853cfdf15de00ec8cdc61cd8044ac3a649e3
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -448,6 +448,10 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
