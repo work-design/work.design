@@ -9,7 +9,7 @@
     "@fullcalendar/resource-daygrid": "^5.8.0",
     "@fullcalendar/resource-timegrid": "^5.8.0",
     "@fullcalendar/timegrid": "^5.8.0",
-    "rails_design": "^0.0.8"
+    "rails_design": "git+https://gitee.com/work-design/rails_design.git"
   },
   "devDependencies": {
     "esbuild": "^0.14.36",
