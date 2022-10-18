@@ -12,7 +12,6 @@ gem 'redis'
 
 # Utils
 gem 'bcrypt'
-gem 'rucaptcha'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'rqrcode'

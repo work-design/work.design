@@ -29,9 +29,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 75cdf0f4744cc304005510de4a49ff0c54740d8a
+  revision: 97279e1829c559b899853daf33985a9aa8f71878
   specs:
-    tencentcloud-sdk-common (3.0.427)
+    tencentcloud-sdk-common (3.0.430)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -104,7 +104,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 58a9f28fc303594cf279c253a8d90f573adc63d0
+  revision: 5173eeed333af8aa5bbdc8f77e198d2350f86c94
   specs:
     rails_design (0.0.1)
       rails
@@ -140,7 +140,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 6f831d6e7356ae6a20d695b3d1645c5b3267f009
+  revision: 6e0a4cf87fe800b65741fef573188b699fb45115
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 29513c53f296a0b81b6ef2bb57611bd1482f8004
+  revision: 3e0a95c89e1ca9a718afa90d293e8514453dbd51
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -534,7 +534,6 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rb_sys (0.9.31)
     redis (5.0.5)
       redis-client (>= 0.9.0)
     redis-client (0.10.0)
@@ -565,15 +564,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    rucaptcha (3.0.1)
-      railties (>= 3.2)
-      rb_sys (>= 0.9.18)
-    rucaptcha (3.0.1-arm64-darwin)
-      railties (>= 3.2)
-      rb_sys (>= 0.9.18)
-    rucaptcha (3.0.1-x86_64-linux)
-      railties (>= 3.2)
-      rb_sys (>= 0.9.18)
     sawyer (0.9.2)
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
@@ -678,7 +668,6 @@ DEPENDENCIES
   redis
   rexml
   rqrcode
-  rucaptcha
   sd_notify
   selenium-webdriver
   tencentcloud-sdk-common!
