@@ -29,7 +29,6 @@ end
 gem 'aliyunsdkcore'
 
 # Payment method
-gem 'wx_pay', gitee: 'qinmingyuan/wx_pay'
 gem 'alipay2', gitee: 'qinmingyuan/alipay2'
 gem 'paypal-sdk-core'
 gem 'paypal-sdk-rest'
@@ -67,7 +66,6 @@ gem 'rails_profile', gitee: 'work-design/rails_profile'
 gem 'rails_interact', gitee: 'work-design/rails_interact'
 gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 
-gem 'turbo-rails'
 gem 'propshaft'
 
 # Debug
