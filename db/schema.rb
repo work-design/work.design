@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_22_133957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2616,6 +2616,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.bigint "organ_id", scale: 8
     t.datetime "last_commit_at"
     t.boolean "home", comment: "是否首页，默认为 README.md"
+    t.string "slug"
     t.index ["git_id"], name: "index_markdown_posts_on_git_id"
     t.index ["organ_id"], name: "index_markdown_posts_on_organ_id"
   end
@@ -4016,6 +4017,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.integer "done_number", scale: 4, comment: "已达成交易数量"
     t.integer "rest_number", scale: 4
     t.datetime "rent_finish_at"
+    t.datetime "rent_present_finish_at"
+    t.jsonb "estimate_metering"
+    t.jsonb "estimate_amount"
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["agent_id"], name: "index_trade_items_on_agent_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
@@ -4178,6 +4182,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.integer "payment_orders_count", scale: 4, default: 0
     t.integer "payment_id", scale: 4, comment: "for paypal"
     t.bigint "operator_id", scale: 8
+    t.string "appid"
     t.index ["operator_id"], name: "index_trade_payments_on_operator_id"
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
@@ -4619,6 +4624,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.string "url_link"
     t.string "weapp_id", comment: "关联的小程序"
     t.boolean "global", default: false
+    t.integer "payees_count", scale: 4
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 
@@ -4849,6 +4855,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.string "domain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "platform_effective_at"
+    t.datetime "platform_expire_at"
+    t.string "platform_serial_no"
+    t.jsonb "encrypt_certificate"
     t.index ["appid"], name: "index_wechat_payees_on_appid"
     t.index ["organ_id"], name: "index_wechat_payees_on_organ_id"
   end
@@ -4937,6 +4947,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_15_125319) do
     t.index ["corp_id"], name: "index_wechat_qy_medias_on_corp_id"
     t.index ["medium_type", "medium_id"], name: "index_wechat_qy_medias_on_medium"
     t.index ["suite_id"], name: "index_wechat_qy_medias_on_suite_id"
+  end
+
+  create_table "wechat_receivers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "payee_id", scale: 8
+    t.string "account"
+    t.string "name"
+    t.string "custom_relation"
+    t.jsonb "res"
+    t.string "receiver_type"
+    t.string "relation_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payee_id"], name: "index_wechat_receivers_on_payee_id"
   end
 
   create_table "wechat_receives", id: { scale: 8 }, force: :cascade do |t|
