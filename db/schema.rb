@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_22_133957) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_130421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4182,9 +4182,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_133957) do
     t.integer "payment_orders_count", scale: 4, default: 0
     t.integer "payment_id", scale: 4, comment: "for paypal"
     t.bigint "operator_id", scale: 8
-    t.string "appid"
+    t.bigint "payee_id", scale: 8
+    t.jsonb "extra_params"
     t.index ["operator_id"], name: "index_trade_payments_on_operator_id"
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
+    t.index ["payee_id"], name: "index_trade_payments_on_payee_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
     t.index ["wallet_id"], name: "index_trade_payments_on_wallet_id"
   end
@@ -4584,6 +4586,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_133957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
+  end
+
+  create_table "wechat_app_configs", id: { scale: 8 }, force: :cascade do |t|
+    t.string "appid"
+    t.string "value"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_wechat_app_configs_on_appid"
   end
 
   create_table "wechat_app_menus", id: { scale: 8 }, force: :cascade do |t|
