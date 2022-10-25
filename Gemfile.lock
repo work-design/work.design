@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: ef2ca18e1ed81951d5a6602e0585f9fd9be9880e
+  revision: d9b2c157dc4da47e644ff93766de0c4050f83b2e
   specs:
-    tencentcloud-sdk-common (3.0.433)
+    tencentcloud-sdk-common (3.0.435)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -96,7 +96,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: ba0f317d61073e84bd0add2031ae92327590ad4a
+  revision: 9dafcbf1542fec8d44f01267c6f01371c41b7045
   specs:
     rails_design (0.0.1)
       rails
@@ -210,7 +210,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 0c41338666dd75a93177297b4f184fe77f3a05d1
+  revision: ff74a5d1ab4780d9d1f00ba0e10b55eca8423b59
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -218,7 +218,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: ab6609a3648d6ecc5a1717aeea1208d10b16d9d6
+  revision: f5219072bd1972dca113b1e50cc0ad4599607682
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -227,7 +227,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 103d9ed1f44984940993d84b6a43878474bd632f
+  revision: 4190eaf8d255c22234182ae37913378687be4b09
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -336,7 +336,7 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
-    debug (1.6.2)
+    debug (1.6.3)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     domain_name (0.5.20190701)
@@ -355,7 +355,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    good_job (3.5.1)
+    good_job (3.6.0)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -426,7 +426,7 @@ GEM
     msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    net-http (0.2.2)
+    net-http (0.3.0)
       uri
     net-imap (0.3.1)
       net-protocol
