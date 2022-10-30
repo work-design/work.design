@@ -96,7 +96,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: b799cea07d7afccbc221ae1a6600b75110849114
+  revision: cfad280bf02e1607786fb37a9a74eadb047cc798
   specs:
     rails_design (0.0.1)
       rails
@@ -169,7 +169,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 4adecd49b38c742da6518a70e5d78c62d40e1c43
+  revision: dcb9f7448123ccaaa2020ca8769d4e4378549526
   specs:
     rails_markdown (0.0.1)
       kramdown
