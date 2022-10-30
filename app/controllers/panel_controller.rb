@@ -1,6 +1,6 @@
 class PanelController < ApplicationController
   include Com::Controller::Panel
-  before_action :require_login
+  before_action :require_user
   before_action :require_role
   #after_action :set_flash, only: [:update, :create, :destroy]
 
