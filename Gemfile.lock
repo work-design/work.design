@@ -218,7 +218,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 01a7344e7825e5eafb537a783a7f99ee82caed86
+  revision: 2ead86c60db08387cfe19e5ae79f2aa806be6fca
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -227,7 +227,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 418f7b47a13a18daa2143f82c58355b3838fa0a2
+  revision: d28350019de835f599f8b73242916cca691aaba9
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
