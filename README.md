@@ -45,7 +45,7 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
   * `bin/rails db:schema:load`，因为 migrations 是自动生成的，不太完备，用这个命令准备数据库；
   
 ## 开发
-* `bin/vite` 启动 vite
+* `bin/dev`
 * `bin/rails s`
 
 ## 依赖及配置
@@ -60,7 +60,6 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 #### 资金
 
 * 捐赠：如果你觉得这套系统对您有效，欢迎捐赠;
-
 * 付费： 我们提供付费服务，包括付费咨询，付费安装。
 
 #### 参与
