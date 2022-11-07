@@ -2,13 +2,20 @@
 
 [Work Design 官网](https://work.design) 源码，基于[业务组件](https://github.com/work-design/engine)快速开发。
 
-[Work Design 官网](https://work.design) 是服务于 Work Design 生态的应用，也是组件化开发的示例项目。
+[Work Design 官网](https://work.design) 是服务于 Work Design 生态的应用，也是业务组件化开发的示例项目。
 
 ## 特性
+* 所有功能作为 SaaS 服务开放，注册即可使用；
+* 可独立部署以及二次开发；
 
-* 使得其所提供的功能既可以作为 SaaS 系统对外提供
-* 也可以用于企业独立部署使用和二次开发
-
+## 主要功能
+* 组织管理、OA(办公管理)
+* 财务管理
+* ERP 供应链管理
+* 电商（门店、在线商城、租用、团购）
+* CMS 内容管理，基于 Markdown 本地文件
+* 通用：权限管理、
+* 微信生态
 
 ## 技术栈
 Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
