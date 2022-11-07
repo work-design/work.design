@@ -1,12 +1,13 @@
 # Work Design
 
-[Work Design](https://work.design) 源码，基于[开源组件](https://github.com/work-design/engine)快速开发，
+[Work Design 官网](https://work.design) 源码，基于[业务组件](https://github.com/work-design/engine)快速开发。
 
-一方面是 Work Design 生态的应用，同时也是组件化开发的示例项目。
+[Work Design 官网](https://work.design) 是服务于 Work Design 生态的应用，也是组件化开发的示例项目。
 
 ## 特性
 
-Work Design 富有创新性的架构使得其所提供的功能既可以作为 SaaS 系统对外提供，也可以用于企业独立部署使用和二次开发。
+* 使得其所提供的功能既可以作为 SaaS 系统对外提供
+* 也可以用于企业独立部署使用和二次开发
 
 
 ## 技术栈
@@ -16,7 +17,6 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 * Hotwire：直接传输 HTML 片段的策略
   * [Turbo](https://turbo.hotwired.dev)
   * [Stimulus](https://stimulus.hotwired.dev)
-* 静态资源：[Vite](https://github.com/vitejs/vite)
 
 * 前端 CSS：纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsDesign](https://github.com/work-design/rails_design) 项目中实现；
   * [Bulma](https://github.com/jgthms/bulma)
