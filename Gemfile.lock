@@ -169,7 +169,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 8119d0b75f158e81d5868e7d9e7694193a39c2e1
+  revision: 1500104af2289abe0f7e7109f8b380f563546e76
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -218,7 +218,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 932f0c92b0481bac629ec31334bb375ee5a13c15
+  revision: ee20ba33339966651f1e49efd49baadc723552e4
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -227,7 +227,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 81c72c3cbbc88c9f1a72097747cc15683c2f50c5
+  revision: 4b7047e44b78bbb01209405d99aa2d9a8584de8a
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
