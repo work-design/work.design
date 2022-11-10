@@ -169,7 +169,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 8a9c0a941fb06f704706aa25567a474383ecb733
+  revision: 467dd8024be4cf2343e0cb985e491e9bc20c79cb
   specs:
     rails_markdown (0.0.1)
       kramdown
