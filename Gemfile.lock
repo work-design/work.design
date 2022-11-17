@@ -139,7 +139,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: e1aae070b9470acfc5622d7e1f9bd812d4352050
+  revision: 0af1f6e922679512621224df5a83ae2f9114f4f8
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -210,7 +210,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: b2622bd9d3961528d1dac2ecfe088bf58d2002b8
+  revision: cc9c83d5830bd5486f5e85387a9b2f77f0a08a5e
   specs:
     rails_ship (0.0.1)
       rails_extend
