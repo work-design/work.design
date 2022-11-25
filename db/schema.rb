@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_082744) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_24_113731) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -324,6 +324,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_082744) do
     t.string "appid"
     t.string "uid"
     t.bigint "member_id", scale: 8
+    t.bigint "corp_user_id", scale: 8
+    t.index ["corp_user_id"], name: "index_auth_authorized_tokens_on_corp_user_id"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
   end
 
@@ -1936,9 +1938,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_082744) do
     t.bigint "product_item_id", scale: 8
     t.datetime "came_at"
     t.string "code"
+    t.bigint "grid_id", scale: 8
+    t.bigint "room_id", scale: 8
+    t.bigint "building_id", scale: 8
+    t.bigint "station_id", scale: 8
+    t.index ["building_id"], name: "index_factory_production_items_on_building_id"
+    t.index ["grid_id"], name: "index_factory_production_items_on_grid_id"
     t.index ["product_item_id"], name: "index_factory_production_items_on_product_item_id"
     t.index ["production_id"], name: "index_factory_production_items_on_production_id"
     t.index ["production_plan_id"], name: "index_factory_production_items_on_production_plan_id"
+    t.index ["room_id"], name: "index_factory_production_items_on_room_id"
+    t.index ["station_id"], name: "index_factory_production_items_on_station_id"
   end
 
   create_table "factory_production_parts", id: { scale: 8 }, force: :cascade do |t|
@@ -1965,10 +1975,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_082744) do
     t.datetime "updated_at", null: false
     t.integer "trade_items_count", scale: 4, default: 0
     t.bigint "organ_id", scale: 8
+    t.bigint "station_id", scale: 8
     t.index ["organ_id"], name: "index_factory_production_plans_on_organ_id"
     t.index ["product_id"], name: "index_factory_production_plans_on_product_id"
     t.index ["production_id"], name: "index_factory_production_plans_on_production_id"
     t.index ["scene_id"], name: "index_factory_production_plans_on_scene_id"
+    t.index ["station_id"], name: "index_factory_production_plans_on_station_id"
   end
 
   create_table "factory_productions", id: { scale: 8 }, force: :cascade do |t|
@@ -3723,6 +3735,56 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_082744) do
     t.index ["line_id"], name: "index_ship_ways_on_line_id"
     t.index ["organ_id"], name: "index_ship_ways_on_organ_id"
     t.index ["user_id"], name: "index_ship_ways_on_user_id"
+  end
+
+  create_table "space_buildings", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "station_id", scale: 8
+    t.string "name"
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["station_id"], name: "index_space_buildings_on_station_id"
+  end
+
+  create_table "space_grids", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "room_id", scale: 8
+    t.string "name"
+    t.string "code"
+    t.integer "width", scale: 4
+    t.integer "height", scale: 4
+    t.integer "length", scale: 4
+    t.integer "floor", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_space_grids_on_room_id"
+  end
+
+  create_table "space_rooms", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "station_id", scale: 8
+    t.bigint "building_id", scale: 8
+    t.string "name"
+    t.string "code"
+    t.integer "floor", scale: 4
+    t.integer "grids_count", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_space_rooms_on_building_id"
+    t.index ["station_id"], name: "index_space_rooms_on_station_id"
+  end
+
+  create_table "space_stations", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "area_id", scale: 8
+    t.string "name"
+    t.string "code"
+    t.string "detail"
+    t.integer "buildings_count", scale: 4
+    t.integer "rooms_count", scale: 4
+    t.jsonb "area_ancestors"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_space_stations_on_area_id"
+    t.index ["organ_id"], name: "index_space_stations_on_organ_id"
   end
 
   create_table "stats", id: { scale: 8 }, force: :cascade do |t|

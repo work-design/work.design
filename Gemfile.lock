@@ -217,6 +217,13 @@ GIT
       rails_trade
 
 GIT
+  remote: https://gitee.com/work-design/rails_space.git
+  revision: 453a92a09e941c62045108772a2cdfb1ce56e964
+  specs:
+    rails_space (0.0.1)
+      rails (>= 7.0.3)
+
+GIT
   remote: https://gitee.com/work-design/rails_trade.git
   revision: fcfa7f440b459d5705a237a0a1a8cfc221c25266
   specs:
@@ -655,6 +662,7 @@ DEPENDENCIES
   rails_profile!
   rails_quip!
   rails_ship!
+  rails_space!
   rails_trade!
   rails_wechat!
   redis
