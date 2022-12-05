@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: c7ff18fdfbc4be028290a679698b91e98a7adeb1
+  revision: e345e6fa8de0b29f6fb60f63a52ace3ecfbdbf82
   specs:
     rails_com (1.3.0)
       acme-client
@@ -434,7 +434,7 @@ GEM
     msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    net-http (0.3.0)
+    net-http (0.3.1)
       uri
     net-imap (0.3.1)
       net-protocol
@@ -590,7 +590,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    uri (0.11.0)
+    uri (0.12.0)
     version_gem (1.1.1)
     web-console (4.2.0)
       actionview (>= 6.0.0)
