@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 2427dd190c90d4065a0ed1857c3d7ffd730084a2
+  revision: a74e2f40835655acdb5d034821d4c66d8807de07
   specs:
-    tencentcloud-sdk-common (3.0.483)
+    tencentcloud-sdk-common (3.0.496)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -41,11 +41,10 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 2e5c8413d3772a4f30af32ae37e4f62fc178e921
+  revision: 4abd228c49a67575e207e6797dfc0ea742d85279
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
-      jwt (>= 2.0, <= 3.0)
       rails_com (~> 1.2)
 
 GIT
@@ -57,7 +56,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: fa6a8c0fcc82378cdd5046c2e4ab9d4626272a72
+  revision: aa2ac124f809de2078b12b4f539bb684a3e52b58
   specs:
     rails_com (1.3.0)
       acme-client
@@ -74,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 7d85c75b062db49164d1c85731c78ba2b2173ad8
+  revision: 808703178f4d6b1df083fa0647e79638f3e0b78a
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -96,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: d9b8af61c1691548bce3c8e97bb8223d0300dae3
+  revision: 95bb6b2f3a6181df5ba7ee66480ce1bb74fa3f0c
   specs:
     rails_design (0.0.1)
       rails
@@ -132,14 +131,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: 01e6eb57fdeff3df9ab79ad59186ef2d0d068e05
+  revision: cc370d45e3dfaa9d76429304596b0d68f54f98cf
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 4454b81cdb84bb3d2daaebd90f4bee2a1c65e7cf
+  revision: 91a56a4477518eb584af18bdd6178c7ae6b12e07
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -147,7 +146,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 0bf10c759eda82514700b0b84c7cdb482d531083
+  revision: 6c921d2d9e72414214d97154e16988906c9307d5
   specs:
     rails_finance (0.0.1)
       prawn
@@ -188,14 +187,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 2dc209fdf900022c58bff159f9bd47ca0d46c56c
+  revision: 3b3ca711971c400a471931cc85ff8198840ee4fc
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: d7903de2ee40eba9bed8dead1977e5d2eb42d826
+  revision: cf668a1171530a87a97db46d050dc32453559988
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -211,7 +210,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: d596ca092451b1cf907a1876aafac09ad70e3458
+  revision: 020d0af4869e97ab6fff31b7acfa2572f6d3c56b
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -219,14 +218,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: d87cdf3b735a4ba77e8c1244e9ca042512ec1630
+  revision: e848ce90d37ff7a58786c458d74e5b7952556133
   specs:
     rails_space (0.0.1)
       rails (>= 7.0.3)
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 6eed2f13294f7375186fe5642bae0e0d1bca5efc
+  revision: 4f97569693c7e8ab910cf7799010c43e01041965
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -235,7 +234,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: ee7e5780dc0019b0fab6e7654773c8f4a63e5217
+  revision: 664a491721f69eb929989e3efe6ce39e2741ac9b
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -249,67 +248,67 @@ GEM
     acme-client (2.0.11)
       faraday (>= 1.0, < 3.0.0)
       faraday-retry (~> 1.0)
-    actioncable (7.0.4)
-      actionpack (= 7.0.4)
-      activesupport (= 7.0.4)
+    actioncable (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailbox (7.0.4)
-      actionpack (= 7.0.4)
-      activejob (= 7.0.4)
-      activerecord (= 7.0.4)
-      activestorage (= 7.0.4)
-      activesupport (= 7.0.4)
+    actionmailbox (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      activejob (= 7.0.4.2)
+      activerecord (= 7.0.4.2)
+      activestorage (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       mail (>= 2.7.1)
       net-imap
       net-pop
       net-smtp
-    actionmailer (7.0.4)
-      actionpack (= 7.0.4)
-      actionview (= 7.0.4)
-      activejob (= 7.0.4)
-      activesupport (= 7.0.4)
+    actionmailer (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      actionview (= 7.0.4.2)
+      activejob (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       mail (~> 2.5, >= 2.5.4)
       net-imap
       net-pop
       net-smtp
       rails-dom-testing (~> 2.0)
-    actionpack (7.0.4)
-      actionview (= 7.0.4)
-      activesupport (= 7.0.4)
+    actionpack (7.0.4.2)
+      actionview (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       rack (~> 2.0, >= 2.2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
-    actiontext (7.0.4)
-      actionpack (= 7.0.4)
-      activerecord (= 7.0.4)
-      activestorage (= 7.0.4)
-      activesupport (= 7.0.4)
+    actiontext (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      activerecord (= 7.0.4.2)
+      activestorage (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.0.4)
-      activesupport (= 7.0.4)
+    actionview (7.0.4.2)
+      activesupport (= 7.0.4.2)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
-    activejob (7.0.4)
-      activesupport (= 7.0.4)
+    activejob (7.0.4.2)
+      activesupport (= 7.0.4.2)
       globalid (>= 0.3.6)
-    activemodel (7.0.4)
-      activesupport (= 7.0.4)
-    activerecord (7.0.4)
-      activemodel (= 7.0.4)
-      activesupport (= 7.0.4)
-    activestorage (7.0.4)
-      actionpack (= 7.0.4)
-      activejob (= 7.0.4)
-      activerecord (= 7.0.4)
-      activesupport (= 7.0.4)
+    activemodel (7.0.4.2)
+      activesupport (= 7.0.4.2)
+    activerecord (7.0.4.2)
+      activemodel (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
+    activestorage (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      activejob (= 7.0.4.2)
+      activerecord (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       marcel (~> 1.0)
       mini_mime (>= 1.1.0)
-    activesupport (7.0.4)
+    activesupport (7.0.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -324,7 +323,7 @@ GEM
     amazing_print (1.4.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
-    bootsnap (1.15.0)
+    bootsnap (1.16.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.38.0)
@@ -340,7 +339,7 @@ GEM
     closure_tree (7.4.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     connection_pool (2.3.0)
     crass (1.0.6)
     date (3.3.3)
@@ -352,18 +351,18 @@ GEM
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
-    faraday (2.7.2)
+    faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
     faraday-retry (1.0.3)
     ffi (1.15.5)
-    fugit (1.8.0)
+    fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
-    globalid (1.0.0)
+    globalid (1.1.0)
       activesupport (>= 5.0)
-    good_job (3.7.2)
+    good_job (3.7.4)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -377,7 +376,7 @@ GEM
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    httpx (0.22.2)
+    httpx (0.22.3)
       http-2-next (>= 0.4.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -404,13 +403,13 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
-    listen (3.7.1)
+    listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0)
+    mail (2.8.0.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -424,7 +423,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
-    minitest (5.16.3)
+    minitest (5.17.0)
     monetize (1.12.0)
       money (~> 6.12)
     money (6.16.0)
@@ -450,8 +449,12 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.8)
-    nokogiri (1.13.10)
+    nokogiri (1.14.0)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.14.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.14.0-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -463,7 +466,7 @@ GEM
     octokit (6.0.1)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
-    omniauth (2.1.0)
+    omniauth (2.1.1)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
@@ -495,37 +498,37 @@ GEM
       rack
       railties (>= 7.0.0)
     public_suffix (5.0.1)
-    puma (6.0.1)
+    puma (6.0.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
-    rack (2.2.5)
+    rack (2.2.6.2)
     rack-protection (3.0.5)
       rack
     rack-test (2.0.2)
       rack (>= 1.3)
-    rails (7.0.4)
-      actioncable (= 7.0.4)
-      actionmailbox (= 7.0.4)
-      actionmailer (= 7.0.4)
-      actionpack (= 7.0.4)
-      actiontext (= 7.0.4)
-      actionview (= 7.0.4)
-      activejob (= 7.0.4)
-      activemodel (= 7.0.4)
-      activerecord (= 7.0.4)
-      activestorage (= 7.0.4)
-      activesupport (= 7.0.4)
+    rails (7.0.4.2)
+      actioncable (= 7.0.4.2)
+      actionmailbox (= 7.0.4.2)
+      actionmailer (= 7.0.4.2)
+      actionpack (= 7.0.4.2)
+      actiontext (= 7.0.4.2)
+      actionview (= 7.0.4.2)
+      activejob (= 7.0.4.2)
+      activemodel (= 7.0.4.2)
+      activerecord (= 7.0.4.2)
+      activestorage (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       bundler (>= 1.15.0)
-      railties (= 7.0.4)
+      railties (= 7.0.4.2)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
-    railties (7.0.4)
-      actionpack (= 7.0.4)
-      activesupport (= 7.0.4)
+    railties (7.0.4.2)
+      actionpack (= 7.0.4.2)
+      activesupport (= 7.0.4.2)
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
@@ -534,11 +537,11 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (5.0.5)
+    redis (5.0.6)
       redis-client (>= 0.9.0)
-    redis-client (0.11.2)
+    redis-client (0.12.1)
       connection_pool
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
     rest-client (2.1.0)
@@ -568,7 +571,7 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     sd_notify (0.1.1)
-    selenium-webdriver (4.7.1)
+    selenium-webdriver (4.8.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -596,14 +599,14 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.7.0)
+    webrick (1.8.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     with_advisory_lock (4.6.0)
       activerecord (>= 4.2)
-    write_xlsx (1.09.4)
+    write_xlsx (1.09.5)
       rubyzip (>= 1.0.0)
     xml-simple (1.1.9)
       rexml
