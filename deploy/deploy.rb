@@ -69,7 +69,7 @@ module Deploy
     cmds << 'git pull' #  --recurse-submodules
     cmds << 'bundle install'
     cmds << "RAILS_ENV=#{env} bundle exec rake db:migrate"
-    cmds << 'bundle exec pumactl restart'
+    cmds << 'systemctl --user restart work_puma'
     cmds += Array(added_cmds)
     cmds.each do |cmd|
       exec_cmd(cmd)
