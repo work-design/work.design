@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_082205) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2924,6 +2924,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_082205) do
     t.boolean "accept_email", default: true
     t.boolean "inviter", default: false
     t.integer "promote_goods_count", scale: 4, default: 0
+    t.string "corp_userid"
+    t.string "wechat_openid"
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
   end

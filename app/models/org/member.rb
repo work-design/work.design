@@ -8,6 +8,6 @@ module Org
     include Notice::Model::Member
     include Notice::Ext::Setting
     include Attend::Ext::Member
-
+    include Wechat::Ext::Member
   end
 end
