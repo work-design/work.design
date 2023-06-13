@@ -1,5 +1,4 @@
 import 'rails_design'
 import 'rails_design/channels'
-import 'rails_design/stimulus_phone'
-import 'rails_design/stimulus_qy'
+import 'rails_design/stimulus_weui'
 application.debug = true
