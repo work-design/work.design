@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_13_091744) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -314,7 +314,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.bigint "member_id", scale: 8
     t.string "identity"
     t.datetime "expire_at"
-    t.string "session_key", comment: "目前在小程序下用到"
     t.integer "access_counter", scale: 4
     t.boolean "mock_member"
     t.boolean "mock_user"
@@ -325,6 +324,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "appid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "corp_userid"
     t.index ["identity"], name: "index_auth_authorized_tokens_on_identity"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
   end
@@ -357,7 +357,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.bigint "member_inviter_id", scale: 8
     t.string "remark"
     t.datetime "unsubscribe_at"
+    t.bigint "user_id", scale: 8
+    t.string "scope"
+    t.string "session_key"
     t.index ["member_inviter_id"], name: "index_auth_oauth_users_on_member_inviter_id"
+    t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
     t.index ["user_inviter_id"], name: "index_auth_oauth_users_on_user_inviter_id"
   end
 
@@ -1930,6 +1934,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.boolean "take_stock", comment: "可盘点"
     t.boolean "partial", default: false
     t.integer "provides_count", scale: 4
+    t.boolean "nav", comment: "单独分类"
     t.index ["factory_taxon_id"], name: "index_factory_product_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_product_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_factory_product_taxons_on_parent_id"
@@ -2034,7 +2039,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.bigint "organ_id", scale: 8
     t.boolean "automatic", default: false
     t.string "good_type"
-    t.decimal "base_price", default: "0.0"
     t.jsonb "card_price", default: {}
     t.jsonb "wallet_price", default: {}
     t.decimal "invest_ratio", default: "0.0", comment: "抽成比例"
@@ -2043,6 +2047,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.bigint "provider_id", scale: 8
     t.bigint "upstream_id", scale: 8
     t.string "type"
+    t.integer "position", scale: 4
+    t.integer "rent_charges_count", scale: 4
+    t.string "rent_unit"
     t.index ["factory_taxon_id"], name: "index_factory_productions_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_host_id"], name: "index_factory_productions_on_product_host_id"
@@ -2073,6 +2080,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.jsonb "product_taxon_ancestors"
     t.bigint "factory_taxon_id", scale: 8
     t.bigint "upstream_id", scale: 8
+    t.integer "position", scale: 4
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
@@ -2684,7 +2692,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "type"
     t.string "identity"
     t.string "secret"
-    t.string "host"
     t.index ["organ_id"], name: "index_markdown_gits_on_organ_id"
   end
 
@@ -2926,8 +2933,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.integer "promote_goods_count", scale: 4, default: 0
     t.string "corp_userid"
     t.string "wechat_openid"
+    t.bigint "user_id", scale: 8
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
+    t.index ["user_id"], name: "index_org_members_on_user_id"
   end
 
   create_table "org_organ_domains", id: { scale: 8 }, force: :cascade do |t|
@@ -2986,6 +2995,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "redirect_controller"
     t.string "redirect_action", comment: "默认跳转"
     t.string "service_url", comment: "客服 url"
+    t.string "appid"
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["parent_id"], name: "index_org_organs_on_parent_id"
@@ -3179,7 +3189,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "nick_name"
     t.string "identity"
     t.jsonb "extra", default: {}
+    t.bigint "user_id", scale: 8
     t.index ["organ_id"], name: "index_profiled_profiles_on_organ_id"
+    t.index ["user_id"], name: "index_profiled_profiles_on_user_id"
   end
 
   create_table "project_taxon_facilitates", id: { scale: 8 }, force: :cascade do |t|
@@ -3442,6 +3454,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.integer "tradable_count", scale: 4, comment: "可交易数量，可租亦可卖"
     t.virtual "traded_count", type: :integer, scale: 4, as: "(boxes_count - tradable_count)", stored: true
     t.string "rent_unit"
+    t.integer "rent_charges_count", scale: 4
     t.index ["box_specification_id"], name: "index_ship_box_hosts_on_box_specification_id"
     t.index ["organ_id"], name: "index_ship_box_hosts_on_organ_id"
   end
@@ -4113,6 +4126,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.integer "items_count", scale: 4, default: 0
     t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
+    t.boolean "fresh"
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
     t.index ["client_id"], name: "index_trade_carts_on_client_id"
     t.index ["maintain_id"], name: "index_trade_carts_on_maintain_id"
@@ -4196,6 +4210,35 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trade_holds", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "user_id", scale: 8
+    t.bigint "member_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
+    t.bigint "item_id", scale: 8
+    t.string "rentable_type"
+    t.bigint "rentable_id", scale: 8
+    t.decimal "amount"
+    t.datetime "rent_start_at"
+    t.datetime "rent_finish_at", comment: "实际结束时间"
+    t.datetime "rent_present_finish_at", comment: "周期性计费时间"
+    t.datetime "rent_estimate_finish_at", comment: "预估结束时间"
+    t.integer "rent_duration", scale: 4
+    t.integer "rent_estimate_duration", scale: 4
+    t.jsonb "wallet_amount"
+    t.decimal "estimate_amount"
+    t.jsonb "estimate_wallet_amount"
+    t.decimal "invest_amount", comment: "投资分成"
+    t.jsonb "extra"
+    t.string "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_trade_holds_on_item_id"
+    t.index ["member_id"], name: "index_trade_holds_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_holds_on_member_organ_id"
+    t.index ["rentable_type", "rentable_id"], name: "index_trade_holds_on_rentable"
+    t.index ["user_id"], name: "index_trade_holds_on_user_id"
+  end
+
   create_table "trade_item_promotes", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "item_id", scale: 8
     t.bigint "promote_good_id", scale: 8
@@ -4248,17 +4291,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "uuid"
     t.integer "volume", scale: 4, default: 0, comment: "体积"
     t.jsonb "organ_ancestor_ids", default: []
-    t.datetime "rent_start_at"
-    t.datetime "rent_estimate_finish_at"
     t.bigint "client_id", scale: 8
     t.integer "done_number", scale: 4, comment: "已达成交易数量"
     t.integer "rest_number", scale: 4
-    t.datetime "rent_finish_at"
-    t.datetime "rent_present_finish_at"
-    t.jsonb "estimate_amount"
     t.jsonb "wallet_amount"
-    t.jsonb "estimate_wallet_amount"
     t.string "delivery_status"
+    t.bigint "operator_id", scale: 8
+    t.integer "holds_count", scale: 4
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
@@ -4267,6 +4306,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.index ["good_type", "good_id"], name: "index_trade_items_on_good_type_and_good_id"
     t.index ["member_id"], name: "index_trade_items_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_items_on_member_organ_id"
+    t.index ["operator_id"], name: "index_trade_items_on_operator_id"
     t.index ["order_id"], name: "index_trade_items_on_order_id"
     t.index ["organ_id"], name: "index_trade_items_on_organ_id"
     t.index ["station_id"], name: "index_trade_items_on_station_id"
@@ -4315,6 +4355,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.boolean "pay_auto"
     t.string "aim"
     t.decimal "adjust_amount"
+    t.bigint "operator_id", scale: 8
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_orders_on_current_cart_id"
@@ -4326,6 +4367,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.index ["maintain_id"], name: "index_trade_orders_on_maintain_id"
     t.index ["member_id"], name: "index_trade_orders_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_orders_on_member_organ_id"
+    t.index ["operator_id"], name: "index_trade_orders_on_operator_id"
     t.index ["organ_id"], name: "index_trade_orders_on_organ_id"
     t.index ["payment_strategy_id"], name: "index_trade_orders_on_payment_strategy_id"
     t.index ["produce_plan_id"], name: "index_trade_orders_on_produce_plan_id"
@@ -4370,7 +4412,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "state"
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.bigint "member_organ_id", scale: 8
+    t.bigint "client_id", scale: 8
+    t.index ["client_id"], name: "index_trade_payment_references_on_client_id"
     t.index ["member_id"], name: "index_trade_payment_references_on_member_id"
+    t.index ["member_organ_id"], name: "index_trade_payment_references_on_member_organ_id"
+    t.index ["organ_id"], name: "index_trade_payment_references_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payment_references_on_payment_method_id"
     t.index ["user_id"], name: "index_trade_payment_references_on_user_id"
   end
@@ -4717,6 +4765,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.index ["wallet_prepayment_id"], name: "index_trade_wallet_advances_on_wallet_prepayment_id"
   end
 
+  create_table "trade_wallet_frozens", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "operator_id", scale: 8
+    t.bigint "wallet_id", scale: 8
+    t.bigint "item_id", scale: 8
+    t.decimal "amount"
+    t.string "note"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_trade_wallet_frozens_on_item_id"
+    t.index ["operator_id"], name: "index_trade_wallet_frozens_on_operator_id"
+    t.index ["wallet_id"], name: "index_trade_wallet_frozens_on_wallet_id"
+  end
+
   create_table "trade_wallet_goods", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "wallet_template_id", scale: 8
     t.string "good_type"
@@ -4809,6 +4871,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "type"
     t.decimal "advances_amount"
     t.decimal "sells_amount"
+    t.decimal "frozen_amount", comment: "支出：冻结金额"
+    t.decimal "payout_amount", comment: "支出：提现"
+    t.decimal "payment_amount", comment: "支出：钱包支付"
     t.index ["client_id"], name: "index_trade_wallets_on_client_id"
     t.index ["maintain_id"], name: "index_trade_wallets_on_maintain_id"
     t.index ["member_id"], name: "index_trade_wallets_on_member_id"
@@ -4856,8 +4921,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "verify_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "default"
+    t.bigint "platform_template_id", scale: 8
+    t.string "type"
+    t.jsonb "extra"
+    t.string "domain"
+    t.integer "auditid", scale: 4
+    t.jsonb "version_info"
+    t.integer "audit_status", scale: 4
+    t.string "confirm_name"
+    t.string "confirm_content"
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
+    t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
+  end
+
+  create_table "wechat_agents", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "jsapi_ticket"
+    t.datetime "jsapi_ticket_expires_at"
+    t.string "name"
+    t.boolean "inviting", comment: "可邀请加入"
+    t.string "corpid"
+    t.string "secret"
+    t.string "token"
+    t.string "agentid"
+    t.string "encoding_aes_key"
+    t.string "user_name"
+    t.string "domain"
+    t.string "url_link"
+    t.boolean "debug"
+    t.string "confirm_name"
+    t.string "confirm_content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_wechat_agents_on_organ_id"
   end
 
   create_table "wechat_app_configs", id: { scale: 8 }, force: :cascade do |t|
@@ -4896,7 +4994,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.boolean "enabled", default: true
     t.string "appid"
     t.string "secret"
-    t.string "agentid"
     t.boolean "encrypt_mode"
     t.string "encoding_aes_key"
     t.string "token", null: false
@@ -4909,7 +5006,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "access_token_expires_at", precision: nil
     t.datetime "jsapi_ticket_expires_at", precision: nil
     t.boolean "shared"
-    t.string "oauth2_state"
     t.string "user_name"
     t.boolean "oauth_enable", default: true
     t.boolean "inviting", default: false, comment: "可邀请加入"
@@ -4917,8 +5013,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "url_link"
     t.string "weapp_id", comment: "关联的小程序"
     t.boolean "global", default: false
-    t.integer "app_payees_count", scale: 4
     t.boolean "debug"
+    t.string "confirm_name"
+    t.string "confirm_content"
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
   end
 
@@ -4948,9 +5045,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wechat_corp_external_users", id: { scale: 8 }, force: :cascade do |t|
+    t.string "uid"
+    t.string "unionid"
+    t.string "external_userid"
+    t.string "pending_id"
+    t.string "corp_id"
+    t.string "subject_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corp_id"], name: "index_wechat_corp_external_users_on_corp_id"
+    t.index ["external_userid"], name: "index_wechat_corp_external_users_on_external_userid"
+    t.index ["uid"], name: "index_wechat_corp_external_users_on_uid"
+    t.index ["unionid"], name: "index_wechat_corp_external_users_on_unionid"
+  end
+
   create_table "wechat_corp_users", id: { scale: 8 }, force: :cascade do |t|
     t.string "corp_id"
-    t.string "user_id"
     t.string "device_id"
     t.string "user_ticket"
     t.datetime "ticket_expires_at"
@@ -4967,7 +5078,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "suite_id"
     t.integer "follows_count", scale: 4, default: 0
     t.bigint "organ_id", scale: 8
-    t.string "mobile"
+    t.string "userid"
     t.index ["corp_id"], name: "index_wechat_corp_users_on_corp_id"
     t.index ["organ_id"], name: "index_wechat_corp_users_on_organ_id"
   end
@@ -5179,6 +5290,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wechat_payee_apps", id: { scale: 8 }, force: :cascade do |t|
+    t.string "mch_id"
+    t.string "appid"
+    t.boolean "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_wechat_payee_apps_on_appid"
+    t.index ["mch_id"], name: "index_wechat_payee_apps_on_mch_id"
+  end
+
+  create_table "wechat_payee_domains", id: { scale: 8 }, force: :cascade do |t|
+    t.string "mch_id"
+    t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["domain"], name: "index_wechat_payee_domains_on_domain"
+    t.index ["mch_id"], name: "index_wechat_payee_domains_on_mch_id"
+  end
+
   create_table "wechat_payees", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
     t.string "mch_id", comment: "支付专用、商户号"
@@ -5200,6 +5330,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.index ["partner_id"], name: "index_wechat_payees_on_partner_id"
   end
 
+  create_table "wechat_platform_templates", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "platform_id", scale: 8
+    t.string "user_version"
+    t.string "user_desc"
+    t.integer "template_id", scale: 4
+    t.integer "audit_status", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["platform_id"], name: "index_wechat_platform_templates_on_platform_id"
+  end
+
   create_table "wechat_platform_tickets", id: { scale: 8 }, force: :cascade do |t|
     t.string "signature"
     t.integer "timestamp", scale: 4
@@ -5209,6 +5350,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.string "ticket_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "message_hash"
+    t.string "info_type"
   end
 
   create_table "wechat_platforms", id: { scale: 8 }, force: :cascade do |t|
@@ -5225,6 +5368,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "domain"
+    t.bigint "public_agency_id", scale: 8
+    t.bigint "program_agency_id", scale: 8
+    t.index ["program_agency_id"], name: "index_wechat_platforms_on_program_agency_id"
+    t.index ["public_agency_id"], name: "index_wechat_platforms_on_public_agency_id"
   end
 
   create_table "wechat_provider_organs", id: { scale: 8 }, force: :cascade do |t|
@@ -5321,6 +5468,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "msg_format", default: "xml"
+    t.string "info_type"
     t.index ["appid"], name: "index_wechat_receives_on_appid"
     t.index ["open_id"], name: "index_wechat_receives_on_open_id"
     t.index ["platform_id"], name: "index_wechat_receives_on_platform_id"
@@ -5455,21 +5603,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_130218) do
 
   create_table "wechat_suite_receives", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "provider_id", scale: 8
-    t.string "corp_id"
     t.string "user_id"
-    t.string "suite_id"
     t.string "agent_id"
     t.string "msg_id"
     t.string "msg_type"
     t.string "event"
     t.string "event_key"
-    t.string "content"
     t.string "encrypt_data"
     t.jsonb "message_hash"
     t.string "msg_format", default: "xml"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["corp_id"], name: "index_wechat_suite_receives_on_corp_id"
+    t.string "suiteid"
+    t.string "corpid"
+    t.string "auth_corp_id"
+    t.string "info_type"
     t.index ["provider_id"], name: "index_wechat_suite_receives_on_provider_id"
     t.index ["user_id"], name: "index_wechat_suite_receives_on_user_id"
   end
