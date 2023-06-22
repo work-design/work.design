@@ -235,7 +235,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 878fe43ff5968484cda85f628f021e93233fc986
+  revision: 327d9ae38461ab46115ae03f0b9ca80cdab0786b
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
