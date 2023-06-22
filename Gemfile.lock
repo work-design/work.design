@@ -49,7 +49,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 0bc85595ec47e4017043f760304cf0b48cee6e96
+  revision: e5e5b7c20f83437b88b96d9f274d60174d4da5c4
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 3709b59f21ba2501899acb9bc13f63a504797b2b
+  revision: 9c46bf2ffb6227154d334fb2d5a8d47a3147e2ab
   specs:
     rails_design (0.0.1)
       rails
@@ -138,7 +138,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 45d9e8b29bc9fad1386cd4f1fdbad17f4f4b63d8
+  revision: 26efa62d7b4eb5a7a1b1420b507568ac4795087b
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -170,7 +170,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 8b67cf8e397f04ab9c73c8e2916972157c67b08e
+  revision: 9bcdd76582c1f65777719e26e6925d560cf475e4
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -188,7 +188,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: b7274de7d0030a3cdf79c1d4599794a921f85251
+  revision: 7665d183e9092afaf44555368b928cea92a00b97
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -226,7 +226,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 72629d4a2f3eb4b055867847b2d40890304db47b
+  revision: 9f270bd6c4427b29c148cf4c8a092fec058fba61
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -235,7 +235,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 3bf4ad11d16485e0ef99547a770899da80d8bef4
+  revision: 1063f3d8ed57800fb559451faa52eba708a449fe
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)

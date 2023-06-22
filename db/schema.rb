@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_13_091744) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -360,6 +360,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_091744) do
     t.bigint "user_id", scale: 8
     t.string "scope"
     t.string "session_key"
+    t.boolean "agency_oauth"
     t.index ["member_inviter_id"], name: "index_auth_oauth_users_on_member_inviter_id"
     t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
     t.index ["user_inviter_id"], name: "index_auth_oauth_users_on_user_inviter_id"
@@ -4290,7 +4291,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_13_091744) do
     t.bigint "current_cart_id", scale: 8
     t.string "uuid"
     t.integer "volume", scale: 4, default: 0, comment: "体积"
-    t.jsonb "organ_ancestor_ids", default: []
     t.bigint "client_id", scale: 8
     t.integer "done_number", scale: 4, comment: "已达成交易数量"
     t.integer "rest_number", scale: 4
