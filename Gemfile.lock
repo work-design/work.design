@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 0057f457823e0cb305b26f38f7f7e14407947f8c
+  revision: f65d92ae749b2e6ef84f40293a080e4dd4512a09
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -49,14 +49,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: e5e5b7c20f83437b88b96d9f274d60174d4da5c4
+  revision: f3e43bc4f6f50e58dc598d371681e4c64e747235
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 4cc8465277223963f0c78638f6ba1970d49f750d
+  revision: 61107b766e926a275ed4f20fd9e56ee12fa06024
   specs:
     rails_com (1.3.0)
       acme-client
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 734dc6cefcd23cf566f375565cbe73a968001d4b
+  revision: a4a45252fcf64d6a6cbffc6f8830dd547e791c66
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 9c46bf2ffb6227154d334fb2d5a8d47a3147e2ab
+  revision: f16e1c237b4bfa245740d87f9631b866f6e35bb9
   specs:
     rails_design (0.0.1)
       rails
@@ -124,7 +124,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: 902b00ca33e51b41611c91a5164bf7221057a2ce
+  revision: b45196b9f92e4506d6b39ff9485d2cfa6fb21454
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
@@ -138,7 +138,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 26efa62d7b4eb5a7a1b1420b507568ac4795087b
+  revision: 0ba246013e49c16883f21bd1f98ba698c58a59eb
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -170,7 +170,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 9bcdd76582c1f65777719e26e6925d560cf475e4
+  revision: 8914a226b0d2d34d30c8be083059c171cd8b46f1
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -188,7 +188,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 7665d183e9092afaf44555368b928cea92a00b97
+  revision: 470c13fb6979a3a6871290647bd40f90edcc7582
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -211,7 +211,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: e9357dcabdab830a29cc1842f928ecd76703af2c
+  revision: 6a1a61b84751bb5727c4386b2d9e0bb986b5f5e6
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -219,14 +219,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: d77c1820d56ae69ec2ade443f9d329d260626915
+  revision: 25bdd01243636a72c3dc3aa7699257624fa5a90e
   specs:
     rails_space (0.0.1)
       rails (>= 7.0.3)
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 9f270bd6c4427b29c148cf4c8a092fec058fba61
+  revision: 4cbde0fbec7e393a13ff65e2d2f65c6b6fea6e33
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -235,7 +235,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 327d9ae38461ab46115ae03f0b9ca80cdab0786b
+  revision: 6bb8794bec98ca0eaa7bc0558cdc3f1b0fc14484
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -246,7 +246,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    acme-client (2.0.13)
+    acme-client (2.0.14)
       faraday (>= 1.0, < 3.0.0)
       faraday-retry (>= 1.0, < 3.0.0)
     actioncable (7.0.5)
@@ -595,7 +595,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    uri (0.12.1)
+    uri (0.12.2)
     version_gem (1.1.3)
     web-console (4.2.0)
       actionview (>= 6.0.0)
