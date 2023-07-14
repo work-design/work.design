@@ -5,5 +5,6 @@ module Org
     include Roled::Ext::Organ
     include Bench::Model::Organ
     include Wechat::Ext::Organ
+    include Trade::Ext::Organ
   end
 end
