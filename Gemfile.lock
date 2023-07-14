@@ -131,7 +131,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: c013aef0b7e769e37010464b0d6c2db8e83601d8
+  revision: df3fa74b042c294625cc3f78340c5b639b336d4b
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: 735d9bce6b6b1864fdf6902ca5910b2d034d232c
+  revision: 985473eec22387ba286b5b0888951c95a9bcadaf
   specs:
     rails_notice (1.0.3)
       rails_extend
