@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_14_021821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -834,6 +834,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "state", default: "init"
+  end
+
+  create_table "com_err_summaries", id: { scale: 8 }, force: :cascade do |t|
+    t.string "controller_name"
+    t.string "action_name"
+    t.string "exception_object"
+    t.integer "errs_count", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_errs", id: { type: :serial, scale: 4 }, force: :cascade do |t|
@@ -2051,6 +2060,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
     t.integer "position", scale: 4
     t.integer "rent_charges_count", scale: 4
     t.string "rent_unit"
+    t.boolean "presell"
     t.index ["factory_taxon_id"], name: "index_factory_productions_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_host_id"], name: "index_factory_productions_on_product_host_id"
@@ -2693,6 +2703,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
     t.string "type"
     t.string "identity"
     t.string "secret"
+    t.string "base_name"
     t.index ["organ_id"], name: "index_markdown_gits_on_organ_id"
   end
 
@@ -5033,7 +5044,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
 
   create_table "wechat_contacts", id: { scale: 8 }, force: :cascade do |t|
     t.string "corp_id"
-    t.string "user_id"
+    t.string "userid"
     t.string "part_id"
     t.string "config_id"
     t.string "qr_code"
@@ -5532,7 +5543,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_051131) do
     t.jsonb "reply_encrypt"
     t.datetime "sent_at"
     t.string "userid"
+    t.bigint "scene_organ_id", scale: 8
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
+    t.index ["scene_organ_id"], name: "index_wechat_requests_on_scene_organ_id"
   end
 
   create_table "wechat_responses", id: { scale: 8 }, force: :cascade do |t|
