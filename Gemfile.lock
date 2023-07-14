@@ -628,7 +628,7 @@ DEPENDENCIES
   aliyunsdkcore
   amazing_print
   bcrypt
-  bootsnap (>= 1.1.0)
+  bootsnap
   capybara
   debug
   default_where!

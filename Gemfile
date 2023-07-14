@@ -82,4 +82,4 @@ group :development do
   gem 'listen'
 end
 
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
