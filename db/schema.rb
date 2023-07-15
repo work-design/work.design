@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_024754) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_143424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4328,9 +4328,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_024754) do
     t.string "delivery_status"
     t.bigint "operator_id", scale: 8
     t.integer "holds_count", scale: 4
+    t.bigint "scene_id", scale: 8
+    t.bigint "desk_id", scale: 8
+    t.string "job_id"
+    t.date "produce_on", comment: "对接生产管理"
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
+    t.index ["desk_id"], name: "index_trade_items_on_desk_id"
     t.index ["from_address_id"], name: "index_trade_items_on_from_address_id"
     t.index ["from_station_id"], name: "index_trade_items_on_from_station_id"
     t.index ["good_type", "good_id"], name: "index_trade_items_on_good_type_and_good_id"
@@ -4339,6 +4344,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_024754) do
     t.index ["operator_id"], name: "index_trade_items_on_operator_id"
     t.index ["order_id"], name: "index_trade_items_on_order_id"
     t.index ["organ_id"], name: "index_trade_items_on_organ_id"
+    t.index ["scene_id"], name: "index_trade_items_on_scene_id"
     t.index ["station_id"], name: "index_trade_items_on_station_id"
     t.index ["user_id"], name: "index_trade_items_on_user_id"
   end
