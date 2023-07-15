@@ -32,6 +32,7 @@ app/views/*
 !app/views/auth
 !app/views/auth_ext
 !app/views/board
+!app/views/factory
 !app/views/home
 !app/views/layouts
 !app/views/me
