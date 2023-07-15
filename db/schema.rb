@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_161402) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_024754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2061,6 +2061,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_161402) do
     t.integer "rent_charges_count", scale: 4
     t.string "rent_unit"
     t.boolean "presell"
+    t.string "link"
     t.index ["factory_taxon_id"], name: "index_factory_productions_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_host_id"], name: "index_factory_productions_on_product_host_id"
