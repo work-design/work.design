@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_143424) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_15_162600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -742,6 +742,59 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_143424) do
     t.decimal "expense_amount", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cms_audios", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "author_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.string "title"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_cms_audios_on_author_id"
+    t.index ["organ_id"], name: "index_cms_audios_on_organ_id"
+  end
+
+  create_table "cms_carousels", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "title"
+    t.integer "position", scale: 4
+    t.string "link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_cms_carousels_on_organ_id"
+  end
+
+  create_table "cms_progressions", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "user_id", scale: 8
+    t.string "progressive_type"
+    t.bigint "progressive_id", scale: 8
+    t.decimal "ratio", comment: "完成比例"
+    t.decimal "time"
+    t.decimal "duration"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["progressive_type", "progressive_id"], name: "index_cms_progressions_on_progressive"
+    t.index ["user_id"], name: "index_cms_progressions_on_user_id"
+  end
+
+  create_table "cms_videos", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "author_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.bigint "video_taxon_id", scale: 8
+    t.string "title"
+    t.integer "share_count", scale: 4
+    t.integer "view_count", scale: 4
+    t.integer "liked_count", scale: 4
+    t.integer "comments_count", scale: 4
+    t.string "water_mark_job"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_cms_videos_on_author_id"
+    t.index ["organ_id"], name: "index_cms_videos_on_organ_id"
+    t.index ["video_taxon_id"], name: "index_cms_videos_on_video_taxon_id"
   end
 
   create_table "com_acme_accounts", id: { scale: 8 }, force: :cascade do |t|

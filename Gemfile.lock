@@ -55,6 +55,13 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://gitee.com/work-design/rails_cms.git
+  revision: e32e9506c5057482351886e4a57f22db88f7f9b1
+  specs:
+    rails_cms (0.0.1)
+      rails_extend
+
+GIT
   remote: https://gitee.com/work-design/rails_com.git
   revision: 9ad6c8b57ab65dfd7614a0253e9fcda0c1089196
   specs:
@@ -155,7 +162,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_growth.git
-  revision: 228b6bf0f71680c8a9948a6e0b91985fbe2d28bf
+  revision: c50dbd89cd5db68d645aef3e67fae56c3ab1fa21
   specs:
     rails_growth (0.0.1)
       rails_com (~> 1.2)
@@ -650,6 +657,7 @@ DEPENDENCIES
   rails_audit!
   rails_auth!
   rails_bench!
+  rails_cms!
   rails_com!
   rails_crm!
   rails_data!
