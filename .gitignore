@@ -37,6 +37,7 @@ app/views/*
 !app/views/layouts
 !app/views/me
 !app/views/my
+!app/views/official
 !app/views/panel
 !app/views/trade
 !app/views/waiting
