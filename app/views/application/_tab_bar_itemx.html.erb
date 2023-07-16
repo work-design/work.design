@@ -1,16 +1,16 @@
 <%= link_to({ controller: '/home' }, class: 'weui-tabbar__item') do %>
-  <i class="fas fa-home weui-tabbar__icon"></i>
+  <i class="fa-solid fa-home weui-tabbar__icon"></i>
   <div class="weui-tabbar__label"><%= t('home.index.title') %></div>
 <% end %>
 <%= link_to({ controller: '/bench/facilitates' }, class: 'weui-tabbar__item') do %>
-  <i class="fas fa-store-alt weui-tabbar__icon"></i>
+  <i class="fa-solid fa-store-alt weui-tabbar__icon"></i>
   <div class="weui-tabbar__label"><%= t('bench.facilitates.index.title') %></div>
 <% end %>
 <%= link_to({ controller: '/factory/productions' }, class: 'weui-tabbar__item') do %>
-  <i class="fas fa-store-alt weui-tabbar__icon"></i>
+  <i class="fa-solid fa-store-alt weui-tabbar__icon"></i>
   <div class="weui-tabbar__label"><%= t('factory.productions.index.title') %></div>
 <% end %>
-<%= link_to({ controller: '/my/home' }, class: 'weui-tabbar__item') do %>
-  <i class="fas fa-user-alt weui-tabbar__icon"></i>
+<%= link_to({ controller: '/my/home' }, class: active_helper(controllers: 'my/home', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
+  <i class="fa-solid fa-user-alt weui-tabbar__icon"></i>
   <div class="weui-tabbar__label">个人中心</div>
 <% end %>
