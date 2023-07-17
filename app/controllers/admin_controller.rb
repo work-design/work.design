@@ -1,8 +1,8 @@
 class AdminController < ApplicationController
-  include Org::Controller::Me
+  include Org::Controller::Admin
   include Com::Controller::Admin
-  before_action :require_user
-  before_action :require_role
-  #before_action :require_session_organ
+  include Roled::Controller::Admin
+  before_action :require_org_member, :require_role
+
 
 end
