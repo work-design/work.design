@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+gem 'rails_deploy'
+require 'deploy'
+
+if $0 == __FILE__
+  Deploy.exec_cmds(added_cmds: 'systemctl --user restart meal_job')
+end
