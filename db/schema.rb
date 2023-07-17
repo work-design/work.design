@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_15_162600) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_114940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3018,6 +3018,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_162600) do
     t.string "corp_userid"
     t.string "wechat_openid"
     t.bigint "user_id", scale: 8
+    t.integer "maintains_count", scale: 4
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
     t.index ["user_id"], name: "index_org_members_on_user_id"
@@ -3274,6 +3275,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_15_162600) do
     t.string "identity"
     t.jsonb "extra", default: {}
     t.bigint "user_id", scale: 8
+    t.string "corp_id"
+    t.string "external_userid"
+    t.string "position"
+    t.string "avatar_url"
+    t.string "corp_name"
+    t.string "corp_full_name"
+    t.string "external_type"
+    t.string "unionid"
     t.index ["organ_id"], name: "index_profiled_profiles_on_organ_id"
     t.index ["user_id"], name: "index_profiled_profiles_on_user_id"
   end
