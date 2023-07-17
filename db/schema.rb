@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_114940) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1112,6 +1112,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_114940) do
     t.integer "cards_count", scale: 4, default: 0
     t.integer "orders_count", scale: 4, default: 0
     t.integer "addresses_count", scale: 4, default: 0
+    t.string "type"
+    t.string "remark"
+    t.string "description"
+    t.string "oper_userid"
+    t.string "add_way"
+    t.string "external_userid"
+    t.string "pending_id"
+    t.jsonb "remark_mobiles"
     t.index ["agency_id"], name: "index_crm_maintains_on_agency_id"
     t.index ["agent_type", "agent_id"], name: "index_crm_maintains_on_agent"
     t.index ["client_member_id"], name: "index_crm_maintains_on_client_member_id"
