@@ -107,6 +107,4 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-if $0 == __FILE__
-  Deploy.exec_cmds(options[:env], added_cmds: 'systemctl --user restart work_job')
-end
+
