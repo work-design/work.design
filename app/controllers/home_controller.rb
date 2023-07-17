@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+  layout -> { 'official/layouts/home' if current_organ&.code == 'official' }
   def index
     @post = Detail::Post.find_by(code: 'home/index')
   end
