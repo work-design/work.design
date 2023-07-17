@@ -27,6 +27,7 @@ git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   #gem 'tencentcloud-sdk-ocr'
 end
 gem 'aliyunsdkcore'
+gem 'rails_deploy'
 
 # Payment method
 gem 'alipay2', gitee: 'qinmingyuan/alipay2'
