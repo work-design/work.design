@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: a4a45252fcf64d6a6cbffc6f8830dd547e791c66
+  revision: c230f3f85365fd2ee08a3223f6d7eaa48e8040fc
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 1301fbdab7484c7bde82df673bb01f8dbc5bdd11
+  revision: f1bfa96ea33e236f5d44267eba003572b3d0848c
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
