@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_18_034003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -5138,7 +5138,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
   end
 
   create_table "wechat_contacts", id: { scale: 8 }, force: :cascade do |t|
-    t.string "corp_id"
+    t.string "corpid"
     t.string "userid"
     t.string "part_id"
     t.string "config_id"
@@ -5167,7 +5167,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
   end
 
   create_table "wechat_corp_users", id: { scale: 8 }, force: :cascade do |t|
-    t.string "corp_id"
+    t.string "corpid"
     t.string "device_id"
     t.string "user_ticket"
     t.datetime "ticket_expires_at"
@@ -5185,13 +5185,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
     t.integer "follows_count", scale: 4, default: 0
     t.bigint "organ_id", scale: 8
     t.string "userid"
-    t.index ["corp_id"], name: "index_wechat_corp_users_on_corp_id"
+    t.index ["corpid"], name: "index_wechat_corp_users_on_corpid"
     t.index ["organ_id"], name: "index_wechat_corp_users_on_organ_id"
   end
 
   create_table "wechat_corps", id: { scale: 8 }, force: :cascade do |t|
     t.string "name"
-    t.string "corp_id"
+    t.string "corpid"
     t.string "corp_type"
     t.string "subject_type"
     t.datetime "verified_end_at"
@@ -5221,7 +5221,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
     t.boolean "debug"
     t.bigint "organ_id", scale: 8
     t.string "open_corpid"
-    t.index ["corp_id"], name: "index_wechat_corps_on_corp_id"
+    t.index ["corpid"], name: "index_wechat_corps_on_corpid"
     t.index ["organ_id"], name: "index_wechat_corps_on_organ_id"
   end
 
@@ -5537,14 +5537,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_115741) do
   create_table "wechat_qy_medias", id: { scale: 8 }, force: :cascade do |t|
     t.string "medium_type"
     t.bigint "medium_id", scale: 8
-    t.string "corp_id"
+    t.string "corpid"
     t.string "suite_id"
     t.string "media_id"
     t.string "url"
     t.string "medium_attach"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["corp_id"], name: "index_wechat_qy_medias_on_corp_id"
+    t.index ["corpid"], name: "index_wechat_qy_medias_on_corpid"
     t.index ["medium_type", "medium_id"], name: "index_wechat_qy_medias_on_medium"
     t.index ["suite_id"], name: "index_wechat_qy_medias_on_suite_id"
   end
