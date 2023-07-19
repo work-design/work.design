@@ -1,0 +1,43 @@
+.slide + .weui-panel {
+  margin-top: 0;
+}
+
+.weui-panel {
+  &.has-border {
+    border-top: 8px solid #16a488;
+    border-bottom: 8px solid #16a488;
+  }
+  &.has-border-bottom {
+    border-bottom: 8px solid #16a488;
+  }
+  &.has-border,
+  &.has-border-bottom {
+    .weui-panel__hd {
+      padding: 0;
+    }
+
+    .tag.is-danger {
+      background-color: #16a488;
+      font-size: 0.9rem;
+      border-radius: 0;
+      border-bottom-right-radius: 20px;
+      padding-right: 30px;
+    }
+  }
+
+  &.has-background {
+    margin-top: 0;
+    padding: 0.75rem;
+    background-color: #16a488;
+  }
+  .slide {
+    border-radius: 6px;
+  }
+}
+
+.navbar {
+  &.is-light,
+  &.is-dark {
+    background-color: #16a488;
+  }
+}
