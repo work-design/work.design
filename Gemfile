@@ -72,7 +72,6 @@ gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 gem 'propshaft'
 
 # Debug
-gem 'amazing_print'
 group :development, :test do
   gem 'debug'
   gem 'capybara'
