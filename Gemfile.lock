@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 4ca496c11bed3985ba77abd8a12073e2b5b0438b
+  revision: a04198d1f5f0bb8bd323c52a7660545694be11dc
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: f7c402b73740da9cdf9971c31e43e59ad37c76b7
+  revision: 9dd379d143692926bcab522a18b5f80108852225
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
