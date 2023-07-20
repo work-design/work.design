@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_074135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1120,6 +1120,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.string "external_userid"
     t.string "pending_id"
     t.jsonb "remark_mobiles"
+    t.integer "items_count", scale: 4
+    t.integer "carts_count", scale: 4
     t.index ["agency_id"], name: "index_crm_maintains_on_agency_id"
     t.index ["agent_type", "agent_id"], name: "index_crm_maintains_on_agent"
     t.index ["client_member_id"], name: "index_crm_maintains_on_client_member_id"
@@ -4287,7 +4289,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
-    t.bigint "client_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.bigint "scene_id", scale: 8
     t.bigint "order_id", scale: 8
@@ -4298,7 +4299,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_trade_deliveries_on_client_id"
     t.index ["member_id"], name: "index_trade_deliveries_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_deliveries_on_member_organ_id"
     t.index ["order_id"], name: "index_trade_deliveries_on_order_id"
@@ -4406,6 +4406,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.bigint "desk_id", scale: 8
     t.string "job_id"
     t.date "produce_on", comment: "对接生产管理"
+    t.bigint "maintain_id", scale: 8
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
@@ -4413,6 +4414,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.index ["from_address_id"], name: "index_trade_items_on_from_address_id"
     t.index ["from_station_id"], name: "index_trade_items_on_from_station_id"
     t.index ["good_type", "good_id"], name: "index_trade_items_on_good_type_and_good_id"
+    t.index ["maintain_id"], name: "index_trade_items_on_maintain_id"
     t.index ["member_id"], name: "index_trade_items_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_items_on_member_organ_id"
     t.index ["operator_id"], name: "index_trade_items_on_operator_id"
@@ -4524,8 +4526,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
     t.bigint "member_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.bigint "member_organ_id", scale: 8
-    t.bigint "client_id", scale: 8
-    t.index ["client_id"], name: "index_trade_payment_references_on_client_id"
     t.index ["member_id"], name: "index_trade_payment_references_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_payment_references_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_payment_references_on_organ_id"

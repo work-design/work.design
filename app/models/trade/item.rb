@@ -7,6 +7,7 @@ module Trade
     include Factory::Ext::Item
     include Space::Ext::Item
     include JiaBo::Ext::Device
+    include Crm::Ext::Maintainable
 
   end
 end
