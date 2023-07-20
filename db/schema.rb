@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_050529) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_050850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3237,7 +3237,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050529) do
     t.bigint "member_organ_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.boolean "principal", default: false
+    t.bigint "maintain_id", scale: 8
+    t.bigint "client_id", scale: 8
     t.index ["area_id"], name: "index_profiled_addresses_on_area_id"
+    t.index ["client_id"], name: "index_profiled_addresses_on_client_id"
+    t.index ["maintain_id"], name: "index_profiled_addresses_on_maintain_id"
     t.index ["member_id"], name: "index_profiled_addresses_on_member_id"
     t.index ["member_organ_id"], name: "index_profiled_addresses_on_member_organ_id"
     t.index ["organ_id"], name: "index_profiled_addresses_on_organ_id"
@@ -3291,10 +3295,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_050529) do
     t.string "corp_full_name"
     t.string "external_type"
     t.string "unionid"
-    t.bigint "maintain_id", scale: 8
-    t.bigint "client_id", scale: 8
-    t.index ["client_id"], name: "index_profiled_profiles_on_client_id"
-    t.index ["maintain_id"], name: "index_profiled_profiles_on_maintain_id"
     t.index ["organ_id"], name: "index_profiled_profiles_on_organ_id"
     t.index ["user_id"], name: "index_profiled_profiles_on_user_id"
   end
