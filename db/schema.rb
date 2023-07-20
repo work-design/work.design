@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_034003) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_050529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3283,7 +3283,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_034003) do
     t.string "identity"
     t.jsonb "extra", default: {}
     t.bigint "user_id", scale: 8
-    t.string "corp_id"
+    t.string "corpid"
     t.string "external_userid"
     t.string "position"
     t.string "avatar_url"
@@ -3291,6 +3291,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_034003) do
     t.string "corp_full_name"
     t.string "external_type"
     t.string "unionid"
+    t.bigint "maintain_id", scale: 8
+    t.bigint "client_id", scale: 8
+    t.index ["client_id"], name: "index_profiled_profiles_on_client_id"
+    t.index ["maintain_id"], name: "index_profiled_profiles_on_maintain_id"
     t.index ["organ_id"], name: "index_profiled_profiles_on_organ_id"
     t.index ["user_id"], name: "index_profiled_profiles_on_user_id"
   end
@@ -5221,6 +5225,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_034003) do
     t.boolean "debug"
     t.bigint "organ_id", scale: 8
     t.string "open_corpid"
+    t.boolean "enabled"
     t.index ["corpid"], name: "index_wechat_corps_on_corpid"
     t.index ["organ_id"], name: "index_wechat_corps_on_organ_id"
   end
