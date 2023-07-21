@@ -1,9 +1,4 @@
 @import 'sources/variables';
-
-@import 'rails_design/app/stylesheets/ext_bulma/index.scss';
-@import 'rails_design/app/stylesheets/ext_choices/index.scss';
-@import 'rails_design/app/stylesheets/marp/index.scss';
-@import 'rails_design/app/stylesheets/ui_tooltip/index.scss';
-@import 'rails_design/app/stylesheets/highlight/index.scss';
+@import "rails_design/app/assets/stylesheets/rails_design/application";
 @import 'sources/fontawesome';
 @import 'sources/font';
