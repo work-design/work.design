@@ -1,7 +1,9 @@
 Rails.configuration.assets.paths += [
-  Rails.root.join('node_modules/@fortawesome/fontawesome-free/webfonts').to_s
+  Rails.root.join('node_modules/@fortawesome/fontawesome-free/webfonts'),
+  Rails.root.join('app/assets/images'),
+  RailsDesign::Engine.root.join('app/assets/images')
 ]
 
-#Rails.configuration.assets.excluded_paths << GoodJob::Engine.root.join('app/assets/vendor').to_s
-Rails.configuration.assets.excluded_paths << ActionText::Engine.root.join('app/assets/javascripts').to_s
+Rails.configuration.assets.excluded_paths << GoodJob::Engine.root.join('app/assets/vendor')
+Rails.configuration.assets.excluded_paths << ActionText::Engine.root.join('app/assets/javascripts')
 Rails.configuration.assets.excluded_paths << ActionView::Railtie.root.join('lib/assets/compiled')
