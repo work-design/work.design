@@ -1,3 +1,3 @@
 class ApplicationMailbox < ActionMailbox::Base
-  routing ->(email) { email.mail.from.end_with?('<weixinteam@qq.com>') } => :wechat
+  routing ->(email) { email.mail.from.end_with?('<weixinmphelper@tencent.com>') } => :wechat
 end
