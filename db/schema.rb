@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_20_075130) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_22_125812) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4688,7 +4688,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_20_075130) do
     t.integer "use_limit", scale: 4
     t.boolean "over_limit", default: false
     t.string "aim", default: "use"
+    t.bigint "maintain_id", scale: 8
+    t.bigint "client_id", scale: 8
+    t.index ["client_id"], name: "index_trade_promote_goods_on_client_id"
     t.index ["good_type", "good_id"], name: "index_trade_promote_goods_on_good_type_and_good_id"
+    t.index ["maintain_id"], name: "index_trade_promote_goods_on_maintain_id"
     t.index ["member_id"], name: "index_trade_promote_goods_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_promote_goods_on_organ_id"
