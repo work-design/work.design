@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 93b61bb540959ec4c695d3c4ad4b2adeac400988
+  revision: a0bc815ba51ebd038e5046a337defa3ee8bfdb3f
   specs:
     rails_com (1.3.0)
       acme-client
@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 64cd71872ca85db754d19d4dca66a1b86bcfd87b
+  revision: 652977afa77b7cd51775b038242a020e68f28896
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 0fef669aaa52c90c3c82f31174829a64904a39f5
+  revision: 740a46ea0bd681c11be81f153424cc472d21ee4f
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
