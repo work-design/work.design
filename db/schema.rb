@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_22_125812) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4371,7 +4371,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_125812) do
     t.decimal "amount", limit: 2, precision: 10
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "number", scale: 4
+    t.decimal "number"
     t.decimal "reduced_amount", limit: 2, precision: 10
     t.decimal "additional_amount", limit: 2, precision: 10
     t.decimal "single_price", limit: 2, precision: 10
@@ -4400,8 +4400,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_125812) do
     t.string "uuid"
     t.integer "volume", scale: 4, default: 0, comment: "体积"
     t.bigint "client_id", scale: 8
-    t.integer "done_number", scale: 4, comment: "已达成交易数量"
-    t.integer "rest_number", scale: 4
+    t.decimal "done_number", comment: "已达成交易数量"
     t.jsonb "wallet_amount"
     t.string "delivery_status"
     t.bigint "operator_id", scale: 8
@@ -4411,6 +4410,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_125812) do
     t.string "job_id"
     t.date "produce_on", comment: "对接生产管理"
     t.bigint "maintain_id", scale: 8
+    t.virtual "rest_number", type: :decimal, as: "(number - done_number)", stored: true
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
