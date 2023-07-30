@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_30_021755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -354,14 +354,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
     t.json "extra", default: {}
     t.string "identity"
     t.bigint "user_inviter_id", scale: 8
-    t.bigint "member_inviter_id", scale: 8
     t.string "remark"
     t.datetime "unsubscribe_at"
     t.bigint "user_id", scale: 8
     t.string "scope"
     t.string "session_key"
     t.boolean "agency_oauth"
-    t.index ["member_inviter_id"], name: "index_auth_oauth_users_on_member_inviter_id"
     t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
     t.index ["user_inviter_id"], name: "index_auth_oauth_users_on_user_inviter_id"
   end
@@ -3029,6 +3027,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
     t.string "wechat_openid"
     t.bigint "user_id", scale: 8
     t.integer "maintains_count", scale: 4
+    t.bigint "member_inviter_id", scale: 8
+    t.index ["member_inviter_id"], name: "index_org_members_on_member_inviter_id"
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
     t.index ["user_id"], name: "index_org_members_on_user_id"
@@ -3046,6 +3046,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
     t.datetime "updated_at", null: false
     t.string "beian", comment: "备案号"
     t.string "scheme", default: "https"
+    t.string "kind"
     t.index ["identifier"], name: "index_org_organ_domains_on_identifier"
     t.index ["organ_id"], name: "index_org_organ_domains_on_organ_id"
   end
@@ -3084,16 +3085,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_105401) do
     t.jsonb "parent_ancestors"
     t.boolean "official", comment: "是否官方"
     t.boolean "joinable", comment: "是否可搜索并加入"
-    t.string "domain"
     t.string "code"
     t.bigint "corp_user_id", scale: 8
     t.string "redirect_controller"
     t.string "redirect_action", comment: "默认跳转"
     t.string "service_url", comment: "客服 url"
     t.string "appid"
+    t.bigint "creator_id", scale: 8
+    t.bigint "provider_id", scale: 8
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
+    t.index ["creator_id"], name: "index_org_organs_on_creator_id"
     t.index ["parent_id"], name: "index_org_organs_on_parent_id"
+    t.index ["provider_id"], name: "index_org_organs_on_provider_id"
   end
 
   create_table "org_resign_reasons", id: { scale: 8 }, force: :cascade do |t|
