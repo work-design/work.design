@@ -4,5 +4,4 @@ class AdminController < ApplicationController
   include Roled::Controller::Admin
   before_action :require_org_member, :require_role
 
-
 end
