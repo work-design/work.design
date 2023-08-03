@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_053948) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_055044) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4240,6 +4240,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_053948) do
     t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
     t.boolean "fresh"
+    t.decimal "advance_amount"
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
     t.index ["client_id"], name: "index_trade_carts_on_client_id"
     t.index ["maintain_id"], name: "index_trade_carts_on_maintain_id"
