@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_021755) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_033835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -325,8 +325,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_021755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "corp_userid"
+    t.bigint "user_id", scale: 8
     t.index ["identity"], name: "index_auth_authorized_tokens_on_identity"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
+    t.index ["user_id"], name: "index_auth_authorized_tokens_on_user_id"
   end
 
   create_table "auth_disposable_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -5046,12 +5048,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_021755) do
     t.bigint "platform_template_id", scale: 8
     t.string "type"
     t.jsonb "extra"
-    t.string "domain"
     t.integer "auditid", scale: 4
     t.jsonb "version_info"
     t.integer "audit_status", scale: 4
     t.string "confirm_name"
     t.string "confirm_content"
+    t.bigint "organ_id", scale: 8
+    t.index ["organ_id"], name: "index_wechat_agencies_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
   end
@@ -5610,6 +5613,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_021755) do
     t.string "password"
     t.string "mobile"
     t.string "mobile_code"
+    t.string "personal_wechat"
+    t.string "organ_name"
+    t.string "organ_code"
     t.index ["organ_id"], name: "index_wechat_registers_on_organ_id"
     t.index ["user_id"], name: "index_wechat_registers_on_user_id"
   end
