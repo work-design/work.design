@@ -31,6 +31,7 @@ app/views/*
 !app/views/application
 !app/views/auth
 !app/views/auth_ext
+!app/views/bench
 !app/views/board
 !app/views/crm
 !app/views/factory
