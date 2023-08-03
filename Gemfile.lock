@@ -154,7 +154,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 19cd26aa2765ce7ea01a4554380ce58d3bf3c5df
+  revision: 922b4e35dc2f96933c460f18b2eedd0f7ab665a4
   specs:
     rails_finance (0.0.1)
       prawn
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 528a5a711c2f55782075a0237d099b44ef98438b
+  revision: aa5a2b90759edee2636c430a904a6803e6bebcc4
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
