@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_033835) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_03_053948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4478,6 +4478,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_033835) do
     t.string "aim"
     t.decimal "adjust_amount"
     t.bigint "operator_id", scale: 8
+    t.decimal "advance_amount"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_orders_on_current_cart_id"
