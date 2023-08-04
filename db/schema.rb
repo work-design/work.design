@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_074042) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_085223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -5158,6 +5158,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_074042) do
     t.boolean "testcase"
     t.index ["platform_id"], name: "index_wechat_auths_on_platform_id"
     t.index ["request_id"], name: "index_wechat_auths_on_request_id"
+  end
+
+  create_table "wechat_categories", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "parent_id", scale: 8
+    t.string "name"
+    t.integer "level", scale: 4
+    t.string "scope"
+    t.string "kind"
+    t.jsonb "extra"
+    t.jsonb "parent_ancestors"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_wechat_categories_on_parent_id"
+  end
+
+  create_table "wechat_category_hierarchies", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "ancestor_id", scale: 8
+    t.bigint "descendant_id", scale: 8
+    t.integer "generations", scale: 4, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "wechat/category_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_wechat_category_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_wechat_category_hierarchies_on_descendant_id"
   end
 
   create_table "wechat_contacts", id: { scale: 8 }, force: :cascade do |t|
