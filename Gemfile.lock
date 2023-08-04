@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 71c688e453137e06476333e3bd5f66cad7c679cf
+  revision: 715735d0f43537a8387c461cd7dc234cc61b5e9a
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -202,7 +202,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 95b30fc8b61ad69f9fc2a1ae2bfb26f959f369e4
+  revision: 772a3b5275dcdd8db6f7dc9716cb4e3f365d1eda
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -218,7 +218,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 47caab2e3077a67f3b23316bf602f63f950cbf07
+  revision: a4f0982567e460f2eb56c6cb6e7cf2c173d4df2a
   specs:
     rails_ship (0.0.1)
       rails_extend
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: aa5a2b90759edee2636c430a904a6803e6bebcc4
+  revision: 060e4fb026167afcd66e76e68064edffcc0131b5
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
