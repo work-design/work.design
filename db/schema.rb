@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_085223) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_04_094456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -5058,6 +5058,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_085223) do
     t.string "confirm_content"
     t.bigint "organ_id", scale: 8
     t.string "ticket"
+    t.string "logo_media_id"
     t.index ["organ_id"], name: "index_wechat_agencies_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
