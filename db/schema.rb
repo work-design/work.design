@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_04_094456) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_06_052159) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -5059,6 +5059,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_04_094456) do
     t.bigint "organ_id", scale: 8
     t.string "ticket"
     t.string "logo_media_id"
+    t.string "jsapi_ticket"
+    t.datetime "jsapi_ticket_expires_at"
+    t.boolean "enabled"
+    t.boolean "global"
+    t.boolean "oauth_enable"
+    t.boolean "inviting", comment: "可邀请加入"
+    t.text "secret"
+    t.string "token"
+    t.boolean "encrypt_mode"
+    t.string "encoding_aes_key"
+    t.string "url_link"
+    t.boolean "debug"
+    t.string "weapp_id", comment: "关联的小程序"
     t.index ["organ_id"], name: "index_wechat_agencies_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
