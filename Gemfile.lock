@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: db079d20c6321818635cb0373688939c90b106bb
+  revision: 725ebca438249e90acd79f1f14ed98b238524666
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -49,21 +49,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 71234977462dc3b3500f972d89ec9f858c67aeb8
+  revision: 8ed657c0fe54f67a6b0c2a8427e6b904ad8c99b1
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_cms.git
-  revision: 378cd17805fd72498ac3e4b378822841e40c6966
+  revision: 7b9dbc2652e7ef828d9d092cea4acd3e388f2c67
   specs:
     rails_cms (0.0.1)
       rails_extend
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 9d7673b570d6eced6aa5f45d0120d0b61157ff4a
+  revision: 52aef1a2d20de6b699ec77dea10a48e2da73e9a2
   specs:
     rails_com (1.3.0)
       acme-client
@@ -102,7 +102,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 5b5880afb7ae9f36cce7a2c014f756c1284e9044
+  revision: 4b9f5161e8ad00883ff73b7ec3ea867b7535c542
   specs:
     rails_design (0.0.1)
       rails
@@ -145,7 +145,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: db72d519b08813e86e107d62af3f01ac48659da7
+  revision: 5e40d714f241c1256f16111d9a8447ec693db886
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -177,7 +177,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: f51ff1d431b6980f11adfd7fac1628624093c87b
+  revision: 34cb9e05a4d944b683f37a59d303291b09b51d2b
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -195,7 +195,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 4d5b46e21807a7666d9d8d5450fed4149a71853f
+  revision: 3d3d52607cca29d9521176d4ac1740d6f20a8f7a
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 4ae9aa68a598339abc8978d37a241a2220a13424
+  revision: 565fc1732fce65e391685da6ded95084fa37a4e3
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 1600f26c586c396db56caf84eaa2c70e59b31e58
+  revision: 931b68024860ff0920a400fbd03391a5f3a8147d
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)

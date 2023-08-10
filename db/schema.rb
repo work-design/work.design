@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_094710) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -763,6 +763,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
     t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "enabled"
     t.index ["organ_id"], name: "index_cms_carousels_on_organ_id"
   end
 
@@ -5064,8 +5065,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
     t.datetime "jsapi_ticket_expires_at"
     t.boolean "enabled"
     t.boolean "global"
-    t.boolean "oauth_enable"
-    t.boolean "inviting", comment: "可邀请加入"
     t.text "secret"
     t.string "token"
     t.boolean "encrypt_mode"
@@ -5073,6 +5072,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
     t.string "url_link"
     t.boolean "debug"
     t.string "weapp_id", comment: "关联的小程序"
+    t.string "open_appid"
     t.index ["organ_id"], name: "index_wechat_agencies_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
@@ -5383,35 +5383,59 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
     t.string "appid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "menu_root_id", scale: 8
+    t.bigint "menu_root_app_id", scale: 8
+    t.string "type"
+    t.string "name"
+    t.string "value"
+    t.string "mp_appid"
+    t.string "mp_pagepath"
+    t.integer "position", scale: 4
     t.index ["appid"], name: "index_wechat_menu_apps_on_appid"
     t.index ["menu_id"], name: "index_wechat_menu_apps_on_menu_id"
+    t.index ["menu_root_app_id"], name: "index_wechat_menu_apps_on_menu_root_app_id"
+    t.index ["menu_root_id"], name: "index_wechat_menu_apps_on_menu_root_id"
     t.index ["scene_id"], name: "index_wechat_menu_apps_on_scene_id"
     t.index ["tag_id"], name: "index_wechat_menu_apps_on_tag_id"
   end
 
-  create_table "wechat_menu_roots", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "organ_id", scale: 8
-    t.string "name"
-    t.integer "position", scale: 4
+  create_table "wechat_menu_disables", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "menu_id", scale: 8
     t.string "appid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organ_id"], name: "index_wechat_menu_roots_on_organ_id"
+    t.index ["appid"], name: "index_wechat_menu_disables_on_appid"
+    t.index ["menu_id"], name: "index_wechat_menu_disables_on_menu_id"
+  end
+
+  create_table "wechat_menu_root_apps", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "menu_root_id", scale: 8
+    t.string "name"
+    t.string "appid"
+    t.integer "position", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_root_id"], name: "index_wechat_menu_root_apps_on_menu_root_id"
+  end
+
+  create_table "wechat_menu_roots", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.integer "position", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "wechat_menus", id: { scale: 8 }, force: :cascade do |t|
     t.string "type"
     t.string "name"
     t.string "value"
-    t.string "appid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", scale: 4
     t.string "mp_appid"
     t.string "mp_pagepath"
-    t.bigint "organ_id", scale: 8
-    t.integer "root_position", scale: 4
-    t.index ["organ_id"], name: "index_wechat_menus_on_organ_id"
+    t.bigint "menu_root_id", scale: 8
+    t.index ["menu_root_id"], name: "index_wechat_menus_on_menu_root_id"
   end
 
   create_table "wechat_news_reply_items", id: { scale: 8 }, force: :cascade do |t|
@@ -5828,6 +5852,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_123708) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "kind"
+  end
+
+  create_table "wechat_supporters", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "agent_id", scale: 8
+    t.string "avatar"
+    t.string "name"
+    t.string "open_kfid"
+    t.boolean "manage_privilege"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["agent_id"], name: "index_wechat_supporters_on_agent_id"
   end
 
   create_table "wechat_tags", id: { scale: 8 }, force: :cascade do |t|
