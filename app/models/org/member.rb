@@ -6,7 +6,7 @@ module Org
     include Roled::Ext::Member
     include Trade::Ext::Member
     include Finance::Ext::Member
-    include Notice::Model::Member
+    include Notice::Ext::Member
     include Notice::Ext::Setting
     include Attend::Ext::Member
     include Wechat::Ext::Member
