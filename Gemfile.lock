@@ -138,7 +138,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_extend.git
-  revision: ff94e4221d512cc7d858da1a7d020e004c22ae3f
+  revision: 4d2bdbe16d66e9c1078e9e2ad17a7e9ca3f0c126
   specs:
     rails_extend (1.0.1)
       rails (>= 5.0)
