@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: aea48f1525eca105ea159d1692081309d3b7bff7
+  revision: 746a137c3d458c3f67fb1b354a047a43a81803c8
   specs:
-    tencentcloud-sdk-common (3.0.634)
+    tencentcloud-sdk-common (3.0.635)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -145,7 +145,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 5d497c1b2ddeb508bcb09069e48328ee800bc8b3
+  revision: 046a4cb79d7317a1b5bcfbc8fa453dc54cc82dd8
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
