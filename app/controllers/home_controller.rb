@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
-  layout -> { 'official/layouts/home' if current_organ&.code == 'official' }
+  #layout -> { 'official/layouts/home' if current_organ&.code == 'official' }
   def index
-    @post = Detail::Post.find_by(code: 'home/index')
+    @posts = Markdown::Post.default_where(default_params).where(slug: 'README').where.not(layout: nil)
   end
 
   private
