@@ -1,9 +1,5 @@
 <%= render layout: 'layouts/phone_head' do %>
-  <div class="weui-tab">
-    <div class="weui-tab__panel">
-      <%= render 'nav_bar' %>
-      <%= yield %>
-      <%= render 'footer' %>
-    </div>
-  </div>
+  <%= render 'nav_bar' %>
+  <%= yield %>
+  <%= render 'footer' %>
 <% end %>
