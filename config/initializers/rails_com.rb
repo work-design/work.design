@@ -6,5 +6,5 @@ RailsCom.configure do |config|
   config.notify_bot = 'WorkWechatBot'
   config.notify_key = "#{Rails.application.credentials[:log_bot_key]}"
   config.default_admin_accounts = Rails.application.credentials[:admin_accounts]
-  config.debug = true
+  config.debug = false
 end
