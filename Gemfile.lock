@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 746a137c3d458c3f67fb1b354a047a43a81803c8
+  revision: 2b546a7f72afb62de6ee83e4c4a3c8a8eb6a82a1
   specs:
-    tencentcloud-sdk-common (3.0.635)
+    tencentcloud-sdk-common (3.0.636)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
