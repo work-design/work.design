@@ -6,5 +6,6 @@ module Org
     include Bench::Ext::Organ
     include Wechat::Ext::Organ
     include Trade::Ext::Organ
+    include Factory::Ext::Organ
   end
 end

@@ -5,7 +5,7 @@
 <%= link_to({ controller: '/factory/productions' }, class: active_helper(controllers: 'factory/productions', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
   <i class="fa-solid fa-store-alt weui-tabbar__icon"></i>
   <div class="weui-tabbar__label"><%= t('factory.productions.index.title') %></div>
-<% end %>
+<% end if current_organ&.production_enabled %>
 <%= link_to({ controller: '/my/home' }, class: active_helper(controllers: 'my/home', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
   <i class="fa-solid fa-user-alt weui-tabbar__icon"></i>
   <div class="weui-tabbar__label">个人中心</div>
