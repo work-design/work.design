@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 2b546a7f72afb62de6ee83e4c4a3c8a8eb6a82a1
+  revision: c74ff52e00ae7c2c3ae7661802fb773bc814f4f2
   specs:
-    tencentcloud-sdk-common (3.0.636)
+    tencentcloud-sdk-common (3.0.640)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 425a4f6e828b2348b948b9cfb92b11d141a6e521
+  revision: 6b64044f889d0aade0f6acf368a77918559d0799
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -233,7 +233,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: c00cf19fa410dc0bc28140303aa67ff9617b2908
+  revision: 154bde2eff78568f5a504b5bbbb0a3856a8f1416
   specs:
     rails_trade (0.0.3)
       money-rails (~> 1.14)
@@ -242,7 +242,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 5c6971f4508f69b208b4ca0c1aa2582ac11a406e
+  revision: 487fbef4fd2f63be4218046317cdcdaee1da8126
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -370,7 +370,7 @@ GEM
       raabro (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    good_job (3.17.2)
+    good_job (3.17.3)
       activejob (>= 6.0.0)
       activerecord (>= 6.0.0)
       concurrent-ruby (>= 1.0.2)
@@ -393,6 +393,9 @@ GEM
     io-console (0.6.0)
     irb (1.7.4)
       reline (>= 0.3.6)
+    jbuilder (2.11.5)
+      actionview (>= 5.0.0)
+      activesupport (>= 5.0.0)
     jwt (2.7.1)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -429,7 +432,6 @@ GEM
     mime-types-data (3.2023.0808)
     mini_magick (4.12.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
     minitest (5.19.0)
     monetize (1.12.0)
       money (~> 6.12)
@@ -456,9 +458,6 @@ GEM
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
-    nokogiri (1.15.4)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
@@ -505,7 +504,7 @@ GEM
       rack
       railties (>= 7.0.0)
     public_suffix (5.0.3)
-    puma (6.3.0)
+    puma (6.3.1)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.1)
@@ -549,10 +548,10 @@ GEM
       ffi (~> 1.0)
     redis (5.0.7)
       redis-client (>= 0.9.0)
-    redis-client (0.15.0)
+    redis-client (0.16.0)
       connection_pool
     regexp_parser (2.8.1)
-    reline (0.3.7)
+    reline (0.3.8)
       io-console (~> 0.5)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
@@ -625,7 +624,6 @@ GEM
 
 PLATFORMS
   arm64-darwin
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -638,6 +636,7 @@ DEPENDENCIES
   default_where!
   good_job
   image_processing
+  jbuilder
   listen
   mini_magick
   nokogiri

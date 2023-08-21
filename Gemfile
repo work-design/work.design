@@ -5,6 +5,7 @@ gem 'rails'
 gem 'puma'
 gem 'sd_notify'
 gem 'good_job'
+gem 'jbuilder'
 
 # Store
 gem 'pg'
