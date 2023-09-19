@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
+ActiveRecord::Schema[7.1].define(version: 2023_09_19_092726) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1027,6 +1027,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.boolean "destroyable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "auth_token"
     t.index ["organ_id"], name: "index_com_states_on_organ_id"
     t.index ["user_id"], name: "index_com_states_on_user_id"
   end
@@ -2091,6 +2092,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.index ["station_id"], name: "index_factory_production_plans_on_station_id"
   end
 
+  create_table "factory_production_provides", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "provider_id", scale: 8
+    t.bigint "product_id", scale: 8
+    t.bigint "production_id", scale: 8
+    t.bigint "upstream_product_id", scale: 8
+    t.bigint "upstream_production_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_factory_production_provides_on_organ_id"
+    t.index ["product_id"], name: "index_factory_production_provides_on_product_id"
+    t.index ["production_id"], name: "index_factory_production_provides_on_production_id"
+    t.index ["provider_id"], name: "index_factory_production_provides_on_provider_id"
+    t.index ["upstream_product_id"], name: "index_factory_production_provides_on_upstream_product_id"
+    t.index ["upstream_production_id"], name: "index_factory_production_provides_on_upstream_production_id"
+  end
+
   create_table "factory_productions", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "product_id", scale: 8
     t.string "name"
@@ -2119,21 +2137,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.decimal "invest_ratio", default: "0.0", comment: "抽成比例"
     t.bigint "product_host_id", scale: 8
     t.bigint "factory_taxon_id", scale: 8
-    t.bigint "provider_id", scale: 8
-    t.bigint "upstream_id", scale: 8
-    t.string "type"
     t.integer "position", scale: 4
     t.integer "rent_charges_count", scale: 4
     t.string "rent_unit"
     t.boolean "presell"
     t.string "link"
+    t.decimal "stock"
+    t.jsonb "last_stock_log"
     t.index ["factory_taxon_id"], name: "index_factory_productions_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_host_id"], name: "index_factory_productions_on_product_host_id"
     t.index ["product_id"], name: "index_factory_productions_on_product_id"
     t.index ["product_taxon_id"], name: "index_factory_productions_on_product_taxon_id"
-    t.index ["provider_id"], name: "index_factory_productions_on_provider_id"
-    t.index ["upstream_id"], name: "index_factory_productions_on_upstream_id"
   end
 
   create_table "factory_products", id: { scale: 8 }, force: :cascade do |t|
@@ -2151,12 +2166,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.integer "product_parts_count", scale: 4, default: 0
     t.bigint "unifier_id", scale: 8
     t.bigint "brand_id", scale: 8
-    t.string "type"
     t.boolean "specialty", default: false
     t.integer "fits_count", scale: 4, default: 0
     t.jsonb "product_taxon_ancestors"
     t.bigint "factory_taxon_id", scale: 8
-    t.bigint "upstream_id", scale: 8
     t.integer "position", scale: 4
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
@@ -2164,7 +2177,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.index ["product_taxon_id"], name: "index_factory_products_on_product_taxon_id"
     t.index ["sku"], name: "index_factory_products_on_sku"
     t.index ["unifier_id"], name: "index_factory_products_on_unifier_id"
-    t.index ["upstream_id"], name: "index_factory_products_on_upstream_id"
   end
 
   create_table "factory_provides", id: { scale: 8 }, force: :cascade do |t|
@@ -2223,6 +2235,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_factory_serials_on_brand_id"
     t.index ["parent_id"], name: "index_factory_serials_on_parent_id"
+  end
+
+  create_table "factory_stock_logs", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "production_id", scale: 8
+    t.string "source_type"
+    t.bigint "source_id", scale: 8
+    t.string "title"
+    t.string "tag_str"
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["production_id"], name: "index_factory_stock_logs_on_production_id"
+    t.index ["source_type", "source_id"], name: "index_factory_stock_logs_on_source"
   end
 
   create_table "factory_unifiers", id: { scale: 8 }, force: :cascade do |t|
@@ -4423,6 +4448,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.date "produce_on", comment: "对接生产管理"
     t.bigint "maintain_id", scale: 8
     t.virtual "rest_number", type: :decimal, as: "(number - done_number)", stored: true
+    t.string "purchase_status"
+    t.integer "purchase_id", scale: 4
     t.index ["address_id"], name: "index_trade_items_on_address_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
@@ -5285,7 +5312,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.boolean "debug"
     t.bigint "organ_id", scale: 8
     t.string "open_corpid"
-    t.boolean "enabled"
+    t.boolean "inviting", comment: "可邀请加入"
+    t.string "user_name"
+    t.string "domain"
+    t.string "url_link"
+    t.string "confirm_name"
+    t.string "confirm_content"
+    t.string "type"
+    t.string "agentid"
+    t.string "secret"
     t.index ["corpid"], name: "index_wechat_corps_on_corpid"
     t.index ["organ_id"], name: "index_wechat_corps_on_organ_id"
   end
@@ -5772,6 +5807,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
     t.string "aim"
     t.string "handle_type"
     t.bigint "handle_id", scale: 8
+    t.string "tag_name"
     t.index ["appid"], name: "index_wechat_scenes_on_appid"
     t.index ["handle_type", "handle_id"], name: "index_wechat_scenes_on_handle"
     t.index ["organ_id"], name: "index_wechat_scenes_on_organ_id"
@@ -5857,14 +5893,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_15_134131) do
   end
 
   create_table "wechat_supporters", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "agent_id", scale: 8
     t.string "avatar"
     t.string "name"
     t.string "open_kfid"
     t.boolean "manage_privilege"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["agent_id"], name: "index_wechat_supporters_on_agent_id"
+    t.bigint "corp_id", scale: 8
+    t.string "corpid"
+    t.index ["corp_id"], name: "index_wechat_supporters_on_corp_id"
   end
 
   create_table "wechat_tags", id: { scale: 8 }, force: :cascade do |t|
