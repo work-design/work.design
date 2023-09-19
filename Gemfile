@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
-gem 'rails'
+gem 'rails', '7.1.0.beta1'
 gem 'puma'
 gem 'sd_notify'
 gem 'good_job'

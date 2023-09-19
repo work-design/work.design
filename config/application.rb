@@ -36,6 +36,7 @@ module OneWork
 
     config.active_record.belongs_to_required_by_default = true
     config.active_record.encryption.support_unencrypted_data = true
+    config.active_record.encryption.support_sha1_for_non_deterministic_encryption = true
 
     config.action_controller.forgery_protection_origin_check = true
     config.action_controller.per_form_csrf_tokens = true
