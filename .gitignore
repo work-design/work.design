@@ -8,6 +8,7 @@ app/assets/images/**/
 
 .bundle
 .fleet
+.irb_history
 public/assets
 public/fonts
 public/challenge
