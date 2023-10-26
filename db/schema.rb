@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_09_19_092726) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -5061,52 +5061,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_19_092726) do
     t.integer "promote_goods_count", scale: 4, default: 0
   end
 
-  create_table "wechat_agencies", id: { scale: 8 }, force: :cascade do |t|
-    t.bigint "platform_id", scale: 8
-    t.string "appid"
-    t.string "access_token"
-    t.datetime "access_token_expires_at", precision: nil
-    t.string "refresh_token"
-    t.string "func_infos", array: true
-    t.string "nick_name"
-    t.string "head_img"
-    t.string "user_name"
-    t.string "principal_name"
-    t.string "alias_name"
-    t.string "qrcode_url"
-    t.json "business_info"
-    t.string "service_type"
-    t.string "verify_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "platform_template_id", scale: 8
-    t.string "type"
-    t.jsonb "extra"
-    t.integer "auditid", scale: 4
-    t.jsonb "version_info"
-    t.integer "audit_status", scale: 4
-    t.string "confirm_name"
-    t.string "confirm_content"
-    t.bigint "organ_id", scale: 8
-    t.string "ticket"
-    t.string "logo_media_id"
-    t.string "jsapi_ticket"
-    t.datetime "jsapi_ticket_expires_at"
-    t.boolean "enabled"
-    t.boolean "global"
-    t.text "secret"
-    t.string "token"
-    t.boolean "encrypt_mode"
-    t.string "encoding_aes_key"
-    t.string "url_link"
-    t.boolean "debug"
-    t.string "weapp_id", comment: "关联的小程序"
-    t.string "open_appid"
-    t.index ["organ_id"], name: "index_wechat_agencies_on_organ_id"
-    t.index ["platform_id"], name: "index_wechat_agencies_on_platform_id"
-    t.index ["platform_template_id"], name: "index_wechat_agencies_on_platform_template_id"
-  end
-
   create_table "wechat_agents", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
     t.string "access_token"
@@ -5163,33 +5117,49 @@ ActiveRecord::Schema[7.1].define(version: 2023_09_19_092726) do
   end
 
   create_table "wechat_apps", id: { scale: 8 }, force: :cascade do |t|
-    t.string "name", null: false
-    t.boolean "enabled", default: true
+    t.bigint "platform_id", scale: 8
     t.string "appid"
-    t.string "secret"
-    t.boolean "encrypt_mode"
-    t.string "encoding_aes_key"
-    t.string "token", null: false
     t.string "access_token"
-    t.string "jsapi_ticket"
+    t.datetime "access_token_expires_at", precision: nil
+    t.string "refresh_token"
+    t.string "func_infos", array: true
+    t.string "nick_name"
+    t.string "head_img"
+    t.string "user_name"
+    t.string "principal_name"
+    t.string "alias_name"
+    t.string "qrcode_url"
+    t.json "business_info"
+    t.string "service_type"
+    t.string "verify_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organ_id", scale: 8
+    t.bigint "platform_template_id", scale: 8
     t.string "type"
-    t.datetime "access_token_expires_at", precision: nil
-    t.datetime "jsapi_ticket_expires_at", precision: nil
-    t.boolean "shared"
-    t.string "user_name"
-    t.boolean "oauth_enable", default: true
-    t.boolean "inviting", default: false, comment: "可邀请加入"
-    t.string "domain"
-    t.string "url_link"
-    t.string "weapp_id", comment: "关联的小程序"
-    t.boolean "global", default: false
-    t.boolean "debug"
+    t.jsonb "extra"
+    t.integer "auditid", scale: 4
+    t.jsonb "version_info"
+    t.integer "audit_status", scale: 4
     t.string "confirm_name"
     t.string "confirm_content"
+    t.bigint "organ_id", scale: 8
+    t.string "ticket"
+    t.string "logo_media_id"
+    t.string "jsapi_ticket"
+    t.datetime "jsapi_ticket_expires_at"
+    t.boolean "enabled"
+    t.boolean "global"
+    t.text "secret"
+    t.string "token"
+    t.boolean "encrypt_mode"
+    t.string "encoding_aes_key"
+    t.string "url_link"
+    t.boolean "debug"
+    t.string "weapp_id", comment: "关联的小程序"
+    t.string "open_appid"
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
+    t.index ["platform_id"], name: "index_wechat_apps_on_platform_id"
+    t.index ["platform_template_id"], name: "index_wechat_apps_on_platform_template_id"
   end
 
   create_table "wechat_auths", id: { scale: 8 }, force: :cascade do |t|
