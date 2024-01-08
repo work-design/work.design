@@ -70,4 +70,3 @@ end
 ActiveRecord.verbose_query_logs = true
 
 #ActionCable.server.config.logger = Logger.new(nil)
-ENV['EDITOR'] = 'code --wait'

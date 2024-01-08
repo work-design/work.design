@@ -48,5 +48,3 @@ Rails.application.routes.default_url_options = {
   host: 'work.design',
   protocol: 'https'
 }
-
-ENV['EDITOR'] = 'vi'
