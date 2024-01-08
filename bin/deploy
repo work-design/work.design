@@ -4,5 +4,10 @@ gem 'rails_deploy'
 require 'deploy'
 
 if $0 == __FILE__
-  Deploy.exec_cmds(added_cmds: 'systemctl --user restart work_job')
+  Deploy.exec_cmds(
+    restart_cmds: [
+      'systemctl --user restart work_puma',
+      'systemctl --user restart work_job'
+    ]
+  )
 end
