@@ -10,7 +10,7 @@ Rails.application.configure do
 
   config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/2' }
 
-  config.public_file_server.enabled = true
+  config.public_file_server.enabled = false
 
   config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')
 
