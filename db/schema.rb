@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_09_105549) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -254,6 +254,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "controller_path"
     t.string "action_name"
     t.datetime "created_at", precision: nil, null: false
+    t.string "type"
     t.index ["audited_type", "audited_id"], name: "index_auditor_audits_on_audited_type_and_audited_id"
     t.index ["created_at"], name: "index_auditor_audits_on_created_at"
     t.index ["operator_type", "operator_id"], name: "index_auditor_audits_on_operator_type_and_operator_id"
@@ -326,6 +327,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "updated_at", null: false
     t.string "corp_userid"
     t.bigint "user_id", scale: 8
+    t.boolean "online"
     t.index ["identity"], name: "index_auth_authorized_tokens_on_identity"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
     t.index ["user_id"], name: "index_auth_authorized_tokens_on_user_id"
@@ -745,6 +747,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cms_audio_tags", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "audio_id", scale: 8
+    t.bigint "tag_id", scale: 8
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["audio_id"], name: "index_cms_audio_tags_on_audio_id"
+    t.index ["tag_id"], name: "index_cms_audio_tags_on_tag_id"
+  end
+
   create_table "cms_audios", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "author_id", scale: 8
     t.bigint "organ_id", scale: 8
@@ -767,6 +778,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.index ["organ_id"], name: "index_cms_carousels_on_organ_id"
   end
 
+  create_table "cms_covers", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_cms_covers_on_organ_id"
+  end
+
   create_table "cms_progressions", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "user_id", scale: 8
     t.string "progressive_type"
@@ -779,6 +798,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "updated_at", null: false
     t.index ["progressive_type", "progressive_id"], name: "index_cms_progressions_on_progressive"
     t.index ["user_id"], name: "index_cms_progressions_on_user_id"
+  end
+
+  create_table "cms_tags", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "cms_videos", id: { scale: 8 }, force: :cascade do |t|
@@ -891,6 +916,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "state", default: "init"
   end
 
+  create_table "com_err_bots", id: { scale: 8 }, force: :cascade do |t|
+    t.string "type"
+    t.string "hook_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "com_err_summaries", id: { scale: 8 }, force: :cascade do |t|
     t.string "controller_name"
     t.string "action_name"
@@ -914,6 +946,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.jsonb "params"
     t.jsonb "cookie"
     t.jsonb "session"
+  end
+
+  create_table "com_filter_columns", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "filter_id", scale: 8
+    t.string "column"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filter_id"], name: "index_com_filter_columns_on_filter_id"
+  end
+
+  create_table "com_filters", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "controller_path", null: false
+    t.string "action_name"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["controller_path", "action_name"], name: "index_com_filters_on_controller_path_and_action_name"
+    t.index ["organ_id"], name: "index_com_filters_on_organ_id"
   end
 
   create_table "com_infos", id: { scale: 8 }, force: :cascade do |t|
@@ -990,6 +1042,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.boolean "customizable", comment: "是否允许用户定制"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "business_identifier", null: false
     t.index ["record_name"], name: "index_com_meta_models_on_record_name"
   end
 
@@ -1046,6 +1099,70 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.index ["client_type", "client_id"], name: "index_crm_agencies_on_client"
   end
 
+  create_table "crm_client_hierarchies", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "ancestor_id", scale: 8
+    t.bigint "descendant_id", scale: 8
+    t.integer "generations", scale: 4, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "crm/client_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_crm_client_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_crm_client_hierarchies_on_descendant_id"
+  end
+
+  create_table "crm_clients", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "parent_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.bigint "client_organ_id", scale: 8
+    t.jsonb "parent_ancestors"
+    t.string "name"
+    t.jsonb "settings"
+    t.boolean "vendor"
+    t.integer "wallets_count", scale: 4
+    t.integer "cards_count", scale: 4
+    t.integer "orders_count", scale: 4
+    t.integer "addresses_count", scale: 4
+    t.integer "items_count", scale: 4
+    t.integer "carts_count", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_organ_id"], name: "index_crm_clients_on_client_organ_id"
+    t.index ["organ_id"], name: "index_crm_clients_on_organ_id"
+    t.index ["parent_id"], name: "index_crm_clients_on_parent_id"
+  end
+
+  create_table "crm_contacts", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.bigint "client_member_id", scale: 8
+    t.bigint "client_user_id", scale: 8
+    t.bigint "client_id", scale: 8
+    t.string "name"
+    t.string "identity"
+    t.jsonb "extra"
+    t.boolean "default"
+    t.integer "wallets_count", scale: 4
+    t.integer "cards_count", scale: 4
+    t.integer "orders_count", scale: 4
+    t.integer "addresses_count", scale: 4
+    t.integer "items_count", scale: 4
+    t.integer "carts_count", scale: 4
+    t.string "corpid"
+    t.string "external_userid"
+    t.string "position"
+    t.string "avatar_url"
+    t.string "corp_name"
+    t.string "corp_full_name"
+    t.string "external_type"
+    t.string "unionid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_crm_contacts_on_client_id"
+    t.index ["client_member_id"], name: "index_crm_contacts_on_client_member_id"
+    t.index ["client_user_id"], name: "index_crm_contacts_on_client_user_id"
+    t.index ["organ_id"], name: "index_crm_contacts_on_organ_id"
+    t.index ["unionid"], name: "index_crm_contacts_on_unionid"
+  end
+
   create_table "crm_maintain_logs", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "member_id", scale: 8
     t.bigint "maintain_id", scale: 8
@@ -1085,9 +1202,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.integer "sequence", scale: 4, default: 1
     t.boolean "manual", default: true
     t.string "color", default: "#2A92CA"
-    t.integer "maintain_logs_count", scale: 4, default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "notes_count", scale: 4
     t.index ["organ_id"], name: "index_crm_maintain_tags_on_organ_id"
     t.index ["tag_id"], name: "index_crm_maintain_tags_on_tag_id"
   end
@@ -1096,7 +1213,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "organ_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "task_template_id", scale: 8
-    t.bigint "payment_strategy_id", scale: 8
     t.bigint "client_id", scale: 8
     t.string "agent_type"
     t.bigint "agent_id", scale: 8
@@ -1105,16 +1221,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "upstream_id", scale: 8
     t.bigint "original_id", scale: 8
     t.integer "position", scale: 4
-    t.integer "deposit_ratio", scale: 4, default: 100, comment: "最小预付比例"
     t.string "state", default: "init"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "client_user_id", scale: 8
-    t.bigint "client_member_id", scale: 8
-    t.integer "wallets_count", scale: 4, default: 0
-    t.integer "cards_count", scale: 4, default: 0
-    t.integer "orders_count", scale: 4, default: 0
-    t.integer "addresses_count", scale: 4, default: 0
     t.string "type"
     t.string "remark"
     t.string "description"
@@ -1123,19 +1232,36 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "external_userid"
     t.string "pending_id"
     t.jsonb "remark_mobiles"
-    t.integer "items_count", scale: 4
-    t.integer "carts_count", scale: 4
+    t.bigint "contact_id", scale: 8
     t.index ["agency_id"], name: "index_crm_maintains_on_agency_id"
     t.index ["agent_type", "agent_id"], name: "index_crm_maintains_on_agent"
-    t.index ["client_member_id"], name: "index_crm_maintains_on_client_member_id"
-    t.index ["client_user_id"], name: "index_crm_maintains_on_client_user_id"
+    t.index ["contact_id"], name: "index_crm_maintains_on_contact_id"
     t.index ["maintain_source_id"], name: "index_crm_maintains_on_maintain_source_id"
     t.index ["member_id"], name: "index_crm_maintains_on_member_id"
     t.index ["organ_id"], name: "index_crm_maintains_on_organ_id"
     t.index ["original_id"], name: "index_crm_maintains_on_original_id"
-    t.index ["payment_strategy_id"], name: "index_crm_maintains_on_payment_strategy_id"
     t.index ["task_template_id"], name: "index_crm_maintains_on_task_template_id"
     t.index ["upstream_id"], name: "index_crm_maintains_on_upstream_id"
+  end
+
+  create_table "crm_notes", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "member_id", scale: 8
+    t.bigint "client_id", scale: 8
+    t.bigint "contact_id", scale: 8
+    t.string "logged_type"
+    t.bigint "logged_id", scale: 8
+    t.bigint "maintain_tag_id", scale: 8
+    t.string "content"
+    t.string "tag_str"
+    t.integer "tag_sequence", scale: 4
+    t.jsonb "extra"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_crm_notes_on_client_id"
+    t.index ["contact_id"], name: "index_crm_notes_on_contact_id"
+    t.index ["logged_type", "logged_id"], name: "index_crm_notes_on_logged"
+    t.index ["maintain_tag_id"], name: "index_crm_notes_on_maintain_tag_id"
+    t.index ["member_id"], name: "index_crm_notes_on_member_id"
   end
 
   create_table "crm_qrcodes", id: { scale: 8 }, force: :cascade do |t|
@@ -1618,8 +1744,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.decimal "price", limit: 2, precision: 10
     t.integer "event_participants_count", scale: 4, default: 0
     t.integer "members_count", scale: 4, default: 0
+    t.bigint "time_list_id", scale: 8
+    t.bigint "place_id", scale: 8
+    t.date "begin_on"
+    t.date "end_on"
+    t.date "produced_begin_on"
+    t.date "produced_end_on"
+    t.boolean "produce_done"
+    t.string "repeat_type"
+    t.integer "repeat_count", scale: 4, comment: "每几周/天"
+    t.string "repeat_days", array: true
     t.index ["event_taxon_id"], name: "index_eventual_events_on_event_taxon_id"
     t.index ["organ_id"], name: "index_eventual_events_on_organ_id"
+    t.index ["place_id"], name: "index_eventual_events_on_place_id"
+    t.index ["time_list_id"], name: "index_eventual_events_on_time_list_id"
   end
 
   create_table "eventual_place_taxon_hierarchies", id: { scale: 8 }, force: :cascade do |t|
@@ -1683,7 +1821,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
   end
 
   create_table "eventual_plan_items", id: { type: :serial, scale: 4 }, force: :cascade do |t|
-    t.integer "plan_id", scale: 4
     t.integer "time_item_id", scale: 4
     t.integer "place_id", scale: 4
     t.date "plan_on"
@@ -2008,7 +2145,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "template_id", scale: 8
     t.bigint "scene_id", scale: 8
     t.boolean "take_stock", comment: "可盘点"
-    t.boolean "partial", default: false
     t.integer "provides_count", scale: 4
     t.boolean "nav", comment: "单独分类"
     t.index ["factory_taxon_id"], name: "index_factory_product_taxons_on_factory_taxon_id"
@@ -2047,6 +2183,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "room_id", scale: 8
     t.bigint "building_id", scale: 8
     t.bigint "station_id", scale: 8
+    t.decimal "amount"
     t.index ["building_id"], name: "index_factory_production_items_on_building_id"
     t.index ["grid_id"], name: "index_factory_production_items_on_grid_id"
     t.index ["product_item_id"], name: "index_factory_production_items_on_product_item_id"
@@ -2246,6 +2383,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "stock"
     t.index ["production_id"], name: "index_factory_stock_logs_on_production_id"
     t.index ["source_type", "source_id"], name: "index_factory_stock_logs_on_source"
   end
@@ -2834,8 +2972,79 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "organ_id", scale: 8
     t.datetime "last_commit_at"
     t.string "slug"
+    t.string "target"
     t.index ["git_id"], name: "index_markdown_posts_on_git_id"
     t.index ["organ_id"], name: "index_markdown_posts_on_organ_id"
+  end
+
+  create_table "notice_announcement_departments", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "announcement_id", scale: 8
+    t.bigint "department_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.integer "notifications_count", scale: 4
+    t.string "state"
+    t.datetime "announce_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_notice_announcement_departments_on_announcement_id"
+    t.index ["department_id"], name: "index_notice_announcement_departments_on_department_id"
+    t.index ["organ_id"], name: "index_notice_announcement_departments_on_organ_id"
+  end
+
+  create_table "notice_announcement_job_titles", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "announcement_id", scale: 8
+    t.bigint "job_title_id", scale: 8
+    t.bigint "department_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.integer "notifications_count", scale: 4
+    t.string "state"
+    t.datetime "announce_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_notice_announcement_job_titles_on_announcement_id"
+    t.index ["department_id"], name: "index_notice_announcement_job_titles_on_department_id"
+    t.index ["job_title_id"], name: "index_notice_announcement_job_titles_on_job_title_id"
+    t.index ["organ_id"], name: "index_notice_announcement_job_titles_on_organ_id"
+  end
+
+  create_table "notice_announcement_organs", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "announcement_id", scale: 8
+    t.bigint "organ_id", scale: 8
+    t.integer "notifications_count", scale: 4
+    t.string "state"
+    t.datetime "announce_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_notice_announcement_organs_on_announcement_id"
+    t.index ["organ_id"], name: "index_notice_announcement_organs_on_organ_id"
+  end
+
+  create_table "notice_announcement_user_tags", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "announcement_id", scale: 8
+    t.bigint "user_tag_id", scale: 8
+    t.integer "notifications_count", scale: 4
+    t.string "state"
+    t.datetime "announce_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["announcement_id"], name: "index_notice_announcement_user_tags_on_announcement_id"
+    t.index ["user_tag_id"], name: "index_notice_announcement_user_tags_on_user_tag_id"
+  end
+
+  create_table "notice_announcements", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "organ_id", scale: 8
+    t.string "publisher_type"
+    t.bigint "publisher_id", scale: 8
+    t.string "type"
+    t.string "title"
+    t.string "body"
+    t.string "link"
+    t.integer "notifications_count", scale: 4
+    t.integer "readed_count", scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_notice_announcements_on_organ_id"
+    t.index ["publisher_type", "publisher_id"], name: "index_notice_announcements_on_publisher"
   end
 
   create_table "notice_annunciations", id: { scale: 8 }, force: :cascade do |t|
@@ -2899,15 +3108,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "sender_id", scale: 8
     t.string "linked_type"
     t.bigint "linked_id", scale: 8
-    t.bigint "user_id", scale: 8
-    t.bigint "member_id", scale: 8
+    t.string "type"
     t.index ["linked_type", "linked_id"], name: "index_notice_notifications_on_linked_type_and_linked_id"
-    t.index ["member_id"], name: "index_notice_notifications_on_member_id"
     t.index ["notifiable_type", "notifiable_id"], name: "index_notice_notifications_on_notifiable_type_and_notifiable_id"
     t.index ["organ_id"], name: "index_notice_notifications_on_organ_id"
     t.index ["read_at"], name: "index_notice_notifications_on_read_at"
     t.index ["sender_type", "sender_id"], name: "index_notice_notifications_on_sender_type_and_sender_id"
-    t.index ["user_id"], name: "index_notice_notifications_on_user_id"
   end
 
   create_table "notice_user_annunciates", id: { scale: 8 }, force: :cascade do |t|
@@ -3043,7 +3249,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "updated_at", null: false
     t.integer "pomodoro", scale: 4
     t.bigint "organ_root_id", scale: 8
-    t.boolean "owned"
     t.jsonb "department_ancestors"
     t.string "experience"
     t.string "attendance_number"
@@ -3055,29 +3260,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.integer "promote_goods_count", scale: 4, default: 0
     t.string "corp_userid"
     t.string "wechat_openid"
-    t.bigint "user_id", scale: 8
     t.integer "maintains_count", scale: 4
     t.bigint "member_inviter_id", scale: 8
     t.index ["member_inviter_id"], name: "index_org_members_on_member_inviter_id"
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
-    t.index ["user_id"], name: "index_org_members_on_user_id"
   end
 
   create_table "org_organ_domains", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "organ_id", scale: 8
     t.string "subdomain"
     t.string "domain", default: "lvh.me"
-    t.string "port", default: "3000"
     t.string "host"
-    t.string "identifier"
     t.boolean "default"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "beian", comment: "备案号"
     t.string "scheme", default: "https"
     t.string "kind"
-    t.index ["identifier"], name: "index_org_organ_domains_on_identifier"
+    t.string "redirect_controller"
+    t.string "redirect_action", comment: "默认跳转"
     t.index ["organ_id"], name: "index_org_organ_domains_on_organ_id"
   end
 
@@ -3117,8 +3319,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.boolean "joinable", comment: "是否可搜索并加入"
     t.string "code"
     t.bigint "corp_user_id", scale: 8
-    t.string "redirect_controller"
-    t.string "redirect_action", comment: "默认跳转"
     t.string "service_url", comment: "客服 url"
     t.string "appid"
     t.bigint "creator_id", scale: 8
@@ -3261,7 +3461,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "name"
-    t.string "contact"
+    t.string "contact_person"
     t.string "tel"
     t.string "post_code"
     t.string "source"
@@ -3275,11 +3475,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "member_organ_id", scale: 8
     t.bigint "organ_id", scale: 8
     t.boolean "principal", default: false
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.index ["agent_id"], name: "index_profiled_addresses_on_agent_id"
     t.index ["area_id"], name: "index_profiled_addresses_on_area_id"
     t.index ["client_id"], name: "index_profiled_addresses_on_client_id"
-    t.index ["maintain_id"], name: "index_profiled_addresses_on_maintain_id"
+    t.index ["contact_id"], name: "index_profiled_addresses_on_contact_id"
     t.index ["member_id"], name: "index_profiled_addresses_on_member_id"
     t.index ["member_organ_id"], name: "index_profiled_addresses_on_member_organ_id"
     t.index ["organ_id"], name: "index_profiled_addresses_on_organ_id"
@@ -4207,10 +4409,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
     t.boolean "temporary", default: false, comment: "在购物车勾选临时生效"
-    t.bigint "maintain_id", scale: 8
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
     t.index ["agency_id"], name: "index_trade_cards_on_agency_id"
+    t.index ["agent_id"], name: "index_trade_cards_on_agent_id"
     t.index ["card_template_id"], name: "index_trade_cards_on_card_template_id"
-    t.index ["maintain_id"], name: "index_trade_cards_on_maintain_id"
+    t.index ["contact_id"], name: "index_trade_cards_on_contact_id"
     t.index ["member_id"], name: "index_trade_cards_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_cards_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_cards_on_organ_id"
@@ -4267,13 +4471,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "good_type"
     t.string "aim"
     t.integer "items_count", scale: 4, default: 0
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
     t.boolean "fresh"
     t.decimal "advance_amount"
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.boolean "purchasable"
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
+    t.index ["agent_id"], name: "index_trade_carts_on_agent_id"
     t.index ["client_id"], name: "index_trade_carts_on_client_id"
-    t.index ["maintain_id"], name: "index_trade_carts_on_maintain_id"
+    t.index ["contact_id"], name: "index_trade_carts_on_contact_id"
     t.index ["member_id"], name: "index_trade_carts_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_carts_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_carts_on_organ_id"
@@ -4336,10 +4543,12 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.index ["agent_id"], name: "index_trade_deliveries_on_agent_id"
     t.index ["client_id"], name: "index_trade_deliveries_on_client_id"
-    t.index ["maintain_id"], name: "index_trade_deliveries_on_maintain_id"
+    t.index ["contact_id"], name: "index_trade_deliveries_on_contact_id"
     t.index ["member_id"], name: "index_trade_deliveries_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_deliveries_on_member_organ_id"
     t.index ["order_id"], name: "index_trade_deliveries_on_order_id"
@@ -4446,18 +4655,20 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "desk_id", scale: 8
     t.string "job_id"
     t.date "produce_on", comment: "对接生产管理"
-    t.bigint "maintain_id", scale: 8
     t.virtual "rest_number", type: :decimal, as: "(number - done_number)", stored: true
     t.string "purchase_status"
     t.integer "purchase_id", scale: 4
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
     t.index ["address_id"], name: "index_trade_items_on_address_id"
+    t.index ["agent_id"], name: "index_trade_items_on_agent_id"
     t.index ["client_id"], name: "index_trade_items_on_client_id"
+    t.index ["contact_id"], name: "index_trade_items_on_contact_id"
     t.index ["current_cart_id"], name: "index_trade_items_on_current_cart_id"
     t.index ["desk_id"], name: "index_trade_items_on_desk_id"
     t.index ["from_address_id"], name: "index_trade_items_on_from_address_id"
     t.index ["from_station_id"], name: "index_trade_items_on_from_station_id"
     t.index ["good_type", "good_id"], name: "index_trade_items_on_good_type_and_good_id"
-    t.index ["maintain_id"], name: "index_trade_items_on_maintain_id"
     t.index ["member_id"], name: "index_trade_items_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_items_on_member_organ_id"
     t.index ["operator_id"], name: "index_trade_items_on_operator_id"
@@ -4505,22 +4716,26 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.datetime "pay_deadline_at"
     t.decimal "unreceived_amount"
     t.string "generate_mode", default: "myself"
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
     t.boolean "pay_auto"
     t.string "aim"
     t.decimal "adjust_amount"
     t.bigint "operator_id", scale: 8
     t.decimal "advance_amount"
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.integer "payment_orders_count", scale: 4
+    t.decimal "refunded_amount"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
+    t.index ["agent_id"], name: "index_trade_orders_on_agent_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
+    t.index ["contact_id"], name: "index_trade_orders_on_contact_id"
     t.index ["current_cart_id"], name: "index_trade_orders_on_current_cart_id"
     t.index ["from_address_id"], name: "index_trade_orders_on_from_address_id"
     t.index ["from_member_id"], name: "index_trade_orders_on_from_member_id"
     t.index ["from_member_organ_id"], name: "index_trade_orders_on_from_member_organ_id"
     t.index ["from_station_id"], name: "index_trade_orders_on_from_station_id"
     t.index ["from_user_id"], name: "index_trade_orders_on_from_user_id"
-    t.index ["maintain_id"], name: "index_trade_orders_on_maintain_id"
     t.index ["member_id"], name: "index_trade_orders_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_orders_on_member_organ_id"
     t.index ["operator_id"], name: "index_trade_orders_on_operator_id"
@@ -4622,6 +4837,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.jsonb "extra_params"
     t.integer "refunds_count", scale: 4
     t.string "appid"
+    t.string "pay_state"
     t.index ["operator_id"], name: "index_trade_payments_on_operator_id"
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
@@ -4728,11 +4944,13 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.integer "use_limit", scale: 4
     t.boolean "over_limit", default: false
     t.string "aim", default: "use"
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.index ["agent_id"], name: "index_trade_promote_goods_on_agent_id"
     t.index ["client_id"], name: "index_trade_promote_goods_on_client_id"
+    t.index ["contact_id"], name: "index_trade_promote_goods_on_contact_id"
     t.index ["good_type", "good_id"], name: "index_trade_promote_goods_on_good_type_and_good_id"
-    t.index ["maintain_id"], name: "index_trade_promote_goods_on_maintain_id"
     t.index ["member_id"], name: "index_trade_promote_goods_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_promote_goods_on_organ_id"
@@ -5023,7 +5241,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.bigint "user_id", scale: 8
     t.bigint "member_id", scale: 8
     t.bigint "member_organ_id", scale: 8
-    t.bigint "maintain_id", scale: 8
     t.bigint "client_id", scale: 8
     t.string "name"
     t.string "type"
@@ -5032,8 +5249,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.decimal "frozen_amount", comment: "支出：冻结金额"
     t.decimal "payout_amount", comment: "支出：提现"
     t.decimal "payment_amount", comment: "支出：钱包支付"
+    t.bigint "contact_id", scale: 8
+    t.bigint "agent_id", scale: 8
+    t.index ["agent_id"], name: "index_trade_wallets_on_agent_id"
     t.index ["client_id"], name: "index_trade_wallets_on_client_id"
-    t.index ["maintain_id"], name: "index_trade_wallets_on_maintain_id"
+    t.index ["contact_id"], name: "index_trade_wallets_on_contact_id"
     t.index ["member_id"], name: "index_trade_wallets_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_wallets_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_wallets_on_organ_id"
@@ -5217,11 +5437,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "unionid"
     t.string "external_userid"
     t.string "pending_id"
-    t.string "corp_id"
+    t.string "corpid"
     t.string "subject_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["corp_id"], name: "index_wechat_corp_external_users_on_corp_id"
+    t.index ["corpid"], name: "index_wechat_corp_external_users_on_corpid"
     t.index ["external_userid"], name: "index_wechat_corp_external_users_on_external_userid"
     t.index ["uid"], name: "index_wechat_corp_external_users_on_uid"
     t.index ["unionid"], name: "index_wechat_corp_external_users_on_unionid"
@@ -5468,6 +5688,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_26_082305) do
     t.string "appid"
     t.string "open_id"
     t.bigint "msg_request_id", scale: 8
+    t.jsonb "result"
     t.index ["msg_request_id"], name: "index_wechat_notices_on_msg_request_id"
     t.index ["notification_id"], name: "index_wechat_notices_on_notification_id"
     t.index ["template_id"], name: "index_wechat_notices_on_template_id"
