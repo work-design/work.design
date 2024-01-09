@@ -4,7 +4,8 @@ module Trade
     include Job::Ext::Jobbed
     include Ship::Ext::Item
     include Bench::Ext::Item
-    include Factory::Ext::Item
+    include Factory::Ext::ItemGood
+    include Factory::Ext::ItemPurchase
     include Space::Ext::Item
     include JiaBo::Ext::Device
     include Crm::Ext::Maintainable
