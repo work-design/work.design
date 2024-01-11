@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_cms.git
-  revision: eb3cf07ca1863b8c9b677285e74989ef2b24389b
+  revision: 7d2b18da0b99c1f8c8bcc2e2bcf2533d3c96230b
   specs:
     rails_cms (0.0.1)
       rails_extend
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 1f2d15d5ebb369085a6db78e53964ff40e65bfe1
+  revision: c872df96382be8c54d0f857f3b8738c75c79ba7d
   specs:
     rails_design (0.0.1)
       rails
@@ -135,7 +135,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: d53a9525e1aac00bd55520a44c1b49198961a1af
+  revision: 9c7e46cebeddc5b61a9eddaf2e2ec5033df2e4d3
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
