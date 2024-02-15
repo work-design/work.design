@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_15_103859) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -305,9 +305,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
 
   create_table "auth_apps", id: { scale: 8 }, force: :cascade do |t|
     t.string "appid"
-    t.string "jwt_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "key"
     t.index ["appid"], name: "index_auth_apps_on_appid"
   end
 
@@ -316,7 +316,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.string "identity"
     t.datetime "expire_at"
     t.integer "access_counter", scale: 4
-    t.boolean "mock_member"
     t.boolean "mock_user"
     t.string "business"
     t.string "uid"
@@ -328,6 +327,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.string "corp_userid"
     t.bigint "user_id", scale: 8
     t.boolean "online"
+    t.string "encrypted_token"
     t.index ["identity"], name: "index_auth_authorized_tokens_on_identity"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
     t.index ["user_id"], name: "index_auth_authorized_tokens_on_user_id"
@@ -357,7 +357,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.string "state"
     t.json "extra", default: {}
     t.string "identity"
-    t.bigint "user_inviter_id", scale: 8
     t.string "remark"
     t.datetime "unsubscribe_at"
     t.bigint "user_id", scale: 8
@@ -365,7 +364,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.string "session_key"
     t.boolean "agency_oauth"
     t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
-    t.index ["user_inviter_id"], name: "index_auth_oauth_users_on_user_inviter_id"
   end
 
   create_table "auth_user_taggeds", id: { scale: 8 }, force: :cascade do |t|
@@ -1393,6 +1391,37 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.index ["data_list_id"], name: "index_datum_table_lists_on_data_list_id"
   end
 
+  create_table "debug_manies", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "one_id", scale: 8
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["one_id"], name: "index_debug_manies_on_one_id"
+  end
+
+  create_table "debug_muches", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "debug_ones", id: { scale: 8 }, force: :cascade do |t|
+    t.string "name"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "debug_throughs", id: { scale: 8 }, force: :cascade do |t|
+    t.bigint "many_id", scale: 8
+    t.bigint "much_id", scale: 8
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["many_id"], name: "index_debug_throughs_on_many_id"
+    t.index ["much_id"], name: "index_debug_throughs_on_much_id"
+  end
+
   create_table "detail_contents", id: { scale: 8 }, force: :cascade do |t|
     t.string "type"
     t.string "title"
@@ -2238,8 +2267,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.bigint "upstream_production_id", scale: 8
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_taxon_id", scale: 8
     t.index ["organ_id"], name: "index_factory_production_provides_on_organ_id"
     t.index ["product_id"], name: "index_factory_production_provides_on_product_id"
+    t.index ["product_taxon_id"], name: "index_factory_production_provides_on_product_taxon_id"
     t.index ["production_id"], name: "index_factory_production_provides_on_production_id"
     t.index ["provider_id"], name: "index_factory_production_provides_on_provider_id"
     t.index ["upstream_product_id"], name: "index_factory_production_provides_on_upstream_product_id"
@@ -4860,14 +4891,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.string "state"
-    t.bigint "user_id", scale: 8
     t.string "kind"
     t.decimal "payment_amount"
     t.decimal "order_amount"
-    t.string "wallet_code"
     t.index ["order_id"], name: "index_trade_payment_orders_on_order_id"
     t.index ["payment_id"], name: "index_trade_payment_orders_on_payment_id"
-    t.index ["user_id"], name: "index_trade_payment_orders_on_user_id"
   end
 
   create_table "trade_payment_references", id: { scale: 8 }, force: :cascade do |t|
@@ -5097,8 +5125,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.index ["card_template_id"], name: "index_trade_purchases_on_card_template_id"
   end
 
-  create_table "trade_refunds", id: { scale: 8 }, force: :cascade do |t|
+  create_table "trade_refund_orders", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "order_id", scale: 8
+    t.bigint "payment_id", scale: 8
+    t.bigint "refund_id", scale: 8
+    t.decimal "payment_amount"
+    t.decimal "order_amount", comment: "对应的订单金额"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_trade_refund_orders_on_order_id"
+    t.index ["payment_id"], name: "index_trade_refund_orders_on_payment_id"
+    t.index ["refund_id"], name: "index_trade_refund_orders_on_refund_id"
+  end
+
+  create_table "trade_refunds", id: { scale: 8 }, force: :cascade do |t|
     t.bigint "payment_id", scale: 8
     t.bigint "operator_id", scale: 8
     t.string "type"
@@ -5113,11 +5154,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.json "response"
-    t.bigint "organ_id", scale: 8
     t.bigint "wallet_id", scale: 8
     t.index ["operator_id"], name: "index_trade_refunds_on_operator_id"
-    t.index ["order_id"], name: "index_trade_refunds_on_order_id"
-    t.index ["organ_id"], name: "index_trade_refunds_on_organ_id"
     t.index ["payment_id"], name: "index_trade_refunds_on_payment_id"
     t.index ["wallet_id"], name: "index_trade_refunds_on_wallet_id"
   end
@@ -5345,6 +5383,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.decimal "payment_amount", comment: "支出：钱包支付"
     t.bigint "contact_id", scale: 8
     t.bigint "agent_id", scale: 8
+    t.decimal "refunded_amount", comment: "收入：退款"
     t.index ["agent_id"], name: "index_trade_wallets_on_agent_id"
     t.index ["client_id"], name: "index_trade_wallets_on_client_id"
     t.index ["contact_id"], name: "index_trade_wallets_on_contact_id"
@@ -5471,6 +5510,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.boolean "debug"
     t.string "weapp_id", comment: "关联的小程序"
     t.string "open_appid"
+    t.string "webview_domain"
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_apps_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_apps_on_platform_template_id"
@@ -6044,13 +6084,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_103408) do
     t.string "appid"
     t.string "open_id"
     t.bigint "receive_id", scale: 8
-    t.boolean "init_wechat_user"
-    t.boolean "init_user_tag"
     t.jsonb "reply_body"
     t.jsonb "reply_encrypt"
     t.datetime "sent_at"
     t.string "userid"
     t.bigint "scene_organ_id", scale: 8
+    t.string "aim"
+    t.string "tag_name"
+    t.integer "handle_id", scale: 4
     t.index ["receive_id"], name: "index_wechat_requests_on_receive_id"
     t.index ["scene_organ_id"], name: "index_wechat_requests_on_scene_organ_id"
   end

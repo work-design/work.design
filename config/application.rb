@@ -32,7 +32,7 @@ module OneWork
     config.middleware.delete ActionDispatch::RequestId # 记录X-Request-Id（方便查看请求在群集中的哪台执行）
     config.i18n.default_locale = :zh
 
-    config.active_job.queue_adapter = :good_job
+    config.active_job.queue_adapter = :solid_queue
 
     config.active_record.belongs_to_required_by_default = true
     config.active_record.encryption.support_unencrypted_data = true
