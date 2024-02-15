@@ -4,6 +4,5 @@ Rails.configuration.assets.paths += [
   RailsDesign::Engine.root.join('app/assets/images')
 ]
 
-Rails.configuration.assets.excluded_paths << GoodJob::Engine.root.join('app/assets/vendor')
 Rails.configuration.assets.excluded_paths << ActionText::Engine.root.join('app/assets/javascripts')
 Rails.configuration.assets.excluded_paths << ActionView::Railtie.root.join('lib/assets/compiled')
