@@ -1,7 +1,26 @@
 Rails.application.routes.draw do
-
   resources :users, only: [:show]
   resources :schedules
+
+  constraints ->(req) { req.subdomain.start_with?('panel') } do
+    root to: 'panel/home#index', as: 'panel'
+    namespace :wechat, defaults: { business: 'wechat' } do
+      controller :wechat do
+        get 'login' => :admin_login
+      end
+    end
+  end
+  constraints ->(req) { req.subdomain.start_with?('admin') } do
+    root to: 'me/home#index', as: 'admin'
+    namespace :wechat, defaults: { business: 'wechat' } do
+      controller :wechat do
+        get 'login' => :admin_login
+      end
+    end
+  end
+  constraints ->(req) { req.subdomain.start_with?('agent') } do
+    root to: 'agent/home#index', as: 'agent'
+  end
 
   root to: 'home#index'
   controller :home do
@@ -35,5 +54,4 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server => '/cable'
-
 end
