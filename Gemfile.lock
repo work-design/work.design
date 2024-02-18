@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 92feceb890597a94e817e887903e4a9d47677e12
+  revision: 328e940a85ee851e1b0b4f6dc717136808b55c7d
   specs:
     rails_com (1.3.0)
       acme-client
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: d759c751e5f3220bd90826b168df9fae2e6fe69d
+  revision: c3861f3c1093dd3864455a25e6763880825fce8f
   specs:
     rails_crm (0.0.2)
       rails_extend
@@ -199,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 254e75c0dce37b73c8f45334e253c1af226577f7
+  revision: d96564ecf1277d2ffa07d3e0d7d74298bcd0cf4c
   specs:
     rails_org (0.0.1)
       rails_com (~> 1.2)
@@ -401,7 +401,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jwt (2.7.1)
+    jwt (2.8.0)
+      base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -499,7 +500,7 @@ GEM
       multi_json (~> 1.0)
       xml-simple
     pdf-core (0.9.0)
-    pg (1.5.4)
+    pg (1.5.5)
     prawn (2.4.0)
       pdf-core (~> 0.9.0)
       ttfunk (~> 1.7)
@@ -615,7 +616,7 @@ GEM
     thor (1.3.0)
     timeout (0.4.1)
     ttfunk (1.7.0)
-    turbo-rails (2.0.2)
+    turbo-rails (2.0.3)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
