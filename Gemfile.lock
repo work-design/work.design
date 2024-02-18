@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: c3861f3c1093dd3864455a25e6763880825fce8f
+  revision: 6b7883609e094ff8eee16d6c34392a8e6f7f32eb
   specs:
     rails_crm (0.0.2)
       rails_extend
