@@ -17,4 +17,3 @@ upyun:
   password: <%= Rails.application.credentials.dig(:upyun, :password) %>
   host: <%= Rails.application.credentials.dig(:upyun, :host) %>
   folder: <%= Rails.application.credentials.dig(:upyun, :folder) %>
-  public: true
