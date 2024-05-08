@@ -54,4 +54,5 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server => '/cable'
+  mount MissionControl::Jobs::Engine => '/jobs'
 end

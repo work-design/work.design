@@ -6,6 +6,7 @@ gem 'puma'
 gem 'sd_notify'
 gem 'solid_queue'
 gem 'jbuilder'
+gem 'mission_control-jobs'
 
 # Store
 gem 'pg'
