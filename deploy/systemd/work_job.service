@@ -1,5 +1,5 @@
 [Unit]
-Description=Good job for Meal design
+Description=Solid Queue for Work design
 After=syslog.target network.target
 
 [Service]
