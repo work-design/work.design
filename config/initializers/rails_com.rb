@@ -7,4 +7,19 @@ RailsCom.configure do |config|
   config.notify_key = "#{Rails.application.credentials[:log_bot_key]}"
   config.default_admin_accounts = Rails.application.credentials[:admin_accounts]
   config.debug = false
+  config.quiet_logs += [
+    '/assets'
+  ]
+  config.ignore_models += [
+    'SolidQueue::Semaphore',
+    'SolidQueue::Process',
+    'SolidQueue::Pause',
+    'SolidQueue::Job',
+    'SolidQueue::ScheduledExecution',
+    'SolidQueue::ReadyExecution',
+    'SolidQueue::BlockedExecution'
+  ]
+  config.override_prefixes = [
+    'application'
+  ]
 end
