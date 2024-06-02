@@ -1,12 +1,12 @@
-<%= link_to({ controller: '/bench/facilitates' }, class: active_helper(controllers: 'bench/facilitates', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
-  <i class="fa-solid fa-user-ninja weui-tabbar__icon"></i>
-  <div class="weui-tabbar__label"><%= t('bench.facilitates.index.title') %></div>
+<%= link_to({ controller: '/bench/facilitates' }, class: active_helper(controllers: 'bench/facilitates', active: 'is-active')) do %>
+  <i class="fa-solid fa-user-ninja size-5"></i>
+  <div class="size-7"><%= t('bench.facilitates.index.title') %></div>
 <% end %>
-<%= link_to({ controller: '/factory/productions' }, class: active_helper(controllers: 'factory/productions', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
-  <i class="fa-solid fa-store-alt weui-tabbar__icon"></i>
-  <div class="weui-tabbar__label"><%= t('factory.productions.index.title') %></div>
-<% end if current_organ&.production_enabled %>
-<%= link_to({ controller: '/my/home' }, class: active_helper(controllers: 'my/home', item: 'weui-tabbar__item', active: 'weui-tabbar__item weui-bar__item_on')) do %>
-  <i class="fa-solid fa-user-alt weui-tabbar__icon"></i>
-  <div class="weui-tabbar__label">个人中心</div>
+<%= link_to({ controller: '/factory/productions' }, class: active_helper(controllers: 'factory/productions', active: 'is-active')) do %>
+  <i class="fa-solid fa-store-alt size-5"></i>
+  <div class="size-7"><%= t('factory.productions.index.title') %></div>
+<% end %>
+<%= link_to({ controller: '/my/home' }, class: active_helper(controllers: 'my/home', active: 'is-active')) do %>
+  <i class="fa-solid fa-user-alt size-5"></i>
+  <div class="size-7">个人中心</div>
 <% end %>
