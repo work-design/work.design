@@ -5120,6 +5120,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_02_054240) do
     t.bigint "agent_id"
     t.bigint "card_template_id"
     t.bigint "card_id"
+    t.bigint "product_taxon_id"
+    t.bigint "part_id"
     t.index ["agent_id"], name: "index_trade_promote_goods_on_agent_id"
     t.index ["card_id"], name: "index_trade_promote_goods_on_card_id"
     t.index ["card_template_id"], name: "index_trade_promote_goods_on_card_template_id"
@@ -5129,6 +5131,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_02_054240) do
     t.index ["member_id"], name: "index_trade_promote_goods_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_promote_goods_on_organ_id"
+    t.index ["part_id"], name: "index_trade_promote_goods_on_part_id"
+    t.index ["product_taxon_id"], name: "index_trade_promote_goods_on_product_taxon_id"
     t.index ["promote_id"], name: "index_trade_promote_goods_on_promote_id"
     t.index ["user_id"], name: "index_trade_promote_goods_on_user_id"
   end
