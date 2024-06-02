@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_02_054240) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -327,10 +327,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.datetime "updated_at", null: false
     t.string "corp_userid"
     t.bigint "user_id"
-    t.boolean "online"
     t.string "encrypted_token"
     t.boolean "mock_member"
     t.string "auth_appid"
+    t.datetime "online_at"
+    t.datetime "offline_at"
     t.index ["identity"], name: "index_auth_authorized_tokens_on_identity"
     t.index ["member_id"], name: "index_auth_authorized_tokens_on_member_id"
     t.index ["user_id"], name: "index_auth_authorized_tokens_on_user_id"
@@ -366,6 +367,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.string "scope"
     t.string "session_key"
     t.boolean "agency_oauth"
+    t.datetime "online_at"
+    t.datetime "offline_at"
     t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
   end
 
@@ -2113,8 +2116,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "product_parts_count", default: 0
+    t.bigint "product_taxon_id"
     t.index ["part_taxon_id"], name: "index_factory_product_part_taxons_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_product_part_taxons_on_product_id"
+    t.index ["product_taxon_id"], name: "index_factory_product_part_taxons_on_product_taxon_id"
   end
 
   create_table "factory_product_parts", force: :cascade do |t|
@@ -2122,11 +2127,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.bigint "part_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.bigint "part_taxon_id"
     t.boolean "default"
+    t.bigint "product_taxon_id"
+    t.bigint "product_part_taxon_id"
     t.index ["part_id"], name: "index_factory_product_parts_on_part_id"
-    t.index ["part_taxon_id"], name: "index_factory_product_parts_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_product_parts_on_product_id"
+    t.index ["product_part_taxon_id"], name: "index_factory_product_parts_on_product_part_taxon_id"
+    t.index ["product_taxon_id"], name: "index_factory_product_parts_on_product_taxon_id"
   end
 
   create_table "factory_product_plans", force: :cascade do |t|
@@ -2181,6 +2188,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.boolean "take_stock", comment: "可盘点"
     t.integer "provides_count"
     t.boolean "nav", comment: "单独分类"
+    t.integer "product_part_taxons_count"
     t.index ["factory_taxon_id"], name: "index_factory_product_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_product_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_factory_product_taxons_on_parent_id"
@@ -2345,6 +2353,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.jsonb "product_taxon_ancestors"
     t.bigint "factory_taxon_id"
     t.integer "position"
+    t.decimal "base_price"
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
@@ -5100,7 +5109,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.bigint "user_id"
     t.bigint "member_id"
     t.bigint "member_organ_id"
-    t.string "type"
     t.integer "item_promotes_count", default: 0
     t.string "identity"
     t.integer "blacklists_count", default: 0
@@ -5111,7 +5119,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.bigint "contact_id"
     t.bigint "agent_id"
     t.bigint "card_template_id"
+    t.bigint "card_id"
     t.index ["agent_id"], name: "index_trade_promote_goods_on_agent_id"
+    t.index ["card_id"], name: "index_trade_promote_goods_on_card_id"
     t.index ["card_template_id"], name: "index_trade_promote_goods_on_card_template_id"
     t.index ["client_id"], name: "index_trade_promote_goods_on_client_id"
     t.index ["contact_id"], name: "index_trade_promote_goods_on_contact_id"
@@ -6179,6 +6189,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_08_064902) do
     t.string "handle_type"
     t.bigint "handle_id"
     t.string "tag_name"
+    t.string "env_version"
     t.index ["appid"], name: "index_wechat_scenes_on_appid"
     t.index ["handle_type", "handle_id"], name: "index_wechat_scenes_on_handle"
     t.index ["organ_id"], name: "index_wechat_scenes_on_organ_id"
