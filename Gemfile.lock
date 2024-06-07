@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: ad8afebe0974272694e098abde9a0281a0d30412
+  revision: ef906d70a7d62422ca88f72dab380a156044e67b
   specs:
-    tencentcloud-sdk-common (3.0.834)
+    tencentcloud-sdk-common (3.0.839)
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
@@ -34,14 +34,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: f35266c2e8010cfab9c672bd5fa4ca44c353281c
+  revision: f54a4474ba2af03d678b8f1c226341908b8bbb15
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 43f0f89736f0b538532d41d5cb5e935cd70697ea
+  revision: 5e5ebdb44e8cad5a9768e21cf20cdc3ef7e7d14e
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 7743d9fcc17fe22f6a0e931f22467bcbad0eba68
+  revision: 5d954ab1c9b006c39e4202d8f5595d5eb745032b
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 3fb88547f6448a36d4023b4ac8c2b1400441f0e7
+  revision: c55088e0e49990ca027a375e1daf23e42c94ff28
   specs:
     rails_com (1.3.0)
       acme-client
@@ -75,6 +75,7 @@ GIT
       httpx
       kaminari
       money-rails (~> 1.15)
+      mutex_m
       net-http
       ostruct
       rails (~> 7.0)
@@ -82,7 +83,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 153528cfba01f654d7870d18486f0916992ccc7e
+  revision: 84dd81f5226c604a1c1946a9c6e0c3b055c406d4
   specs:
     rails_crm (0.0.2)
       rails_profile
@@ -104,7 +105,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 8b0ef6102a3c6bcd5e1cae1687050f561ea5faf0
+  revision: a0d534c1adcdf227767c29f9b34100b318c6df71
   specs:
     rails_design (0.0.1)
       rails
@@ -125,7 +126,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: c845d719b137d2d75fed418ec791316166c0d445
+  revision: 8be7427aa5ae7752df939be9a85dd3292a66791a
   specs:
     rails_email (0.0.2)
       rails_auth
@@ -140,7 +141,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 1a758194c8f59eb20889a49aaf5ff233c3b75697
+  revision: 6ba0ca6bfd249909648c2e9daf8328dde63ed765
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -172,7 +173,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 9ac10722d59b6273dd740f536dbabc3c64cd4b4d
+  revision: 7467e698c8b8dd68d84d138cc401c563190d850d
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -190,14 +191,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 467a4ee95daf2cedf34a455b3ab5938324c25522
+  revision: a2acc1f087fd9bef95b0073986990e8703e7958f
   specs:
     rails_org (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_profile.git
-  revision: 68f7915820fa65cfe9461a2073ae486018737bd6
+  revision: 574a1016f97a6fcf8a2b78fc910791ad31421773
   specs:
     rails_profile (0.0.1)
       rails_com (~> 1.2)
@@ -213,7 +214,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 1e4bc2cebd31ea1a2a845530b0f057910dd7b776
+  revision: 060cf7fab4304e94ec4f1cad277256350ffab330
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -228,7 +229,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 64c03bbccb2a19425f9b3ad187473e7c9734c769
+  revision: 25679692ab79d84ffd371b80f2a7bae3bdd1b22e
   specs:
     rails_trade (0.0.3)
       rails_com
@@ -236,7 +237,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 3e34442c41a3ea7c924633ab852b216716c73b0e
+  revision: 7ddf6aa28e3fb5c12c0d83f61a30886d023829ea
   specs:
     rails_wechat (0.1.2)
       http-form_data (~> 2.3)
@@ -250,35 +251,29 @@ GEM
     acme-client (2.0.17)
       faraday (>= 1.0, < 3.0.0)
       faraday-retry (>= 1.0, < 3.0.0)
-    actioncable (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+    actioncable (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      activejob (= 7.1.3.3)
-      activerecord (= 7.1.3.3)
-      activestorage (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
-      mail (>= 2.7.1)
-      net-imap
-      net-pop
-      net-smtp
-    actionmailer (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      actionview (= 7.1.3.3)
-      activejob (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
-      mail (~> 2.5, >= 2.5.4)
-      net-imap
-      net-pop
-      net-smtp
+    actionmailbox (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      activejob (= 7.2.0.beta2)
+      activerecord (= 7.2.0.beta2)
+      activestorage (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
+      mail (>= 2.8.0)
+    actionmailer (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      actionview (= 7.2.0.beta2)
+      activejob (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
+      mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (7.1.3.3)
-      actionview (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+    actionpack (7.2.0.beta2)
+      actionview (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       nokogiri (>= 1.8.5)
       racc
       rack (>= 2.2.4)
@@ -286,45 +281,45 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actiontext (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      activerecord (= 7.1.3.3)
-      activestorage (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+      useragent (~> 0.16)
+    actiontext (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      activerecord (= 7.2.0.beta2)
+      activestorage (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.1.3.3)
-      activesupport (= 7.1.3.3)
+    actionview (7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       builder (~> 3.1)
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activejob (7.1.3.3)
-      activesupport (= 7.1.3.3)
+    activejob (7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       globalid (>= 0.3.6)
-    activemodel (7.1.3.3)
-      activesupport (= 7.1.3.3)
-    activerecord (7.1.3.3)
-      activemodel (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+    activemodel (7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
+    activerecord (7.2.0.beta2)
+      activemodel (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       timeout (>= 0.4.0)
-    activestorage (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      activejob (= 7.1.3.3)
-      activerecord (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+    activestorage (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      activejob (= 7.2.0.beta2)
+      activerecord (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       marcel (~> 1.0)
-    activesupport (7.1.3.3)
+    activesupport (7.2.0.beta2)
       base64
       bigdecimal
-      concurrent-ruby (~> 1.0, >= 1.0.2)
+      concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
-      mutex_m
-      tzinfo (~> 2.0)
-    acts_as_list (1.2.0)
+      tzinfo (~> 2.0, >= 2.0.5)
+    acts_as_list (1.2.1)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     addressable (2.8.6)
@@ -338,7 +333,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
-    builder (3.2.4)
+    builder (3.3.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -364,13 +359,13 @@ GEM
     erubi (1.12.0)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.9.0)
+    faraday (2.9.1)
       faraday-net_http (>= 2.0, < 3.2)
     faraday-net_http (3.1.0)
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
-    ffi (1.16.3)
+    ffi (1.17.0)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -528,20 +523,20 @@ GEM
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
-    rails (7.1.3.3)
-      actioncable (= 7.1.3.3)
-      actionmailbox (= 7.1.3.3)
-      actionmailer (= 7.1.3.3)
-      actionpack (= 7.1.3.3)
-      actiontext (= 7.1.3.3)
-      actionview (= 7.1.3.3)
-      activejob (= 7.1.3.3)
-      activemodel (= 7.1.3.3)
-      activerecord (= 7.1.3.3)
-      activestorage (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
+    rails (7.2.0.beta2)
+      actioncable (= 7.2.0.beta2)
+      actionmailbox (= 7.2.0.beta2)
+      actionmailer (= 7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      actiontext (= 7.2.0.beta2)
+      actionview (= 7.2.0.beta2)
+      activejob (= 7.2.0.beta2)
+      activemodel (= 7.2.0.beta2)
+      activerecord (= 7.2.0.beta2)
+      activestorage (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
       bundler (>= 1.15.0)
-      railties (= 7.1.3.3)
+      railties (= 7.2.0.beta2)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -550,10 +545,10 @@ GEM
       loofah (~> 2.21)
       nokogiri (~> 1.14)
     rails_deploy (0.2.3)
-    railties (7.1.3.3)
-      actionpack (= 7.1.3.3)
-      activesupport (= 7.1.3.3)
-      irb
+    railties (7.2.0.beta2)
+      actionpack (= 7.2.0.beta2)
+      activesupport (= 7.2.0.beta2)
+      irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
       thor (~> 1.0, >= 1.2.2)
@@ -613,8 +608,8 @@ GEM
       ruby-ole
     stimulus-rails (1.3.3)
       railties (>= 6.0.0)
-    stringio (3.1.0)
-    strscan (3.1.0)
+    stringio (3.1.1)
+    strscan (3.1.1)
     thor (1.3.1)
     timeout (0.4.1)
     ttfunk (1.8.0)
@@ -626,6 +621,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uri (0.13.0)
+    useragent (0.16.10)
     version_gem (1.1.4)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -675,7 +671,7 @@ DEPENDENCIES
   pg
   propshaft
   puma
-  rails
+  rails (= 7.2.0.beta2)
   rails_attend!
   rails_audit!
   rails_auth!
