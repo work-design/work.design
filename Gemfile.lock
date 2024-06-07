@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: c55088e0e49990ca027a375e1daf23e42c94ff28
+  revision: b215c8674e8567edb44d9a166ab33745a0442594
   specs:
     rails_com (1.3.0)
       acme-client
@@ -123,6 +123,13 @@ GIT
   specs:
     rails_doc (0.0.2)
       rails_com (>= 1.2)
+
+GIT
+  remote: https://gitee.com/work-design/rails_douyin.git
+  revision: 83af3337cd09efdaac71268246fa7571335c0f2b
+  specs:
+    rails_douyin (0.0.1)
+      rails
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
@@ -684,6 +691,7 @@ DEPENDENCIES
   rails_design!
   rails_detail!
   rails_doc!
+  rails_douyin!
   rails_email!
   rails_event!
   rails_factory!

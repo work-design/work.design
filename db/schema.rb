@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_02_054240) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_07_153541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1575,6 +1575,49 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_02_054240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rule_id"], name: "index_doc_subjects_on_rule_id"
+  end
+
+  create_table "douyin_apps", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.string "appid"
+    t.string "secret"
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "refresh_token"
+    t.datetime "refresh_token_expires_at"
+    t.string "open_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_douyin_apps_on_appid"
+    t.index ["organ_id"], name: "index_douyin_apps_on_organ_id"
+  end
+
+  create_table "douyin_orders", force: :cascade do |t|
+    t.string "poi_id"
+    t.string "appid"
+    t.string "code"
+    t.string "verify_id"
+    t.string "certificate_id"
+    t.string "origin_code"
+    t.string "account_id"
+    t.string "uuid"
+    t.string "verify_token"
+    t.jsonb "extra"
+    t.jsonb "verify_results"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "douyin_shops", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.string "appid"
+    t.string "poi_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_douyin_shops_on_appid"
+    t.index ["organ_id"], name: "index_douyin_shops_on_organ_id"
   end
 
   create_table "email_logs", force: :cascade do |t|
