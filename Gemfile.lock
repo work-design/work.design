@@ -211,6 +211,13 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://gitee.com/work-design/rails_qingflow.git
+  revision: db4536cc9e7743b1d2bd7efd5d44903d5807eccb
+  specs:
+    rails_qingflow (0.1.0)
+      rails (>= 7.2.0.beta2)
+
+GIT
   remote: https://gitee.com/work-design/rails_quip.git
   revision: 6eb51b138d3f1d6c040b01cd1b0a0dd3b3a55d66
   specs:
@@ -702,6 +709,7 @@ DEPENDENCIES
   rails_notice!
   rails_org!
   rails_profile!
+  rails_qingflow!
   rails_quip!
   rails_ship!
   rails_space!

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_07_153541) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_08_073010) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3677,6 +3677,21 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_07_153541) do
     t.decimal "budget_amount"
     t.decimal "expense_amount"
     t.integer "projects_count"
+  end
+
+  create_table "qingflow_apps", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.string "appid"
+    t.string "secret"
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "refresh_token"
+    t.datetime "refresh_token_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_qingflow_apps_on_appid"
+    t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
   end
 
   create_table "quip_apps", force: :cascade do |t|
