@@ -17,7 +17,8 @@ RailsCom.configure do |config|
     'SolidQueue::Job',
     'SolidQueue::ScheduledExecution',
     'SolidQueue::ReadyExecution',
-    'SolidQueue::BlockedExecution'
+    'SolidQueue::BlockedExecution',
+    'SolidQueue::RecurringExecution'
   ]
   config.override_prefixes = [
     'application'

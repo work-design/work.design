@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_08_073010) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_08_162624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3679,6 +3679,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_08_073010) do
     t.integer "projects_count"
   end
 
+  create_table "qingflow_applications", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "name"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
+  end
+
   create_table "qingflow_apps", force: :cascade do |t|
     t.bigint "organ_id"
     t.string "name"
@@ -3692,6 +3701,30 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_08_073010) do
     t.datetime "updated_at", null: false
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
+  end
+
+  create_table "qingflow_form_hierarchies", force: :cascade do |t|
+    t.bigint "ancestor_id"
+    t.bigint "descendant_id"
+    t.integer "generations", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "qingflow/form_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_qingflow_form_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_qingflow_form_hierarchies_on_descendant_id"
+  end
+
+  create_table "qingflow_forms", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.jsonb "parent_ancestors"
+    t.string "title"
+    t.string "queid"
+    t.string "que_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "application_id"
+    t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
+    t.index ["parent_id"], name: "index_qingflow_forms_on_parent_id"
   end
 
   create_table "quip_apps", force: :cascade do |t|
