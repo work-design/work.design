@@ -7,7 +7,7 @@ RailsCom.configure do |config|
   config.notify_key = "#{Rails.application.credentials[:log_bot_key]}"
   config.default_admin_accounts = Rails.application.credentials[:admin_accounts]
   config.debug = false
-  config.debug_i18n = true
+  config.debug_i18n = false
   config.quiet_logs += [
     '/assets'
   ]
