@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_11_100201) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_12_024045) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3719,7 +3719,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_11_100201) do
     t.jsonb "parent_ancestors"
     t.string "title"
     t.string "queid"
-    t.string "que_type"
+    t.integer "que_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "application_id"
