@@ -91,7 +91,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 923c48ba7682be605562c6b374f65962c26f55b1
+  revision: 1a2e9b0a2e8259639586bd0c0abb28e5c8896ac0
   specs:
     rails_data (1.0.2)
       csv
@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 51ec985bf15ce310c43eed1bd24fb7c9bb19e5e4
+  revision: a4a338ceb2b28b2a2934ef6071aa41123bcc61c8
   specs:
     rails_qingflow (0.1.0)
       rails (>= 7.2.0.beta2)

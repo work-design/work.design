@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_12_024045) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_12_124037) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3727,6 +3727,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_12_024045) do
     t.boolean "display"
     t.boolean "primary"
     t.boolean "modeling"
+    t.string "record_name"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["parent_id"], name: "index_qingflow_forms_on_parent_id"
