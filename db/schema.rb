@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_13_032755) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_13_111112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3741,6 +3741,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_13_032755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "logs_count"
+    t.string "source"
     t.index ["application_id"], name: "index_qingflow_items_on_application_id"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
   end
@@ -4526,6 +4527,94 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_13_032755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "date"
+  end
+
+  create_table "sync_apps", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.string "appid"
+    t.string "secret"
+    t.string "access_token"
+    t.datetime "access_token_expires_at"
+    t.string "refresh_token"
+    t.datetime "refresh_token_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appid"], name: "index_sync_apps_on_appid"
+    t.index ["organ_id"], name: "index_sync_apps_on_organ_id"
+  end
+
+  create_table "sync_audits", force: :cascade do |t|
+    t.string "synchro_type"
+    t.bigint "synchro_id"
+    t.string "operator_type"
+    t.bigint "operator_id"
+    t.bigint "destined_id"
+    t.jsonb "synchro_params"
+    t.jsonb "audited_changes"
+    t.string "operation"
+    t.string "note"
+    t.string "state"
+    t.datetime "apply_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destined_id"], name: "index_sync_audits_on_destined_id"
+    t.index ["operator_type", "operator_id"], name: "index_sync_audits_on_operator"
+    t.index ["synchro_type", "synchro_id"], name: "index_sync_audits_on_synchro"
+  end
+
+  create_table "sync_form_hierarchies", force: :cascade do |t|
+    t.bigint "ancestor_id"
+    t.bigint "descendant_id"
+    t.integer "generations", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "sync/form_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_sync_form_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_sync_form_hierarchies_on_descendant_id"
+  end
+
+  create_table "sync_forms", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.bigint "app_id"
+    t.bigint "meta_column_id"
+    t.jsonb "parent_ancestors"
+    t.string "title"
+    t.string "column_name"
+    t.string "record_name"
+    t.boolean "display"
+    t.boolean "primary"
+    t.boolean "modeling"
+    t.string "foreign_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_sync_forms_on_app_id"
+    t.index ["meta_column_id"], name: "index_sync_forms_on_meta_column_id"
+    t.index ["parent_id"], name: "index_sync_forms_on_parent_id"
+  end
+
+  create_table "sync_items", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "identifier"
+    t.jsonb "values"
+    t.integer "logs_count"
+    t.string "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_sync_items_on_app_id"
+    t.index ["identifier"], name: "index_sync_items_on_identifier"
+  end
+
+  create_table "sync_logs", force: :cascade do |t|
+    t.bigint "item_id"
+    t.string "related_type"
+    t.bigint "related_id"
+    t.string "exception"
+    t.string "exception_backtrace", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_sync_logs_on_item_id"
+    t.index ["related_type", "related_id"], name: "index_sync_logs_on_related"
   end
 
   create_table "trade_addition_charges", force: :cascade do |t|
