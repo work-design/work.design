@@ -198,7 +198,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: a2acc1f087fd9bef95b0073986990e8703e7958f
+  revision: 97aa92aa619a3c3b9f119e85c6c75fd9e345f4ad
   specs:
     rails_org (0.0.1)
       rails_com
@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 4284f3dc0c60e9b5207156950e7f56ba5e734a5b
+  revision: 43039959b9904f8aaa1a151548ec62ccaef87102
   specs:
     rails_qingflow (0.1.0)
       rails (>= 7.2.0.beta2)
