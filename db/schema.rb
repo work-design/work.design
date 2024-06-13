@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_12_124037) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_13_025606) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3718,7 +3718,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_12_124037) do
     t.bigint "parent_id"
     t.jsonb "parent_ancestors"
     t.string "title"
-    t.string "queid"
+    t.integer "queid"
     t.integer "que_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -3728,6 +3728,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_12_124037) do
     t.boolean "primary"
     t.boolean "modeling"
     t.string "record_name"
+    t.string "foreign_key"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["parent_id"], name: "index_qingflow_forms_on_parent_id"
@@ -3741,6 +3742,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_12_124037) do
     t.datetime "updated_at", null: false
     t.index ["application_id"], name: "index_qingflow_items_on_application_id"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
+  end
+
+  create_table "qingflow_logs", force: :cascade do |t|
+    t.bigint "item_id"
+    t.string "related_type"
+    t.bigint "related_id"
+    t.string "exception"
+    t.string "exception_backtrace", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_qingflow_logs_on_item_id"
+    t.index ["related_type", "related_id"], name: "index_qingflow_logs_on_related"
   end
 
   create_table "quip_apps", force: :cascade do |t|
