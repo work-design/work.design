@@ -243,7 +243,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_sync.git
-  revision: d9b9990faf39e40c60ef5dde984d0d0564fd6325
+  revision: ad5793fec831679db1a6c2f5bb84f6029f9b6c4d
   specs:
     rails_sync (0.1)
       rails_com

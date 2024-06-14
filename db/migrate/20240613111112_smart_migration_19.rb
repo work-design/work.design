@@ -67,7 +67,7 @@ class SmartMigration19 < ActiveRecord::Migration[7.2]
       t.datetime :refresh_token_expires_at
       t.timestamps
     end
-    
+
     add_column :qingflow_items, :source, :string
   end
 
