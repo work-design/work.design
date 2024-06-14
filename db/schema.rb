@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_14_022913) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4586,17 +4586,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_022913) do
     t.bigint "app_id"
     t.bigint "meta_column_id"
     t.jsonb "parent_ancestors"
-    t.string "title"
+    t.string "name"
     t.string "column_name"
     t.string "record_name"
     t.boolean "display"
     t.boolean "primary"
     t.boolean "modeling"
-    t.string "foreign_key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
+    t.string "external_column_name"
+    t.string "external_record_name"
     t.index ["app_id"], name: "index_sync_forms_on_app_id"
     t.index ["meta_column_id"], name: "index_sync_forms_on_meta_column_id"
+    t.index ["organ_id"], name: "index_sync_forms_on_organ_id"
     t.index ["parent_id"], name: "index_sync_forms_on_parent_id"
   end
 
@@ -4608,8 +4611,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_022913) do
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
     t.index ["app_id"], name: "index_sync_items_on_app_id"
     t.index ["identifier"], name: "index_sync_items_on_identifier"
+    t.index ["organ_id"], name: "index_sync_items_on_organ_id"
   end
 
   create_table "sync_logs", force: :cascade do |t|
