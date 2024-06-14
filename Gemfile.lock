@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 126f8022f0a14601b3d51885e3491beb20ed8a93
+  revision: 71e2cdecd408e3cc3263be63a66fe7a1bc5246af
   specs:
     rails_qingflow (0.1.0)
       rails (>= 7.2.0.beta2)
@@ -243,7 +243,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_sync.git
-  revision: ad5793fec831679db1a6c2f5bb84f6029f9b6c4d
+  revision: 815df4430acb3909438558913939418845f3e940
   specs:
     rails_sync (0.1)
       rails_com

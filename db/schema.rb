@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_13_111112) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_14_022913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3685,7 +3685,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_13_111112) do
     t.string "key"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
+    t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
 
   create_table "qingflow_apps", force: :cascade do |t|
@@ -3729,8 +3731,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_13_111112) do
     t.boolean "modeling"
     t.string "record_name"
     t.string "foreign_key"
+    t.bigint "organ_id"
+    t.string "column_name"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
+    t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
     t.index ["parent_id"], name: "index_qingflow_forms_on_parent_id"
   end
 
@@ -3742,8 +3747,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_13_111112) do
     t.datetime "updated_at", null: false
     t.integer "logs_count"
     t.string "source"
+    t.bigint "organ_id"
     t.index ["application_id"], name: "index_qingflow_items_on_application_id"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
+    t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
   end
 
   create_table "qingflow_logs", force: :cascade do |t|
