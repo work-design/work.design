@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b3554c53f6d77f8d0a9e80a487854662dd02593d
+  revision: 41ba088ff75b4e0d2f77cb2d95f2da8dc0b68ca6
   specs:
     rails_com (1.3.0)
       acme-client
@@ -243,7 +243,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_sync.git
-  revision: e27b37285a3e18d28557b8e1f2e54d57920b3d34
+  revision: 6d2fdb11e26f05abeb413e4ebad7a68e5ab78f10
   specs:
     rails_sync (0.1)
       rails_com

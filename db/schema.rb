@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
+ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -4583,7 +4583,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
 
   create_table "sync_forms", force: :cascade do |t|
     t.bigint "parent_id"
-    t.bigint "app_id"
     t.bigint "meta_column_id"
     t.jsonb "parent_ancestors"
     t.string "name"
@@ -4597,14 +4596,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
     t.bigint "organ_id"
     t.string "external_column_name"
     t.string "external_record_name"
-    t.index ["app_id"], name: "index_sync_forms_on_app_id"
+    t.bigint "record_id"
     t.index ["meta_column_id"], name: "index_sync_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_sync_forms_on_organ_id"
     t.index ["parent_id"], name: "index_sync_forms_on_parent_id"
+    t.index ["record_id"], name: "index_sync_forms_on_record_id"
   end
 
   create_table "sync_items", force: :cascade do |t|
-    t.bigint "app_id"
     t.string "identifier"
     t.jsonb "values"
     t.integer "logs_count"
@@ -4612,9 +4611,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id"
-    t.index ["app_id"], name: "index_sync_items_on_app_id"
+    t.bigint "record_id"
     t.index ["identifier"], name: "index_sync_items_on_identifier"
     t.index ["organ_id"], name: "index_sync_items_on_organ_id"
+    t.index ["record_id"], name: "index_sync_items_on_record_id"
   end
 
   create_table "sync_logs", force: :cascade do |t|
@@ -4627,6 +4627,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_043023) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_sync_logs_on_item_id"
     t.index ["related_type", "related_id"], name: "index_sync_logs_on_related"
+  end
+
+  create_table "sync_records", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.bigint "app_id"
+    t.string "name"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_sync_records_on_app_id"
+    t.index ["organ_id"], name: "index_sync_records_on_organ_id"
   end
 
   create_table "trade_addition_charges", force: :cascade do |t|
