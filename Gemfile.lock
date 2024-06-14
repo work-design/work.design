@@ -212,7 +212,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 71e2cdecd408e3cc3263be63a66fe7a1bc5246af
+  revision: 3bbfc6d3a1d187718f169964928d1ffde082af45
   specs:
     rails_qingflow (0.1.0)
       rails (>= 7.2.0.beta2)
