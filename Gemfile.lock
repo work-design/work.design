@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_where.git
-  revision: 120c8f54527b420956166b863fccdeb8d021b267
+  revision: 53d1d25b68512c54d6aeb7fc32f16f4794bd7405
   specs:
     default_where (2.3.0)
       activerecord (>= 4.0, <= 7.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 5e5ebdb44e8cad5a9768e21cf20cdc3ef7e7d14e
+  revision: f65c74ceafb6839b92cb2b724e6319a3fddd0e17
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 41ba088ff75b4e0d2f77cb2d95f2da8dc0b68ca6
+  revision: 48659d4be25be0918ea83d4d5bc9d434bd4717f0
   specs:
     rails_com (1.3.0)
       acme-client
@@ -77,6 +77,7 @@ GIT
       money-rails (~> 1.15)
       mutex_m
       net-http
+      net-pop
       ostruct
       rails (~> 7.0)
       turbo-rails
@@ -105,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 98c00ad6b55d6976ae302f8518d6e51d0a753c9f
+  revision: 8bbfb8000b400f5de3eef01d8261b7459104753c
   specs:
     rails_design (0.0.1)
       rails
@@ -198,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 97aa92aa619a3c3b9f119e85c6c75fd9e345f4ad
+  revision: e2504853485b9e321a8597d02a362642c1b39c03
   specs:
     rails_org (0.0.1)
       rails_com
@@ -212,9 +213,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 3ad52b59f34f312feba38b50ae67e0a469ad38bf
+  revision: 31e6615c499ab81ca1640c45fe56d431ca73daa8
   specs:
-    rails_qingflow (0.1.0)
+    rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
 
 GIT
@@ -243,7 +244,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_sync.git
-  revision: 4f62d66633d142b94f8ceac434a12a77a43a7c17
+  revision: 8be59dfe0ac8f2531ea7504cf0a6ac1913ec3e76
   specs:
     rails_sync (0.1)
       rails_com
@@ -258,18 +259,16 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 7ddf6aa28e3fb5c12c0d83f61a30886d023829ea
+  revision: 9d3d0eceb3449bc0bc4cd91a6ecaf6accefe913b
   specs:
     rails_wechat (0.1.2)
-      http-form_data (~> 2.3)
-      httpx (~> 0.18)
       rails_com
       rqrcode
 
 GEM
   remote: https://rubygems.org/
   specs:
-    acme-client (2.0.17)
+    acme-client (2.0.18)
       faraday (>= 1.0, < 3.0.0)
       faraday-retry (>= 1.0, < 3.0.0)
     actioncable (7.2.0.beta2)
