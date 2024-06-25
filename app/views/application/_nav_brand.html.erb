@@ -1,3 +1,16 @@
-<%= link_to({ controller: '/home' }, data: { navbar_target: 'old' }, class: 'navbar-item') do %>
-  <%= image_tag 'logo_white.png', class: 'image' %>
+<% if current_organ && current_organ.bar_logo.attached? && current_organ.bar_logo_invert.attached? %>
+  <%= link_to({ controller: '/home' }, data: { navbar_target: 'old' }, class: 'navbar-item') do %>
+    <%= image_tag current_organ.bar_logo, class: 'image' %>
+  <% end %>
+  <%= link_to({ controller: '/home' }, data: { navbar_target: 'new' }, class: 'navbar-item display-none') do %>
+    <%= image_tag current_organ.bar_logo_invert, class: 'image' %>
+  <% end %>
+<% elsif current_organ && current_organ.logo.attached? %>
+  <%= link_to({ controller: '/home' }, class: 'navbar-item') do %>
+    <%= image_tag current_organ.logo, class: 'image' %>
+  <% end %>
+<% else %>
+  <%= link_to({ controller: '/home' }, class: 'navbar-item') do %>
+    <%= image_tag 'logo_white.png', class: 'image' %>
+  <% end %>
 <% end %>
