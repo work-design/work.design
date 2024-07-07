@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -369,6 +369,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.boolean "agency_oauth"
     t.datetime "online_at"
     t.datetime "offline_at"
+    t.bigint "organ_id"
+    t.index ["organ_id"], name: "index_auth_oauth_users_on_organ_id"
     t.index ["user_id"], name: "index_auth_oauth_users_on_user_id"
   end
 
@@ -3424,6 +3426,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.string "license"
     t.boolean "production_enabled"
     t.jsonb "factory_settings"
+    t.jsonb "theme_settings", default: {}
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["creator_id"], name: "index_org_organs_on_creator_id"
@@ -3686,6 +3689,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id"
+    t.datetime "last_sync_at"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3701,6 +3705,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.datetime "refresh_token_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uuid"
+    t.string "base_url"
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
   end
@@ -3733,6 +3739,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.string "foreign_key"
     t.bigint "organ_id"
     t.string "column_name"
+    t.string "alias_title"
+    t.boolean "linked"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3748,9 +3756,25 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.integer "logs_count"
     t.string "source"
     t.bigint "organ_id"
+    t.string "linked_uid"
+    t.jsonb "primary_attrs"
+    t.jsonb "attrs"
     t.index ["application_id"], name: "index_qingflow_items_on_application_id"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
+  end
+
+  create_table "qingflow_linkers", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "type"
+    t.jsonb "request"
+    t.jsonb "response"
+    t.string "record_key"
+    t.string "operation", array: true
+    t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_qingflow_linkers_on_app_id"
   end
 
   create_table "qingflow_logs", force: :cascade do |t|
@@ -3763,6 +3787,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_qingflow_logs_on_item_id"
     t.index ["related_type", "related_id"], name: "index_qingflow_logs_on_related"
+  end
+
+  create_table "qingflow_tools", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "type"
+    t.string "uid"
+    t.jsonb "request"
+    t.jsonb "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_qingflow_tools_on_app_id"
   end
 
   create_table "quip_apps", force: :cascade do |t|
@@ -4547,6 +4582,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_06_14_054825) do
     t.datetime "refresh_token_expires_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
+    t.string "base_url"
     t.index ["appid"], name: "index_sync_apps_on_appid"
     t.index ["organ_id"], name: "index_sync_apps_on_organ_id"
   end
