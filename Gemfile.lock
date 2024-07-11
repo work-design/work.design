@@ -149,7 +149,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 495f066d4acab6bcc5ba06053325cb4715dedb6a
+  revision: d8e1a4bcb23f3c6bd103f58c28b036149938f9f9
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -192,7 +192,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: 96b0a3f56bacaa6a834a493275888e03b5243c16
+  revision: c33027becb52cc717722652c42bb8a20bca9ab10
   specs:
     rails_notice (1.0.3)
       rails_com
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: d1730d59cd247872c59dfd8af6f21f4902576d0a
+  revision: 9912312f1c88ebc23d285a8a8e94004364dac0be
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -229,7 +229,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 060cf7fab4304e94ec4f1cad277256350ffab330
+  revision: 4ae190a898d574df59e8053f37c314a8f1ef116b
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 049657150aff2aba8f4378bf36fe92017ad5c6e5
+  revision: d622a1548928dde5f49776d20658631120096124
   specs:
     rails_trade (0.0.3)
       rails_com
