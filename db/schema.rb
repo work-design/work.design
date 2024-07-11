@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_11_063447) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3682,6 +3682,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
     t.integer "projects_count"
   end
 
+  create_table "qingflow_aliases", force: :cascade do |t|
+    t.bigint "version_id"
+    t.string "title"
+    t.integer "queid"
+    t.integer "que_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["version_id"], name: "index_qingflow_aliases_on_version_id"
+  end
+
   create_table "qingflow_applications", force: :cascade do |t|
     t.bigint "app_id"
     t.string "name"
@@ -3739,8 +3749,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
     t.string "foreign_key"
     t.bigint "organ_id"
     t.string "column_name"
-    t.string "alias_title"
     t.boolean "linked"
+    t.boolean "exportable"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3748,7 +3758,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
   end
 
   create_table "qingflow_items", force: :cascade do |t|
-    t.bigint "application_id"
     t.string "applyid"
     t.jsonb "answers"
     t.datetime "created_at", null: false
@@ -3759,9 +3768,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
     t.string "linked_uid"
     t.jsonb "primary_attrs"
     t.jsonb "attrs"
-    t.index ["application_id"], name: "index_qingflow_items_on_application_id"
+    t.bigint "version_id"
+    t.string "record_key"
+    t.jsonb "cached_answers"
+    t.jsonb "version_answers"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
+    t.index ["version_id"], name: "index_qingflow_items_on_version_id"
   end
 
   create_table "qingflow_linkers", force: :cascade do |t|
@@ -3769,11 +3782,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
     t.string "type"
     t.jsonb "request"
     t.jsonb "response"
-    t.string "record_key"
     t.string "operation", array: true
     t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "version_number"
+    t.string "source"
     t.index ["app_id"], name: "index_qingflow_linkers_on_app_id"
   end
 
@@ -3798,6 +3812,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_07_090704) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_qingflow_tools_on_app_id"
+  end
+
+  create_table "qingflow_versions", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "key"
+    t.string "name"
+    t.string "number"
+    t.string "linker"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_qingflow_versions_on_app_id"
   end
 
   create_table "quip_apps", force: :cascade do |t|

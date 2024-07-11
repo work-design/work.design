@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: https://gitee.com/qinmingyuan/default_where.git
-  revision: 53d1d25b68512c54d6aeb7fc32f16f4794bd7405
+  revision: 37ecd668ea518c556805da07a53c9299990094ca
   specs:
     default_where (2.3.0)
       activerecord (>= 4.0, <= 7.2)
@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: f65c74ceafb6839b92cb2b724e6319a3fddd0e17
+  revision: 50d44a36df6905f69a26a1ebed27d618cac12b1d
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 6f965602ce12359dae5977f9083fde85e93d8797
+  revision: a4bcc7b6a9e32960db2af913cd790c5d78557453
   specs:
     rails_com (1.3.0)
       acme-client
@@ -92,7 +92,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 1777e1e3067e633ddb28c357a33906e734498c77
+  revision: bb4b4608fe0586ada3fa3d3c2583034f43f223bf
   specs:
     rails_data (1.0.2)
       csv
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 9d25bb14ca51685afc4168d17af9b7c01a0cea7d
+  revision: 43c556f446c077e8382a5f03a45d469d24eab79d
   specs:
     rails_design (0.0.1)
       rails
@@ -192,14 +192,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: b1f2b15541cda88995f05c48f4e3bbd893df260c
+  revision: 96b0a3f56bacaa6a834a493275888e03b5243c16
   specs:
     rails_notice (1.0.3)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 998f7b22bf1ed49e103bb913f75c1970a4b7ffcf
+  revision: faa6bcd3eea717628fa6c1e62f39cb598b8c33ad
   specs:
     rails_org (0.0.1)
       rails_com
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: f63b786d9fe874bd859b6c6dc757941625469e94
+  revision: d1730d59cd247872c59dfd8af6f21f4902576d0a
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
