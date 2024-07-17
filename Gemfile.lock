@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: c7902ac6b1b084e8c9a724b2b98ff0787b20ebca
+  revision: bdd39cad6fe8bd000b0d37380b7f34f23069f310
   specs:
     rails_com (1.3.0)
       acme-client
@@ -92,7 +92,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: bb4b4608fe0586ada3fa3d3c2583034f43f223bf
+  revision: cc427e3ce8b33a92fc7cc352c5dc12f527c3f11c
   specs:
     rails_data (1.0.2)
       csv
@@ -106,14 +106,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 7ead0e0e70482153baf75e19242582fbc8dc62cc
+  revision: f2e28cda684b9dd7d7a2b7a0884095567bb62464
   specs:
     rails_design (0.0.1)
       rails
 
 GIT
   remote: https://gitee.com/work-design/rails_detail.git
-  revision: f5e12a278aa15075821da9d49d010d13de8e98bb
+  revision: 29385203daa990d27f962ee499d48976b6dd6dba
   specs:
     rails_detail (0.0.1)
       rails_com
@@ -192,7 +192,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: c33027becb52cc717722652c42bb8a20bca9ab10
+  revision: 193cf9ead844a2b6c1fcad2bd5c5e1ea0679a822
   specs:
     rails_notice (1.0.3)
       rails_com
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: fae39967e4b6804249cdd24b2c28560cc3834bae
+  revision: c2bea93ac01da25a97284218531740f86f5e7743
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: d622a1548928dde5f49776d20658631120096124
+  revision: 556ee2a842258dc3d178e0ae818b3192dc563c72
   specs:
     rails_trade (0.0.3)
       rails_com
@@ -339,7 +339,7 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0, >= 2.0.5)
-    acts_as_list (1.2.1)
+    acts_as_list (1.2.2)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     addressable (2.8.6)

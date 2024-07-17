@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_11_063447) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3209,6 +3209,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_11_063447) do
     t.string "linked_type"
     t.bigint "linked_id"
     t.string "type"
+    t.bigint "receiver_id"
     t.index ["linked_type", "linked_id"], name: "index_notice_notifications_on_linked_type_and_linked_id"
     t.index ["notifiable_type", "notifiable_id"], name: "index_notice_notifications_on_notifiable_type_and_notifiable_id"
     t.index ["organ_id"], name: "index_notice_notifications_on_organ_id"
@@ -5149,7 +5150,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_11_063447) do
 
   create_table "trade_orders", force: :cascade do |t|
     t.string "uuid", null: false
-    t.string "state", default: "0"
+    t.string "state"
     t.decimal "amount", precision: 10, scale: 2
     t.decimal "received_amount", precision: 10, scale: 2
     t.decimal "item_amount", precision: 10, scale: 2
