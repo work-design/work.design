@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 5d954ab1c9b006c39e4202d8f5595d5eb745032b
+  revision: c264158c4a623ea7ed2fc8b9ba72e90477ca1453
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
