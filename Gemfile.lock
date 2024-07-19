@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: cd6f5e1af9bb1e6f3522d0acc7b099645a130708
+  revision: 1c7841f908a26c98d1772750cb42eb1cb8e6db4b
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 9ccbdae61a3d196e64d7a9b3c500f1bd0423c86d
+  revision: 3ebd501017e81fb509989fc8d256a383c8f0070f
   specs:
     rails_com (1.3.0)
       acme-client
@@ -158,7 +158,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 03c37e41036e757121a2ab49994e0bf2a31d7439
+  revision: ad8af524c64c6af9234f8a8c8d810f21cd9ffa1e
   specs:
     rails_finance (0.0.1)
       prawn
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 0453f91d8aaac59c076aecd28e49ad1dfa8d1b23
+  revision: 88cae94404839277e7d1a3c80b7e9090a02f1071
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
