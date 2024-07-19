@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: fb5cb255f308d48f9d344059591a259051e31e64
+  revision: b0c5604934075b7af0406bd79c3f96d2ed0d2fa2
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 950f95cc983d0dece86a6a1a0f0ea473cbd0865c
+  revision: cd6f5e1af9bb1e6f3522d0acc7b099645a130708
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 044eef4bac1818a5104df5f916cfc8662a716c26
+  revision: f851794a6c8c90df5d49cd54f69e52e9b166e90d
   specs:
     rails_design (0.0.1)
       rails
@@ -158,7 +158,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 9195667afb97a2d693b10e6bb7ba3e7508073966
+  revision: 03c37e41036e757121a2ab49994e0bf2a31d7439
   specs:
     rails_finance (0.0.1)
       prawn
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: de6dd2b65f56eed0ad738b9dca3387579049433d
+  revision: 0453f91d8aaac59c076aecd28e49ad1dfa8d1b23
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
