@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_20_140648) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -523,11 +523,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
     t.decimal "reference_max"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "taxon_id"
-    t.bigint "facilitate_taxon_id"
     t.string "target_source"
-    t.index ["facilitate_taxon_id"], name: "index_bench_indicators_on_facilitate_taxon_id"
-    t.index ["taxon_id"], name: "index_bench_indicators_on_taxon_id"
   end
 
   create_table "bench_mileposts", force: :cascade do |t|
@@ -635,6 +631,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
     t.index ["facilitate_id"], name: "index_bench_standard_providers_on_facilitate_id"
   end
 
+  create_table "bench_standards", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bench_task_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id", null: false
     t.integer "descendant_id", null: false
@@ -721,22 +723,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
 
   create_table "bench_taxon_facilitates", force: :cascade do |t|
     t.bigint "taxon_id"
-    t.bigint "facilitate_taxon_id"
     t.bigint "facilitate_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["facilitate_id"], name: "index_bench_taxon_facilitates_on_facilitate_id"
-    t.index ["facilitate_taxon_id"], name: "index_bench_taxon_facilitates_on_facilitate_taxon_id"
     t.index ["taxon_id"], name: "index_bench_taxon_facilitates_on_taxon_id"
   end
 
   create_table "bench_taxon_indicators", force: :cascade do |t|
     t.bigint "taxon_id"
-    t.bigint "facilitate_taxon_id"
     t.bigint "indicator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["facilitate_taxon_id"], name: "index_bench_taxon_indicators_on_facilitate_taxon_id"
+    t.integer "weight"
     t.index ["indicator_id"], name: "index_bench_taxon_indicators_on_indicator_id"
     t.index ["taxon_id"], name: "index_bench_taxon_indicators_on_taxon_id"
   end
@@ -3722,6 +3721,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
   end
 
+  create_table "qingflow_files", force: :cascade do |t|
+    t.string "url"
+    t.string "rule"
+    t.jsonb "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "qingflow_form_hierarchies", force: :cascade do |t|
     t.bigint "ancestor_id"
     t.bigint "descendant_id"
@@ -3752,6 +3759,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
     t.string "column_name"
     t.boolean "linked"
     t.boolean "exportable"
+    t.string "group_title"
     t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3772,7 +3780,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_17_131956) do
     t.bigint "version_id"
     t.string "record_key"
     t.jsonb "cached_answers"
-    t.jsonb "version_answers"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
