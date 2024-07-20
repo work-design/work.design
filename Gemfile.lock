@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 6de285f5f2132187d33c792da24fc676caf05743
+  revision: c43a95e5b215037b79645ce68b9f17dab10d056e
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 3ebd501017e81fb509989fc8d256a383c8f0070f
+  revision: c36a153136e330a7a2e3a14fd2b7deb73d24fafd
   specs:
     rails_com (1.3.0)
       acme-client
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: f851794a6c8c90df5d49cd54f69e52e9b166e90d
+  revision: 4c581a630efec9c46a2e248817c051e75da37800
   specs:
     rails_design (0.0.1)
       rails
