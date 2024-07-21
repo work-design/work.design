@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 7467e698c8b8dd68d84d138cc401c563190d850d
+  revision: 791c5a1fd1cd228fa462b6f74cdc840e9bcb17ad
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -602,7 +602,7 @@ GEM
       roo (>= 2.0.0, < 3)
       spreadsheet (> 0.9.0)
     rotp (6.3.0)
-    rouge (4.2.1)
+    rouge (4.3.0)
     rqrcode (2.2.0)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
