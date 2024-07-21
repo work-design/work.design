@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_20_140648) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2258,7 +2258,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_20_140648) do
 
   create_table "factory_production_items", force: :cascade do |t|
     t.bigint "production_id"
-    t.string "state", default: "producing"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "production_plan_id"
@@ -2343,7 +2343,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_20_140648) do
     t.decimal "profit_price", default: "0.0"
     t.string "str_part_ids"
     t.boolean "default"
-    t.string "state", default: "init"
+    t.string "state"
     t.string "sku"
     t.decimal "advance_price", default: "0.0"
     t.jsonb "extra", default: {}
