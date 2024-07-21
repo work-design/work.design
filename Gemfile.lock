@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 8ab8f744930019c8d71299359074bd8029fe19c8
+  revision: d3810bee5d39db8de110e677a1e410b99ea425a3
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 4c581a630efec9c46a2e248817c051e75da37800
+  revision: 7583370658787ec12319fb522cc0361f36cc41cc
   specs:
     rails_design (0.0.1)
       rails
@@ -264,6 +264,16 @@ GIT
     rails_wechat (0.1.2)
       rails_com
       rqrcode
+
+GIT
+  remote: https://github.com/rails/propshaft.git
+  revision: af557fbd10dc9856c943b3324f340a87295f5041
+  specs:
+    propshaft (0.9.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -521,11 +531,6 @@ GEM
       ttfunk (~> 1.8)
     prawn-table (0.2.2)
       prawn (>= 1.3.0, < 3.0.0)
-    propshaft (0.9.0)
-      actionpack (>= 7.0.0)
-      activesupport (>= 7.0.0)
-      rack
-      railties (>= 7.0.0)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -690,7 +695,7 @@ DEPENDENCIES
   paypal-sdk-core
   paypal-sdk-rest
   pg
-  propshaft
+  propshaft!
   puma
   rails (= 7.2.0.beta2)
   rails_attend!

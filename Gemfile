@@ -73,7 +73,7 @@ gem 'rails_interact', gitee: 'work-design/rails_interact'
 gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 gem 'rails_qingflow', gitee: 'work-design/rails_qingflow'
 
-gem 'propshaft'
+gem 'propshaft', github: 'rails/propshaft'
 
 # Debug
 group :development, :test do
