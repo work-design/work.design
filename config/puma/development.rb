@@ -1,7 +1,7 @@
 dir = ENV['PWD']
 
 port 3000
-threads 1, 1
+threads 1, 16
 environment 'development'
 directory dir
 
