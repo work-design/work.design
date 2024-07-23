@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: d23f16c04df00055d9b952fb7d7974bc2fa5da3f
+  revision: ef003d39e01a9855fc81c006bfa8a236cc678eaf
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -259,7 +259,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 4a705f827f018315fa95e13687ac1a972bcb69e6
+  revision: 9ca5b3d8c41b729f364f8734f4dde6e4b84f6f6c
   specs:
     rails_wechat (0.1.2)
       rails_com
