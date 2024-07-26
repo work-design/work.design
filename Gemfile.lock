@@ -34,7 +34,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: f54a4474ba2af03d678b8f1c226341908b8bbb15
+  revision: 6331f2a90d2dad1b0dece5f39f86dcb067399d90
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
@@ -50,25 +50,24 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 196dd91f5baacf9b6fa7219a6ba1b2e0a49d44e4
+  revision: dd07116b00817fc69f2685b1d8b4264b0dce2638
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_cms.git
-  revision: 611e5bfad1b7fc4faabb0ff4d5ce4b4e9de80194
+  revision: e6a18ff240058ae02c90d40a3722884770294b71
   specs:
     rails_cms (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 65334cc10eb7ca44eb2fbf9172598474d4f96e6a
+  revision: d4beb93fb735ec64322650dd48d25c713705447c
   specs:
     rails_com (1.3.0)
       acme-client
-      acts_as_list (>= 1.0)
       closure_tree (>= 7.3)
       default_where (~> 2.2)
       http-form_data (~> 2.3)
@@ -79,6 +78,7 @@ GIT
       net-http
       net-pop
       ostruct
+      positioning
       rails (~> 7.0)
       turbo-rails
 
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 3f00e3bb8260a96fdaa759bdcc04be7a5eedc4f8
+  revision: ac09f6f45788c2f14725bbaee1eec4b757dba0b8
   specs:
     rails_design (0.0.1)
       rails
@@ -134,7 +134,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: 8be7427aa5ae7752df939be9a85dd3292a66791a
+  revision: d68e4e2fc11881cae040eace900c42c6d7fe77e6
   specs:
     rails_email (0.0.2)
       rails_auth
@@ -142,14 +142,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_event.git
-  revision: 1d36b3a3e9dcfcd12d2173dcdb67694b67c30ca0
+  revision: af6b8117bbfba2cb97b516a964c0b1c2de59fbfd
   specs:
     rails_event (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 76175e8ca7b8f6d4e5b86cfa8cbae1e33c82740a
+  revision: caa0f81a3baef21cf22e7ae47aee5d6fd52cc4c4
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -158,7 +158,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: ad8af524c64c6af9234f8a8c8d810f21cd9ffa1e
+  revision: 5abef4d321c6b491f3edf1a09bfac25c0cc0a1c5
   specs:
     rails_finance (0.0.1)
       prawn
@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: ef003d39e01a9855fc81c006bfa8a236cc678eaf
+  revision: e1488e2824f69efb1268c65233baa0f0f5dd1b70
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -199,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: faa6bcd3eea717628fa6c1e62f39cb598b8c33ad
+  revision: 33cbc7ed0076a92c7f58f211192c75cc70b77f9c
   specs:
     rails_org (0.0.1)
       rails_com
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: bcf875ec113c4fdab440e1289b479bbf66f3c3a4
+  revision: 54d64eeba96297cc16347b58c9eed33e7cbde1c4
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -229,7 +229,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 4ae190a898d574df59e8053f37c314a8f1ef116b
+  revision: e77a2da3727f6eaa6ff14d30e5a417c8accd5442
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 556ee2a842258dc3d178e0ae818b3192dc563c72
+  revision: 47535c326bed31af923c0933caf5caca20c710f2
   specs:
     rails_trade (0.0.3)
       rails_com
@@ -259,7 +259,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 9ca5b3d8c41b729f364f8734f4dde6e4b84f6f6c
+  revision: cb5c286a3acb41c1815bb31e3de0760921fd250b
   specs:
     rails_wechat (0.1.2)
       rails_com
@@ -349,9 +349,6 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0, >= 2.0.5)
-    acts_as_list (1.2.2)
-      activerecord (>= 6.1)
-      activesupport (>= 6.1)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     aliyunsdkcore (0.0.17)
@@ -525,6 +522,9 @@ GEM
       xml-simple
     pdf-core (0.10.0)
     pg (1.5.6)
+    positioning (0.2.3)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
