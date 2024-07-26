@@ -166,7 +166,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_growth.git
-  revision: a9bd3af9813d2a43598f5b0ad340c7b49d758d46
+  revision: 5d37ff83999c8a15870e87d484ca5fdcb7d8df22
   specs:
     rails_growth (0.0.1)
       rails_com (~> 1.2)
