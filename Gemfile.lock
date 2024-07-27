@@ -181,7 +181,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 29febd5709a27ca0a9079e654169f002770dc5b4
+  revision: 24e38152228812ffbbe85871f9b089b391bac62d
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 54d64eeba96297cc16347b58c9eed33e7cbde1c4
+  revision: 2d5d62a5e55d64c4939f8d57970454bf7c3f535c
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
