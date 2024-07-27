@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: ac09f6f45788c2f14725bbaee1eec4b757dba0b8
+  revision: 9510fe215d202b85974723804cdd198d4ec8fa6d
   specs:
     rails_design (0.0.1)
       rails
