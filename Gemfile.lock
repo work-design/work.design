@@ -84,7 +84,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: e763126f9fb2195cfcfe085b2b96a7d19fe9a53d
+  revision: f3d9aad2f897671e369de0e8988cbf73c7e313c2
   specs:
     rails_crm (0.0.2)
       rails_profile
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 161fb4712b1d7794e937eeae52ae55668e1c8174
+  revision: b7a8fb201e20813e1302389ab8f58aad838ab0e9
   specs:
     rails_design (0.0.1)
       rails
@@ -149,7 +149,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: e9ec601db813ec0e98e2fac92259cb1adcea4b18
+  revision: 236df5d4ea1b8e14713008756c0227c2bbde58d1
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)

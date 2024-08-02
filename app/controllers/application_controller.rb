@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Org::Controller::Application
   include Org::Controller::Me
   include Trade::Controller::Application
+  include Auditor::Controller::Application
   include ActiveStorage::SetCurrent
 
   #before_action :support_organ
