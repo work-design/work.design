@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_02_102820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2398,6 +2398,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.bigint "factory_taxon_id"
     t.integer "position"
     t.decimal "base_price"
+    t.decimal "profit_margin"
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
@@ -2413,6 +2414,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.datetime "updated_at", null: false
     t.bigint "product_taxon_id"
     t.string "name"
+    t.string "invite_token"
     t.index ["organ_id"], name: "index_factory_provides_on_organ_id"
     t.index ["product_taxon_id"], name: "index_factory_provides_on_product_taxon_id"
     t.index ["provider_id"], name: "index_factory_provides_on_provider_id"
@@ -3427,6 +3429,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.boolean "production_enabled"
     t.jsonb "factory_settings"
     t.jsonb "theme_settings", default: {}
+    t.string "dispatch"
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["creator_id"], name: "index_org_organs_on_creator_id"
@@ -3682,6 +3685,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.integer "projects_count"
   end
 
+  create_table "qingflow_alias_hierarchies", force: :cascade do |t|
+    t.bigint "ancestor_id"
+    t.bigint "descendant_id"
+    t.integer "generations", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "qingflow/alias_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_qingflow_alias_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_qingflow_alias_hierarchies_on_descendant_id"
+  end
+
   create_table "qingflow_aliases", force: :cascade do |t|
     t.bigint "version_id"
     t.string "title"
@@ -3689,6 +3703,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.integer "que_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_id"
+    t.jsonb "parent_ancestors"
+    t.index ["parent_id"], name: "index_qingflow_aliases_on_parent_id"
     t.index ["version_id"], name: "index_qingflow_aliases_on_version_id"
   end
 
@@ -3748,7 +3765,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.integer "que_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "application_id"
     t.bigint "meta_column_id"
     t.boolean "display"
     t.boolean "primary"
@@ -3758,12 +3774,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.bigint "organ_id"
     t.string "column_name"
     t.boolean "linked"
-    t.boolean "exportable"
-    t.string "group_title"
-    t.index ["application_id"], name: "index_qingflow_forms_on_application_id"
+    t.bigint "group_id"
+    t.string "alias_title"
+    t.integer "position"
+    t.string "record_key"
+    t.index ["group_id"], name: "index_qingflow_forms_on_group_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
     t.index ["parent_id"], name: "index_qingflow_forms_on_parent_id"
+  end
+
+  create_table "qingflow_groups", force: :cascade do |t|
+    t.bigint "application_id"
+    t.string "title"
+    t.string "description"
+    t.string "pdf"
+    t.integer "position"
+    t.boolean "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_qingflow_groups_on_application_id"
   end
 
   create_table "qingflow_items", force: :cascade do |t|
@@ -3780,6 +3810,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_21_112436) do
     t.bigint "version_id"
     t.string "record_key"
     t.jsonb "cached_answers"
+    t.jsonb "cached_table"
+    t.datetime "last_sync_at"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
