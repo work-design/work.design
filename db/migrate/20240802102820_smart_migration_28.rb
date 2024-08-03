@@ -37,7 +37,7 @@ class SmartMigration28 < ActiveRecord::Migration[7.2]
     add_column :factory_provides, :invite_token, :string
 
     add_column :factory_products, :profit_margin, :decimal
-    
+
 
     add_column :org_organs, :dispatch, :string
   end
