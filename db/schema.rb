@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_02_102820) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_03_094042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -3430,6 +3430,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_02_102820) do
     t.jsonb "factory_settings"
     t.jsonb "theme_settings", default: {}
     t.string "dispatch"
+    t.string "invite_token"
     t.index ["area_id"], name: "index_org_organs_on_area_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["creator_id"], name: "index_org_organs_on_creator_id"
