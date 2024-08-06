@@ -64,7 +64,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b94fd49eafa70ee39e39fed2c23b6563ce01fe94
+  revision: ab3914f9e7305cc5ceef215862b259fdc8d09f05
   specs:
     rails_com (1.3.0)
       acme-client
@@ -106,7 +106,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: d817da307c79289dc9198c38ef0903a9deef703e
+  revision: 268515ba7e81037c803fa7e2a2cca7c666fc7172
   specs:
     rails_design (0.0.1)
       rails
@@ -149,7 +149,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 819c21058bfa1f9be116274ad3ad40a2b9e0a6fb
+  revision: ad9d603af884d76610ebbbc4ce93e240e5cce5fe
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -199,7 +199,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 1129c6f28bd3f81c96a0877a8f3f49e744b754fe
+  revision: c3fbaf15723efc4ef31d829e0a31ae8ec8263d51
   specs:
     rails_org (0.0.1)
       rails_com
@@ -213,7 +213,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 4d136e56344061b054cf03f2bf22ba23e63d38ef
+  revision: 7dd05954065938ddbb9849ed0ce2e0723252048d
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -251,7 +251,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 52a455be209810d0f3119de32e71b1b21bdcff1d
+  revision: a50a0358b129d3714fe0e3ed17f83ee190e2b5b5
   specs:
     rails_trade (0.0.3)
       rails_com
@@ -525,7 +525,7 @@ GEM
       xml-simple
     pdf-core (0.10.0)
     pg (1.5.7)
-    positioning (0.2.3)
+    positioning (0.2.4)
       activerecord (>= 6.1)
       activesupport (>= 6.1)
     prawn (2.5.0)
