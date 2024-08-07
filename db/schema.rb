@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_07_125440) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_07_153732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2399,6 +2399,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_125440) do
     t.integer "position"
     t.decimal "base_price"
     t.decimal "profit_margin"
+    t.decimal "min_price"
+    t.decimal "max_price"
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
@@ -3745,6 +3747,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_125440) do
     t.jsonb "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "replace"
   end
 
   create_table "qingflow_form_hierarchies", force: :cascade do |t|
@@ -3813,6 +3816,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_125440) do
     t.jsonb "cached_answers"
     t.jsonb "cached_table"
     t.datetime "last_sync_at"
+    t.datetime "apply_at"
+    t.jsonb "linked_audits"
+    t.string "linked_logs", array: true
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
