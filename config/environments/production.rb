@@ -8,7 +8,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_controller.asset_host = 'assets.work.design'
 
-  config.cache_store = :redis_cache_store, { url: 'redis://localhost:6379/2' }
+  config.cache_store = :solid_cache_store
 
   config.public_file_server.enabled = true
 
