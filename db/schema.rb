@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_07_153732) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2216,30 +2216,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_153732) do
     t.index ["descendant_id"], name: "product_taxon_desc_idx"
   end
 
-  create_table "factory_product_taxons", force: :cascade do |t|
-    t.string "name"
-    t.integer "position", default: 1
-    t.bigint "parent_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.bigint "organ_id"
-    t.json "parent_ancestors"
-    t.bigint "factory_taxon_id"
-    t.integer "products_count", default: 0
-    t.boolean "enabled", default: true
-    t.bigint "template_id"
-    t.bigint "scene_id"
-    t.boolean "take_stock", comment: "可盘点"
-    t.integer "provides_count"
-    t.boolean "nav", comment: "单独分类"
-    t.integer "product_part_taxons_count"
-    t.index ["factory_taxon_id"], name: "index_factory_product_taxons_on_factory_taxon_id"
-    t.index ["organ_id"], name: "index_factory_product_taxons_on_organ_id"
-    t.index ["parent_id"], name: "index_factory_product_taxons_on_parent_id"
-    t.index ["scene_id"], name: "index_factory_product_taxons_on_scene_id"
-    t.index ["template_id"], name: "index_factory_product_taxons_on_template_id"
-  end
-
   create_table "factory_production_carts", force: :cascade do |t|
     t.bigint "cart_id"
     t.bigint "user_id"
@@ -2481,6 +2457,30 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_153732) do
     t.decimal "stock"
     t.index ["production_id"], name: "index_factory_stock_logs_on_production_id"
     t.index ["source_type", "source_id"], name: "index_factory_stock_logs_on_source"
+  end
+
+  create_table "factory_taxons", force: :cascade do |t|
+    t.string "name"
+    t.integer "position", default: 1
+    t.bigint "parent_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.bigint "organ_id"
+    t.json "parent_ancestors"
+    t.bigint "factory_taxon_id"
+    t.integer "products_count", default: 0
+    t.boolean "enabled", default: true
+    t.bigint "template_id"
+    t.bigint "scene_id"
+    t.boolean "take_stock", comment: "可盘点"
+    t.integer "provides_count"
+    t.boolean "nav", comment: "单独分类"
+    t.integer "product_part_taxons_count"
+    t.index ["factory_taxon_id"], name: "index_factory_taxons_on_factory_taxon_id"
+    t.index ["organ_id"], name: "index_factory_taxons_on_organ_id"
+    t.index ["parent_id"], name: "index_factory_taxons_on_parent_id"
+    t.index ["scene_id"], name: "index_factory_taxons_on_scene_id"
+    t.index ["template_id"], name: "index_factory_taxons_on_template_id"
   end
 
   create_table "factory_unifiers", force: :cascade do |t|
