@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
-gem 'rails', '7.2.0.beta3'
+gem 'rails', '7.2.0.rc1'
 gem 'puma'
 gem 'sd_notify'
 gem 'solid_queue'
+gem 'solid_cache'
 gem 'jbuilder'
 gem 'mission_control-jobs'
 
@@ -73,7 +74,7 @@ gem 'rails_interact', gitee: 'work-design/rails_interact'
 gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 gem 'rails_qingflow', gitee: 'work-design/rails_qingflow'
 
-gem 'propshaft', github: 'rails/propshaft'
+gem 'propshaft', gitee: 'work-design/propshaft'
 
 # Debug
 group :development, :test do
