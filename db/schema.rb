@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2139,6 +2139,19 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.string "content"
   end
 
+  create_table "factory_product_components", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "part_taxon_id"
+    t.string "name"
+    t.integer "min_select"
+    t.integer "max_select"
+    t.integer "product_parts_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["part_taxon_id"], name: "index_factory_product_components_on_part_taxon_id"
+    t.index ["product_id"], name: "index_factory_product_components_on_product_id"
+  end
+
   create_table "factory_product_hosts", force: :cascade do |t|
     t.bigint "organ_id"
     t.bigint "product_id"
@@ -2151,33 +2164,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.index ["product_id"], name: "index_factory_product_hosts_on_product_id"
   end
 
-  create_table "factory_product_part_taxons", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "part_taxon_id"
-    t.string "name"
-    t.integer "min_select", default: 1
-    t.integer "max_select", default: 1, comment: "最大同时选择，1则为单选"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "product_parts_count", default: 0
-    t.bigint "product_taxon_id"
-    t.index ["part_taxon_id"], name: "index_factory_product_part_taxons_on_part_taxon_id"
-    t.index ["product_id"], name: "index_factory_product_part_taxons_on_product_id"
-    t.index ["product_taxon_id"], name: "index_factory_product_part_taxons_on_product_taxon_id"
-  end
-
   create_table "factory_product_parts", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "part_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.boolean "default"
-    t.bigint "product_taxon_id"
-    t.bigint "product_part_taxon_id"
+    t.bigint "taxon_id"
+    t.bigint "product_component_id"
     t.index ["part_id"], name: "index_factory_product_parts_on_part_id"
+    t.index ["product_component_id"], name: "index_factory_product_parts_on_product_component_id"
     t.index ["product_id"], name: "index_factory_product_parts_on_product_id"
-    t.index ["product_part_taxon_id"], name: "index_factory_product_parts_on_product_part_taxon_id"
-    t.index ["product_taxon_id"], name: "index_factory_product_parts_on_product_taxon_id"
+    t.index ["taxon_id"], name: "index_factory_product_parts_on_taxon_id"
   end
 
   create_table "factory_product_plans", force: :cascade do |t|
@@ -2300,12 +2298,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.bigint "upstream_production_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_taxon_id"
+    t.bigint "taxon_id"
     t.index ["organ_id"], name: "index_factory_production_provides_on_organ_id"
     t.index ["product_id"], name: "index_factory_production_provides_on_product_id"
-    t.index ["product_taxon_id"], name: "index_factory_production_provides_on_product_taxon_id"
     t.index ["production_id"], name: "index_factory_production_provides_on_production_id"
     t.index ["provider_id"], name: "index_factory_production_provides_on_provider_id"
+    t.index ["taxon_id"], name: "index_factory_production_provides_on_taxon_id"
     t.index ["upstream_product_id"], name: "index_factory_production_provides_on_upstream_product_id"
     t.index ["upstream_production_id"], name: "index_factory_production_provides_on_upstream_production_id"
   end
@@ -2329,7 +2327,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "enabled", default: false
-    t.bigint "product_taxon_id"
+    t.bigint "taxon_id"
     t.bigint "organ_id"
     t.boolean "automatic", default: false
     t.string "good_type"
@@ -2350,11 +2348,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.index ["organ_id"], name: "index_factory_productions_on_organ_id"
     t.index ["product_host_id"], name: "index_factory_productions_on_product_host_id"
     t.index ["product_id"], name: "index_factory_productions_on_product_id"
-    t.index ["product_taxon_id"], name: "index_factory_productions_on_product_taxon_id"
+    t.index ["taxon_id"], name: "index_factory_productions_on_taxon_id"
   end
 
   create_table "factory_products", force: :cascade do |t|
-    t.bigint "product_taxon_id"
+    t.bigint "taxon_id"
     t.string "name"
     t.string "description"
     t.string "qr_prefix"
@@ -2370,7 +2368,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.bigint "brand_id"
     t.boolean "specialty", default: false
     t.integer "fits_count", default: 0
-    t.jsonb "product_taxon_ancestors"
+    t.jsonb "taxon_ancestors"
     t.bigint "factory_taxon_id"
     t.integer "position"
     t.decimal "base_price"
@@ -2380,8 +2378,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.index ["brand_id"], name: "index_factory_products_on_brand_id"
     t.index ["factory_taxon_id"], name: "index_factory_products_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_products_on_organ_id"
-    t.index ["product_taxon_id"], name: "index_factory_products_on_product_taxon_id"
     t.index ["sku"], name: "index_factory_products_on_sku"
+    t.index ["taxon_id"], name: "index_factory_products_on_taxon_id"
     t.index ["unifier_id"], name: "index_factory_products_on_unifier_id"
   end
 
@@ -2390,12 +2388,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.bigint "provider_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "product_taxon_id"
+    t.bigint "taxon_id"
     t.string "name"
     t.string "invite_token"
     t.index ["organ_id"], name: "index_factory_provides_on_organ_id"
-    t.index ["product_taxon_id"], name: "index_factory_provides_on_product_taxon_id"
     t.index ["provider_id"], name: "index_factory_provides_on_provider_id"
+    t.index ["taxon_id"], name: "index_factory_provides_on_taxon_id"
   end
 
   create_table "factory_scene_automatics", force: :cascade do |t|
@@ -2457,6 +2455,42 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_07_163244) do
     t.decimal "stock"
     t.index ["production_id"], name: "index_factory_stock_logs_on_production_id"
     t.index ["source_type", "source_id"], name: "index_factory_stock_logs_on_source"
+  end
+
+  create_table "factory_taxon_components", force: :cascade do |t|
+    t.bigint "part_taxon_id"
+    t.string "name"
+    t.integer "min_select", default: 1
+    t.integer "max_select", default: 1, comment: "最大同时选择，1则为单选"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_parts_count", default: 0
+    t.bigint "taxon_id"
+    t.index ["part_taxon_id"], name: "index_factory_taxon_components_on_part_taxon_id"
+    t.index ["taxon_id"], name: "index_factory_taxon_components_on_taxon_id"
+  end
+
+  create_table "factory_taxon_hierarchies", force: :cascade do |t|
+    t.bigint "ancestor_id"
+    t.bigint "descendant_id"
+    t.integer "generations", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "factory/taxon_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_factory_taxon_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_factory_taxon_hierarchies_on_descendant_id"
+  end
+
+  create_table "factory_taxon_parts", force: :cascade do |t|
+    t.bigint "taxon_id"
+    t.bigint "taxon_component_id"
+    t.bigint "part_id"
+    t.boolean "default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["part_id"], name: "index_factory_taxon_parts_on_part_id"
+    t.index ["taxon_component_id"], name: "index_factory_taxon_parts_on_taxon_component_id"
+    t.index ["taxon_id"], name: "index_factory_taxon_parts_on_taxon_id"
   end
 
   create_table "factory_taxons", force: :cascade do |t|
