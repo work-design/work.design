@@ -35,9 +35,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'home#index'
   end
-  namespace :panel do
-    root 'home#index'
-  end
   namespace :board do
   end
   namespace :my do
@@ -54,5 +51,4 @@ Rails.application.routes.draw do
   end
 
   mount ActionCable.server => '/cable'
-  mount MissionControl::Jobs::Engine => '/jobs'
 end

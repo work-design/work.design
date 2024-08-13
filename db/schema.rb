@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2003,6 +2003,32 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.index ["organ_id"], name: "index_factory_brands_on_organ_id"
   end
 
+  create_table "factory_component_parts", force: :cascade do |t|
+    t.bigint "component_id"
+    t.bigint "part_id"
+    t.boolean "default"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["component_id"], name: "index_factory_component_parts_on_component_id"
+    t.index ["part_id"], name: "index_factory_component_parts_on_part_id"
+  end
+
+  create_table "factory_components", force: :cascade do |t|
+    t.bigint "part_taxon_id"
+    t.string "name"
+    t.integer "min_select", default: 1
+    t.integer "max_select", default: 1, comment: "最大同时选择，1则为单选"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "component_parts_count", default: 0
+    t.bigint "taxon_id"
+    t.bigint "product_id"
+    t.string "type"
+    t.index ["part_taxon_id"], name: "index_factory_components_on_part_taxon_id"
+    t.index ["product_id"], name: "index_factory_components_on_product_id"
+    t.index ["taxon_id"], name: "index_factory_components_on_taxon_id"
+  end
+
   create_table "factory_factory_providers", force: :cascade do |t|
     t.bigint "factory_taxon_id"
     t.bigint "provider_id"
@@ -2139,19 +2165,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.string "content"
   end
 
-  create_table "factory_product_components", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "part_taxon_id"
-    t.string "name"
-    t.integer "min_select"
-    t.integer "max_select"
-    t.integer "product_parts_count"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["part_taxon_id"], name: "index_factory_product_components_on_part_taxon_id"
-    t.index ["product_id"], name: "index_factory_product_components_on_product_id"
-  end
-
   create_table "factory_product_hosts", force: :cascade do |t|
     t.bigint "organ_id"
     t.bigint "product_id"
@@ -2162,20 +2175,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.datetime "updated_at", null: false
     t.index ["organ_id"], name: "index_factory_product_hosts_on_organ_id"
     t.index ["product_id"], name: "index_factory_product_hosts_on_product_id"
-  end
-
-  create_table "factory_product_parts", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "part_id"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.boolean "default"
-    t.bigint "taxon_id"
-    t.bigint "product_component_id"
-    t.index ["part_id"], name: "index_factory_product_parts_on_part_id"
-    t.index ["product_component_id"], name: "index_factory_product_parts_on_product_component_id"
-    t.index ["product_id"], name: "index_factory_product_parts_on_product_id"
-    t.index ["taxon_id"], name: "index_factory_product_parts_on_taxon_id"
   end
 
   create_table "factory_product_plans", force: :cascade do |t|
@@ -2457,19 +2456,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.index ["source_type", "source_id"], name: "index_factory_stock_logs_on_source"
   end
 
-  create_table "factory_taxon_components", force: :cascade do |t|
-    t.bigint "part_taxon_id"
-    t.string "name"
-    t.integer "min_select", default: 1
-    t.integer "max_select", default: 1, comment: "最大同时选择，1则为单选"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "product_parts_count", default: 0
-    t.bigint "taxon_id"
-    t.index ["part_taxon_id"], name: "index_factory_taxon_components_on_part_taxon_id"
-    t.index ["taxon_id"], name: "index_factory_taxon_components_on_taxon_id"
-  end
-
   create_table "factory_taxon_hierarchies", force: :cascade do |t|
     t.bigint "ancestor_id"
     t.bigint "descendant_id"
@@ -2479,18 +2465,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.index ["ancestor_id", "descendant_id", "generations"], name: "factory/taxon_anc_desc_idx", unique: true
     t.index ["ancestor_id"], name: "index_factory_taxon_hierarchies_on_ancestor_id"
     t.index ["descendant_id"], name: "index_factory_taxon_hierarchies_on_descendant_id"
-  end
-
-  create_table "factory_taxon_parts", force: :cascade do |t|
-    t.bigint "taxon_id"
-    t.bigint "taxon_component_id"
-    t.bigint "part_id"
-    t.boolean "default"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["part_id"], name: "index_factory_taxon_parts_on_part_id"
-    t.index ["taxon_component_id"], name: "index_factory_taxon_parts_on_taxon_component_id"
-    t.index ["taxon_id"], name: "index_factory_taxon_parts_on_taxon_id"
   end
 
   create_table "factory_taxons", force: :cascade do |t|
@@ -2509,7 +2483,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_08_120042) do
     t.boolean "take_stock", comment: "可盘点"
     t.integer "provides_count"
     t.boolean "nav", comment: "单独分类"
-    t.integer "product_part_taxons_count"
+    t.integer "taxon_components_count"
     t.index ["factory_taxon_id"], name: "index_factory_taxons_on_factory_taxon_id"
     t.index ["organ_id"], name: "index_factory_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_factory_taxons_on_parent_id"

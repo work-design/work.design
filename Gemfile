@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
-gem 'rails', '7.2.0.rc1'
+gem 'rails', '7.2.0'
 gem 'puma'
 gem 'sd_notify'
-gem 'solid_queue'
 gem 'solid_cache'
 gem 'jbuilder'
-gem 'mission_control-jobs'
 
 # Store
 gem 'pg'
