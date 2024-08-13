@@ -160,7 +160,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 957979fceebed9da97c178c15f1c42b489ec1beb
+  revision: cc17a477bc44aa0d67904a0368ad2cff6f5d8166
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
