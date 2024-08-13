@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: d14661f9b328ef0c6887c85c30d4d351bd44afbd
+  revision: 8bd3529567b808608ebf4ae03da542737734d011
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -254,7 +254,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: c8c47cd64fac862adff9ed0ee0769a2daf0b4ac6
+  revision: ba789ea2541fa6561539207bf0d751fc58389f62
   specs:
     rails_trade (0.0.3)
       rails_com
