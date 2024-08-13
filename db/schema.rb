@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_13_151116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2259,6 +2259,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.datetime "updated_at", null: false
     t.bigint "product_id"
     t.bigint "part_taxon_id"
+    t.integer "number"
     t.index ["part_id"], name: "index_factory_production_parts_on_part_id"
     t.index ["part_taxon_id"], name: "index_factory_production_parts_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_production_parts_on_product_id"
@@ -3538,17 +3539,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.index ["planning_type", "planning_id"], name: "index_plan_participants_on_planning_type_and_planning_id"
   end
 
-  create_table "profiled_address_organs", force: :cascade do |t|
-    t.bigint "organ_id"
-    t.bigint "address_id"
-    t.string "kind"
-    t.boolean "default", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_profiled_address_organs_on_address_id"
-    t.index ["organ_id"], name: "index_profiled_address_organs_on_organ_id"
-  end
-
   create_table "profiled_address_users", force: :cascade do |t|
     t.bigint "address_id"
     t.bigint "user_id"
@@ -3561,104 +3551,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.index ["address_id"], name: "index_profiled_address_users_on_address_id"
     t.index ["inviter_id"], name: "index_profiled_address_users_on_inviter_id"
     t.index ["user_id"], name: "index_profiled_address_users_on_user_id"
-  end
-
-  create_table "profiled_address_uses", force: :cascade do |t|
-    t.bigint "address_id"
-    t.string "kind"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_profiled_address_uses_on_address_id"
-  end
-
-  create_table "profiled_addresses", force: :cascade do |t|
-    t.bigint "area_id"
-    t.string "detail"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.string "name"
-    t.string "contact_person"
-    t.string "tel"
-    t.string "post_code"
-    t.string "source"
-    t.string "cached_key"
-    t.json "area_ancestors"
-    t.bigint "station_id"
-    t.string "floor", comment: "楼层"
-    t.string "room", comment: "房间号"
-    t.bigint "user_id"
-    t.bigint "member_id"
-    t.bigint "member_organ_id"
-    t.bigint "organ_id"
-    t.boolean "principal", default: false
-    t.bigint "client_id"
-    t.bigint "contact_id"
-    t.bigint "agent_id"
-    t.index ["agent_id"], name: "index_profiled_addresses_on_agent_id"
-    t.index ["area_id"], name: "index_profiled_addresses_on_area_id"
-    t.index ["client_id"], name: "index_profiled_addresses_on_client_id"
-    t.index ["contact_id"], name: "index_profiled_addresses_on_contact_id"
-    t.index ["member_id"], name: "index_profiled_addresses_on_member_id"
-    t.index ["member_organ_id"], name: "index_profiled_addresses_on_member_organ_id"
-    t.index ["organ_id"], name: "index_profiled_addresses_on_organ_id"
-    t.index ["station_id"], name: "index_profiled_addresses_on_station_id"
-    t.index ["user_id"], name: "index_profiled_addresses_on_user_id"
-  end
-
-  create_table "profiled_area_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "area_anc_desc_idx", unique: true
-    t.index ["descendant_id"], name: "area_desc_idx"
-  end
-
-  create_table "profiled_areas", force: :cascade do |t|
-    t.string "name"
-    t.string "names", array: true
-    t.bigint "parent_id"
-    t.boolean "published", default: true
-    t.boolean "popular", default: false
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.json "parent_ancestors"
-    t.string "timezone"
-    t.string "locale"
-    t.string "full"
-    t.string "code"
-    t.index ["parent_id"], name: "index_profiled_areas_on_parent_id"
-  end
-
-  create_table "profiled_avatars", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "profiled_profiles", force: :cascade do |t|
-    t.string "gender"
-    t.string "birthday_type"
-    t.date "birthday"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
-    t.bigint "organ_id"
-    t.string "real_name"
-    t.string "nick_name"
-    t.string "identity"
-    t.jsonb "extra", default: {}
-    t.bigint "user_id"
-    t.string "corpid"
-    t.string "external_userid"
-    t.string "position"
-    t.string "avatar_url"
-    t.string "corp_name"
-    t.string "corp_full_name"
-    t.string "external_type"
-    t.string "unionid"
-    t.index ["organ_id"], name: "index_profiled_profiles_on_organ_id"
-    t.index ["user_id"], name: "index_profiled_profiles_on_user_id"
   end
 
   create_table "project_taxon_facilitates", force: :cascade do |t|
@@ -3728,6 +3620,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.datetime "updated_at", null: false
     t.bigint "organ_id"
     t.datetime "last_sync_at"
+    t.integer "forms_count"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3867,6 +3760,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["app_id"], name: "index_qingflow_tools_on_app_id"
+  end
+
+  create_table "qingflow_users", force: :cascade do |t|
+    t.bigint "app_id"
+    t.string "userid"
+    t.string "name"
+    t.string "email"
+    t.string "mobile"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["app_id"], name: "index_qingflow_users_on_app_id"
   end
 
   create_table "qingflow_versions", force: :cascade do |t|
@@ -4052,6 +3956,85 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.index ["server_id"], name: "index_serve_servings_on_server_id"
     t.index ["service_id"], name: "index_serve_servings_on_service_id"
     t.index ["wallet_payment_id"], name: "index_serve_servings_on_wallet_payment_id"
+  end
+
+  create_table "ship_address_organs", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.bigint "address_id"
+    t.string "kind"
+    t.boolean "default", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_ship_address_organs_on_address_id"
+    t.index ["organ_id"], name: "index_ship_address_organs_on_organ_id"
+  end
+
+  create_table "ship_address_uses", force: :cascade do |t|
+    t.bigint "address_id"
+    t.string "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_ship_address_uses_on_address_id"
+  end
+
+  create_table "ship_addresses", force: :cascade do |t|
+    t.bigint "area_id"
+    t.string "detail"
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.string "name"
+    t.string "contact_person"
+    t.string "tel"
+    t.string "post_code"
+    t.string "source"
+    t.string "cached_key"
+    t.json "area_ancestors"
+    t.bigint "station_id"
+    t.string "floor", comment: "楼层"
+    t.string "room", comment: "房间号"
+    t.bigint "user_id"
+    t.bigint "member_id"
+    t.bigint "member_organ_id"
+    t.bigint "organ_id"
+    t.boolean "principal", default: false
+    t.bigint "client_id"
+    t.bigint "contact_id"
+    t.bigint "agent_id"
+    t.index ["agent_id"], name: "index_ship_addresses_on_agent_id"
+    t.index ["area_id"], name: "index_ship_addresses_on_area_id"
+    t.index ["client_id"], name: "index_ship_addresses_on_client_id"
+    t.index ["contact_id"], name: "index_ship_addresses_on_contact_id"
+    t.index ["member_id"], name: "index_ship_addresses_on_member_id"
+    t.index ["member_organ_id"], name: "index_ship_addresses_on_member_organ_id"
+    t.index ["organ_id"], name: "index_ship_addresses_on_organ_id"
+    t.index ["station_id"], name: "index_ship_addresses_on_station_id"
+    t.index ["user_id"], name: "index_ship_addresses_on_user_id"
+  end
+
+  create_table "ship_area_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "area_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "area_desc_idx"
+  end
+
+  create_table "ship_areas", force: :cascade do |t|
+    t.string "name"
+    t.string "names", array: true
+    t.bigint "parent_id"
+    t.boolean "published", default: true
+    t.boolean "popular", default: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.json "parent_ancestors"
+    t.string "timezone"
+    t.string "locale"
+    t.string "full"
+    t.string "code"
+    t.index ["parent_id"], name: "index_ship_areas_on_parent_id"
   end
 
   create_table "ship_box_buys", force: :cascade do |t|
@@ -5481,7 +5464,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.bigint "agent_id"
     t.bigint "card_template_id"
     t.bigint "card_id"
-    t.bigint "product_taxon_id"
+    t.bigint "taxon_id"
     t.bigint "part_id"
     t.index ["agent_id"], name: "index_trade_promote_goods_on_agent_id"
     t.index ["card_id"], name: "index_trade_promote_goods_on_card_id"
@@ -5493,8 +5476,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_12_084539) do
     t.index ["member_organ_id"], name: "index_trade_promote_goods_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_promote_goods_on_organ_id"
     t.index ["part_id"], name: "index_trade_promote_goods_on_part_id"
-    t.index ["product_taxon_id"], name: "index_trade_promote_goods_on_product_taxon_id"
     t.index ["promote_id"], name: "index_trade_promote_goods_on_promote_id"
+    t.index ["taxon_id"], name: "index_trade_promote_goods_on_taxon_id"
     t.index ["user_id"], name: "index_trade_promote_goods_on_user_id"
   end
 

@@ -9,7 +9,6 @@ module Auth
     include Trade::Ext::User
     include Org::Ext::User
     include Wechat::Ext::User
-    include Profiled::Ext::User
     include Bench::Ext::User
     include Ship::Ext::User
 

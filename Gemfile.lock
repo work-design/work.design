@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: 5154ee9d53bf7f146b0d16b13eee9bb0c01ce18a
+  revision: 3d29dd85422248515ab833028948a118b51c244e
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 144756a26621b76ce4be35e85c3f294d18c251e7
+  revision: ca7ff66ed8b299827fb774cb9fca6cdc2528c981
   specs:
     rails_com (1.3.0)
       acme-client
@@ -117,7 +117,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 5915c7588878f3002f03dfd2f0136268b30e6765
+  revision: 345b1dc3495ac9082dbca78308aa673ab163a9c3
   specs:
     rails_design (0.0.1)
       rails
@@ -160,7 +160,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: cc17a477bc44aa0d67904a0368ad2cff6f5d8166
+  revision: 97081077f1dbdeeb67db4670f30a69e305bd33f3
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -210,7 +210,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: c3fbaf15723efc4ef31d829e0a31ae8ec8263d51
+  revision: f11fc99c36c1c82a3c855a14f5c2105e9997f5d7
   specs:
     rails_org (0.0.1)
       rails_com
@@ -240,7 +240,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: bcdd6167fbbbe8acd42912abdb74daa77fe49e7d
+  revision: d14661f9b328ef0c6887c85c30d4d351bd44afbd
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -262,7 +262,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: d14d6c49cdb985ca7e1c6302dc8d7174bc083805
+  revision: c8c47cd64fac862adff9ed0ee0769a2daf0b4ac6
   specs:
     rails_trade (0.0.3)
       rails_com
