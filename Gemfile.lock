@@ -95,10 +95,9 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 7f43abc49f00856905bc082e6b2eadef83659220
+  revision: b1443f2e19218550c85c687a5f3b1f69b920849c
   specs:
     rails_crm (0.0.2)
-      rails_profile
       rails_trade
 
 GIT
@@ -214,13 +213,6 @@ GIT
   specs:
     rails_org (0.0.1)
       rails_com
-
-GIT
-  remote: https://gitee.com/work-design/rails_profile.git
-  revision: 26fca7c4a31b956726d2c0332132eb564681160d
-  specs:
-    rails_profile (0.0.1)
-      rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
@@ -720,7 +712,6 @@ DEPENDENCIES
   rails_markdown!
   rails_notice!
   rails_org!
-  rails_profile!
   rails_qingflow!
   rails_quip!
   rails_ship!
