@@ -1,7 +1,5 @@
 module Auth
   class User < ApplicationRecord
-    self.table_name = 'users'
-
     include Model::User
     include Roled::Ext::User
     include Notice::Ext::User

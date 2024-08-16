@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_13_151116) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_15_135428) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -393,6 +393,26 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_13_151116) do
     t.bigint "user_tagging_id"
     t.index ["organ_id"], name: "index_auth_user_tags_on_organ_id"
     t.index ["user_tagging_type", "user_tagging_id"], name: "index_user_tags_on_user_tagging"
+  end
+
+  create_table "auth_users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "last_login_at", precision: nil
+    t.inet "last_login_ip"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
+    t.boolean "disabled", default: false
+    t.integer "pomodoro", default: 25
+    t.string "timezone"
+    t.string "locale"
+    t.string "source"
+    t.string "invited_code"
+    t.string "notifiable_types", default: [], array: true
+    t.jsonb "counters", default: {}
+    t.integer "showtime", default: 0
+    t.boolean "accept_email", default: true
+    t.integer "promote_goods_count", default: 0
   end
 
   create_table "auth_verify_tokens", force: :cascade do |t|
@@ -5793,26 +5813,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_13_151116) do
     t.index ["organ_id"], name: "index_trade_wallets_on_organ_id"
     t.index ["user_id"], name: "index_trade_wallets_on_user_id"
     t.index ["wallet_template_id"], name: "index_trade_wallets_on_wallet_template_id"
-  end
-
-  create_table "users", id: :serial, force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
-    t.datetime "last_login_at", precision: nil
-    t.inet "last_login_ip"
-    t.datetime "created_at", precision: nil
-    t.datetime "updated_at", precision: nil
-    t.boolean "disabled", default: false
-    t.integer "pomodoro", default: 25
-    t.string "timezone"
-    t.string "locale"
-    t.string "source"
-    t.string "invited_code"
-    t.string "notifiable_types", default: [], array: true
-    t.jsonb "counters", default: {}
-    t.integer "showtime", default: 0
-    t.boolean "accept_email", default: true
-    t.integer "promote_goods_count", default: 0
   end
 
   create_table "wechat_agents", force: :cascade do |t|
