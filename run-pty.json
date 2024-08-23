@@ -1,0 +1,23 @@
+[
+  {
+    "command": ["bin/rails", "s", "-p", "3000"],
+    "status": {
+      "Listening on": null
+    },
+    "defaultStatus": ["⏳", "S"]
+  },
+  {
+    "command": ["npm", "run", "build", "--", "--watch"],
+    "status": {
+      "build finished": null
+    },
+    "defaultStatus": ["⏳", "S"]
+  },
+  {
+    "command": ["npm", "run", "build:css", "--", "--watch", "--poll"],
+    "status": {
+      "Sass is watching for changes": null
+    },
+    "defaultStatus": ["⏳", "S"]
+  }
+]

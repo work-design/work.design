@@ -12,7 +12,8 @@
     "rails_design": "git+https://gitee.com/work-design/rails_design.git"
   },
   "devDependencies": {
-    "esbuild": "^0.23.0"
+    "esbuild": "^0.23.0",
+    "run-pty": "^5.0.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
