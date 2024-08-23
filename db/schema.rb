@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_23_151452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -947,6 +947,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
     t.string "hook_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "first_time"
+  end
+
+  create_table "com_err_notices", force: :cascade do |t|
+    t.bigint "err_bot_id"
+    t.string "controller_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["controller_name"], name: "index_com_err_notices_on_controller_name"
+    t.index ["err_bot_id"], name: "index_com_err_notices_on_err_bot_id"
   end
 
   create_table "com_err_summaries", force: :cascade do |t|
@@ -2254,7 +2264,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "production_plan_id"
     t.bigint "product_item_id"
     t.datetime "came_at"
     t.string "code"
@@ -2267,7 +2276,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
     t.index ["grid_id"], name: "index_factory_production_items_on_grid_id"
     t.index ["product_item_id"], name: "index_factory_production_items_on_product_item_id"
     t.index ["production_id"], name: "index_factory_production_items_on_production_id"
-    t.index ["production_plan_id"], name: "index_factory_production_items_on_production_plan_id"
     t.index ["room_id"], name: "index_factory_production_items_on_room_id"
     t.index ["station_id"], name: "index_factory_production_items_on_station_id"
   end
@@ -3639,8 +3647,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id"
-    t.datetime "last_sync_at"
     t.integer "forms_count"
+    t.datetime "sync_forms_at"
+    t.datetime "sync_items_at"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3669,6 +3678,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_23_151345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "replace"
+    t.string "classifier"
   end
 
   create_table "qingflow_form_hierarchies", force: :cascade do |t|
