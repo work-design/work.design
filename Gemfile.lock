@@ -130,7 +130,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_doc.git
-  revision: 6de1c36a36619d2d5465bf244d52e9dde863ca9c
+  revision: 4ac3d35dfb606d57c52c6378a328ce641dfeeee6
   specs:
     rails_doc (0.0.2)
       rails_com (>= 1.2)
@@ -176,7 +176,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_growth.git
-  revision: 55e064c81fbd8037f76c3c7fda2cf52d9ffcc5b9
+  revision: e709a71485ff97f3faf0d5d8c5ab3d953f0297e7
   specs:
     rails_growth (0.0.1)
       rails_com (~> 1.2)
