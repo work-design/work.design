@@ -9,20 +9,11 @@ RailsCom.configure do |config|
   config.debug = false
   config.debug_i18n = false
   config.quiet_logs += [
-    '/assets'
+    '/assets',
+    '/rails/active_storage',
+    '/images'
   ]
-  config.ignore_models += [
-    'SolidQueue::Semaphore',
-    'SolidQueue::Process',
-    'SolidQueue::Pause',
-    'SolidQueue::Job',
-    'SolidQueue::ScheduledExecution',
-    'SolidQueue::ReadyExecution',
-    'SolidQueue::BlockedExecution',
-    'SolidQueue::RecurringExecution',
-    'SolidQueue::RecurringTask',
-    'SolidCache::Entry'
-  ]
+  config.ignore_models += []
   config.override_prefixes = [
     'application'
   ]
