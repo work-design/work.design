@@ -254,7 +254,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 0852ead810e082e369baab7277778a0aa91d2272
+  revision: 5848e0363226ad3f6bd73a4989cebefd9d80d73f
   specs:
     rails_trade (0.0.3)
       rails_com
