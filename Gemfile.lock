@@ -116,7 +116,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: e743ecaeb502d83d4f98ae61c3328255bde3a4c9
+  revision: 6a6427082cada3ff230722751bab5d259d3d94cb
   specs:
     rails_design (0.0.1)
       rails
@@ -254,7 +254,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: ed8a74e17403d3be2eab2653a51df6c500c0015d
+  revision: 67c0aeff8cdf373176336f4deed3e44117d3c8ae
   specs:
     rails_trade (0.0.3)
       rails_com
