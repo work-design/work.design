@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_cms.git
-  revision: ad6d39b91b13bd5bee1a4a37a2dd9d7534bf0db2
+  revision: 7268e2421c83bdc1d72abd33021340ab84a1cf47
   specs:
     rails_cms (0.0.1)
       rails_com
@@ -102,7 +102,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_data.git
-  revision: 769878c8a4c23b9cec772c028e3369570fe96971
+  revision: 2840c6532858afd6059c9cfce7f31dcb3f5e909e
   specs:
     rails_data (1.0.2)
       csv
@@ -116,7 +116,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 6a6427082cada3ff230722751bab5d259d3d94cb
+  revision: 969a777bb14e02155f252977e5677ac770f77fce
   specs:
     rails_design (0.0.1)
       rails
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 4245ed97044d58f5e551902e25e0bd341deeb350
+  revision: 0ccadc1d14670f05dc39dc3b814e8acfba264fe3
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
