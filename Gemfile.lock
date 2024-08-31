@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: dc52195ab25244963ab99fe77a86e6679efd9efe
+  revision: 84d68d5f8b120066b4fe253b5dee862ea093cd07
   specs:
-    tencentcloud-sdk-common (3.0.892)
+    tencentcloud-sdk-common (3.0.896)
 
 GIT
   remote: https://gitee.com/work-design/propshaft.git
@@ -381,10 +381,10 @@ GEM
     erubi (1.13.0)
     et-orbi (1.2.11)
       tzinfo
-    faraday (2.10.1)
-      faraday-net_http (>= 2.0, < 3.2)
+    faraday (2.11.0)
+      faraday-net_http (>= 2.0, < 3.4)
       logger
-    faraday-net_http (3.1.1)
+    faraday-net_http (3.3.0)
       net-http
     faraday-retry (2.2.1)
       faraday (~> 2.0)
@@ -463,7 +463,7 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.14)
+    net-imap (0.4.15)
       date
       net-protocol
     net-pop (0.1.2)
@@ -605,7 +605,7 @@ GEM
       faraday (>= 0.17.3, < 3)
     sd_notify (0.1.1)
     securerandom (0.3.1)
-    selenium-webdriver (4.23.0)
+    selenium-webdriver (4.24.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -629,7 +629,7 @@ GEM
       ruby-ole
     stringio (3.1.1)
     strscan (3.1.0)
-    thor (1.3.1)
+    thor (1.3.2)
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
@@ -639,7 +639,7 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (0.13.0)
+    uri (0.13.1)
     useragent (0.16.10)
     version_gem (1.1.4)
     web-console (4.2.1)
