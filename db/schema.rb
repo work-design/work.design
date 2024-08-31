@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_24_155137) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_31_031449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1100,6 +1100,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_24_155137) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "com_state_hierarchies", force: :cascade do |t|
+    t.bigint "ancestor_id"
+    t.bigint "descendant_id"
+    t.integer "generations", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "com/state_anc_desc_idx", unique: true
+    t.index ["ancestor_id"], name: "index_com_state_hierarchies_on_ancestor_id"
+    t.index ["descendant_id"], name: "index_com_state_hierarchies_on_descendant_id"
+  end
+
   create_table "com_states", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "organ_id"
@@ -1117,7 +1128,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_24_155137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "auth_token"
+    t.bigint "parent_id"
+    t.jsonb "parent_ancestors"
     t.index ["organ_id"], name: "index_com_states_on_organ_id"
+    t.index ["parent_id"], name: "index_com_states_on_parent_id"
     t.index ["user_id"], name: "index_com_states_on_user_id"
   end
 
@@ -3783,6 +3797,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_24_155137) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_qingflow_logs_on_item_id"
     t.index ["related_type", "related_id"], name: "index_qingflow_logs_on_related"
+  end
+
+  create_table "qingflow_operations", force: :cascade do |t|
+    t.bigint "linker_id"
+    t.jsonb "params"
+    t.string "request_id"
+    t.string "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["linker_id"], name: "index_qingflow_operations_on_linker_id"
   end
 
   create_table "qingflow_tools", force: :cascade do |t|
