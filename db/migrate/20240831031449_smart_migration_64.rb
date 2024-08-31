@@ -3,8 +3,8 @@ class SmartMigration64 < ActiveRecord::Migration[7.2]
   def change
 
     create_table :com_state_hierarchies do |t|
-      t.belongs_to :ancestor
-      t.belongs_to :descendant
+      t.belongs_to :ancestor, type: :uuid
+      t.belongs_to :descendant, type: :uuid
       t.integer :generations, null: false
       t.datetime :created_at, null: true
       t.datetime :updated_at, null: true

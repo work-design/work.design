@@ -1101,8 +1101,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_31_031449) do
   end
 
   create_table "com_state_hierarchies", force: :cascade do |t|
-    t.bigint "ancestor_id"
-    t.bigint "descendant_id"
+    t.uuid "ancestor_id"
+    t.uuid "descendant_id"
     t.integer "generations", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
