@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_31_031449) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -2306,6 +2306,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_31_031449) do
     t.bigint "product_id"
     t.bigint "part_taxon_id"
     t.integer "number"
+    t.bigint "component_id"
+    t.index ["component_id"], name: "index_factory_production_parts_on_component_id"
     t.index ["part_id"], name: "index_factory_production_parts_on_part_id"
     t.index ["part_taxon_id"], name: "index_factory_production_parts_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_production_parts_on_product_id"
