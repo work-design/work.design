@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 499e0a80fa787991dbe1cd51d48e9558c009b32f
+  revision: 1a7b3540d4e48346cf4e252e39e8d8e0ddb4844f
   specs:
     rails_ship (0.0.1)
       rails_com
