@@ -144,7 +144,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_email.git
-  revision: 5d151a73fc33a51073457d7601c449421908a99c
+  revision: 23c01191b9e65f6a64387592db8be95dc5d03b22
   specs:
     rails_email (0.0.2)
       rails_auth
