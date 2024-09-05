@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: e96d32bf49a541069f21aab0b27645355f3fcd60
+  revision: 611480197fadbcfe1bfd2fb1cf035ad7dd82b145
   specs:
     rails_com (1.3.0)
       acme-client
@@ -159,7 +159,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 3cf026e906795d672dbbac5731d5588c83610275
+  revision: 6c1f690ca323367f07e0b9715c77d1ad297a175a
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: c1d22be7731d248d6f33aca5f86498d0b839b6c8
+  revision: e63f3c7ae53def65e9305b1fd37eccd5ab72a89d
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -618,12 +618,13 @@ GEM
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (0.6.1)
+    solid_queue (0.7.1)
       activejob (>= 7.1)
       activerecord (>= 7.1)
       concurrent-ruby (>= 1.3.1)
       fugit (~> 1.11.0)
       railties (>= 7.1)
+      thor (~> 1.3.1)
     spreadsheet (1.3.1)
       bigdecimal
       ruby-ole
