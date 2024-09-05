@@ -5,7 +5,7 @@ gem 'rails', '7.2.1'
 gem 'puma'
 gem 'sd_notify'
 gem 'solid_cache', '1.0.1'
-gem 'solid_queue', '0.7.0'
+gem 'solid_queue', '0.6.1'
 gem 'jbuilder'
 
 # Store
