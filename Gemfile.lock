@@ -613,7 +613,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    solid_cache (1.0.2)
+    solid_cache (1.0.1)
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
@@ -723,7 +723,7 @@ DEPENDENCIES
   rqrcode
   sd_notify
   selenium-webdriver
-  solid_cache (= 1.0.2)
+  solid_cache (= 1.0.1)
   solid_queue (= 0.7.0)
   tencentcloud-sdk-common!
   upyun_rails!
