@@ -4,8 +4,8 @@ git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 gem 'rails', '7.2.1'
 gem 'puma'
 gem 'sd_notify'
-gem 'solid_cache', '1.0.1'
-gem 'solid_queue', '0.6.1'
+gem 'solid_cache'
+gem 'solid_queue'
 gem 'jbuilder'
 
 # Store

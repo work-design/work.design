@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 5ec046a0acdd3041e528b6edb9633b3403bbd984
+  revision: a6c3057d01a42fd3483372bc007d3c022e78ed91
   specs:
-    tencentcloud-sdk-common (3.0.899)
+    tencentcloud-sdk-common (3.0.900)
 
 GIT
   remote: https://gitee.com/work-design/propshaft.git
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: e63f3c7ae53def65e9305b1fd37eccd5ab72a89d
+  revision: d7c7444671ddab59f5471a8772b0fb4d2d99dd78
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -463,7 +463,7 @@ GEM
     mutex_m (0.2.0)
     net-http (0.4.1)
       uri
-    net-imap (0.4.15)
+    net-imap (0.4.16)
       date
       net-protocol
     net-pop (0.1.2)
@@ -578,9 +578,9 @@ GEM
     redis-client (0.22.2)
       connection_pool
     regexp_parser (2.9.2)
-    reline (0.5.9)
+    reline (0.5.10)
       io-console (~> 0.5)
-    rexml (3.3.6)
+    rexml (3.3.7)
     roo (2.10.1)
       nokogiri (~> 1)
       rubyzip (>= 1.3.0, < 3.0.0)
@@ -613,16 +613,17 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    solid_cache (1.0.1)
+    solid_cache (1.0.5)
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (0.6.1)
+    solid_queue (0.8.2)
       activejob (>= 7.1)
       activerecord (>= 7.1)
       concurrent-ruby (>= 1.3.1)
       fugit (~> 1.11.0)
       railties (>= 7.1)
+      thor (~> 1.3.1)
     spreadsheet (1.3.1)
       bigdecimal
       ruby-ole
@@ -660,7 +661,7 @@ GEM
       rexml
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.17)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   arm64-darwin
@@ -722,8 +723,8 @@ DEPENDENCIES
   rqrcode
   sd_notify
   selenium-webdriver
-  solid_cache (= 1.0.1)
-  solid_queue (= 0.6.1)
+  solid_cache
+  solid_queue
   tencentcloud-sdk-common!
   upyun_rails!
   web-console
