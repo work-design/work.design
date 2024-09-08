@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_08_060803) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -1128,10 +1128,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "auth_token"
-    t.bigint "parent_id"
-    t.jsonb "parent_ancestors"
     t.index ["organ_id"], name: "index_com_states_on_organ_id"
-    t.index ["parent_id"], name: "index_com_states_on_parent_id"
     t.index ["user_id"], name: "index_com_states_on_user_id"
   end
 
@@ -2055,6 +2052,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.datetime "updated_at", null: false
     t.bigint "taxon_id"
     t.bigint "product_id"
+    t.integer "min"
+    t.integer "max"
     t.index ["component_id"], name: "index_factory_component_parts_on_component_id"
     t.index ["part_id"], name: "index_factory_component_parts_on_part_id"
     t.index ["product_id"], name: "index_factory_component_parts_on_product_id"
@@ -2072,6 +2071,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.bigint "taxon_id"
     t.bigint "product_id"
     t.string "type"
+    t.boolean "multiple"
     t.index ["part_taxon_id"], name: "index_factory_components_on_part_taxon_id"
     t.index ["product_id"], name: "index_factory_components_on_product_id"
     t.index ["taxon_id"], name: "index_factory_components_on_taxon_id"
@@ -3670,6 +3670,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.integer "forms_count"
     t.datetime "sync_forms_at"
     t.datetime "sync_items_at"
+    t.string "code"
+    t.string "qsource"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3687,6 +3689,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.datetime "updated_at", null: false
     t.string "uuid"
     t.string "base_url"
+    t.string "host"
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
   end
@@ -3733,6 +3736,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.string "alias_title"
     t.integer "position"
     t.string "record_key"
+    t.string "code"
     t.index ["group_id"], name: "index_qingflow_forms_on_group_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3786,6 +3790,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_01_045358) do
     t.datetime "updated_at", null: false
     t.string "version_number"
     t.string "source"
+    t.integer "operations_count"
     t.index ["app_id"], name: "index_qingflow_linkers_on_app_id"
   end
 
