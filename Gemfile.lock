@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 309c7493d18b42716458752ee60da1c4454a3fab
+  revision: effcf651c46ce119924381bf9a632444a1944022
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: a44c986134ac0aa44a68c719399063612e771338
+  revision: df221c6a0d6c1a3d935cb19530170dd886190e6d
   specs:
     rails_com (1.3.0)
       acme-client
@@ -159,7 +159,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 4c401143ab1cf2272011c343ccf12db17fbee647
+  revision: dbbc149941d86ab0ed3934fd242744b6077e8b3e
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -209,14 +209,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 5ee68c54bcb768a4eb48e17a224301fa937570f4
+  revision: 9fb948a36583bb5cc85855d527dc4086fea5d81c
   specs:
     rails_org (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: d7c7444671ddab59f5471a8772b0fb4d2d99dd78
+  revision: 15ea06de068968bf5a741c2b432444fef4c26e96
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
