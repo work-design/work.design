@@ -37,14 +37,14 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: f31c512854295f76a21699e18dbfd46cac3350f1
+  revision: 424f8c5c7f9dff720e7f8d471532a2ef876a8c42
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
 
 GIT
   remote: https://gitee.com/work-design/rails_audit.git
-  revision: 548de7cb4db7c393895fee2e91e8dce740bbd0fb
+  revision: f606381c4808b22d89f157c9c9eb30bd8cfc5ef6
   specs:
     rails_audit (1.0.4)
       rails_com (~> 1.2)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 036423ec18c8042c317941a22b7e98798261013f
+  revision: 099a8f603e34460d155cd22a549cd5964afc0996
   specs:
     rails_com (1.3.0)
       acme-client
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 48e9619c9b5283b67f068156454094b0ff24613b
+  revision: ea24148c05f87a09e34dbb83ab112b0f55a67f30
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -267,6 +267,18 @@ GIT
     rails_wechat (0.1.2)
       rails_com
       rqrcode
+
+GIT
+  remote: https://gitee.com/work-design/solid_queue.git
+  revision: eccb46c042e6f2ce00e18ec6cb82ad8231a812d4
+  specs:
+    solid_queue (0.8.2)
+      activejob (>= 7.1)
+      activerecord (>= 7.1)
+      concurrent-ruby (>= 1.3.1)
+      fugit (~> 1.11.0)
+      railties (>= 7.1)
+      thor (~> 1.3.1)
 
 GEM
   remote: https://rubygems.org/
@@ -617,13 +629,6 @@ GEM
       activejob (>= 7.2)
       activerecord (>= 7.2)
       railties (>= 7.2)
-    solid_queue (0.8.2)
-      activejob (>= 7.1)
-      activerecord (>= 7.1)
-      concurrent-ruby (>= 1.3.1)
-      fugit (~> 1.11.0)
-      railties (>= 7.1)
-      thor (~> 1.3.1)
     spreadsheet (1.3.1)
       bigdecimal
       ruby-ole
@@ -724,7 +729,7 @@ DEPENDENCIES
   sd_notify
   selenium-webdriver
   solid_cache
-  solid_queue
+  solid_queue!
   tencentcloud-sdk-common!
   upyun_rails!
   web-console

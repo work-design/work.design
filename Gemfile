@@ -5,7 +5,7 @@ gem 'rails', '7.2.1'
 gem 'puma'
 gem 'sd_notify'
 gem 'solid_cache'
-gem 'solid_queue'
+gem 'solid_queue', gitee: 'work-design/solid_queue'
 gem 'jbuilder'
 
 # Store
