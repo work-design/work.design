@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: effcf651c46ce119924381bf9a632444a1944022
+  revision: 48471cd3dd9c7401dc675bd14bdd7302eb7f7745
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b8beacdab205a463608efd0d385cf8554633e85b
+  revision: 3f1cc7a0f7d36399486640d8d7c4d4b366cd76f2
   specs:
     rails_com (1.3.0)
       acme-client
@@ -216,7 +216,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 993cc4fe14a340aec5cf95da24ed970dca64d6be
+  revision: 8b3a6a1075bcbffdd122df2d0edc5318066a742c
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -262,7 +262,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: cd27649cb99e2a10f4b89fdd19aacf407c7c0f6b
+  revision: 2ea9ea81cba3f95d0094c299a9c7eb83cc2b0887
   specs:
     rails_wechat (0.1.2)
       rails_com
