@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 26884439071f1e66dc86e187f18af2d1cf684350
+  revision: 28347ebbe9cba606dadb734ac4ff73e41ac7888f
   specs:
     rails_com (1.3.0)
       acme-client
@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: 67d2e3ccdf98fbc34d610ca027b48f37bafc5634
+  revision: 30e5341aaef2c1d55a92bbc6cea814bff6d21a02
   specs:
     rails_crm (0.0.2)
       rails_trade
@@ -159,7 +159,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: deef2931ed90640e5028a469c016850e42a1075c
+  revision: b6bd566292279c04c9016adb18f61d910fb23844
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -191,7 +191,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_markdown.git
-  revision: 1c7f41f942d5978303829b7d5187c71229932fd3
+  revision: 684ce933ef857485a5161a58d2d9bd012895eb1c
   specs:
     rails_markdown (0.0.1)
       kramdown
@@ -202,21 +202,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: f0731908f2a543d5046d8b36c1a21433a9735692
+  revision: f572ee47bf7bd77b5e84b1cf2a8832e10053c5d8
   specs:
     rails_notice (1.0.3)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: 41a90bdadfa0ca8c4d9d5f08e4191635d97fbd47
+  revision: e567f0929b0a66d96fd67b2f6cb6cdd6acf7089a
   specs:
     rails_org (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 8b3a6a1075bcbffdd122df2d0edc5318066a742c
+  revision: 0f7a27d65b928d5c8881cab00f244a395b16551c
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -232,7 +232,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: 50fde100c0d402c471ff93ba5e0ad0a9c0e56627
+  revision: f42a0e8b8c9fe0772ab181e0f0d468b28b7e1712
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -254,7 +254,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 270da1ec45c634ee5cab105ca643eaf0f54bfb7a
+  revision: 0deeb71c4a108830da79643431e6a47e0ea94925
   specs:
     rails_trade (0.0.3)
       rails_com
@@ -262,7 +262,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_wechat.git
-  revision: 2ea9ea81cba3f95d0094c299a9c7eb83cc2b0887
+  revision: 194a00d6524164479d8e7ff477e14a67d10c5618
   specs:
     rails_wechat (0.1.2)
       rails_com
@@ -632,7 +632,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.6)
+    turbo-rails (2.0.7)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
