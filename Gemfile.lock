@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_attend.git
-  revision: 424f8c5c7f9dff720e7f8d471532a2ef876a8c42
+  revision: 0a93398b377b2f43c27a5f01f222fef97b413387
   specs:
     rails_attend (0.0.1)
       rails_com (~> 1.2)
@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 8ea6ecfe2b768340be82afc5973c75f86d088af4
+  revision: 0c092fb3d106f8c63bf7a7af17b253840a184d19
   specs:
     rails_finance (0.0.1)
       prawn
