@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 0c092fb3d106f8c63bf7a7af17b253840a184d19
+  revision: 68cbc16a608ff20080efb7c059f3785fa40dabf2
   specs:
     rails_finance (0.0.1)
       prawn
