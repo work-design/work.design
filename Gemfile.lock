@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 48471cd3dd9c7401dc675bd14bdd7302eb7f7745
+  revision: 6ad308ff2cdfde8a51ed9491bf49a7edb0840375
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_finance.git
-  revision: 68cbc16a608ff20080efb7c059f3785fa40dabf2
+  revision: cb6b4aee3620a166569b76eb37ee0168e8fafdff
   specs:
     rails_finance (0.0.1)
       prawn
