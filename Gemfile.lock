@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: 4bbea7ef4686eb401ea6f8f913a9c80b350f6096
+  revision: 46440f2720eec4c239483c34e7cae58fab04fcc5
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -159,7 +159,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 9b52777efc013ae14a851563cfe1d12dea3f56a5
+  revision: eb5c225ed07945cf02a49c36b9ba32fdbdd0f202
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
