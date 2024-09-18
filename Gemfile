@@ -71,6 +71,7 @@ gem 'rails_space', gitee: 'work-design/rails_space'
 gem 'rails_interact', gitee: 'work-design/rails_interact'
 gem 'rails_markdown', gitee: 'work-design/rails_markdown'
 gem 'rails_qingflow', gitee: 'work-design/rails_qingflow'
+gem 'rails_bluetooth', gitee: 'work-design/rails_bluetooth'
 
 gem 'propshaft', gitee: 'work-design/propshaft'
 
