@@ -66,6 +66,13 @@ GIT
       rails_com (~> 1.2)
 
 GIT
+  remote: https://gitee.com/work-design/rails_bluetooth.git
+  revision: aafed5c6d77f03490112aeab5710a905eb85ce89
+  specs:
+    rails_bluetooth (0.0.1)
+      rails (>= 7.2.1)
+
+GIT
   remote: https://gitee.com/work-design/rails_cms.git
   revision: 7268e2421c83bdc1d72abd33021340ab84a1cf47
   specs:
@@ -693,6 +700,7 @@ DEPENDENCIES
   rails_audit!
   rails_auth!
   rails_bench!
+  rails_bluetooth!
   rails_cms!
   rails_com!
   rails_crm!
