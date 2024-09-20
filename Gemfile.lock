@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 3c41ec4df7f80748e3a5916554f72c05fac8338f
+  revision: 4452b953d5ed14e07257297194d41299d72d2728
   specs:
     rails_com (1.3.0)
       acme-client
@@ -97,6 +97,7 @@ GIT
       ostruct
       positioning
       rails (~> 7.0)
+      solid_cache
       solid_queue
       turbo-rails
 
@@ -123,7 +124,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: dbc2bf1e5b1a0ea84db5149700802d97f7a390a6
+  revision: 47e8769fdeb7023ae3c45e616634f78601b43403
   specs:
     rails_design (0.0.1)
       rails
@@ -223,7 +224,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 0f7a27d65b928d5c8881cab00f244a395b16551c
+  revision: 0074d07dc04addd3d5d5e44a8392bf3b56d41217
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -247,7 +248,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: 0811bc60b225c86fcaa57706c1d0e88f081a14e4
+  revision: 61d0473194c22772935b04014a500f052cb05f21
   specs:
     rails_space (0.0.1)
       rails_com
@@ -580,10 +581,6 @@ GEM
       ffi (~> 1.0)
     rdoc (6.7.0)
       psych (>= 4.0.0)
-    redis (5.3.0)
-      redis-client (>= 0.22.0)
-    redis-client (0.22.2)
-      connection_pool
     regexp_parser (2.9.2)
     reline (0.5.10)
       io-console (~> 0.5)
@@ -639,9 +636,8 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.7)
+    turbo-rails (2.0.9)
       actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -726,7 +722,6 @@ DEPENDENCIES
   rails_sync!
   rails_trade!
   rails_wechat!
-  redis
   rexml
   rqrcode
   sd_notify

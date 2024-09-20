@@ -1,16 +1,13 @@
 source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
+# 核心依赖
 gem 'rails', '7.2.1'
+gem 'pg'
 gem 'puma'
-gem 'sd_notify'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'jbuilder'
-
-# Store
-gem 'pg'
-gem 'redis'
 
 # Utils
 gem 'bcrypt'
@@ -19,6 +16,7 @@ gem 'mini_magick'
 gem 'rqrcode'
 gem 'rexml'
 gem 'nokogiri'
+gem 'sd_notify'
 
 # Third party
 gem 'octokit'
