@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bluetooth.git
-  revision: aafed5c6d77f03490112aeab5710a905eb85ce89
+  revision: deec6235e4e38c85fffa9f3701cd8a01c0a5de3c
   specs:
     rails_bluetooth (0.0.1)
       rails (>= 7.2.1)
@@ -124,7 +124,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_design.git
-  revision: 47e8769fdeb7023ae3c45e616634f78601b43403
+  revision: 2c72dccefb5c6405f6a0ecc9dd6259172d7bf72f
   specs:
     rails_design (0.0.1)
       rails
@@ -210,21 +210,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: f572ee47bf7bd77b5e84b1cf2a8832e10053c5d8
+  revision: 0fbf91529f1a685f47e1b778f7dff95b207a2372
   specs:
     rails_notice (1.0.3)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: bbe60005257c7c1e92023081cd36b35a164284ef
+  revision: e3019650460ffd72a4e5ed273aed3d954e1fd3e4
   specs:
     rails_org (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 0074d07dc04addd3d5d5e44a8392bf3b56d41217
+  revision: 9e013949ae4cfb996ac2016802fb23c2d31dfe7f
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -240,7 +240,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: f42a0e8b8c9fe0772ab181e0f0d468b28b7e1712
+  revision: b5d468f16a48fd1312b8667d3d6f9a5a223ad738
   specs:
     rails_ship (0.0.1)
       rails_com
