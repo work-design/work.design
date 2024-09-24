@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_24_084755) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_24_094156) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -940,6 +940,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_084755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "state", default: "init"
+  end
+
+  create_table "com_detector_bots", force: :cascade do |t|
+    t.bigint "detector_id"
+    t.string "type"
+    t.string "hook_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["detector_id"], name: "index_com_detector_bots_on_detector_id"
   end
 
   create_table "com_detector_errors", force: :cascade do |t|
