@@ -1,4 +1,5 @@
 periodic_cleanup:
   class: Com::AppTestJob
   queue: background
-  schedule: every hour
+  args: ['https://7color.one.work/up']
+  schedule: every minute
