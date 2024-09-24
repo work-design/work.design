@@ -1,11 +1,15 @@
 default: &default
   adapter: <%= ENV['DATABASE_ADAPTER'] || 'postgresql' %>
-  encoding: unicode
   pool: 5
   timeout: 5000
   url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db %>
 development:
-  <<: *default
+  primary:
+    <<: *default
+    gssencmode: disable
+  queue:
+    <<: *default
+    gssencmode: disable
 test:
   <<: *default
   url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db_test %>

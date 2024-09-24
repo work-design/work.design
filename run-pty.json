@@ -7,6 +7,13 @@
     "defaultStatus": ["⏳", "S"]
   },
   {
+    "command": ["bin/jobs"],
+    "status": {
+      "Started": null
+    },
+    "defaultStatus": ["⏳", "S"]
+  },
+  {
     "command": ["npm", "run", "build", "--", "--watch"],
     "status": {
       "build finished": null
