@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_08_060803) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_24_084755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -940,6 +940,23 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_08_060803) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "state", default: "init"
+  end
+
+  create_table "com_detector_errors", force: :cascade do |t|
+    t.bigint "detector_id"
+    t.string "status"
+    t.string "body"
+    t.string "error"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["detector_id"], name: "index_com_detector_errors_on_detector_id"
+  end
+
+  create_table "com_detectors", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_err_bots", force: :cascade do |t|
@@ -3791,6 +3808,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_08_060803) do
     t.string "version_number"
     t.string "source"
     t.integer "operations_count"
+    t.string "job_id"
     t.index ["app_id"], name: "index_qingflow_linkers_on_app_id"
   end
 
@@ -5977,6 +5995,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_08_060803) do
     t.string "webview_domain"
     t.string "platform_appid"
     t.string "oauth_domain"
+    t.string "webview_domain_registered", array: true
     t.index ["organ_id"], name: "index_wechat_apps_on_organ_id"
     t.index ["platform_id"], name: "index_wechat_apps_on_platform_id"
     t.index ["platform_template_id"], name: "index_wechat_apps_on_platform_template_id"
