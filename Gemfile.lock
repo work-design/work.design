@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 4b089391a72a4f5cb590ff95e6edab011db2f6a7
+  revision: 52c810c598007d55a94fff526535e576977facbb
   specs:
     rails_com (1.3.0)
       acme-client
@@ -224,7 +224,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: f5ed93dbc9125213f4ea201956827fb4214ee06f
+  revision: 1cc5ca44c51deb134d436525b2093a6185f94374
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
