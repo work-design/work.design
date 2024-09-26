@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: faf0d6f30fb00d633463ebfbb1f17bdc7cbf01e6
+  revision: 158251a916a8e59d9913f50e4e382bd1b3774e82
   specs:
     rails_com (1.3.0)
       acme-client
@@ -97,6 +97,7 @@ GIT
       ostruct
       positioning
       rails (~> 7.0)
+      reline
       solid_cache
       solid_queue
       turbo-rails
@@ -224,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 1a3922748bb7336a7dc8460b81ff12f9065797de
+  revision: e6675ce2da14fdee4658f1ba477218a04040251b
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
