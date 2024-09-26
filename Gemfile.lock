@@ -21,9 +21,9 @@ GIT
 
 GIT
   remote: https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git
-  revision: 95073a3fc0a1b874a47218029dc82e7951a38ba2
+  revision: 8daedfe54ec2a1b28e1ae26657e3ec15ff4315a3
   specs:
-    tencentcloud-sdk-common (3.0.910)
+    tencentcloud-sdk-common (3.0.914)
 
 GIT
   remote: https://gitee.com/work-design/propshaft.git
@@ -423,7 +423,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.7.2)
-    jwt (2.9.0)
+    jwt (2.9.1)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -569,7 +569,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_deploy (0.2.3)
+    rails_deploy (0.5.4)
     railties (7.2.1)
       actionpack (= 7.2.1)
       activesupport (= 7.2.1)
@@ -652,7 +652,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webrick (1.8.1)
+    webrick (1.8.2)
     websocket (1.2.11)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
