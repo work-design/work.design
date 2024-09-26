@@ -5,6 +5,7 @@ tmp/**/*
 !tmp/.keep
 
 app/assets/images/**/
+.sass-cache/
 
 .bundle
 .fleet
