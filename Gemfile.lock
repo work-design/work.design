@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bluetooth.git
-  revision: deec6235e4e38c85fffa9f3701cd8a01c0a5de3c
+  revision: eecff06c106e984f0a504aaefd8edc7e0c928a06
   specs:
     rails_bluetooth (0.0.1)
       rails (>= 7.2.1)
@@ -225,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: e6675ce2da14fdee4658f1ba477218a04040251b
+  revision: f2d5a580021a27a3eb409c8bd5a5475717528129
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
