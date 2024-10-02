@@ -67,7 +67,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bluetooth.git
-  revision: eecff06c106e984f0a504aaefd8edc7e0c928a06
+  revision: cb25574f2e0b4655fbd6c362af6af8668d705408
   specs:
     rails_bluetooth (0.0.1)
       rails (>= 7.2.1)

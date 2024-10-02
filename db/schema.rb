@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_24_094156) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_02_091959) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
-  enable_extension "plpgsql"
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -771,6 +771,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_094156) do
     t.decimal "expense_amount", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bluetooth_devices", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_bluetooth_devices_on_organ_id"
   end
 
   create_table "cms_audio_tags", force: :cascade do |t|
@@ -3716,8 +3724,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_24_094156) do
     t.string "uuid"
     t.string "base_url"
     t.string "host"
+    t.bigint "source_id"
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
+    t.index ["source_id"], name: "index_qingflow_apps_on_source_id"
   end
 
   create_table "qingflow_files", force: :cascade do |t|
