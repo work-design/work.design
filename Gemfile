@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
 # 核心依赖
-gem 'rails', '7.2.1'
+gem 'rails', '8.0.0.beta1'
 gem 'pg'
 gem 'puma'
 gem 'solid_cache'
