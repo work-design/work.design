@@ -241,7 +241,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_ship.git
-  revision: b5d468f16a48fd1312b8667d3d6f9a5a223ad738
+  revision: f4058bdf652aa50e9d125cfc5d349fd41eedf238
   specs:
     rails_ship (0.0.1)
       rails_com
@@ -249,7 +249,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: 589e493d6140bb7fbd9f77a10415db27812f77c5
+  revision: 79a78426f6b3c3d44bd8f0ba0872ea24fc2c4b23
   specs:
     rails_space (0.0.1)
       rails_com
