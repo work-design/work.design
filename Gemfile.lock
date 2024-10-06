@@ -249,7 +249,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: 61d0473194c22772935b04014a500f052cb05f21
+  revision: 589e493d6140bb7fbd9f77a10415db27812f77c5
   specs:
     rails_space (0.0.1)
       rails_com
