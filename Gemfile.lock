@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: b8033f8ce37edbe18a2df269a05ba1e690529b1d
+  revision: fa74231792e05c9ef8f9bc5f0e794bdc8ad1ace0
   specs:
     rails_com (1.3.0)
       acme-client
@@ -225,7 +225,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: b935fcc635e983f695ccec00de2eb7f389b3feea
+  revision: 9201898f9a6fed67d7ed4c78b9e4cbe97e8f4c01
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -263,7 +263,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: e230b6581ce723890df97a7496754454fd46903e
+  revision: 29a119f561ab859d99867903d3ae3d03ee2fd783
   specs:
     rails_trade (0.0.3)
       rails_com
