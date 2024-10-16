@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 60031074a4142b0499af8a8ff23f46dfc8a98949
+  revision: 26cfd0084bf3662975cad5e5014852774fdd4bfd
   specs:
     rails_com (1.3.0)
       acme-client
@@ -642,7 +642,7 @@ GEM
     timeout (0.4.1)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
-    turbo-rails (2.0.10)
+    turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
