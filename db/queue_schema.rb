@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_02_091959) do
+ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -894,6 +894,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_091959) do
     t.string "status"
     t.datetime "issued_at", precision: nil
     t.datetime "expire_at", comment: "过期时间"
+    t.string "identifiers", array: true
     t.index ["acme_account_id"], name: "index_com_acme_orders_on_acme_account_id"
   end
 
@@ -903,6 +904,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_02_091959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "macro"
+  end
+
+  create_table "com_blob_pdfs", force: :cascade do |t|
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "com_blob_temps", force: :cascade do |t|
