@@ -7,7 +7,7 @@ class SmartMigration70 < ActiveRecord::Migration[8.0]
     end
 
     add_column :com_acme_orders, :identifiers, :string, array: true
-    
+
   end
 
 end
