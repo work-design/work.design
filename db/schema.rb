@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -781,6 +781,14 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.index ["organ_id"], name: "index_bluetooth_devices_on_organ_id"
   end
 
+  create_table "bluetooth_errs", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_bluetooth_errs_on_organ_id"
+  end
+
   create_table "cms_audio_tags", force: :cascade do |t|
     t.bigint "audio_id"
     t.bigint "tag_id"
@@ -1120,6 +1128,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "business_identifier", null: false
+    t.string "table_name"
     t.index ["record_name"], name: "index_com_meta_models_on_record_name"
   end
 
@@ -3732,6 +3741,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.string "base_url"
     t.string "host"
     t.bigint "source_id"
+    t.datetime "sync_users_at"
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
     t.index ["source_id"], name: "index_qingflow_apps_on_source_id"
@@ -3817,6 +3827,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.datetime "apply_at"
     t.jsonb "linked_audits"
     t.string "linked_logs", array: true
+    t.string "note"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
@@ -3857,6 +3868,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.string "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.string "note"
+    t.boolean "auditable"
+    t.boolean "audit_result"
+    t.string "applyid"
     t.index ["linker_id"], name: "index_qingflow_operations_on_linker_id"
   end
 
@@ -3879,6 +3895,12 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.string "mobile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "active"
+    t.boolean "disabled"
+    t.datetime "last_sync_at"
+    t.integer "depart_ids", array: true
+    t.integer "role_ids", array: true
+    t.integer "uid"
     t.index ["app_id"], name: "index_qingflow_users_on_app_id"
   end
 
@@ -4712,6 +4734,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.integer "length"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
+    t.index ["organ_id"], name: "index_space_desks_on_organ_id"
     t.index ["room_id"], name: "index_space_desks_on_room_id"
   end
 
@@ -4737,7 +4761,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_10_17_125357) do
     t.integer "grids_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
     t.index ["building_id"], name: "index_space_rooms_on_building_id"
+    t.index ["organ_id"], name: "index_space_rooms_on_organ_id"
     t.index ["station_id"], name: "index_space_rooms_on_station_id"
   end
 
