@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_auth.git
-  revision: b4ffa13a4d8f2451c4516ec919b2b70a70e0f0e0
+  revision: 99daf0dd42f7a29a693c620643ece93c4a16cbf2
   specs:
     rails_auth (1.2.0)
       bcrypt (~> 3.1)
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_bench.git
-  revision: ba4352e14b771c9d61ad6be58194923154e7e56a
+  revision: f2756251012bdc533ab28e14ec3980409b974942
   specs:
     rails_bench (0.0.2)
       rails_com (~> 1.2)
@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_com.git
-  revision: 7a8ce8d49260466e71d04d19ffc04a05bd88e8f4
+  revision: 2e5a1e95a03601b7491be7a1988d5b7d566c3dd0
   specs:
     rails_com (1.3.0)
       acme-client
@@ -104,7 +104,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_crm.git
-  revision: fb274d19583bb7914c8a29e54c1b25e2f7e1356b
+  revision: 4a422e4c16192c3ef7a1daeb87e48d6e4d6b9b09
   specs:
     rails_crm (0.0.2)
       rails_trade
@@ -168,7 +168,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_factory.git
-  revision: 338ab15abdba0554cb1b3da2208da9d905084976
+  revision: 15ead2e9a0feeaf961f08948340fa1c80fd6c6df
   specs:
     rails_factory (0.0.1)
       rails_com (~> 1.2)
@@ -211,21 +211,21 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_notice.git
-  revision: c0eee5dd620ce5763f755b4218383b3d4bb4d331
+  revision: 1d5017974c6d939510dd0544687959429557849c
   specs:
     rails_notice (1.0.3)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_org.git
-  revision: e10976a6b89467d6d013019985686f995c24fa85
+  revision: 5ba3f7469dde8fc0c0a700c29eb41ec4220ff409
   specs:
     rails_org (0.0.1)
       rails_com
 
 GIT
   remote: https://gitee.com/work-design/rails_qingflow.git
-  revision: 86f81dd65a979c868cd113e3debcd550bdc76344
+  revision: 5abc4ab93f0c35186c8a01a9d249dd77283a0b0a
   specs:
     rails_qingflow (0.0.1)
       rails (>= 7.2.0.beta2)
@@ -249,7 +249,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_space.git
-  revision: e9586597f563ad9d72b7c9168349c467de82dd3f
+  revision: 9f2262703d363f270bdba2a670f181d88a58c101
   specs:
     rails_space (0.0.1)
       rails_com
@@ -263,7 +263,7 @@ GIT
 
 GIT
   remote: https://gitee.com/work-design/rails_trade.git
-  revision: 3bb3372d56db3621e81d8964fd053bebe3a51385
+  revision: 73728d6703f0a6c16edecca166b8043da4013fba
   specs:
     rails_trade (0.0.3)
       rails_com
