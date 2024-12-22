@@ -20,6 +20,12 @@ GIT
     tencentcloud-sdk-common (3.0.965)
 
 PATH
+  remote: engine/rails_alipay
+  specs:
+    rails_alipay (0.0.1)
+      rails_com
+
+PATH
   remote: engine/rails_attend
   specs:
     rails_attend (0.0.1)
@@ -654,6 +660,7 @@ DEPENDENCIES
   propshaft
   puma
   rails (= 8.0.1)
+  rails_alipay!
   rails_attend!
   rails_audit!
   rails_auth!

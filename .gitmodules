@@ -88,3 +88,6 @@
 [submodule "engine/rails_bluetooth"]
 	path = engine/rails_bluetooth
 	url = git@github.com:work-design/rails_bluetooth.git
+[submodule "engine/rails_alipay"]
+	path = engine/rails_alipay
+	url = git@github.com:work-design/rails_alipay.git
