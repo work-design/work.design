@@ -1,4 +1,4 @@
-FROM ccr.ccs.tencentyun.com/work-design/ruby:latest AS base
+FROM ccr.ccs.tencentyun.com/work-design/ruby:3.3.6 AS base
 
 # Rails App 所在位置
 WORKDIR /rails
