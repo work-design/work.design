@@ -674,6 +674,7 @@ DEPENDENCIES
   kamal (= 2.3.0)
   listen
   mini_magick
+  net-protocol
   nokogiri
   octokit
   omniauth-github
