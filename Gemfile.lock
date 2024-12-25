@@ -463,6 +463,7 @@ GEM
     net-sftp (4.0.0)
       net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.5.0)
+      net-protocol
     net-ssh (7.3.0)
     nio4r (2.7.4)
     nkf (0.2.0)
@@ -674,7 +675,6 @@ DEPENDENCIES
   kamal (= 2.3.0)
   listen
   mini_magick
-  net-protocol
   nokogiri
   octokit
   omniauth-github
