@@ -8,6 +8,8 @@ gem 'puma'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'jbuilder'
+gem 'kamal', '2.3.0', require: false
+gem 'rails_deploy', '0.7.2', require: false
 
 # Utils
 gem 'bcrypt'
@@ -27,7 +29,6 @@ git 'https://gitee.com/tencentcloud/tencentcloud-sdk-ruby.git' do
   #gem 'tencentcloud-sdk-ocr'
 end
 gem 'aliyunsdkcore'
-gem 'rails_deploy'
 
 # Payment method
 gem 'paypal-sdk-core'
