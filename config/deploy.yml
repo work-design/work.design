@@ -1,0 +1,43 @@
+service: work_design
+image: work-design/work_design
+deploy_timeout: 100
+servers:
+  web:
+    hosts:
+      - work.design
+  job:
+    hosts:
+      - work.design
+    cmd: bin/jobs
+
+registry:
+  server: ccr.ccs.tencentyun.com
+  username:
+    - KAMAL_REGISTRY_USERNAME
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+volumes:
+  - ~/app/acme:/rails/acme
+  - ~/app/tmp/storage:/rails/tmp/storage
+  - ~/app/storage:/rails/storage
+
+env:
+  clear:
+    RAILS_ENV: production
+    RAILS_MAX_THREADS: 20
+
+builder:
+  dockerfile: deploy/Dockerfile
+  arch: x86_64
+  remote: ssh://ubuntu@49.235.150.128
+
+proxy:
+  host: work.design
+  ssl: true
+  app_port: 3000
+  response_timeout: 100
+  forward_headers: true
+  healthcheck:
+    interval: 30
+    timeout: 60

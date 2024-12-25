@@ -8,9 +8,9 @@ app/assets/images/**/
 .sass-cache/
 
 .bundle
+.kamal/secrets-common
 .fleet
 .irb_history
-public/assets
 public/fonts
 public/challenge
 storage
