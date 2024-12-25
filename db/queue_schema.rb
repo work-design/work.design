@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -72,6 +72,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.bigint "agent_id"
     t.decimal "commission_ratio", precision: 4, scale: 2, comment: "交易时抽成比例"
     t.string "note", comment: "备注"
+  end
+
+  create_table "alipay_apps", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "type"
+    t.string "name"
+    t.string "appid"
+    t.string "private_rsa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_alipay_apps_on_organ_id"
   end
 
   create_table "attend_absence_stats", force: :cascade do |t|
@@ -997,6 +1008,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "first_time"
+    t.string "secret"
   end
 
   create_table "com_err_notices", force: :cascade do |t|
@@ -1178,7 +1190,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "auth_token"
+    t.bigint "parent_id"
+    t.jsonb "parent_ancestors"
     t.index ["organ_id"], name: "index_com_states_on_organ_id"
+    t.index ["parent_id"], name: "index_com_states_on_parent_id"
     t.index ["user_id"], name: "index_com_states_on_user_id"
   end
 
@@ -1458,6 +1473,24 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.integer "x_position"
   end
 
+  create_table "datum_export_items", force: :cascade do |t|
+    t.bigint "export_id"
+    t.jsonb "fields"
+    t.integer "position"
+    t.jsonb "extra"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["export_id"], name: "index_datum_export_items_on_export_id"
+  end
+
+  create_table "datum_exports", force: :cascade do |t|
+    t.bigint "template_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["template_id"], name: "index_datum_exports_on_template_id"
+  end
+
   create_table "datum_record_lists", id: :serial, force: :cascade do |t|
     t.integer "data_list_id"
     t.boolean "done"
@@ -1489,6 +1522,37 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.jsonb "parameters"
     t.jsonb "extra", default: {}
     t.index ["data_list_id"], name: "index_datum_table_lists_on_data_list_id"
+  end
+
+  create_table "datum_template_items", force: :cascade do |t|
+    t.bigint "template_id"
+    t.jsonb "fields"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["template_id"], name: "index_datum_template_items_on_template_id"
+  end
+
+  create_table "datum_templates", force: :cascade do |t|
+    t.bigint "organ_id"
+    t.string "name"
+    t.jsonb "headers"
+    t.integer "header_line"
+    t.integer "template_items_count"
+    t.jsonb "parameters"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organ_id"], name: "index_datum_templates_on_organ_id"
+  end
+
+  create_table "datum_validations", force: :cascade do |t|
+    t.bigint "template_id"
+    t.string "sheet"
+    t.string "header"
+    t.jsonb "fields"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["template_id"], name: "index_datum_validations_on_template_id"
   end
 
   create_table "debug_manies", force: :cascade do |t|
@@ -2404,6 +2468,23 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.index ["taxon_id"], name: "index_factory_production_provides_on_taxon_id"
     t.index ["upstream_product_id"], name: "index_factory_production_provides_on_upstream_product_id"
     t.index ["upstream_production_id"], name: "index_factory_production_provides_on_upstream_production_id"
+  end
+
+  create_table "factory_production_spaces", force: :cascade do |t|
+    t.bigint "production_id"
+    t.bigint "grid_id"
+    t.bigint "room_id"
+    t.bigint "desk_id"
+    t.bigint "building_id"
+    t.bigint "station_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_factory_production_spaces_on_building_id"
+    t.index ["desk_id"], name: "index_factory_production_spaces_on_desk_id"
+    t.index ["grid_id"], name: "index_factory_production_spaces_on_grid_id"
+    t.index ["production_id"], name: "index_factory_production_spaces_on_production_id"
+    t.index ["room_id"], name: "index_factory_production_spaces_on_room_id"
+    t.index ["station_id"], name: "index_factory_production_spaces_on_station_id"
   end
 
   create_table "factory_productions", force: :cascade do |t|
@@ -3706,6 +3787,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.datetime "updated_at", null: false
     t.bigint "parent_id"
     t.jsonb "parent_ancestors"
+    t.datetime "synced_at"
     t.index ["parent_id"], name: "index_qingflow_aliases_on_parent_id"
     t.index ["version_id"], name: "index_qingflow_aliases_on_version_id"
   end
@@ -3722,6 +3804,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.datetime "sync_items_at"
     t.string "code"
     t.string "qsource"
+    t.string "job_id"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3745,6 +3828,35 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
     t.index ["source_id"], name: "index_qingflow_apps_on_source_id"
+  end
+
+  create_table "qingflow_export_items", force: :cascade do |t|
+    t.bigint "export_id"
+    t.string "uid"
+    t.jsonb "fields"
+    t.integer "position"
+    t.boolean "header"
+    t.string "record_key"
+    t.integer "repeat_index"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["export_id"], name: "index_qingflow_export_items_on_export_id"
+  end
+
+  create_table "qingflow_exports", force: :cascade do |t|
+    t.bigint "application_id"
+    t.bigint "template_id"
+    t.string "name"
+    t.jsonb "headers"
+    t.integer "header_line"
+    t.integer "export_items_count"
+    t.jsonb "parameters"
+    t.jsonb "uids"
+    t.datetime "uploaded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_qingflow_exports_on_application_id"
+    t.index ["template_id"], name: "index_qingflow_exports_on_template_id"
   end
 
   create_table "qingflow_files", force: :cascade do |t|
@@ -3790,6 +3902,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.integer "position"
     t.string "record_key"
     t.string "code"
+    t.string "full_title"
+    t.boolean "required"
+    t.datetime "synced_at"
     t.index ["group_id"], name: "index_qingflow_forms_on_group_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3806,6 +3921,16 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["application_id"], name: "index_qingflow_groups_on_application_id"
+  end
+
+  create_table "qingflow_item_statistics", force: :cascade do |t|
+    t.bigint "item_id"
+    t.string "key"
+    t.jsonb "params"
+    t.jsonb "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_qingflow_item_statistics_on_item_id"
   end
 
   create_table "qingflow_items", force: :cascade do |t|
@@ -3828,6 +3953,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.jsonb "linked_audits"
     t.string "linked_logs", array: true
     t.string "note"
+    t.string "uid"
+    t.jsonb "code_answers"
+    t.jsonb "params"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
@@ -3873,6 +4001,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.boolean "auditable"
     t.boolean "audit_result"
     t.string "applyid"
+    t.bigint "app_id"
+    t.boolean "syncing"
+    t.string "linker_type"
+    t.string "record_key"
+    t.index ["app_id"], name: "index_qingflow_operations_on_app_id"
     t.index ["linker_id"], name: "index_qingflow_operations_on_linker_id"
   end
 
@@ -3912,6 +4045,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.string "linker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "sync_forms_at"
     t.index ["app_id"], name: "index_qingflow_versions_on_app_id"
   end
 
@@ -3926,26 +4060,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.string "profile_picture_url"
     t.index ["organ_id"], name: "index_quip_apps_on_organ_id"
     t.index ["user_id"], name: "index_quip_apps_on_user_id"
-  end
-
-  create_table "requirements", force: :cascade do |t|
-    t.string "name"
-    t.string "from"
-    t.string "to"
-    t.date "pick_on"
-    t.time "pick_at"
-    t.string "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "volunteer_id"
-    t.string "state", default: "init"
-    t.bigint "from_area_id"
-    t.bigint "to_area_id"
-    t.index ["from_area_id"], name: "index_requirements_on_from_area_id"
-    t.index ["to_area_id"], name: "index_requirements_on_to_area_id"
-    t.index ["user_id"], name: "index_requirements_on_user_id"
-    t.index ["volunteer_id"], name: "index_requirements_on_volunteer_id"
   end
 
   create_table "roled_busynesses", force: :cascade do |t|
@@ -4031,6 +4145,17 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.string "verb"
     t.string "required_parts", array: true
     t.boolean "landmark"
+  end
+
+  create_table "roled_tabs", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "name"
+    t.string "path"
+    t.string "icon"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_roled_tabs_on_role_id"
   end
 
   create_table "roled_who_roles", force: :cascade do |t|
@@ -5142,14 +5267,18 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.bigint "contact_id"
     t.bigint "agent_id"
     t.boolean "purchasable"
+    t.bigint "desk_id"
+    t.bigint "station_id"
     t.index ["address_id"], name: "index_trade_carts_on_address_id"
     t.index ["agent_id"], name: "index_trade_carts_on_agent_id"
     t.index ["client_id"], name: "index_trade_carts_on_client_id"
     t.index ["contact_id"], name: "index_trade_carts_on_contact_id"
+    t.index ["desk_id"], name: "index_trade_carts_on_desk_id"
     t.index ["member_id"], name: "index_trade_carts_on_member_id"
     t.index ["member_organ_id"], name: "index_trade_carts_on_member_organ_id"
     t.index ["organ_id"], name: "index_trade_carts_on_organ_id"
     t.index ["payment_strategy_id"], name: "index_trade_carts_on_payment_strategy_id"
+    t.index ["station_id"], name: "index_trade_carts_on_station_id"
     t.index ["user_id"], name: "index_trade_carts_on_user_id"
   end
 
@@ -6388,8 +6517,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_04_071237) do
     t.boolean "enabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
     t.index ["appid"], name: "index_wechat_payee_apps_on_appid"
     t.index ["mch_id"], name: "index_wechat_payee_apps_on_mch_id"
+    t.index ["organ_id"], name: "index_wechat_payee_apps_on_organ_id"
   end
 
   create_table "wechat_payee_domains", force: :cascade do |t|

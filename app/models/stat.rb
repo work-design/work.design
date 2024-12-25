@@ -13,7 +13,6 @@ class Stat < ApplicationRecord
     self.oauth_users_count = OauthUser.default_where('created_at-gte': begin_time, 'created_at-lt': end_time).count
     self.subscribed_requests_count = SubscribeRequest.default_where('created_at-gte': begin_time, 'created_at-lt': end_time).count
     self.users_count = User.default_where('created_at-gte': begin_time, 'created_at-lt': end_time).count
-    self.requirements_count = Requirement.default_where('created_at-gte': begin_time, 'created_at-lt': end_time).count
     self
   end
 
