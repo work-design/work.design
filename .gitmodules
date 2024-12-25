@@ -1,6 +1,3 @@
-[submodule "docker"]
-  path = docker
-  url = git@github.com:work-design/docker.git
 [submodule "engine/rails_com"]
   path = engine/rails_com
   url = git@github.com:work-design/rails_com.git
