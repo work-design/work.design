@@ -4,10 +4,10 @@ deploy_timeout: 100
 servers:
   web:
     hosts:
-      - work.design
+      - shu.ren
   job:
     hosts:
-      - work.design
+      - shu.ren
     cmd: bin/jobs
 
 registry:
@@ -36,7 +36,7 @@ builder:
 accessories:
   postgres:
     image: ccr.ccs.tencentyun.com/kamal/postgres:x86_64
-    host: work.design
+    host: shu.ren
     port: 5432
     env:
       clear:
@@ -51,7 +51,7 @@ accessories:
 
 proxy:
   hosts:
-    - work.design
+    - shu.ren
   ssl: true
   app_port: 3000
   response_timeout: 100
