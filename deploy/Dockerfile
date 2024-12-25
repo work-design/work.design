@@ -12,7 +12,7 @@ RUN apk add --update --no-cache build-base libpq-dev gcompat git
 # 安装 Ruby 依赖
 COPY Gemfile Gemfile.lock ./
 COPY vendor/package engine
-RUN bundle config mirror.https://rubygems.org https://gems.ruby-china.com
+RUN bundle config mirror.https://rubygems.org https://mirrors.tuna.tsinghua.edu.cn/rubygems
 RUN bundle install && rm -rf ~/.bundle/ ${BUNDLE_PATH}/ruby/*/cache ${BUNDLE_PATH}/ruby/*/bundler/gems/*/.git
 
 COPY . .
