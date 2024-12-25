@@ -20,24 +20,42 @@ registry:
 volumes:
   - ~/app/acme:/rails/acme
   - ~/app/tmp/storage:/rails/tmp/storage
-  - ~/app/storage:/rails/storage
 
 env:
   clear:
     RAILS_ENV: production
-    RAILS_MAX_THREADS: 20
+    RAILS_MAX_THREADS: 6
+  secret:
+    - POSTGRES_PASSWORD
 
 builder:
   dockerfile: deploy/Dockerfile
   arch: x86_64
   remote: ssh://ubuntu@49.235.150.128
 
+accessories:
+  postgres:
+    image: ccr.ccs.tencentyun.com/kamal/postgres:x86_64
+    host: work.design
+    port: 5432
+    env:
+      clear:
+        POSTGRES_INITDB_ARGS: -c include_if_exists=/var/lib/postgresql/custom.conf
+      secret:
+        - POSTGRES_PASSWORD
+    volumes:
+      - ~/postgres_data:/var/lib/postgresql/data
+      - ~/app/db_dump:/root/pg_dump
+    files:
+      - deploy/postgresql.conf:/var/lib/postgresql/custom.conf
+
 proxy:
-  host: work.design
+  hosts:
+    - work.design
   ssl: true
   app_port: 3000
   response_timeout: 100
   forward_headers: true
   healthcheck:
-    interval: 30
-    timeout: 60
+    interval: 5
+    timeout: 150
