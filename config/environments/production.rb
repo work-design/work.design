@@ -6,7 +6,7 @@ Rails.application.configure do
 
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
-  config.action_controller.asset_host = "assets.#{ENV[:host]}"
+  config.action_controller.asset_host = "assets.#{ENV['HOST']}"
 
   config.cache_store = :solid_cache_store
 
@@ -45,6 +45,6 @@ Rails.application.configure do
 end
 
 Rails.application.routes.default_url_options = {
-  host: ENV[:host],
+  host: ENV['HOST'],
   protocol: 'https'
 }
