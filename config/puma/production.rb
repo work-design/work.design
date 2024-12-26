@@ -2,7 +2,7 @@ dir = ENV['PWD']
 
 plugin :tmp_restart
 
-port 3002
+port 3000
 workers 2
 preload_app!
 threads 2, 32
