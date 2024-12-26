@@ -21,22 +21,20 @@
 Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
 
 * 全栈 MVC 框架：[Ruby On Rails](https://github.com/rails/rails)
-* Hotwire：直接传输 HTML 片段的策略
+* Hotwire：直接传输 HTML 片段
   * [Turbo](https://turbo.hotwired.dev)
   * [Stimulus](https://stimulus.hotwired.dev)
 
 * 前端 CSS：纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsDesign](https://github.com/work-design/rails_design) 项目中实现；
   * [Bulma](https://github.com/jgthms/bulma)
-  * [Weui](https://github.com/Tencent/weui)
 
 * 数据库
   * [Postgresql](https://www.postgresql.org)：关系型数据库
-  * [Redis](https://redis.io)：内存数据库，用于缓存，队列任务等；
 
 ## 准备
 * 安装依赖
   * `bundle install`
-  * `yarn install`
+  * `npm install`
 * 检查配置文件
   * `bin/rails credentials:edit`: 修改 db_development, db_test 为你本地数据库
 * 数据库准备
@@ -50,10 +48,6 @@ Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如�
 
 ## 依赖及配置
 
-### Redis
-* Action Cable: `redis://localhost:6379/1`
-* Action Job / Sidekiq: `redis://127.0.0.1:6379/0`(默认)
-* Cache: `redis://localhost:6379/2`
 
 ## 项目发展
 
