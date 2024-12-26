@@ -1,17 +1,40 @@
 default: &default
-  adapter: <%= ENV['DATABASE_ADAPTER'] || 'postgresql' %>
+  adapter: postgresql
   pool: 5
   timeout: 5000
-  url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db %>
+  host: meal-postgres
+  user: <%= Rails.application.credentials.database_user || 'postgres' %>
+  password: <%= Rails.application.credentials.database_password || ENV['POSTGRES_PASSWORD'] %>
 development:
   primary:
     <<: *default
+    host: localhost
+    database: work_development
     gssencmode: disable
   queue:
     <<: *default
+    host: localhost
+    database: work_queue_development
+    migrations_paths: db/queue_migrate
     gssencmode: disable
+  cache:
+    <<: *default
+    host: localhost
+    migrations_paths: db/cache_migrate
+    database: meal_cache_development
 test:
   <<: *default
-  url: <%= ENV['DATABASE_ADAPTER'] || Rails.application.credentials.db_test %>
+  host: localhost
+  database: work_test
 production:
-  <<: *default
+  primary:
+    <<: *default
+    database: work_production
+  queue:
+    <<: *default
+    database: work_queue_production
+    migrations_paths: db/queue_migrate
+  cache:
+    <<: *default
+    database: work_cache_production
+    migrations_paths: db/cache_migrate
