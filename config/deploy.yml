@@ -53,6 +53,7 @@ accessories:
 
 proxy:
   hosts:
+    - work.design
     - shu.ren
   ssl: true
   app_port: 3000
