@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  host: meal-postgres
+  host: work_design-postgres
   user: <%= Rails.application.credentials.database_user || 'postgres' %>
   password: <%= Rails.application.credentials.database_password || ENV['POSTGRES_PASSWORD'] %>
 development:
