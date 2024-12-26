@@ -27,6 +27,7 @@ env:
     RAILS_MAX_THREADS: 6
   secret:
     - POSTGRES_PASSWORD
+    - RAILS_MASTER_KEY
 
 builder:
   dockerfile: deploy/Dockerfile
