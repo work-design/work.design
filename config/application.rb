@@ -46,6 +46,7 @@ module OneWork
       html_tag
     end
 
+    config.solid_queue.connects_to = { database: { writing: :queue } }
   end
 end
 
