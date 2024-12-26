@@ -13,11 +13,6 @@ bind "unix://#{File.expand_path('tmp/sockets/puma.sock', dir)}"
 pidfile "#{File.expand_path('tmp/pids/puma.pid', dir)}"
 state_path "#{File.expand_path('tmp/sockets/puma.state', dir)}"
 activate_control_app "unix://#{File.expand_path('tmp/sockets/pumactl.sock', dir)}"
-stdout_redirect(
-  "#{File.expand_path('log/puma.stdout.log', dir)}",
-  "#{File.expand_path('log/puma.stderr.log', dir)}",
-  true
-)
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
