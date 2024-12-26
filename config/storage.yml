@@ -12,8 +12,8 @@ test:
 
 upyun:
   service: Upyun
-  bucket: <%= Rails.application.credentials.dig(:upyun, :bucket) %>
-  operator: <%= Rails.application.credentials.dig(:upyun, :operator) %>
+  bucket: one-work
+  operator: yougexiangfa
   password: <%= Rails.application.credentials.dig(:upyun, :password) %>
-  host: <%= Rails.application.credentials.dig(:upyun, :host) %>
-  folder: <%= Rails.application.credentials.dig(:upyun, :folder) %>
+  host: https://images.work.design
+  folder: images

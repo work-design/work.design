@@ -49,5 +49,5 @@ module OneWork
   end
 end
 
-ENV['EDITOR'] = 'code --wait'
+ENV['EDITOR'] = 'vi'
 SETTING = Rails.application.credentials
