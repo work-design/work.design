@@ -20,8 +20,8 @@ development:
   cache:
     <<: *default
     host: localhost
+    database: work_cache_development
     migrations_paths: db/cache_migrate
-    database: meal_cache_development
 test:
   <<: *default
   host: localhost
