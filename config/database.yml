@@ -23,9 +23,18 @@ development:
     database: work_cache_development
     migrations_paths: db/cache_migrate
 test:
-  <<: *default
-  host: localhost
-  database: work_test
+  primary:
+    <<: *default
+    host: localhost
+    database: work_test
+  queue:
+    <<: *default
+    host: localhost
+    database: work_test
+  cache:
+    <<: *default
+    host: localhost
+    database: work_test
 production:
   primary:
     <<: *default
