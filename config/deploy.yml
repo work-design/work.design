@@ -4,10 +4,10 @@ deploy_timeout: 100
 servers:
   web:
     hosts:
-      - shu.ren
+      - work.design
   job:
     hosts:
-      - shu.ren
+      - work.design
     cmd: bin/jobs
 
 registry:
@@ -38,7 +38,7 @@ builder:
 accessories:
   postgres:
     image: ccr.ccs.tencentyun.com/kamal/postgres:x86_64
-    host: shu.ren
+    host: work.design
     port: 5432
     env:
       clear:
@@ -54,8 +54,12 @@ accessories:
 proxy:
   hosts:
     - work.design
-    - shu.ren
+    - '*.work.design'
+    - '*.admin.work.design.com'
+    - '*.agent.work.design.com'
   ssl: true
+  ssl_certificate_path: /certs/work.design.pem
+  ssl_private_key_path: /certs/work.design.key
   app_port: 3000
   response_timeout: 100
   forward_headers: true
