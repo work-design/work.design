@@ -19,7 +19,6 @@ gem 'rqrcode'
 gem 'rexml'
 gem 'nokogiri'
 gem 'sd_notify'
-gem 'sass-embedded'
 
 # Third party
 gem 'octokit'
