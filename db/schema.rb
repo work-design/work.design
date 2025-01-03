@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -1488,6 +1488,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
     t.index ["template_id"], name: "index_datum_exports_on_template_id"
   end
 
@@ -1542,6 +1543,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.jsonb "parameters"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.datetime "uploaded_at"
     t.index ["organ_id"], name: "index_datum_templates_on_organ_id"
   end
 
@@ -3788,6 +3791,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.bigint "parent_id"
     t.jsonb "parent_ancestors"
     t.datetime "synced_at"
+    t.string "full_title"
     t.index ["parent_id"], name: "index_qingflow_aliases_on_parent_id"
     t.index ["version_id"], name: "index_qingflow_aliases_on_version_id"
   end
@@ -3825,6 +3829,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.string "host"
     t.bigint "source_id"
     t.datetime "sync_users_at"
+    t.string "client_id"
+    t.string "client_secret"
     t.index ["appid"], name: "index_qingflow_apps_on_appid"
     t.index ["organ_id"], name: "index_qingflow_apps_on_organ_id"
     t.index ["source_id"], name: "index_qingflow_apps_on_source_id"
@@ -3855,6 +3861,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.datetime "uploaded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.jsonb "filter"
     t.index ["application_id"], name: "index_qingflow_exports_on_application_id"
     t.index ["template_id"], name: "index_qingflow_exports_on_template_id"
   end
@@ -5526,6 +5534,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.integer "payment_orders_count"
     t.decimal "refunded_amount"
     t.bigint "provide_id"
+    t.decimal "payable_amount"
+    t.decimal "verifying_amount", comment: "待核销金额"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["agent_id"], name: "index_trade_orders_on_agent_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
@@ -5636,6 +5646,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_25_111754) do
     t.integer "refunds_count"
     t.string "appid"
     t.string "pay_state"
+    t.decimal "orders_amount", comment: "订单金额汇总"
     t.index ["operator_id"], name: "index_trade_payments_on_operator_id"
     t.index ["organ_id"], name: "index_trade_payments_on_organ_id"
     t.index ["payment_method_id"], name: "index_trade_payments_on_payment_method_id"
