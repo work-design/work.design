@@ -391,7 +391,7 @@ GEM
     json (2.9.1)
     jwt (2.9.3)
       base64
-    kamal (2.3.0)
+    kamal (2.4.0)
       activesupport (>= 7.0)
       base64 (~> 0.2)
       bcrypt_pbkdf (~> 1.0)
@@ -557,7 +557,7 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails_deploy (0.7.3)
+    rails_deploy (0.7.4)
       activesupport (>= 7.0)
     railties (8.0.1)
       actionpack (= 8.0.1)
@@ -673,7 +673,7 @@ DEPENDENCIES
   default_where!
   image_processing
   jbuilder
-  kamal (= 2.3.0)
+  kamal (= 2.4.0)
   listen
   mini_magick
   nokogiri
@@ -696,7 +696,7 @@ DEPENDENCIES
   rails_com!
   rails_crm!
   rails_data!
-  rails_deploy (= 0.7.3)
+  rails_deploy (= 0.7.4)
   rails_design!
   rails_detail!
   rails_doc!
