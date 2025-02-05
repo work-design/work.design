@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_05_123712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -424,6 +424,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.integer "showtime", default: 0
     t.boolean "accept_email", default: true
     t.integer "promote_goods_count", default: 0
+    t.bigint "cache_id"
+    t.index ["cache_id"], name: "index_auth_users_on_cache_id"
   end
 
   create_table "auth_verify_tokens", force: :cascade do |t|
@@ -455,7 +457,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.bigint "provider_id"
     t.boolean "selected"
     t.string "note"
-    t.decimal "export_price"
     t.index ["facilitate_id"], name: "index_bench_facilitate_providers_on_facilitate_id"
     t.index ["provider_id"], name: "index_bench_facilitate_providers_on_provider_id"
   end
@@ -503,8 +504,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.decimal "advance_price", default: "0.0"
     t.json "extra", default: {}
     t.decimal "unified_quantity", default: "1.0"
-    t.decimal "import_price", default: "0.0"
-    t.decimal "profit_price", default: "0.0"
     t.string "good_type"
     t.jsonb "card_price", default: {}
     t.jsonb "wallet_price", default: {}
@@ -1088,6 +1087,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "operation", default: "read"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "synced_at"
     t.index ["business_identifier"], name: "index_com_meta_actions_on_business_identifier"
     t.index ["controller_path"], name: "index_com_meta_actions_on_controller_path"
     t.index ["namespace_identifier"], name: "index_com_meta_actions_on_namespace_identifier"
@@ -1099,6 +1099,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "synced_at"
     t.index ["identifier"], name: "index_com_meta_businesses_on_identifier"
   end
 
@@ -1126,6 +1127,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "synced_at"
     t.index ["business_identifier"], name: "index_com_meta_controllers_on_business_identifier"
     t.index ["controller_path"], name: "index_com_meta_controllers_on_controller_path"
     t.index ["namespace_identifier"], name: "index_com_meta_controllers_on_namespace_identifier"
@@ -1489,6 +1491,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.jsonb "formats"
     t.index ["template_id"], name: "index_datum_exports_on_template_id"
   end
 
@@ -1980,7 +1983,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "organ_id"
-    t.decimal "price", precision: 10, scale: 2
     t.integer "event_participants_count", default: 0
     t.integer "members_count", default: 0
     t.bigint "time_list_id"
@@ -2599,6 +2601,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.boolean "specialty", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "organ_id"
+    t.index ["organ_id"], name: "index_factory_scenes_on_organ_id"
   end
 
   create_table "factory_serial_hierarchies", force: :cascade do |t|
@@ -2661,7 +2665,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.bigint "factory_taxon_id"
     t.integer "products_count", default: 0
     t.boolean "enabled", default: true
-    t.bigint "template_id"
     t.bigint "scene_id"
     t.boolean "take_stock", comment: "可盘点"
     t.integer "provides_count"
@@ -2671,7 +2674,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.index ["organ_id"], name: "index_factory_taxons_on_organ_id"
     t.index ["parent_id"], name: "index_factory_taxons_on_parent_id"
     t.index ["scene_id"], name: "index_factory_taxons_on_scene_id"
-    t.index ["template_id"], name: "index_factory_taxons_on_template_id"
   end
 
   create_table "factory_unifiers", force: :cascade do |t|
@@ -3557,6 +3559,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "wechat_openid"
     t.integer "maintains_count"
     t.bigint "member_inviter_id"
+    t.bigint "cache_id"
+    t.index ["cache_id"], name: "index_org_members_on_cache_id"
     t.index ["member_inviter_id"], name: "index_org_members_on_member_inviter_id"
     t.index ["organ_id"], name: "index_org_members_on_organ_id"
     t.index ["organ_root_id"], name: "index_org_members_on_organ_root_id"
@@ -3624,7 +3628,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.jsonb "theme_settings", default: {}
     t.string "dispatch"
     t.string "invite_token"
+    t.bigint "cache_id"
     t.index ["area_id"], name: "index_org_organs_on_area_id"
+    t.index ["cache_id"], name: "index_org_organs_on_cache_id"
     t.index ["corp_user_id"], name: "index_org_organs_on_corp_user_id"
     t.index ["creator_id"], name: "index_org_organs_on_creator_id"
     t.index ["parent_id"], name: "index_org_organs_on_parent_id"
@@ -3658,6 +3664,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_org_resigns_on_member_id"
+  end
+
+  create_table "org_shortcuts", force: :cascade do |t|
+    t.bigint "member_id"
+    t.string "controller"
+    t.string "action"
+    t.string "business"
+    t.string "namespace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_org_shortcuts_on_member_id"
   end
 
   create_table "org_super_job_titles", force: :cascade do |t|
@@ -3792,6 +3809,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.jsonb "parent_ancestors"
     t.datetime "synced_at"
     t.string "full_title"
+    t.jsonb "options"
     t.index ["parent_id"], name: "index_qingflow_aliases_on_parent_id"
     t.index ["version_id"], name: "index_qingflow_aliases_on_version_id"
   end
@@ -3809,6 +3827,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "code"
     t.string "qsource"
     t.string "job_id"
+    t.string "tag_str"
     t.index ["app_id"], name: "index_qingflow_applications_on_app_id"
     t.index ["organ_id"], name: "index_qingflow_applications_on_organ_id"
   end
@@ -3837,7 +3856,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
   end
 
   create_table "qingflow_export_items", force: :cascade do |t|
-    t.bigint "export_id"
     t.string "uid"
     t.jsonb "fields"
     t.integer "position"
@@ -3846,23 +3864,33 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.integer "repeat_index"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["export_id"], name: "index_qingflow_export_items_on_export_id"
+    t.bigint "export_user_id"
+    t.index ["export_user_id"], name: "index_qingflow_export_items_on_export_user_id"
+  end
+
+  create_table "qingflow_export_users", force: :cascade do |t|
+    t.bigint "export_id"
+    t.jsonb "filter"
+    t.jsonb "table_filter"
+    t.jsonb "import_filter"
+    t.string "email"
+    t.jsonb "uids"
+    t.datetime "uploaded_at"
+    t.integer "export_items_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["export_id"], name: "index_qingflow_export_users_on_export_id"
   end
 
   create_table "qingflow_exports", force: :cascade do |t|
     t.bigint "application_id"
     t.bigint "template_id"
     t.string "name"
-    t.jsonb "headers"
-    t.integer "header_line"
-    t.integer "export_items_count"
     t.jsonb "parameters"
-    t.jsonb "uids"
-    t.datetime "uploaded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
-    t.jsonb "filter"
+    t.jsonb "formats"
     t.index ["application_id"], name: "index_qingflow_exports_on_application_id"
     t.index ["template_id"], name: "index_qingflow_exports_on_template_id"
   end
@@ -3913,6 +3941,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "full_title"
     t.boolean "required"
     t.datetime "synced_at"
+    t.jsonb "options"
     t.index ["group_id"], name: "index_qingflow_forms_on_group_id"
     t.index ["meta_column_id"], name: "index_qingflow_forms_on_meta_column_id"
     t.index ["organ_id"], name: "index_qingflow_forms_on_organ_id"
@@ -3941,6 +3970,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.index ["item_id"], name: "index_qingflow_item_statistics_on_item_id"
   end
 
+  create_table "qingflow_item_temps", force: :cascade do |t|
+    t.string "record_key"
+    t.jsonb "params"
+    t.string "uid"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "qingflow_items", force: :cascade do |t|
     t.string "applyid"
     t.jsonb "answers"
@@ -3964,6 +4002,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "uid"
     t.jsonb "code_answers"
     t.jsonb "params"
+    t.datetime "apply_update_at"
     t.index ["applyid"], name: "index_qingflow_items_on_applyid"
     t.index ["organ_id"], name: "index_qingflow_items_on_organ_id"
     t.index ["version_id"], name: "index_qingflow_items_on_version_id"
@@ -4078,6 +4117,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.string "name"
   end
 
+  create_table "roled_cache_roles", force: :cascade do |t|
+    t.bigint "role_id"
+    t.bigint "cache_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cache_id"], name: "index_roled_cache_roles_on_cache_id"
+    t.index ["role_id"], name: "index_roled_cache_roles_on_role_id"
+  end
+
+  create_table "roled_caches", force: :cascade do |t|
+    t.string "str_role_ids"
+    t.jsonb "role_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["str_role_ids"], name: "index_roled_caches_on_str_role_ids"
+  end
+
   create_table "roled_governs", id: :serial, force: :cascade do |t|
     t.integer "position", default: 0
     t.datetime "created_at", precision: nil
@@ -4120,6 +4176,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.index ["role_id"], name: "index_roled_role_types_on_role_id"
   end
 
+  create_table "roled_role_whos", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "who_type"
+    t.bigint "who_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_roled_role_whos_on_role_id"
+    t.index ["who_type", "who_id"], name: "index_roled_role_whos_on_who"
+  end
+
   create_table "roled_roles", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
@@ -4128,8 +4194,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.boolean "visible"
     t.jsonb "role_hash", default: {}
     t.boolean "default"
-    t.string "type"
     t.string "tip"
+    t.bigint "organ_id"
+    t.index ["organ_id"], name: "index_roled_roles_on_organ_id"
   end
 
   create_table "roled_rule_operations", force: :cascade do |t|
@@ -5536,11 +5603,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_03_145201) do
     t.bigint "provide_id"
     t.decimal "payable_amount"
     t.decimal "verifying_amount", comment: "待核销金额"
+    t.bigint "desk_id"
     t.index ["address_id"], name: "index_trade_orders_on_address_id"
     t.index ["agent_id"], name: "index_trade_orders_on_agent_id"
     t.index ["client_id"], name: "index_trade_orders_on_client_id"
     t.index ["contact_id"], name: "index_trade_orders_on_contact_id"
     t.index ["current_cart_id"], name: "index_trade_orders_on_current_cart_id"
+    t.index ["desk_id"], name: "index_trade_orders_on_desk_id"
     t.index ["from_address_id"], name: "index_trade_orders_on_from_address_id"
     t.index ["from_member_id"], name: "index_trade_orders_on_from_member_id"
     t.index ["from_member_organ_id"], name: "index_trade_orders_on_from_member_organ_id"
