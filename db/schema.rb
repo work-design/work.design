@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_05_123712) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_073537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -913,6 +913,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_05_123712) do
     t.datetime "issued_at", precision: nil
     t.datetime "expire_at", comment: "过期时间"
     t.string "identifiers", array: true
+    t.string "sync_host"
+    t.string "sync_path"
     t.index ["acme_account_id"], name: "index_com_acme_orders_on_acme_account_id"
   end
 
