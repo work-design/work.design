@@ -57,7 +57,7 @@ Rails.application.configure do
   ]
   config.hosts += [
     '.lvh.me',
-    'test.work.design'
+    '.frp.work.design'
   ]
 
   config.x.role_debug = false
