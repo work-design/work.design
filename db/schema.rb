@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_073537) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_120818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -1162,6 +1162,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_073537) do
   create_table "com_meta_operations", force: :cascade do |t|
     t.string "action_name"
     t.string "operation", default: "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "com_ssh_keys", force: :cascade do |t|
+    t.string "host"
+    t.string "private_key"
+    t.string "public_key"
+    t.string "fingerprint"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

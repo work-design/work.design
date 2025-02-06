@@ -78,12 +78,14 @@ PATH
       mutex_m
       net-http
       net-pop
+      net-scp
       ostruct
       positioning
       rails
       reline
       solid_cache
       solid_queue
+      sshkey
       turbo-rails
 
 PATH
@@ -620,6 +622,7 @@ GEM
     spreadsheet (1.3.3)
       bigdecimal
       ruby-ole
+    sshkey (3.0.0)
     sshkit (1.23.2)
       base64
       net-scp (>= 1.1.2)
