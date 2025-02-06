@@ -8,8 +8,8 @@ gem 'puma'
 gem 'solid_cache'
 gem 'solid_queue'
 gem 'jbuilder'
-gem 'kamal', '2.4.0', require: false
-gem 'rails_deploy', '0.7.4', require: false
+gem 'kamal', '2.4.0'
+gem 'rails_deploy', '0.7.4', require: 'kamal_override'
 
 # Utils
 gem 'bcrypt'
