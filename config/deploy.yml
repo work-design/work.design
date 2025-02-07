@@ -1,14 +1,10 @@
-service: work_design
-image: work-design/work_design
+service: work.design
+image: work-design/work.design
 deploy_timeout: 100
 servers:
   web:
     hosts:
-      - work.design
-  job:
-    hosts:
-      - work.design
-    cmd: bin/jobs
+      - <%= ENV['SERVER'] %>
 
 registry:
   server: ccr.ccs.tencentyun.com
@@ -20,49 +16,24 @@ registry:
 volumes:
   - ~/app/acme:/rails/acme
   - ~/app/tmp/storage:/rails/tmp/storage
+  - ~/app/storage:/rails/storage
 
 env:
   clear:
     RAILS_ENV: production
-    RAILS_MAX_THREADS: 6
-    HOST: work.design
-  secret:
-    - POSTGRES_PASSWORD
-    - RAILS_MASTER_KEY
+    RAILS_MAX_THREADS: 20
 
 builder:
   dockerfile: deploy/Dockerfile
   arch: x86_64
   remote: ssh://ubuntu@49.235.150.128
 
-accessories:
-  postgres:
-    image: ccr.ccs.tencentyun.com/kamal/postgres:x86_64
-    host: work.design
-    port: 5432
-    env:
-      clear:
-        POSTGRES_INITDB_ARGS: -c include_if_exists=/var/lib/postgresql/custom.conf
-      secret:
-        - POSTGRES_PASSWORD
-    volumes:
-      - ~/postgres_data:/var/lib/postgresql/data
-      - ~/app/db_dump:/root/pg_dump
-    files:
-      - deploy/postgresql.conf:/var/lib/postgresql/custom.conf
-
 proxy:
-  hosts:
-    - work.design
-    - '*.work.design'
-    - '*.admin.work.design.com'
-    - '*.agent.work.design.com'
+  host: <%= ENV['SERVER'] %>
   ssl: true
-  ssl_certificate_path: /certs/work.design.pem
-  ssl_private_key_path: /certs/work.design.key
   app_port: 3000
   response_timeout: 100
   forward_headers: true
   healthcheck:
-    interval: 5
-    timeout: 150
+    interval: 30
+    timeout: 60

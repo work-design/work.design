@@ -1,49 +1,52 @@
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   pool: 5
   timeout: 5000
-  host: work_design-postgres
-  user: <%= Rails.application.credentials.database_user || 'postgres' %>
-  password: <%= Rails.application.credentials.database_password || ENV['POSTGRES_PASSWORD'] %>
 development:
   primary:
     <<: *default
-    host: localhost
-    database: work_development
-    gssencmode: disable
-  queue:
-    <<: *default
-    host: localhost
-    database: work_queue_development
-    migrations_paths: db/queue_migrate
-    gssencmode: disable
+    database: storage/development.sqlite3
   cache:
     <<: *default
-    host: localhost
-    database: work_cache_development
+    database: storage/development_cache.sqlite3
     migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: storage/development_queue.sqlite3
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: storage/development_cable.sqlite3
+    migrations_paths: db/cable_migrate
 test:
   primary:
     <<: *default
-    host: localhost
-    database: work_test
-  queue:
-    <<: *default
-    host: localhost
-    database: work_test
+    database: storage/test.sqlite3
   cache:
     <<: *default
-    host: localhost
-    database: work_test
+    database: storage/test_cache.sqlite3
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: storage/test_queue.sqlite3
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: storage/test_cable.sqlite3
+    migrations_paths: db/cable_migrate
 production:
   primary:
     <<: *default
-    database: work_production
-  queue:
-    <<: *default
-    database: work_queue_production
-    migrations_paths: db/queue_migrate
+    database: storage/production.sqlite3
   cache:
     <<: *default
-    database: work_cache_production
+    database: storage/production_cache.sqlite3
     migrations_paths: db/cache_migrate
+  queue:
+    <<: *default
+    database: storage/production_queue.sqlite3
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: storage/production_cable.sqlite3
+    migrations_paths: db/cable_migrate
