@@ -2879,21 +2879,6 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["organ_id"], name: "index_finance_stocks_on_organ_id"
     end
 
-    create_table "good_job_batches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-      t.datetime "created_at", null: false
-      t.datetime "updated_at", null: false
-      t.text "description"
-      t.json "serialized_properties"
-      t.text "on_finish"
-      t.text "on_success"
-      t.text "on_discard"
-      t.text "callback_queue_name"
-      t.integer "callback_priority"
-      t.datetime "enqueued_at"
-      t.datetime "discarded_at"
-      t.datetime "finished_at"
-    end
-
     create_table "growth_aim_codes", force: :cascade do |t|
       t.bigint "aim_id"
       t.string "controller_path"
