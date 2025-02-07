@@ -3,7 +3,7 @@ git_source(:gitee) { |repo| "https://gitee.com/#{repo}.git" }
 
 # 核心依赖
 gem 'rails', '8.0.1'
-gem 'pg'
+gem 'sqlite3'
 gem 'puma'
 gem 'solid_cache'
 gem 'solid_queue'
