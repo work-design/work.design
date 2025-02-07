@@ -392,7 +392,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["user_tagging_type", "user_tagging_id"], name: "index_user_tags_on_user_tagging"
     end
 
-    create_table "auth_users", id: :serial, force: :cascade do |t|
+    create_table "auth_users", force: :cascade do |t|
       t.string "name"
       t.string "password_digest"
       t.datetime "last_login_at", precision: nil
@@ -615,7 +615,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["project_id"], name: "index_bench_project_webhooks_on_project_id"
     end
 
-    create_table "bench_projects", id: :serial, force: :cascade do |t|
+    create_table "bench_projects", force: :cascade do |t|
       t.string "name"
       t.string "description"
       t.datetime "created_at", precision: nil, null: false
@@ -694,7 +694,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["organ_id"], name: "index_bench_task_templates_on_organ_id"
     end
 
-    create_table "bench_task_timers", id: :serial, force: :cascade do |t|
+    create_table "bench_task_timers", force: :cascade do |t|
       t.integer "task_id"
       t.integer "duration"
       t.datetime "finish_at", precision: nil
@@ -703,7 +703,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["task_id"], name: "index_bench_task_timers_on_task_id"
     end
 
-    create_table "bench_tasks", id: :serial, force: :cascade do |t|
+    create_table "bench_tasks", force: :cascade do |t|
       t.string "title"
       t.integer "parent_id"
       t.datetime "created_at", precision: nil, null: false
@@ -1016,7 +1016,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.datetime "updated_at", null: false
     end
 
-    create_table "com_errs", id: :serial, force: :cascade do |t|
+    create_table "com_errs", force: :cascade do |t|
       t.string "path"
       t.string "controller_name"
       t.string "action_name"
@@ -1461,7 +1461,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["source_id"], name: "index_crm_texts_on_source_id"
     end
 
-    create_table "datum_data_lists", id: :serial, force: :cascade do |t|
+    create_table "datum_data_lists", force: :cascade do |t|
       t.string "title"
       t.string "comment", limit: 4096
       t.string "type"
@@ -1495,7 +1495,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["template_id"], name: "index_datum_exports_on_template_id"
     end
 
-    create_table "datum_record_lists", id: :serial, force: :cascade do |t|
+    create_table "datum_record_lists", force: :cascade do |t|
       t.integer "data_list_id"
       t.boolean "done"
       t.datetime "created_at", precision: nil, null: false
@@ -1505,7 +1505,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["data_list_id"], name: "index_datum_record_lists_on_data_list_id"
     end
 
-    create_table "datum_table_items", id: :serial, force: :cascade do |t|
+    create_table "datum_table_items", force: :cascade do |t|
       t.integer "table_list_id"
       t.datetime "created_at", precision: nil, null: false
       t.datetime "updated_at", precision: nil, null: false
@@ -1513,7 +1513,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["table_list_id"], name: "index_datum_table_items_on_table_list_id"
     end
 
-    create_table "datum_table_lists", id: :serial, force: :cascade do |t|
+    create_table "datum_table_lists", force: :cascade do |t|
       t.integer "data_list_id"
       t.integer "table_items_count", default: 0
       t.string "timestamp"
@@ -1873,7 +1873,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["participant_type", "participant_id"], name: "index_event_participants_on_participant_type_and_participant_id"
     end
 
-    create_table "eventual_bookings", id: :serial, force: :cascade do |t|
+    create_table "eventual_bookings", force: :cascade do |t|
       t.string "booker_type"
       t.integer "booker_id"
       t.string "booked_type"
@@ -2042,7 +2042,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["place_taxon_id"], name: "index_eventual_places_on_place_taxon_id"
     end
 
-    create_table "eventual_plan_attenders", id: :serial, force: :cascade do |t|
+    create_table "eventual_plan_attenders", force: :cascade do |t|
       t.integer "plan_item_id"
       t.string "attender_type"
       t.integer "attender_id"
@@ -2061,7 +2061,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["plan_participant_id"], name: "index_eventual_plan_attenders_on_plan_participant_id"
     end
 
-    create_table "eventual_plan_items", id: :serial, force: :cascade do |t|
+    create_table "eventual_plan_items", force: :cascade do |t|
       t.integer "time_item_id"
       t.integer "place_id"
       t.date "plan_on"
@@ -2099,7 +2099,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["planning_type", "planning_id"], name: "index_eventual_plan_participants_on_planning"
     end
 
-    create_table "eventual_plans", id: :serial, force: :cascade do |t|
+    create_table "eventual_plans", force: :cascade do |t|
       t.integer "time_list_id"
       t.string "planned_type"
       t.integer "planned_id"
@@ -2130,7 +2130,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["place_id"], name: "index_eventual_seats_on_place_id"
     end
 
-    create_table "eventual_time_items", id: :serial, force: :cascade do |t|
+    create_table "eventual_time_items", force: :cascade do |t|
       t.integer "time_list_id"
       t.time "start_at"
       t.time "finish_at"
@@ -2140,7 +2140,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["time_list_id"], name: "index_eventual_time_items_on_time_list_id"
     end
 
-    create_table "eventual_time_lists", id: :serial, force: :cascade do |t|
+    create_table "eventual_time_lists", force: :cascade do |t|
       t.string "name"
       t.string "code"
       t.integer "interval_minutes", default: 0
@@ -3307,7 +3307,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["notification_id"], name: "index_notice_notification_sendings_on_notification_id"
     end
 
-    create_table "notice_notifications", id: :serial, force: :cascade do |t|
+    create_table "notice_notifications", force: :cascade do |t|
       t.string "notifiable_type"
       t.integer "notifiable_id"
       t.string "code"
@@ -4056,7 +4056,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["str_role_ids"], name: "index_roled_caches_on_str_role_ids"
     end
 
-    create_table "roled_governs", id: :serial, force: :cascade do |t|
+    create_table "roled_governs", force: :cascade do |t|
       t.integer "position", default: 0
       t.datetime "created_at", precision: nil
       t.datetime "updated_at", precision: nil
@@ -4076,7 +4076,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.datetime "updated_at", null: false
     end
 
-    create_table "roled_role_rules", id: :serial, force: :cascade do |t|
+    create_table "roled_role_rules", force: :cascade do |t|
       t.integer "role_id"
       t.datetime "created_at", precision: nil
       t.datetime "updated_at", precision: nil
@@ -4108,7 +4108,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["who_type", "who_id"], name: "index_roled_role_whos_on_who"
     end
 
-    create_table "roled_roles", id: :serial, force: :cascade do |t|
+    create_table "roled_roles", force: :cascade do |t|
       t.string "name", null: false
       t.text "description"
       t.datetime "created_at", precision: nil
