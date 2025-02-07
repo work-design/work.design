@@ -28,20 +28,3 @@ vendor/bundle
 
 app/assets/builds/*
 !app/assets/builds/.keep
-app/views/*
-!app/views/admin
-!app/views/application
-!app/views/auth
-!app/views/auth_ext
-!app/views/bench
-!app/views/board
-!app/views/crm
-!app/views/factory
-!app/views/home
-!app/views/layouts
-!app/views/me
-!app/views/my
-!app/views/official
-!app/views/panel
-!app/views/trade
-!app/views/waiting
