@@ -309,7 +309,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["appid"], name: "index_auth_apps_on_appid"
     end
 
-    create_table "auth_authorized_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    create_table "auth_authorized_tokens", id: :string, force: :cascade do |t|
       t.bigint "member_id"
       t.string "identity"
       t.datetime "expire_at"
@@ -334,7 +334,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["user_id"], name: "index_auth_authorized_tokens_on_user_id"
     end
 
-    create_table "auth_disposable_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    create_table "auth_disposable_tokens", id: :string, force: :cascade do |t|
       t.string "identity"
       t.datetime "used_at"
       t.datetime "created_at", null: false
@@ -1165,8 +1165,8 @@ class InitProject < ActiveRecord::Migration[8.0]
     end
 
     create_table "com_state_hierarchies", force: :cascade do |t|
-      t.uuid "ancestor_id"
-      t.uuid "descendant_id"
+      t.string "ancestor_id"
+      t.string "descendant_id"
       t.integer "generations", null: false
       t.datetime "created_at"
       t.datetime "updated_at"
@@ -1175,7 +1175,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.index ["descendant_id"], name: "index_com_state_hierarchies_on_descendant_id"
     end
 
-    create_table "com_states", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    create_table "com_states", id: :string, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
       t.bigint "user_id"
       t.bigint "organ_id"
       t.string "host"
@@ -4521,7 +4521,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
       t.integer "position"
-      t.point "coordinate"
+      t.json "coordinate"
       t.string "name"
       t.bigint "way_id"
       t.bigint "station_id"
@@ -4661,7 +4661,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.string "cityname"
       t.decimal "lat"
       t.decimal "lng"
-      t.point "coordinate"
+      t.json "coordinate"
       t.index ["area_id"], name: "index_ship_stations_on_area_id"
       t.index ["organ_id"], name: "index_ship_stations_on_organ_id"
     end
@@ -4757,7 +4757,7 @@ class InitProject < ActiveRecord::Migration[8.0]
       t.string "cityname"
       t.decimal "lat"
       t.decimal "lng"
-      t.point "coordinate"
+      t.json "coordinate"
       t.index ["area_id"], name: "index_space_stations_on_area_id"
       t.index ["organ_id"], name: "index_space_stations_on_organ_id"
     end
