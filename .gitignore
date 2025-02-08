@@ -9,6 +9,7 @@ app/assets/images/**/
 
 .bundle
 .kamal/secrets-common
+.kamal/apps/work/env/roles/*
 .fleet
 .irb_history
 public/fonts
