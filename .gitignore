@@ -18,7 +18,6 @@ storage
 node_modules
 acme
 
-config/credentials/production.key
 config/credentials/development.yml.enc
 config/credentials/test.yml.enc
 config/certs
