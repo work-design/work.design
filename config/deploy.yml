@@ -1,5 +1,5 @@
-service: work-design
-image: work-design/work-design
+service: work
+image: work-design/work
 deploy_timeout: 100
 servers:
   web:
