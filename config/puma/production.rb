@@ -26,3 +26,5 @@ on_restart do
   puts "binds: #{@options[:binds]}"
   puts "control_url: #{@options[:control_url]}"
 end
+
+plugin :solid_queue
