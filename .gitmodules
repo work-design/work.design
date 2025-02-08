@@ -1,90 +1,120 @@
 [submodule "engine/rails_com"]
   path = engine/rails_com
   url = ./engine/rails_com
+  branch = main
 [submodule "engine/rails_crm"]
   path = engine/rails_crm
   url = ./engine/rails_crm
+  branch = main
 [submodule "engine/rails_cms"]
   path = engine/rails_cms
   url = ./engine/rails_cms
+  branch = main
 [submodule "engine/rails_doc"]
   path = engine/rails_doc
   url = ./engine/rails_doc
+  branch = main
 [submodule "engine/rails_org"]
   path = engine/rails_org
   url = ./engine/rails_org
+  branch = main
 [submodule "engine/rails_auth"]
   path = engine/rails_auth
   url = ./engine/rails_auth
+  branch = main
 [submodule "engine/rails_data"]
   path = engine/rails_data
   url = ./engine/rails_data
+  branch = main
 [submodule "engine/rails_quip"]
   path = engine/rails_quip
   url = ./engine/rails_quip
+  branch = main
 [submodule "engine/rails_ship"]
   path = engine/rails_ship
   url = ./engine/rails_ship
+  branch = main
 [submodule "engine/rails_sync"]
   path = engine/rails_sync
   url = ./engine/rails_sync
+  branch = main
 [submodule "engine/rails_audit"]
   path = engine/rails_audit
   url = ./engine/rails_audit
+  branch = main
 [submodule "engine/rails_bench"]
   path = engine/rails_bench
   url = ./engine/rails_bench
+  branch = main
 [submodule "engine/rails_email"]
   path = engine/rails_email
   url = ./engine/rails_email
+  branch = main
 [submodule "engine/rails_event"]
   path = engine/rails_event
   url = ./engine/rails_event
+  branch = main
 [submodule "engine/rails_trade"]
   path = engine/rails_trade
   url = ./engine/rails_trade
+  branch = main
 [submodule "engine/rails_attend"]
   path = engine/rails_attend
   url = ./engine/rails_attend
+  branch = main
 [submodule "engine/rails_design"]
   path = engine/rails_design
   url = ./engine/rails_design
+  branch = main
 [submodule "engine/rails_detail"]
   path = engine/rails_detail
   url = ./engine/rails_detail
+  branch = main
 [submodule "engine/rails_douyin"]
   path = engine/rails_douyin
   url = ./engine/rails_douyin
+  branch = main
 [submodule "engine/rails_growth"]
   path = engine/rails_growth
   url = ./engine/rails_growth
+  branch = main
 [submodule "engine/rails_notice"]
   path = engine/rails_notice
   url = ./engine/rails_notice
+  branch = main
 [submodule "engine/rails_wechat"]
   path = engine/rails_wechat
   url = ./engine/rails_wechat
+  branch = main
 [submodule "engine/rails_factory"]
   path = engine/rails_factory
   url = ./engine/rails_factory
+  branch = main
 [submodule "engine/rails_finance"]
   path = engine/rails_finance
   url = ./engine/rails_finance
+  branch = main
 [submodule "engine/rails_space"]
   path = engine/rails_space
   url = ./engine/rails_space
+  branch = main
 [submodule "engine/rails_interact"]
   path = engine/rails_interact
   url = ./engine/rails_interact
+  branch = main
 [submodule "engine/rails_markdown"]
   path = engine/rails_markdown
   url = ./engine/rails_markdown
+  branch = main
 [submodule "engine/rails_qingflow"]
   path = engine/rails_qingflow
   url = ./engine/rails_qingflow
+  branch = main
 [submodule "engine/rails_bluetooth"]
   path = engine/rails_bluetooth
   url = ./engine/rails_bluetooth
+  branch = main
 [submodule "engine/rails_alipay"]
   path = engine/rails_alipay
   url = ./engine/rails_alipay
+  branch = main
