@@ -4,7 +4,7 @@ deploy_timeout: 100
 servers:
   web:
     hosts:
-      - <%= ENV['SERVER'] %>
+      - <%= ENV['HOST'] %>
 
 registry:
   server: ccr.ccs.tencentyun.com
@@ -29,7 +29,7 @@ builder:
   remote: ssh://ubuntu@49.235.150.128
 
 proxy:
-  host: <%= ENV['SERVER'] %>
+  host: <%= ENV['HOST'] %>
   ssl: true
   app_port: 3000
   response_timeout: 100
