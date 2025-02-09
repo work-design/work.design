@@ -27,7 +27,6 @@ env:
 ssh:
   key_data: [<%= ENV['PRIVATE_KEY'].inspect %>]
   keys_only: true
-  config: false
 
 builder:
   dockerfile: deploy/Dockerfile
