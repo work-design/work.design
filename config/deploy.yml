@@ -9,9 +9,9 @@ servers:
 registry:
   server: ccr.ccs.tencentyun.com
   username:
-    - KAMAL_REGISTRY_USERNAME
+    - <%= ENV['KAMAL_REGISTRY_USERNAME'] %>
   password:
-    - KAMAL_REGISTRY_PASSWORD
+    - <%= ENV['KAMAL_REGISTRY_PASSWORD'] %>
 
 volumes:
   - ~/app/acme:/rails/acme
