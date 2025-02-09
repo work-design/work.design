@@ -24,6 +24,9 @@ env:
     RAILS_MAX_THREADS: 20
     HOST: <%= ENV['HOST'] %>
 
+ssh:
+  key_data: [<%= ENV['PRIVATE_KEY'] %>]
+
 builder:
   dockerfile: deploy/Dockerfile
   arch: x86_64
