@@ -25,7 +25,8 @@ env:
     HOST: <%= ENV['HOST'] %>
 
 ssh:
-  key_data: [<%= ENV['PRIVATE_KEY'] %>]
+  key_data:
+    - <%= ENV['PRIVATE_KEY'] %>
   keys_only: true
 
 builder:
