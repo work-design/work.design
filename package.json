@@ -12,7 +12,8 @@
     "rails_design": "file:engine/rails_design"
   },
   "devDependencies": {
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.25.0",
+    "sass": "^1.84.0",
     "run-pty": "^5.0.0"
   },
   "scripts": {
