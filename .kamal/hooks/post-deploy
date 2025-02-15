@@ -1,8 +1,0 @@
-#!/bin/sh
-
-if [ "$(git log -1 --pretty=format:%s)" = "update assets" ]; then
-  git reset --hard HEAD~1
-fi
-
-echo "部署完成时间: $(date +'%Y-%m-%d %H:%M:%S')"
-exit 0
