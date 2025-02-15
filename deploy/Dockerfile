@@ -1,4 +1,4 @@
-FROM ccr.ccs.tencentyun.com/work-design/ruby:3.3.6 AS base
+FROM ccr.ccs.tencentyun.com/kamal/ruby:3.4.1 AS base
 
 # Rails App 所在位置
 WORKDIR /rails
@@ -20,7 +20,7 @@ COPY . .
 FROM base
 RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.tuna.tsinghua.edu.cn/alpine#g' /etc/apk/repositories
 RUN apk update
-RUN apk add --update --no-cache curl libgit2 poppler-glib vips tzdata libpq-dev fish postgresql16-client git
+RUN apk add --update --no-cache curl libgit2 poppler-glib vips tzdata libpq-dev fish git
 
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
