@@ -17,7 +17,7 @@
     "run-pty": "^5.0.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
+    "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
     "build:css": "sass app/stylesheets:app/assets/builds --load-path=node_modules"
   }
 }

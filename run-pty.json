@@ -14,7 +14,7 @@
     "defaultStatus": ["⏳", "S"]
   },
   {
-    "command": ["npm", "run", "build", "--", "--watch"],
+    "command": ["npm", "run", "build", "--", "--sourcemap", "--watch"],
     "status": {
       "build finished": null
     },
