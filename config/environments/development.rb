@@ -43,7 +43,6 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
   config.active_record.verbose_query_logs = true
 
-  config.active_storage.service = :upyun
   config.active_storage.logger = nil
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
   config.active_storage.variant_processor = :vips

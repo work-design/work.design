@@ -14,7 +14,6 @@ Rails.application.configure do
 
   config.active_job.logger = ActiveSupport::Logger.new('log/active_job.log')
 
-  config.active_storage.service = :upyun
   config.active_storage.variant_processor = :vips
 
   config.action_mailer.smtp_settings = {
