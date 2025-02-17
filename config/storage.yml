@@ -1,6 +1,6 @@
 local:
   service: Disk
-  root: <%= Rails.root.join('storage') %>
+  root: <%= Rails.root.join('storage_local') %>
 
 acme:
   service: Disc
