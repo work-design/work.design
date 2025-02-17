@@ -20,7 +20,7 @@ COPY . .
 FROM base
 RUN sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#https://mirrors.tuna.tsinghua.edu.cn/alpine#g' /etc/apk/repositories
 RUN apk update
-RUN apk add --update --no-cache curl libgit2 poppler-glib vips tzdata libpq-dev fish git
+RUN apk add --update --no-cache curl libgit2 poppler-glib vips tzdata libpq-dev fish
 
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
