@@ -120,4 +120,5 @@
   branch = main
 [submodule "engine/rails_print"]
 	path = engine/rails_print
-	url = git@github.com:work-design/rails_print.git
+	url = ./engine/rails_print
+	branch = main
