@@ -118,3 +118,6 @@
   path = engine/rails_alipay
   url = ./engine/rails_alipay
   branch = main
+[submodule "engine/rails_print"]
+	path = engine/rails_print
+	url = git@github.com:work-design/rails_print.git
