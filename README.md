@@ -14,16 +14,20 @@
 * 微信生态
 
 ## 技术栈
-Rails 原教旨主义，善用 Rails Engine，尽可能减少依赖。不仅如此，通过对 Rails 框架的扩展和规范使用，代码量远低于常规 Rails 项目。
+基于 Ruby On Rails，并通过对 Rails 框架的扩展和微调，使得开发代码量远低于常规 Rails 项目。
 
 * 全栈 MVC 框架：[Ruby On Rails](https://github.com/rails/rails)
 * Hotwire：直接传输 HTML 片段
-  * [Turbo](https://turbo.hotwired.dev)
+  * [Turbo](https://turbo.hotwired.dev/)
   * [Stimulus](https://stimulus.hotwired.dev)
 * 前端 CSS：纯 CSS 库，需要的 javascript 采用 stimulus 在 [RailsDesign](https://github.com/work-design/rails_design) 项目中实现；
   * [Bulma](https://github.com/jgthms/bulma)
 * 数据库
-  * [Postgresql](https://www.postgresql.org)：关系型数据库
+  * [Postgresql](https://www.postgresql.org/)：关系型数据库
+  * [Sqlite](https://sqlite.org/)
+* 队列任务：Solid Queue
+* 缓存：Solid Cache
+* 服务端推送：Solid Cable
 
 ## 准备
 * 安装依赖
