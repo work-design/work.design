@@ -47,6 +47,13 @@
 ## 依赖及配置
 
 
+## 基于本项目开展你自己的开发
+* Clone 本项目，并丢弃不必要的 git 历史：`git clone --depth 1 git@github.com:work-design/work.design.git your_project`
+* 初始化子模块：`git submodule update --init`
+* 将所有子模块切换到 main 分支：`git submodule foreach git checkout main`
+* 基于当前分开创建新的孤立分支：`git checkout --orphan new-branch`
+
+
 ## 项目发展
 
 #### 资金
